@@ -1,12 +1,12 @@
 ---
-description: Returns information about a block at a block number, hash or tag.
+description: 返回关于区块号、哈希或标签的区块信息。
 ---
 
 # getBlock
 
-Returns information about a block at a block number, hash or tag.
+返回关于区块号、哈希或标签的区块信息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -14,7 +14,7 @@ Returns information about a block at a block number, hash or tag.
 import { publicClient } from './client'
 
 const block = await publicClient.getBlock() // [!code focus:99]
-// @log: Output: {
+// @log: 输出: {
 // @log:  baseFeePerGas: 10789405161n,
 // @log:  difficulty: 11569232145203128n,
 // @log:  extraData: '0x75732d656173742d38',
@@ -28,19 +28,19 @@ const block = await publicClient.getBlock() // [!code focus:99]
 
 :::
 
-## Returns
+## 返回
 
 [`Block`](/docs/glossary/types#block)
 
-Information about the block.
+关于区块的信息。
 
-## Parameters
+## 参数
 
-### blockHash (optional)
+### blockHash (可选)
 
-- **Type:** [`Hash`](/docs/glossary/types#hash)
+- **类型:** [`Hash`](/docs/glossary/types#hash)
 
-Information at a given block hash.
+给定区块哈希的信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -50,11 +50,11 @@ const block = await publicClient.getBlock({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Information at a given block number.
+给定区块号的信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -64,12 +64,12 @@ const block = await publicClient.getBlock({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-Information at a given block tag.
+给定区块标签的信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -79,11 +79,11 @@ const block = await publicClient.getBlock({
 })
 ```
 
-### includeTransactions (optional)
+### includeTransactions (可选)
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Whether or not to include transactions (as a structured array of `Transaction` objects).
+是否包含交易（作为结构化的 `Transaction` 对象数组）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -93,13 +93,13 @@ const block = await publicClient.getBlock({
 })
 ```
 
-## Example
+## 示例
 
-Check out the usage of `getBlock` in the live [Fetching Blocks Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks) below.
+查看 `getBlock` 在实时 [获取区块示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks) 中的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
-- Calls [`eth_getBlockByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbynumber) for `blockNumber` & `blockTag`.
-- Calls [`eth_getBlockByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbyhash) for `blockHash`.
+- 对于 `blockNumber` 和 `blockTag` 调用 [`eth_getBlockByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbynumber)。
+- 对于 `blockHash` 调用 [`eth_getBlockByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbyhash)。

@@ -1,14 +1,14 @@
 ---
-description: Gets address for ENS name.
+description: 获取 ENS 名称的地址。
 ---
 
 # getEnsAddress
 
-Gets address for ENS name.
+获取 ENS 名称的地址。
 
-Calls `resolve(bytes, bytes)` on ENS Universal Resolver Contract to resolve the ENS name to address.
+在 ENS 通用解析器合约上调用 `resolve(bytes, bytes)` 以将 ENS 名称解析为地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,24 +35,24 @@ export const publicClient = createPublicClient({
 :::
 
 :::warning
-Since ENS names prohibit certain forbidden characters (e.g. underscore) and have other validation rules, you likely want to [normalize ENS names](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) with [UTS-46 normalization](https://unicode.org/reports/tr46) before passing them to `getEnsAddress`. You can use the built-in [`normalize`](/docs/ens/utilities/normalize) function for this.
+由于 ENS 名称禁止某些禁止字符（例如下划线）并具有其他验证规则，因此你可能希望在将其传递给 `getEnsAddress` 之前使用 [UTS-46 规范化](https://unicode.org/reports/tr46) 来[规范化 ENS 名称](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) 。你可以使用内置的 [`normalize`](/docs/ens/utilities/normalize) 函数来实现。
 :::
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The address that resolves to provided ENS name.
+解析为提供的 ENS 名称的地址。
 
-Returns `null` if ENS name does not resolve to address.
+如果 ENS 名称无法解析为地址，则返回 `null`。
 
-## Parameters
+## 参数
 
 ### name
 
-- **Type:** `string`
+- **类型:** `string`
 
-Name to get the address for.
+要获取地址的名称。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -60,11 +60,11 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -73,12 +73,12 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值:** `'latest'`
 
-The block tag to perform the read against.
+要执行读取的区块标签。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -87,11 +87,11 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-### coinType (optional)
+### coinType (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The [ENSIP-9](https://docs.ens.domains/ens-improvement-proposals/ensip-9-multichain-address-resolution) coin type to fetch the address for
+要获取地址的 [ENSIP-9](https://docs.ens.domains/ens-improvement-proposals/ensip-9-multichain-address-resolution) 币种类型。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -100,11 +100,11 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-### gatewayUrls (optional)
+### gatewayUrls (可选)
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-A set of Universal Resolver gateways, used for resolving CCIP-Read requests made through the ENS Universal Resolver Contract.
+一组通用解析器网关，用于解析通过 ENS 通用解析器合约发出的 CCIP-Read 请求。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -113,12 +113,12 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-### strict (optional)
+### strict (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认值:** `false`
 
-A boolean value that when set to true will strictly propagate all ENS Universal Resolver Contract errors.
+一个布尔值，当设置为 true 时，将严格传播所有 ENS 通用解析器合约错误。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -127,12 +127,12 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-### universalResolverAddress (optional)
+### universalResolverAddress (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
-- **Default:** `client.chain.contracts.ensUniversalResolver.address`
+- **类型:** [`Address`](/docs/glossary/types#address)
+- **默认值:** `client.chain.contracts.ensUniversalResolver.address`
 
-Address of ENS Universal Resolver Contract.
+ENS 通用解析器合约的地址。
 
 ```ts
 const ensAddress = await publicClient.getEnsAddress({
@@ -141,8 +141,8 @@ const ensAddress = await publicClient.getEnsAddress({
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `getEnsAddress` in the live [ENS Examples](https://stackblitz.com/github/wevm/viem/tree/main/examples/ens) below.
+查看下面的实时 [ENS 示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/ens) 中 `getEnsAddress` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/ens?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>

@@ -1,10 +1,10 @@
-# Celo [Integrating with Celo in Viem]
+# Celo [在 Viem 中与 Celo 集成]
 
-Viem provides first-class support for chains implemented on [Celo](https://celo.org/).
+Viem 为在 [Celo](https://celo.org/) 上实现的链提供一流支持。
 
-## Chains
+## 链
 
-The following Viem chains are implemented on Celo:
+以下 Viem 链是在 Celo 上实现的：
 
 ```ts
 import {
@@ -13,9 +13,9 @@ import {
 } from 'viem/chains'
 ```
 
-### Configuration
+### 配置
 
-Viem exports Celo's chain [formatters](/docs/chains/formatters) & [serializers](/docs/chains/serializers) via `chainConfig`. This is useful if you need to define another chain which is implemented on Celo.
+Viem 通过 `chainConfig` 导出 Celo 的链 [格式化器](/docs/chains/formatters) 和 [序列化器](/docs/chains/serializers)。如果你需要定义另一个在 Celo 上实现的链，这非常有用。
 
 ```ts
 import { defineChain } from 'viem'
@@ -23,22 +23,22 @@ import { chainConfig } from 'viem/celo'
 
 export const celoExample = defineChain({
   ...chainConfig,
-  name: 'Celo Example',
+  name: 'Celo 示例',
   // ...
 })
 ```
 
-## Utilities
+## 工具
 
 ### `parseTransaction`
 
-Parses a serialized RLP-encoded transaction. Supports signed & unsigned CIP-64, EIP-1559, EIP-2930 and Legacy Transactions.
+解析序列化的 RLP 编码交易。支持签名和未签名的 CIP-64、EIP-1559、EIP-2930 和传统交易。
 
-Celo-flavored version of [Viem's `parseTransaction`](/docs/utilities/parseTransaction).
+Celo 版本的 [Viem 的 `parseTransaction`](/docs/utilities/parseTransaction)。
 
-#### Parameters
+#### 参数
 
-- `serializedTransaction` (`Hex`): The serialized transaction.
+- `serializedTransaction` (`Hex`): 序列化的交易。
 
 ```ts
 import { parseTransaction } from 'viem/celo'
@@ -48,14 +48,14 @@ const transaction = parseTransaction('0x7cf84682a4ec8084773594008477359400809476
 
 ### `serializeTransaction`
 
-Serializes a transaction object. Supports CIP-64, EIP-1559, EIP-2930, and Legacy transactions.
+序列化交易对象。支持 CIP-64、EIP-1559、EIP-2930 和传统交易。
 
-Celo-flavored version of [Viem's `serializeTransaction`](/docs/utilities/serializeTransaction).
+Celo 版本的 [Viem 的 `serializeTransaction`](/docs/utilities/serializeTransaction)。
 
-#### Parameters
+#### 参数
 
-- `transaction` (`TransactionSerializable`): The transaction object to serialize.
-- `signature` (`Signature`): Optional signature to include.
+- `transaction` (`TransactionSerializable`): 要序列化的交易对象。
+- `signature` (`Signature`): 可选的签名以包含。
 
 ```ts
 import { serializeTransaction } from 'viem/celo'
@@ -63,7 +63,7 @@ import { serializeTransaction } from 'viem/celo'
 const serialized = serializeTransaction({
   chainId: 42220,
   gas: 21001n,
-  feeCurrency: "0x2F25deB3848C207fc8E0c34035B3Ba7fC157602B" // whitelisted adapter for USDC
+  feeCurrency: "0x2F25deB3848C207fc8E0c34035B3Ba7fC157602B" // USDC 的白名单适配器
   maxFeePerGas: parseGwei('20'),
   maxPriorityFeePerGas: parseGwei('2'),
   nonce: 69,

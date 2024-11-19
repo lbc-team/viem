@@ -1,18 +1,18 @@
 ---
-description: Hashes ENS name.
+description: 哈希 ENS 名称。
 ---
 
 # namehash
 
-Hashes ENS name.
+哈希 ENS 名称。
 
-## Import
+## 导入
 
 ```ts
 import { namehash, normalize } from 'viem/ens'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { namehash, normalize } from 'viem/ens'
@@ -22,19 +22,19 @@ namehash('wevm.eth') // [!code focus:2]
 ```
 
 :::warning
-Since ENS names prohibit certain forbidden characters (e.g. underscore) and have other validation rules, you likely want to [normalize ENS names](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) with [UTS-46 normalization](https://unicode.org/reports/tr46) before passing them to `namehash`. You can use the built-in [`normalize`](/docs/ens/utilities/normalize) function for this.
+由于 ENS 名称禁止某些禁用字符（例如下划线）并具有其他验证规则，因此在将其传递给 `namehash` 之前，你可能希望使用 [UTS-46 规范化](https://unicode.org/reports/tr46) 来 [规范化 ENS 名称](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names)。你可以使用内置的 [`normalize`](/docs/ens/utilities/normalize) 函数来实现。
 :::
 
-## Returns
+## 返回值
 
 `string`
 
-The hashed ENS name.
+哈希后的 ENS 名称。
 
-## Parameters
+## 参数
 
 ### name
 
-- **Type:** `string`
+- **类型:** `string`
 
-A ENS name.
+一个 ENS 名称。

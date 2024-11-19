@@ -1,10 +1,10 @@
-# Formatters [Configure chain-based formatters in Viem]
+# 格式化器 [在 Viem 中配置基于链的格式化器]
 
-You can modify how Blocks & Transactions are formatted by using the `formatters` property on the Chain.
+你可以通过使用链上的 `formatters` 属性来修改区块和交易的格式。
 
-This is useful for chains that have a different Block or Transaction structure than Mainnet (e.g. Celo & OP Stack chains).
+这对于具有不同区块或交易结构的链（例如 Celo 和 OP Stack 链）非常有用。
 
-## Usage
+## 用法
 
 ```tsx
 import { 
@@ -30,9 +30,9 @@ export const example = defineChain({
 
 ### `formatters.block`
 
-You can modify how Blocks are formatted by using the `formatters.block` property on the Chain.
+你可以通过使用链上的 `formatters.block` 属性来修改区块的格式。
 
-You can either pass in the Block overrides, or the whole Block itself to the `format` function of `defineBlock`. You can also exclude certain properties with `exclude`.
+你可以将区块覆盖传递给 `defineBlock` 的 `format` 函数，或者将整个区块本身传递。你还可以使用 `exclude` 排除某些属性。
 
 ```ts
 import { defineBlock, defineChain, hexToBigInt } from 'viem'
@@ -64,9 +64,9 @@ const block = await client.getBlock() // [!code focus:2]
 
 ### `formatters.transaction`
 
-You can modify how Transactions are formatted by using the `formatters.transaction` property on the Chain.
+你可以通过使用链上的 `formatters.transaction` 属性来修改交易的格式。
 
-You can either pass in the Transaction overrides, or the whole Transaction itself to the `format` function of `defineTransaction`. You can also exclude certain properties with `exclude`.
+你可以将交易覆盖传递给 `defineTransaction` 的 `format` 函数，或者将整个交易本身传递。你还可以使用 `exclude` 排除某些属性。
 
 ```ts
 import { defineTransaction, defineChain, hexToBigInt } from 'viem'
@@ -98,9 +98,9 @@ const transaction = await client.getTransaction({ hash: '0x...' }) // [!code foc
 
 ### `formatters.transactionReceipt`
 
-You can modify how Transaction Receipts are formatted by using the `formatters.transactionReceipt` property on the Chain.
+你可以通过使用链上的 `formatters.transactionReceipt` 属性来修改交易收据的格式。
 
-You can either pass in the Transaction Receipt overrides, or the whole Transaction Receipt itself to the `format` function of `defineTransactionReceipt`. You can also exclude certain properties with `exclude`.
+你可以将交易收据覆盖传递给 `defineTransactionReceipt` 的 `format` 函数，或者将整个交易收据本身传递。你还可以使用 `exclude` 排除某些属性。
 
 ```ts
 import { defineTransactionReceipt, defineChain, hexToBigInt } from 'viem'
@@ -133,9 +133,9 @@ const receipt = await client.getTransactionReceipt({ hash: '0x...' }) // [!code 
 
 ### `formatters.transactionRequest`
 
-You can modify how Transaction Requests are formatted by using the `formatters.transactionRequest` property on the Chain.
+你可以通过使用链上的 `formatters.transactionRequest` 属性来修改交易请求的格式。
 
-You can either pass in the Transaction Request overrides, or the whole Transaction Request itself to the `format` function of `defineTransactionRequest`. You can also exclude certain properties with `exclude`.
+你可以将交易请求覆盖传递给 `defineTransactionRequest` 的 `format` 函数，或者将整个交易请求本身传递。你还可以使用 `exclude` 排除某些属性。
 
 ```ts
 import { defineTransactionRequest, defineChain, hexToBigInt } from 'viem'

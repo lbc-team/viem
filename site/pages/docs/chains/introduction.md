@@ -1,10 +1,10 @@
-# Chains
+# 链
 
-The `viem/chains` entrypoint contains references to popular EVM-compatible chains such as: Polygon, Optimism, Avalanche, Base, Zora, and more.
+`viem/chains` 入口点包含对流行的 EVM 兼容链的引用，例如：Polygon、Optimism、Avalanche、Base、Zora 等。
 
-## Usage
+## 用法
 
-Import your chain from the entrypoint and use them in the consuming viem code:
+从入口点导入你的链，并在使用 viem 的代码中使用它们：
 
 ```tsx
 import { createPublicClient, http } from 'viem'
@@ -16,13 +16,13 @@ const client = createPublicClient({
 })
 ```
 
-[See here for a list of supported chains](https://github.com/wagmi-dev/viem/tree/main/src/chains/index.ts).
+[查看此处以获取支持的链列表](https://github.com/wagmi-dev/viem/tree/main/src/chains/index.ts)。
 
-> Want to add a chain that's not listed in viem? Read the [Contributing Guide](https://github.com/wagmi-dev/viem/blob/main/.github/CONTRIBUTING.md#chains), and then open a Pull Request with your chain.
+> 想要添加一个未在 viem 中列出的链？请阅读 [贡献指南](https://github.com/wagmi-dev/viem/blob/main/.github/CONTRIBUTING.md#chains)，然后提交一个包含你链的 Pull Request。
 
-## Custom Chains
+## 自定义链
 
-You can also extend viem to support other EVM-compatible chains by building your own chain object that inherits the `Chain` type.
+你还可以通过构建自己的链对象来扩展 viem，以支持其他 EVM 兼容链，该对象继承 `Chain` 类型。
 
 ```ts
 import { defineChain } from 'viem'

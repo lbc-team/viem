@@ -1,14 +1,14 @@
 ---
-description: Watches and returns information for incoming blocks.
+description: 监视并返回传入区块的信息。
 ---
 
 # watchBlocks
 
-Watches and returns information for incoming blocks.
+监视并返回传入区块的信息。
 
-## Usage
+## 用法
 
-Pass through your Public Client, along with a listener.
+通过你的公共客户端传递一个监听器。
 
 :::code-group
 
@@ -45,19 +45,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `UnwatchFn`
 
-A function that can be invoked to stop watching for new blocks.
+一个可以调用的函数，用于停止监视新块。
 
-## Parameters
+## 参数
 
 ### onBlock
 
-- **Type:** `(block: Block) => void`
+- **类型:** `(block: Block) => void`
 
-The block information.
+区块信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -67,11 +67,11 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### onError (optional)
+### onError (可选)
 
-- **Type:** `(error: Error) => void`
+- **类型:** `(error: Error) => void`
 
-Error thrown from getting a block.
+获取区块时抛出的错误。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -84,12 +84,12 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-Watch for new blocks on a given tag.
+在给定标签上监视新块。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -102,14 +102,14 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### emitMissed (optional)
+### emitMissed (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认:** `false`
 
-Whether or not to emit missed blocks to the callback.
+是否向回调发出错过的块。
 
-Missed blocks may occur in instances where internet connection is lost, or the block time is lesser than the [polling interval](/docs/clients/public#pollinginterval-optional) of the client.
+错过的块可能发生在互联网连接丢失或区块时间小于客户端的 [轮询间隔](/docs/clients/public#pollinginterval-optional) 的情况下。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -122,12 +122,12 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### emitOnBegin (optional)
+### emitOnBegin (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认:** `false`
 
-Whether or not to emit the block to the callback when the subscription opens.
+当订阅打开时，是否向回调发出区块。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -140,11 +140,11 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### includeTransactions (optional)
+### includeTransactions (可选)
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Whether or not to include transactions (as a structured array of `Transaction` objects).
+是否包括交易（作为结构化的 `Transaction` 对象数组）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -157,14 +157,14 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### poll (optional)
+### poll (可选)
 
-- **Type:** `boolean`
-- **Default:** `false` for WebSocket Clients, `true` for non-WebSocket Clients
+- **类型:** `boolean`
+- **默认:** 对于 WebSocket 客户端为 `false`，对于非 WebSocket 客户端为 `true`
 
-Whether or not to use a polling mechanism to check for new blocks instead of a WebSocket subscription.
+是否使用轮询机制检查新块，而不是 WebSocket 订阅。
 
-This option is only configurable for Clients with a [WebSocket Transport](/docs/clients/transports/websocket).
+此选项仅适用于具有 [WebSocket 传输](/docs/clients/transports/websocket) 的客户端。
 
 ```ts twoslash
 import { createPublicClient, webSocket } from 'viem'
@@ -183,11 +183,11 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms). Defaults to the Client's `pollingInterval` config.
+轮询频率（以毫秒为单位）。默认为客户端的 `pollingInterval` 配置。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -200,13 +200,13 @@ const unwatch = publicClient.watchBlocks(
 )
 ```
 
-## Example
+## 示例
 
-Check out the usage of `watchBlocks` in the live [Watch Blocks Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_watching-blocks) below.
+查看下面的实时 [监视区块示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_watching-blocks) 中 `watchBlocks` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_watching-blocks?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-- When `poll: true`, calls [`eth_getBlockByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getBlockByNumber) on a polling interval.
-- When `poll: false` & WebSocket Transport, uses a WebSocket subscription via [`eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe-polygon) and the `"newHeads"` event.
+- 当 `poll: true` 时，在轮询间隔上调用 [`eth_getBlockByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getBlockByNumber)。
+- 当 `poll: false` 且使用 WebSocket 传输时，通过 [`eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe-polygon) 和 `"newHeads"` 事件使用 WebSocket 订阅。

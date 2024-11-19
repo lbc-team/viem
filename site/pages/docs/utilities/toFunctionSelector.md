@@ -1,29 +1,29 @@
 ---
-description: Returns the function selector (4 byte encoding) for a given function definition.
+description: 返回给定函数定义的函数选择器（4 字节编码）。
 ---
 
 # toFunctionSelector
 
-Returns the function selector (4 byte encoding) for a given function definition.
+返回给定函数定义的函数选择器（4 字节编码）。
 
-## Install
+## 安装
 
 ```ts
 import { toFunctionSelector } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toFunctionSelector } from 'viem'
 
 const selector_1 = toFunctionSelector('function ownerOf(uint256 tokenId)')
-// @log: Output: 0x6352211e
+// @log: 输出: 0x6352211e
 
 const selector_2 = toFunctionSelector('ownerOf(uint256)')
-// @log: Output: 0x6352211e
+// @log: 输出: 0x6352211e
 
-// or from an `AbiFunction` on your contract ABI
+// 或者从合约 ABI 中的 `AbiFunction`
 const selector_3 = toFunctionSelector({
   name: 'ownerOf',
   type: 'function',
@@ -31,20 +31,19 @@ const selector_3 = toFunctionSelector({
   outputs: [],
   stateMutability: 'view',
 })
-// @log: Output: 0x6352211e
+// @log: 输出: 0x6352211e
 ```
 
-## Returns
+## 返回值
 
 [`Hex`](/docs/glossary/types#hex)
 
-The selector as a hex value.
+选择器作为十六进制值。
 
-## Parameters
+## 参数
 
 ### function
 
-- **Type:** `string |`[`AbiFunction`](https://abitype.dev/api/types#abifunction)
+- **类型:** `string |`[`AbiFunction`](https://abitype.dev/api/types#abifunction)
 
-The function to generate a selector for.
-
+要生成选择器的函数。

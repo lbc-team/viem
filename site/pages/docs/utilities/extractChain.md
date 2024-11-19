@@ -1,8 +1,8 @@
 # extractChain
 
-Extracts a type-safe chain by ID from a set of chains.
+通过 ID 从一组链中提取类型安全的链。
 
-## Usage
+## 用法
 
 ```ts
 import { extractChain } from 'viem'
@@ -19,7 +19,7 @@ optimism.name
 //       ^? (property) name: "OP Mainnet"
 ```
 
-It is also possible to use **all chains** from the `viem/chains` module:
+也可以使用来自 `viem/chains` 模块的 **所有链**：
 
 ```ts
 import { extractChain } from 'viem'
@@ -39,25 +39,25 @@ optimism.name
 ```
 
 :::warning
-By importing all chains from `viem/chains`, this will significantly increase the size of your bundle. It is only recommended to use this method where bundle size is not a concern (ie. server-side, scripts, etc).
+通过从 `viem/chains` 导入所有链，这将显著增加你的包的大小。仅建议在包大小不是问题的情况下使用此方法（例如：服务器端、脚本等）。
 :::
 
-## Returns
+## 返回
 
-- **Type:** `Chain` (inferred)
+- **类型：** `Chain`（推断）
 
-The extracted chain.
+提取的链。
 
-## Parameters
+## 参数
 
 ### chains
 
-- **Type:** `readonly Chain[]`
+- **类型：** `readonly Chain[]`
 
-The set of chains where the chain will be extracted from.
+将从中提取链的链集。
 
 ### id
 
-- **Type:** `number`
+- **类型：** `number`
 
-The ID of the chain to extract.
+要提取的链的 ID。

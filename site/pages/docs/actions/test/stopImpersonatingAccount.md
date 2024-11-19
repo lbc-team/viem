@@ -1,12 +1,12 @@
 ---
-description: Stop impersonating an account after having previously used impersonateAccount.
+description: 停止在之前使用 impersonateAccount 后冒充一个账户。
 ---
 
 # stopImpersonatingAccount
 
-Stop impersonating an account after having previously used [`impersonateAccount`](/docs/actions/test/impersonateAccount).
+在之前使用 [`impersonateAccount`](/docs/actions/test/impersonateAccount) 后停止冒充一个账户。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the target account.
+目标账户的地址。
 
 ```ts
 await testClient.stopImpersonatingAccount({

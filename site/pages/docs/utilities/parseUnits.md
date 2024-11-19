@@ -1,18 +1,18 @@
 ---
-description: Multiplies a string representation of a number by a given exponent of base 10.
+description: 将数字的字符串表示形式乘以给定的 10 的指数。
 ---
 
 # parseUnits
 
-Multiplies a string representation of a number by a given exponent of base 10 (10<sup>exponent</sup>).
+将数字的字符串表示形式乘以给定的 10 的指数 (10<sup>exponent</sup>)。
 
-## Import
+## 导入
 
 ```ts
 import { parseUnits } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseUnits } from 'viem'
@@ -21,20 +21,20 @@ parseUnits('420', 9) // [!code focus:2]
 // 420000000000n
 ```
 
-## Returns
+## 返回
 
 `bigint`
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `string`
+- **类型:** `string`
 
-The string representation of the number to multiply.
+要乘以的数字的字符串表示形式。
 
 ### exponent 
 
-- **Type:** `number`
+- **类型:** `number`
 
-The exponent.
+指数。

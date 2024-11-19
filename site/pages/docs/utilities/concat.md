@@ -1,10 +1,10 @@
 ---
-description: Concatenates a set of hex values or byte arrays.
+description: 连接一组十六进制值或字节数组。
 ---
 
 # concat
 
-Concatenates a set of hex values or byte arrays.
+连接一组十六进制值或字节数组。
 
 ## Install
 
@@ -28,4 +28,4 @@ concat([new Uint8Array([69]), new Uint8Array([420])])
 
 `Hex | ByteArray`
 
-The concatenated value.
+连接后的值。

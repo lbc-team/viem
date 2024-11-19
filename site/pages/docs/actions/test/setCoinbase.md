@@ -1,12 +1,12 @@
 ---
-description: Sets the coinbase address to be used in new blocks.
+description: 设置用于新块的 coinbase 地址。
 ---
 
 # setCoinbase
 
-Sets the coinbase address to be used in new blocks.
+设置用于新块的 coinbase 地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The coinbase address.
+coinbase 地址。
 
 ```ts
 await testClient.setCoinbase({

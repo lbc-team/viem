@@ -1,12 +1,12 @@
 ---
-description: Returns the number of Transactions an Account has sent.
+description: 返回一个账户发送的交易数量。
 ---
 
 # getTransactionCount
 
-Returns the number of [Transactions](/docs/glossary/terms#transaction) an Account has broadcast / sent.
+返回一个账户广播/发送的[交易](/docs/glossary/terms#transaction)数量。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -25,19 +25,19 @@ const transactionCount = await publicClient.getTransactionCount({  // [!code foc
 
 :::
 
-## Returns
+## 返回
 
 `number`
 
-The number of transactions an account has sent. 
+一个账户发送的交易数量。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the account.
+账户的地址。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -47,11 +47,11 @@ const transactionCount = await publicClient.getTransactionCount({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Get the count at a block number.
+在某个区块号获取计数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -62,11 +62,11 @@ const transactionCount = await publicClient.getTransactionCount({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
 
-Get the count at a block tag.
+在某个区块标签获取计数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -77,10 +77,10 @@ const transactionCount = await publicClient.getTransactionCount({
 })
 ```
 
-## Notes
+## 注意事项
 
-- The transaction count of an account can also be used as a nonce.
+- 账户的交易数量也可以用作 nonce。
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getTransactionCount`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactioncount)

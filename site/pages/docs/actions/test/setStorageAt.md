@@ -1,12 +1,12 @@
 ---
-description: Writes to a slot of an account's storage.
+description: 写入账户存储的一个槽。
 ---
 
 # setStorageAt
 
-Writes to a slot of an account's storage.
+写入账户存储的一个槽。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -33,13 +33,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The account address.
+账户地址。
 
 ```ts
 await testClient.setStorageAt({
@@ -51,9 +51,9 @@ await testClient.setStorageAt({
 
 ### index
 
-- **Type:** `number | Hash`
+- **类型:** `number | Hash`
 
-The storage slot (index). Can either be a number or hash value.
+存储槽（索引）。可以是数字或哈希值。
 
 ```ts
 await testClient.setStorageAt({
@@ -65,9 +65,9 @@ await testClient.setStorageAt({
 
 ### value
 
-- **Type:** `number`
+- **类型:** `number`
 
-The value to store as a 32 byte hex string.
+要存储的值，作为 32 字节的十六进制字符串。
 
 ```ts
 await testClient.setStorageAt({

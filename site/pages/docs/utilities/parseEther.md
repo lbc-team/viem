@@ -1,18 +1,18 @@
 ---
-description: Converts a string representation of ether to numerical wei.
+description: 将以太的字符串表示转换为数值 wei。
 ---
 
 # parseEther
 
-Converts a string representation of ether to numerical wei.
+将以太的字符串表示转换为数值 wei。
 
-## Import
+## 导入
 
 ```ts
 import { parseEther } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseEther } from 'viem'
@@ -21,14 +21,14 @@ parseEther('420') // [!code focus:2]
 // 420000000000000000000n
 ```
 
-## Returns
+## 返回
 
 `bigint`
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `string`
+- **类型:** `string`
 
-The string representation of ether.
+以太的字符串表示。

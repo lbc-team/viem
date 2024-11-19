@@ -1,18 +1,18 @@
 ---
-description: Checks if the given addresses (checksummed) are equal.
+description: 检查给定的地址（带校验和）是否相等。
 ---
 
 # isAddressEqual
 
-Checks if the given addresses (checksummed) are equal.
+检查给定的地址（带校验和）是否相等。
 
-## Import
+## 导入
 
 ```ts
 import { isAddressEqual } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { isAddressEqual } from 'viem'
@@ -21,8 +21,8 @@ isAddressEqual('0xa5cc3c03994db5b0d9a5eEdD10Cabab0813678ac', '0xa5cc3c03994DB5b0
 // true
 ```
 
-## Returns
+## 返回
 
 `boolean`
 
-Whether or not the addresses are equal.
+地址是否相等。

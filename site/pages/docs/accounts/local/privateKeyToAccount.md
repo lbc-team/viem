@@ -1,20 +1,20 @@
-# privateKeyToAccount [A function to create a Private Key Account.]
+# privateKeyToAccount [用于创建私钥账户的函数]
 
-A Private Key Account is an interface that has the ability to sign transactions and messages with a given private key.
+私钥账户是一个接口，能够使用给定的私钥对交易和消息进行签名。
 
 :::info
-viem internally uses [`@noble/curves`](https://github.com/paulmillr/noble-curves), an **audited** implementation of [secp256k1](https://www.secg.org/sec2-v2.pdf), for our private key & signing implementation.
+viem 内部使用 [`@noble/curves`](https://github.com/paulmillr/noble-curves)，这是一个经过**审计**的 [secp256k1](https://www.secg.org/sec2-v2.pdf) 实现，用于我们的私钥和签名实现。
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
 ```
 
-## Usage
+## 用法
 
-To initialize a Private Key Account, you will need to pass a private key to `privateKeyToAccount`:
+要初始化一个私钥账户，你需要将私钥传递给 `privateKeyToAccount`：
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -30,11 +30,11 @@ const client = createWalletClient({
 })
 ```
 
-> Note: the above is a valid private key, but it is not a "real" private key. Please do not use it for anything other than testing.
+> 注意：上述是一个有效的私钥，但它不是一个“真实”的私钥。请勿将其用于测试以外的任何用途。
 
-### Generating Private Keys
+### 生成私钥
 
-You can generate a random private key using the `generatePrivateKey` function:
+你可以使用 `generatePrivateKey` 函数生成一个随机私钥：
 
 ```ts twoslash
 import { generatePrivateKey } from 'viem/accounts'
@@ -42,11 +42,10 @@ import { generatePrivateKey } from 'viem/accounts'
 const privateKey = generatePrivateKey()
 ```
 
-## Parameters
+## 参数
 
 ### privateKey
 
-- **Type:** `Hex`
+- **类型：** `Hex`
 
-The private key to use for the Account.
-
+用于账户的私钥。

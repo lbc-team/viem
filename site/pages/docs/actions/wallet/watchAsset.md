@@ -1,12 +1,12 @@
 ---
-description: Requests that the user tracks the token in their wallet.
+description: 请求用户在其钱包中跟踪代币。
 ---
 
 # watchAsset
 
-Requests that the user tracks the token in their wallet. Returns a boolean indicating if the token was successfully added.
+请求用户在其钱包中跟踪代币。返回一个布尔值，指示代币是否成功添加。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,19 +29,19 @@ const success = await walletClient.watchAsset({ // [!code focus:99]
 
 :::
 
-## Returns
+## 返回值
 
 `boolean`
 
-Boolean indicating if the token was successfully added.
+布尔值，指示代币是否成功添加。
 
-## Parameters
+## 参数
 
 ### type
 
-- **Type:** `string`
+- **类型:** `string`
 
-Token type.
+代币类型。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -58,9 +58,9 @@ const success = await walletClient.watchAsset({
 
 ### options.address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the token contract.
+代币合约的地址。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -77,9 +77,9 @@ const success = await walletClient.watchAsset({
 
 ### options.decimals
 
-- **Type:** `number`
+- **类型:** `number`
 
-The number of token decimals.
+代币的小数位数。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -96,9 +96,9 @@ const success = await walletClient.watchAsset({
 
 ### options.symbol
 
-- **Type:** `string`
+- **类型:** `string`
 
-A ticker symbol or shorthand, up to 11 characters.
+一个最多 11 个字符的代号或简称。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -115,9 +115,9 @@ const success = await walletClient.watchAsset({
 
 ### options.image
 
-- **Type:** `string`
+- **类型:** `string`
 
-A string url of the token logo.
+代币 logo 的字符串 URL。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -133,6 +133,6 @@ const success = await walletClient.watchAsset({
 })
 ```
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`wallet_watchAsset`](https://eips.ethereum.org/EIPS/eip-747)

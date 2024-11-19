@@ -1,8 +1,8 @@
-# signTransaction (Local Account) [Signs a transaction with the Account's private key.]
+# signTransaction (本地账户) [使用账户的私钥签名交易。]
 
-Signs a transaction with the Account's private key.
+使用账户的私钥签名交易。
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { parseGwei } from 'viem'
@@ -18,12 +18,12 @@ const signature = await account.signTransaction({
   nonce: 69,
   to: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
 })
-// @log: Output: "0x02f850018203118080825208808080c080a04012522854168b27e5dc3d5839bab5e6b39e1a0ffd343901ce1622e3d64b48f1a04e00902ae0502c4728cbf12156290df99c3ed7de85b1dbfe20b5c36931733a33"
+// @log: 输出: "0x02f850018203118080825208808080c080a04012522854168b27e5dc3d5839bab5e6b39e1a0ffd343901ce1622e3d64b48f1a04e00902ae0502c4728cbf12156290df99c3ed7de85b1dbfe20b5c36931733a33"
 ```
 
-### Custom serializer
+### 自定义序列化器
 
-viem has a built-in serializer for **Legacy**, **EIP-2930** (`0x01`) and **EIP-1559** (`0x02`) transaction types. If you would like to serialize on another transaction type that viem does not support internally, you can pass a custom serializer.
+viem 内置了 **Legacy**、**EIP-2930** (`0x01`) 和 **EIP-1559** (`0x02`) 交易类型的序列化器。如果你想要序列化 viem 不支持的其他交易类型，可以传递自定义序列化器。
 
 ```ts 
 import { parseGwei } from 'viem'
@@ -57,19 +57,19 @@ const signature = await account.signTransaction({
 })
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#Hex)
 
-The signed transaction.
+签名的交易。
 
-## Parameters
+## 参数
 
-### accessList (optional)
+### accessList (可选)
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型:** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -86,11 +86,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### authorizationList (optional)
+### authorizationList (可选)
 
-- **Type:** `AuthorizationList`
+- **类型:** `AuthorizationList`
 
-Signed EIP-7702 Authorization list.
+签名的 EIP-7702 授权列表。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -108,11 +108,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### blobs (optional)
+### blobs (可选)
 
-- **Type:** `Hex[]`
+- **类型:** `Hex[]`
 
-Blobs for [Blob Transactions](/docs/guides/blob-transactions). 
+用于 [Blob 交易](/docs/guides/blob-transactions) 的 blobs。
 
 ```ts
 import * as kzg from 'c-kzg'
@@ -128,11 +128,11 @@ const hash = await account.signTransaction({
 })
 ```
 
-### chainId (optional)
+### chainId (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The chain ID.
+链 ID。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -143,11 +143,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### data (optional)
+### data (可选)
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-Transaction data.
+交易数据。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -158,11 +158,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### gas (optional)
+### gas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The gas limit for the transaction.
+交易的 gas 限制。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -173,11 +173,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [Legacy 交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts twoslash
 import { parseGwei } from 'viem'
@@ -189,13 +189,13 @@ const signature = await account.signTransaction({
 })
 ```
 
-### kzg (optional)
+### kzg (可选)
 
-- **Type:** `KZG`
+- **类型:** `KZG`
 
-KZG implementation for [Blob Transactions](/docs/guides/blob-transactions). 
+用于 [Blob 交易](/docs/guides/blob-transactions) 的 KZG 实现。
 
-See [`setupKzg`](/docs/utilities/setupKzg) for more information.
+有关更多信息，请参见 [`setupKzg`](/docs/utilities/setupKzg)。
 
 ```ts
 import * as kzg from 'c-kzg'
@@ -211,11 +211,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts twoslash
 import { parseGwei } from 'viem'
@@ -228,11 +228,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts twoslash
 import { parseGwei } from 'viem'
@@ -245,11 +245,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一编号，用于标识此交易。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -260,11 +260,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### to (optional)
+### to (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The transaction recipient.
+交易接收者。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -275,11 +275,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### type (optional)
+### type (可选)
 
-- **Type:** `"legacy" | "eip2930" | "eip1559"`
+- **类型:** `"legacy" | "eip2930" | "eip1559"`
 
-The transaction type.
+交易类型。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -290,11 +290,11 @@ const signature = await account.signTransaction({
 })
 ```
 
-### value (optional)
+### value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts twoslash
 import { parseEther } from 'viem'

@@ -1,16 +1,16 @@
 ---
-description: Requests a list of accounts managed by a wallet.
+description: 请求由钱包管理的账户列表。
 ---
 
 # requestAddresses
 
-Requests a list of accounts managed by a wallet.
+请求由钱包管理的账户列表。
 
-`requestAddresses` sends a request to the wallet, asking for permission to access the user's accounts. After the user accepts the request, it will return a list of accounts (addresses).
+`requestAddresses` 向钱包发送请求，请求访问用户的账户权限。在用户接受请求后，它将返回一个账户（地址）列表。
 
-This API can be useful for dapps that need to access the user's accounts in order to execute transactions or interact with smart contracts.
+此 API 对于需要访问用户账户以执行交易或与智能合约交互的 dapp 非常有用。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -27,10 +27,10 @@ const accounts = await walletClient.requestAddresses() // [!code focus:99]
 
 :::
 
-## Returns
+## 返回
 
 [`Address[]`](/docs/glossary/types#address)
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_requestAccounts`](https://eips.ethereum.org/EIPS/eip-1102)

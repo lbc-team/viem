@@ -1,12 +1,12 @@
 ---
-description: Sets the block's gas limit.
+description: 设置区块的 gas 限制。
 ---
 
 # setBlockGasLimit
 
-Sets the block's gas limit.
+设置区块的 gas 限制。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### gasLimit
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The gas limit.
+gas 限制。
 
 ```ts
 await testClient.setBlockGasLimit({

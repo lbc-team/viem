@@ -1,14 +1,14 @@
-# HTTP Transport [A function to create a HTTP Transport for a Client]
+# HTTP 传输 [为客户端创建 HTTP 传输的函数]
 
-The `http` Transport connects to a JSON-RPC API via HTTP.
+`http` 传输通过 HTTP 连接到 JSON-RPC API。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { http } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash {4}
 import { createPublicClient, http } from 'viem'
@@ -20,17 +20,17 @@ const client = createPublicClient({
 })
 ```
 
-:::warning[Warning]
-If no `url` is provided, then the transport will fall back to a public RPC URL on the chain. It is highly recommended to provide an authenticated RPC URL to prevent rate-limiting.
+:::warning[警告]
+如果未提供 `url`，则传输将回退到链上的公共 RPC URL。强烈建议提供经过身份验证的 RPC URL 以防止速率限制。
 :::
 
-### Batch JSON-RPC
+### 批量 JSON-RPC
 
-The `http` Transport supports Batch JSON-RPC. This means that multiple JSON-RPC requests can be sent in a single HTTP request.
+`http` 传输支持批量 JSON-RPC。这意味着可以在单个 HTTP 请求中发送多个 JSON-RPC 请求。
 
-The Transport will batch up Actions over a given period and execute them in a single Batch JSON-RPC HTTP request. By default, this period is a [zero delay](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#zero_delays) meaning that the batch request will be executed at the end of the current [JavaScript message queue](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#queue). Consumers can specify a custom time period `wait` (in ms).
+传输将在给定时间段内批量处理操作，并在单个批量 JSON-RPC HTTP 请求中执行它们。默认情况下，这个时间段是 [零延迟](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#zero_delays)，这意味着批量请求将在当前 [JavaScript 消息队列](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#queue) 结束时执行。消费者可以指定自定义时间段 `wait`（以毫秒为单位）。
 
-You can enable Batch JSON-RPC by setting the `batch` flag to `true`:
+你可以通过将 `batch` 标志设置为 `true` 来启用批量 JSON-RPC：
 
 ```ts twoslash
 import { http } from 'viem'
@@ -40,7 +40,7 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-Now when you invoke Actions, the `http` Transport will batch and send over those requests at the end of the message queue (or custom time period) in a single Batch JSON-RPC HTTP request:
+现在，当你调用操作时，`http` 传输将在消息队列（或自定义时间段）结束时批量发送这些请求，形成一个单一的批量 JSON-RPC HTTP 请求：
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem'
@@ -51,7 +51,7 @@ const client = createPublicClient({
   transport: http('https://eth-mainnet.g.alchemy.com/v2/...'), 
 })
 // ---cut---
-// The below will send a single Batch JSON-RPC HTTP request to the RPC Provider.
+// 下面将向 RPC 提供者发送一个单一的批量 JSON-RPC HTTP 请求。
 const [blockNumber, balance, ensName] = await Promise.all([
   client.getBlockNumber(),
   client.getBalance({ address: '0xd2135CfB216b74109775236E36d4b433F1DF507B' }),
@@ -59,14 +59,14 @@ const [blockNumber, balance, ensName] = await Promise.all([
 ])
 ```
 
-## Parameters
+## 参数
 
-### url (optional)
+### url（可选）
 
-- **Type:** `string`
-- **Default:** `chain.rpcUrls.default.http[0]`
+- **类型：** `string`
+- **默认：** `chain.rpcUrls.default.http[0]`
 
-URL of the JSON-RPC API.
+JSON-RPC API 的 URL。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -74,12 +74,12 @@ import { http } from 'viem'
 const transport = http('https://eth-mainnet.g.alchemy.com/v2/...')
 ```
 
-### batch (optional)
+### batch（可选）
 
-- **Type:** `boolean | BatchOptions`
-- **Default:** `false`
+- **类型：** `boolean | BatchOptions`
+- **默认：** `false`
 
-Toggle to enable Batch JSON-RPC
+启用批量 JSON-RPC 的切换
 
 ```ts twoslash
 import { http } from 'viem'
@@ -89,12 +89,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### batch.batchSize (optional)
+### batch.batchSize（可选）
 
-- **Type:** `number`
-- **Default:** `1_000`
+- **类型：** `number`
+- **默认：** `1_000`
 
-The maximum number of JSON-RPC requests to send in a batch.
+在批量中发送的最大 JSON-RPC 请求数量。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -106,12 +106,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### batch.wait (optional)
+### batch.wait（可选）
 
-- **Type:** `number`
-- **Default:** `0` ([zero delay](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#zero_delays))
+- **类型：** `number`
+- **默认：** `0` ( [零延迟](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#zero_delays) )
 
-The maximum number of milliseconds to wait before sending a batch.
+发送批量之前等待的最大毫秒数。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -123,11 +123,11 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### fetchOptions (optional)
+### fetchOptions（可选）
 
-- **Type:** [`RequestInit`](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
+- **类型：** [`RequestInit`](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
 
-[Fetch options](https://developer.mozilla.org/en-US/docs/Web/API/fetch) to pass to the internal `fetch` function. Useful for passing auth headers or cache options.
+传递给内部 `fetch` 函数的 [Fetch 选项](https://developer.mozilla.org/en-US/docs/Web/API/fetch)。用于传递身份验证头或缓存选项。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -141,12 +141,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### key (optional)
+### key（可选）
 
-- **Type:** `string`
-- **Default:** `"http"`
+- **类型：** `string`
+- **默认：** `"http"`
 
-A key for the Transport.
+传输的键。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -156,12 +156,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### name (optional)
+### name（可选）
 
-- **Type:** `string`
-- **Default:** `"HTTP JSON-RPC"`
+- **类型：** `string`
+- **默认：** `"HTTP JSON-RPC"`
 
-A name for the Transport
+传输的名称。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -171,11 +171,11 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### onFetchRequest (optional)
+### onFetchRequest（可选）
 
-- **Type:** `(request: Request) => void`
+- **类型：** `(request: Request) => void`
 
-A callback to handle the fetch request. Useful for logging or debugging.
+处理 fetch 请求的回调。用于记录或调试。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -187,11 +187,11 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### onFetchResponse (optional)
+### onFetchResponse（可选）
 
-- **Type:** `(response: Response) => void`
+- **类型：** `(response: Response) => void`
 
-A callback to handle the fetch response. Useful for logging or debugging.
+处理 fetch 响应的回调。用于记录或调试。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -203,12 +203,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### retryCount (optional)
+### retryCount（可选）
 
-- **Type:** `number`
-- **Default:** `3`
+- **类型：** `number`
+- **默认：** `3`
 
-The max number of times to retry when a request fails.
+请求失败时重试的最大次数。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -218,12 +218,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### retryDelay (optional)
+### retryDelay（可选）
 
-- **Type:** `number`
-- **Default:** `150`
+- **类型：** `number`
+- **默认：** `150`
 
-The base delay (in ms) between retries. By default, the Transport will use [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) (`~~(1 << count) * retryDelay`), which means the time between retries is not constant.
+重试之间的基本延迟（以毫秒为单位）。默认情况下，传输将使用 [指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)（`~~(1 << count) * retryDelay`），这意味着重试之间的时间不是恒定的。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -233,12 +233,12 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### timeout (optional)
+### timeout（可选）
 
-- **Type:** `number`
-- **Default:** `10_000`
+- **类型：** `number`
+- **默认：** `10_000`
 
-The timeout for requests.
+请求的超时时间。
 
 ```ts twoslash
 import { http } from 'viem'
@@ -247,4 +247,3 @@ const transport = http('https://eth-mainnet.g.alchemy.com/v2/...', {
   timeout: 60_000, // [!code focus]
 })
 ```
-

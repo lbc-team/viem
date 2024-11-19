@@ -1,12 +1,12 @@
 ---
-description: Recovers the signing public key from a hash & signature.
+description: 从哈希和签名恢复签名公钥。
 ---
 
 # recoverPublicKey
 
-Recovers the original signing 64-byte public key from a hash & signature.
+从哈希和签名恢复原始的 64 字节签名公钥。
 
-## Usage
+## 用法
 
 ```ts [example.ts]
 import { recoverPublicKey } from 'viem'
@@ -18,19 +18,19 @@ const publicKey = await recoverPublicKey({
 // 0x048318535b54105d4a7aae60c08fc45f9687181b4fdfc625bd1a753fa7397fed753547f11ca8696646f2f3acb08e31016afac23e630c5d11f59f61fef57b0d2aa5
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The signing public key.
+签名公钥。
 
-## Parameters
+## 参数
 
 ### hash
 
-- **Type:** `string`
+- **类型:** `string`
 
-The hash that was signed.
+被签名的哈希。
 
 ```ts
 const publicKey = await recoverPublicKey({ 
@@ -41,9 +41,9 @@ const publicKey = await recoverPublicKey({
 
 ### signature
 
-- **Type:** `Hex | ByteArray | Signature`
+- **类型:** `Hex | ByteArray | Signature`
 
-The signature of the hash.
+哈希的签名。
 
 ```ts
 const publicKey = await recoverPublicKey({ 

@@ -1,12 +1,12 @@
 ---
-description: Returns the number of the most recent block seen.
+description: 返回最近看到的区块编号。
 ---
 
 # getBlockNumber
 
-Returns the number of the most recent block seen.
+返回最近看到的区块编号。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -14,7 +14,7 @@ Returns the number of the most recent block seen.
 import { publicClient } from './client'
 
 const blockNumber = await publicClient.getBlockNumber() // [!code focus:99]
-// @log: Output: 69420n
+// @log: 输出: 69420n
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -23,20 +23,20 @@ const blockNumber = await publicClient.getBlockNumber() // [!code focus:99]
 
 :::
 
-## Returns
+## 返回
 
 `bigint`
 
-The number of the block.
+区块的编号。
 
-## Parameters
+## 参数
 
-### cacheTime (optional)
+### cacheTime (可选)
 
-- **Type:** `number`
-- **Default:** [Client's `cacheTime`](/docs/clients/public#cachetime-optional)
+- **类型:** `number`
+- **默认:** [客户端的 `cacheTime`](/docs/clients/public#cachetime-optional)
 
-Time (in ms) that cached block number will remain in memory.
+缓存的区块编号在内存中保持的时间（以毫秒为单位）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -46,17 +46,17 @@ const block = await publicClient.getBlockNumber({
 })
 ```
 
-By default, block numbers are cached for the period of the [Client's `cacheTime`](/docs/clients/public#cacheTime-optional).
+默认情况下，区块编号会在[客户端的 `cacheTime`](/docs/clients/public#cacheTime-optional) 期间被缓存。
 
-- Setting a value of above zero will make block number remain in the cache for that period.
-- Setting a value of `0` will disable the cache, and always retrieve a fresh block number.
+- 设置大于零的值将使区块编号在缓存中保持该时间。
+- 设置值为 `0` 将禁用缓存，并始终检索最新的区块编号。
 
-## Example
+## 示例
 
-Check out the usage of `getBlockNumber` in the live [Fetching Blocks Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks) below.
+查看在实时[获取区块示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks)中 `getBlockNumber` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_blockNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_blocknumber)

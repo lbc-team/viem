@@ -1,12 +1,12 @@
 ---
-description: Decodes a hex value to a string, number or byte array.
+description: 将十六进制值解码为字符串、数字或字节数组。
 ---
 
 # fromHex
 
-Decodes a hex value to a string, number or byte array.
+将十六进制值解码为字符串、数字或字节数组。
 
-Shortcut Functions:
+快捷函数：
 
 - [hexToNumber](#hextonumber)
 - [hexToBigInt](#hextobigint)
@@ -14,13 +14,13 @@ Shortcut Functions:
 - [hexToBytes](#hextobytes)
 - [hexToBool](#hextobool)
 
-## Import
+## 导入
 
 ```ts
 import { fromHex } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { fromHex } from 'viem'
@@ -41,25 +41,25 @@ fromHex('0x1', 'boolean')
 // true
 ```
 
-## Returns
+## 返回
 
 `string | bigint | number | ByteArray`
 
-The targeted type.
+目标类型。
 
-## Parameters
+## 参数
 
 ### hex
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The hex value to decode.
+要解码的十六进制值。
 
 ### toOrOptions
 
-- **Type:** `"string" | "hex" | "number" | "bigint" | "boolean" | Options`
+- **类型:** `"string" | "hex" | "number" | "bigint" | "boolean" | Options`
 
-The output type or options.
+输出类型或选项。
 
 ```ts 
 fromHex(
@@ -80,13 +80,13 @@ fromHex(
 // 'Hello world'
 ```
 
-## Shortcut Functions
+## 快捷函数
 
 ### hexToNumber
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a hex value to a number.
+将十六进制值解码为数字。
 
 ```ts
 import { hexToNumber } from 'viem'
@@ -103,9 +103,9 @@ hexToNumber(
 
 ### hexToBigInt
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a hex value to a bigint.
+将十六进制值解码为 bigint。
 
 ```ts
 import { hexToBigInt } from 'viem'
@@ -122,9 +122,9 @@ hexToBigInt(
 
 ### hexToString
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a hex value to a string.
+将十六进制值解码为字符串。
 
 ```ts
 import { hexToString } from 'viem'
@@ -141,9 +141,9 @@ hexToString(
 
 ### hexToBytes
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a hex value to a byte array.
+将十六进制值解码为字节数组。
 
 ```ts
 import { hexToBytes } from 'viem'
@@ -160,9 +160,9 @@ hexToBytes(
 
 ### hexToBool
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a hex value to a boolean.
+将十六进制值解码为布尔值。
 
 ```ts
 import { hexToBool } from 'viem'

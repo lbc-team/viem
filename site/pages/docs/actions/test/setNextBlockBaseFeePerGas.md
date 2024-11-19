@@ -1,12 +1,12 @@
 ---
-description: Sets the next block's base fee per gas.
+description: 设置下一个区块的每单位 gas 的基础费用。
 ---
 
 # setNextBlockBaseFeePerGas
 
-Sets the next block's base fee per gas.
+设置下一个区块的每单位 gas 的基础费用。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -32,13 +32,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### baseFeePerGas
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Base fee per gas.
+每单位 gas 的基础费用。
 
 ```ts
 await testClient.setNextBlockBaseFeePerGas({

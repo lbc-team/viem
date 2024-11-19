@@ -1,18 +1,18 @@
 ---
-description: Compute the proofs for a list of blobs and their commitments.
+description: 计算一组 blobs 及其承诺的证明。
 ---
 
 # blobsToProofs
 
-Compute the proofs for a list of blobs and their commitments.
+计算一组 blobs 及其承诺的证明。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { blobsToProofs } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,19 +35,19 @@ export const kzg = setupKzg('./trusted-setup.json', cKzg)
 
 :::
 
-## Returns
+## 返回
 
 `Hex[] | ByteArray[]`
 
-Proofs from the input blobs and commitments.
+来自输入 blobs 和承诺的证明。
 
-## Parameters
+## 参数
 
 ### blobs
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型:** `Hex[] | ByteArray[]`
 
-Blobs to transform into proofs.
+要转换为证明的 blobs。
 
 ```ts twoslash
 import { blobsToCommitments, blobsToProofs, toBlobs } from 'viem'
@@ -65,9 +65,9 @@ const proofs = blobsToProofs({
 
 ### commitments
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型:** `Hex[] | ByteArray[]`
 
-Commitments corresponding to the input blobs.
+与输入 blobs 对应的承诺。
 
 ```ts twoslash
 import { blobsToCommitments, blobsToProofs, toBlobs } from 'viem'
@@ -85,9 +85,9 @@ const proofs = blobsToProofs({
 
 ### kzg
 
-- **Type:** `KZG`
+- **类型:** `KZG`
 
-KZG implementation. See [`setupKzg`](/docs/utilities/setupKzg) for more information.
+KZG 实现。有关更多信息，请参见 [`setupKzg`](/docs/utilities/setupKzg)。
 
 ```ts twoslash
 // @noErrors

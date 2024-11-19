@@ -1,14 +1,14 @@
 ---
-description: Returns a list of event logs matching the provided parameters. 
+description: 返回与提供的参数匹配的事件日志列表。
 ---
 
 # getLogs
 
-Returns a list of **event** logs matching the provided parameters.
+返回与提供的参数匹配的**事件**日志列表。
 
-## Usage
+## 用法
 
-By default, `getLogs` returns all events. In practice, you must use scoping to filter for specific events.
+默认情况下，`getLogs` 返回所有事件。在实际使用中，你必须使用作用域来过滤特定事件。
 
 :::code-group
 
@@ -16,7 +16,7 @@ By default, `getLogs` returns all events. In practice, you must use scoping to f
 import { publicClient } from './client'
 
 const logs = await publicClient.getLogs()  // [!code focus:99]
-// @log: Output: [{ ... }, { ... }, { ... }]
+// @log: 输出: [{ ... }, { ... }, { ... }]
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -31,9 +31,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Scoping
+## 作用域
 
-You can also scope to a set of given attributes.
+你还可以作用于一组给定的属性。
 
 :::code-group
 
@@ -65,7 +65,7 @@ export const publicClient = createPublicClient({
 
 :::
 
-By default, `event` accepts the [`AbiEvent`](/docs/glossary/types#abievent) type:
+默认情况下，`event` 接受 [`AbiEvent`](/docs/glossary/types#abievent) 类型：
 
 :::code-group
 
@@ -103,9 +103,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Address
+### 地址
 
-Logs can be scoped to an **address**:
+日志可以作用于一个**地址**：
 
 :::code-group
 
@@ -129,11 +129,11 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Event
+### 事件
 
-Logs can be scoped to an **event**.
+日志可以作用于一个**事件**。
 
-The `event` argument takes in an event in ABI format – we have a [`parseAbiItem` utility](/docs/abi/parseAbiItem) that you can use to convert from a human-readable event signature → ABI.
+`event` 参数接受 ABI 格式的事件 – 我们有一个 [`parseAbiItem` 工具](/docs/abi/parseAbiItem)，你可以用它将人类可读的事件签名转换为 ABI。
 
 :::code-group
 
@@ -159,9 +159,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Arguments
+### 参数
 
-Logs can be scoped to given **_indexed_ arguments**:
+日志可以作用于给定的**_索引_参数**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -178,9 +178,9 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-Only indexed arguments in `event` are candidates for `args`.
+只有 `event` 中的索引参数才是 `args` 的候选。
 
-An argument can also be an array to indicate that other values can exist in the position:
+参数也可以是一个数组，以指示该位置可以存在其他值：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -191,7 +191,7 @@ const logs = await publicClient.getLogs({
   address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
   event: parseAbiItem('event Transfer(address indexed from, address indexed to, uint256 value)'),
   args: { // [!code focus:8]
-    // '0xd8da...' OR '0xa5cc...' OR '0xa152...'
+    // '0xd8da...' 或 '0xa5cc...' 或 '0xa152...'
     from: [
       '0xd8da6bf26964af9d7eed9e03e53415d37aa96045', 
       '0xa5cc3c03994db5b0d9a5eedd10cabab0813678ac',
@@ -201,9 +201,9 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-### Block Range
+### 区块范围
 
-Logs can be scoped to a **block range**:
+日志可以作用于一个**区块范围**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -218,9 +218,9 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-### Multiple Events
+### 多个事件
 
-Logs can be scoped to **multiple events**:
+日志可以作用于**多个事件**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -235,12 +235,12 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-Note: Logs scoped to multiple events cannot be also scoped with [indexed arguments](#arguments) (`args`).
+注意：作用于多个事件的日志不能同时作用于 [索引参数](#arguments) (`args`)。
 
-### Strict Mode
+### 严格模式
 
-By default, `getLogs` will include logs that [do not conform](/docs/glossary/terms#non-conforming-log) to the indexed & non-indexed arguments on the `event`.
-viem will not return a value for arguments that do not conform to the ABI, thus, some arguments on `args` may be undefined.
+默认情况下，`getLogs` 将包括那些 [不符合](/docs/glossary/terms#non-conforming-log) `event` 上的索引和非索引参数的日志。
+viem 不会返回不符合 ABI 的参数的值，因此，`args` 中的一些参数可能是未定义的。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -262,7 +262,7 @@ logs[0].args
 
 ```
 
-You can turn on `strict` mode to only return logs that conform to the indexed & non-indexed arguments on the `event`, meaning that `args` will always be defined. The trade-off is that non-conforming logs will be filtered out.
+你可以开启 `strict` 模式，仅返回符合 `event` 上的索引和非索引参数的日志，这意味着 `args` 将始终被定义。缺点是不符合的日志将被过滤掉。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -285,19 +285,19 @@ logs[0].args
 
 ```
 
-## Returns
+## 返回
 
 [`Log[]`](/docs/glossary/types#log)
 
-A list of event logs.
+事件日志列表。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address | Address[]`](/docs/glossary/types#address)
+- **类型:** [`Address | Address[]`](/docs/glossary/types#address)
 
-A contract address or a list of contract addresses. Only logs originating from the contract(s) will be included in the result.
+合约地址或合约地址列表。结果中将仅包含来自合约的日志。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -307,13 +307,13 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-### event
+### 事件
 
-- **Type:** [`AbiEvent`](/docs/glossary/types#abievent)
+- **类型：** [`AbiEvent`](/docs/glossary/types#abievent)
 
-The event in ABI format.
+ABI 格式的事件。
 
-A [`parseAbiItem` utility](/docs/abi/parseAbiItem) is exported from viem that converts from a human-readable event signature → ABI.
+从 viem 导出的 [`parseAbiItem` 工具](/docs/abi/parseAbiItem) 可以将人类可读的事件签名转换为 ABI。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -325,11 +325,11 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-### args
+### 参数
 
-- **Type:** Inferred.
+- **类型：** 推断。
 
-A list of _indexed_ event arguments.
+一组 _索引_ 事件参数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -347,9 +347,9 @@ const logs = await publicClient.getLogs({
 
 ### fromBlock
 
-- **Type:** `bigint | 'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **类型：** `bigint | 'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
 
-Block to start including logs from. Mutually exclusive with `blockHash`.
+开始包含日志的区块。与 `blockHash` 互斥。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -361,9 +361,9 @@ const filter = await publicClient.createEventFilter({
 
 ### toBlock
 
-- **Type:** `bigint | 'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **类型：** `bigint | 'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
 
-Block to stop including logs from. Mutually exclusive with `blockHash`.
+停止包含日志的区块。与 `blockHash` 互斥。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -375,9 +375,9 @@ const filter = await publicClient.createEventFilter({
 
 ### blockHash
 
-- **Type:** `'0x${string}'`
+- **类型：** `'0x${string}'`
 
-Block hash to include logs from. Mutually exclusive with `fromBlock`/`toBlock`.
+包含日志的区块哈希。与 `fromBlock`/`toBlock` 互斥。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -387,12 +387,12 @@ const logs = await publicClient.getLogs({
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `getLogs` in the live [Event Logs Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/logs_event-logs) below.
+查看下面的实时 [事件日志示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/logs_event-logs) 中 `getLogs` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/logs_event-logs?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs)

@@ -1,16 +1,16 @@
 ---
-description: Watches and returns emitted contract event logs.
+description: 监听并返回发出的合约事件日志。
 ---
 
 # watchContractEvent
 
-Watches and returns emitted contract event logs.
+监听并返回发出的合约事件日志。
 
-This Action will batch up all the event logs found within the [`pollingInterval`](#pollinginterval-optional), and invoke them via [`onLogs`](#onlogs).
+此操作将批量处理在 [`pollingInterval`](#pollinginterval-optional) 中找到的所有事件日志，并通过 [`onLogs`](#onlogs) 调用它们。
 
-`watchContractEvent` will attempt to create an [Event Filter](/docs/contract/createContractEventFilter) and listen to changes to the Filter per polling interval, however, if the RPC Provider does not support Filters (ie. `eth_newFilter`), then `watchContractEvent` will fall back to using [`getLogs`](/docs/actions/public/getLogs) instead.
+`watchContractEvent` 将尝试创建一个 [事件过滤器](/docs/contract/createContractEventFilter) 并根据轮询间隔监听过滤器的变化，但如果 RPC 提供者不支持过滤器（即 `eth_newFilter`），则 `watchContractEvent` 将回退到使用 [`getLogs`](/docs/actions/public/getLogs)。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -40,9 +40,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Scoping to an Event Name
+### 限定事件名称
 
-You can scope to an event on the given ABI.
+你可以在给定的 ABI 上限定事件。
 
 :::code-group
 
@@ -97,13 +97,13 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Scoping to Event Arguments
+### 限定事件参数
 
-You can scope to given **indexed event arguments**.
+你可以限定给定的 **索引事件参数**。
 
-In the example below, we want to filter out `Transfer`s that were sent by the address `"0xc961145a54C96E3aE9bAA048c4F4D6b04C13916b"`.
+在下面的示例中，我们想要过滤出由地址 `"0xc961145a54C96E3aE9bAA048c4F4D6b04C13916b"` 发送的 `Transfer`。
 
-> Only **`indexed`** arguments on the event ABI are candidates for `args` (see `abi.ts`).
+> 只有 **`indexed`** 参数在事件 ABI 中是 `args` 的候选（见 `abi.ts`）。
 
 :::code-group
 
@@ -163,19 +163,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `UnwatchFn`
 
-A function that can be invoked to stop watching for new event logs.
+一个可以调用的函数，用于停止监听新的事件日志。
 
-## Arguments
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -187,9 +187,9 @@ const unwatch = publicClient.watchContractEvent({
 
 ### onLogs
 
-- **Type:** `(Log[]) => void`
+- **类型:** `(Log[]) => void`
 
-The new event logs.
+新的事件日志。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -199,11 +199,11 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### address (optional)
+### address (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address. If no address is provided, then it will emit all events matching the event signatures on the ABI.
+合约地址。如果未提供地址，则将发出所有与 ABI 上的事件签名匹配的事件。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -213,11 +213,11 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### args (optional)
+### args (可选)
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Event arguments to filter logs.
+事件参数以过滤日志。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -229,11 +229,11 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### eventName (optional)
+### eventName (可选)
 
-- **Type:** `string`
+- **类型:** `string`
 
-An event name to filter logs.
+用于过滤日志的事件名称。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -244,12 +244,12 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### batch (optional)
+### batch (可选)
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认值:** `true`
 
-Whether or not to batch logs between polling intervals.
+是否在轮询间隔之间批量处理日志。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -260,11 +260,11 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### onError (optional)
+### onError (可选)
 
-- **Type:** `(error: Error) => void`
+- **类型:** `(error: Error) => void`
 
-Error thrown from listening for new event logs.
+监听新事件日志时抛出的错误。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -275,14 +275,14 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### poll (optional)
+### poll (可选)
 
-- **Type:** `boolean`
-- **Default:** `false` for WebSocket Clients, `true` for non-WebSocket Clients
+- **类型:** `boolean`
+- **默认值:** 对于 WebSocket 客户端为 `false`，对于非 WebSocket 客户端为 `true`
 
-Whether or not to use a polling mechanism to check for new logs instead of a WebSocket subscription.
+是否使用轮询机制检查新日志，而不是 WebSocket 订阅。
 
-This option is only configurable for Clients with a [WebSocket Transport](/docs/clients/transports/websocket).
+此选项仅适用于具有 [WebSocket 传输](/docs/clients/transports/websocket) 的客户端。
 
 ```ts
 import { createPublicClient, webSocket } from 'viem'
@@ -302,11 +302,11 @@ const unwatch = publicClient.watchContractEvent(
 )
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms). Defaults to the Client's `pollingInterval` config.
+轮询频率（以毫秒为单位）。默认为客户端的 `pollingInterval` 配置。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -317,11 +317,11 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-### fromBlock (optional)
+### fromBlock (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The block number to start listening for logs from.
+开始监听日志的区块号。
 
 ```ts
 const unwatch = publicClient.watchContractEvent({
@@ -332,17 +332,17 @@ const unwatch = publicClient.watchContractEvent({
 })
 ```
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-**When poll `true` and RPC Provider supports `eth_newFilter`:**
+**当 poll 为 `true` 且 RPC 提供者支持 `eth_newFilter` 时：**
 
-- Calls [`eth_newFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter) to create a filter (called on initialize).
-- On a polling interval, it will call [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges).
+- 调用 [`eth_newFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter) 创建一个过滤器（在初始化时调用）。
+- 在轮询间隔内，它将调用 [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges)。
 
-**When poll `true` RPC Provider does not support `eth_newFilter`:**
+**当 poll 为 `true` 且 RPC 提供者不支持 `eth_newFilter` 时：**
 
-- Calls [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs) for each block between the polling interval.
+- 对于轮询间隔内的每个区块，调用 [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs)。
 
-**When poll `false` and WebSocket Transport:**
+**当 poll 为 `false` 且使用 WebSocket 传输时：**
 
-- Uses a WebSocket subscription via `eth_subscribe` and the "logs" event.
+- 通过 `eth_subscribe` 和 "logs" 事件使用 WebSocket 订阅。

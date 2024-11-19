@@ -1,12 +1,12 @@
 ---
-description: Returns the account and storage values of the specified account including the Merkle-proof.
+description: 返回指定账户的账户和存储值，包括默克尔证明。
 ---
 
 # getProof
 
-Returns the account and storage values of the specified account including the Merkle-proof.
+返回指定账户的账户和存储值，包括默克尔证明。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -33,19 +33,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `Proof`
 
-Proof data.
+证明数据。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Account address.
+账户地址。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -61,9 +61,9 @@ const proof = await publicClient.getProof({
 
 ### storageKeys
 
-- **Type:** `Hash[]`
+- **类型:** `Hash[]`
 
-Array of storage-keys that should be proofed and included.
+应被证明并包含的存储键数组。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -77,11 +77,11 @@ const proof = await publicClient.getProof({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Proof at a given block number.
+在给定区块号的证明。
 
 ```ts
 const proof = await publicClient.getProof({
@@ -93,12 +93,12 @@ const proof = await publicClient.getProof({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-Proof at a given block tag.
+在给定区块标签的证明。
 
 ```ts
 const proof = await publicClient.getProof({
@@ -110,6 +110,6 @@ const proof = await publicClient.getProof({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
-- Calls [`eth_getProof`](https://eips.ethereum.org/EIPS/eip-1186).
+- 调用 [`eth_getProof`](https://eips.ethereum.org/EIPS/eip-1186).

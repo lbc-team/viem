@@ -1,14 +1,14 @@
 ---
-description: Change the minimum gas price accepted by the network (in wei).
+description: 更改网络接受的最低 gas 价格（以 wei 为单位）。
 ---
 
 # setMinGasPrice
 
-Change the minimum gas price accepted by the network (in wei).
+更改网络接受的最低 gas 价格（以 wei 为单位）。
 
-> Note: `setMinGasPrice` can only be used on clients that do not have EIP-1559 enabled.
+> 注意：`setMinGasPrice` 只能在未启用 EIP-1559 的客户端上使用。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -34,13 +34,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### gasPrice
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-The gas price (in wei).
+gas 价格（以 wei 为单位）。
 
 ```ts
 await testClient.setMinGasPrice({

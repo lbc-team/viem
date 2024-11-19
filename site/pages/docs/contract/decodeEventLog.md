@@ -1,18 +1,18 @@
 ---
-description: Decodes ABI encoded event topics & data.
+description: 解码 ABI 编码的事件主题和数据。
 ---
 
 # decodeEventLog
 
-Decodes ABI encoded event topics & data (from an [Event Log](/docs/glossary/terms#event-log)) into an event name and structured arguments (both indexed & non-indexed).
+解码 ABI 编码的事件主题和数据（来自 [事件日志](/docs/glossary/terms#event-log)）为事件名称和结构化参数（包括索引和非索引）。
 
-## Install
+## 安装
 
 ```ts
 import { decodeEventLog } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -67,26 +67,26 @@ export const wagmiAbi = [
 
 :::
 
-### Partial Decode
+### 部分解码
 
-By default, if the `topics` and `data` does not conform to the ABI (a mismatch between the number of indexed/non-indexed arguments), `decodeEventLog` will throw an error.
+默认情况下，如果 `topics` 和 `data` 不符合 ABI（索引和非索引参数的数量不匹配），`decodeEventLog` 将抛出错误。
 
-For example, the following will throw an error as there is a mismatch in non-`indexed` arguments & `data` length.
+例如，以下代码将抛出错误，因为非 `indexed` 参数与 `data` 长度不匹配。
 
 ```ts
 decodeEventLog({
   abi: parseAbi(['event Transfer(address indexed, address, uint256)']), // [!code focus]
-  // `data` should be 64 bytes, but is only 32 bytes. // [!code focus]
+  // `data` 应为 64 字节，但仅为 32 字节。 // [!code focus]
   data: '0x0000000000000000000000000000000000000000000000000000000000000001', // [!code focus]
   topics: [
     '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
     '0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266',
   ]
 })
-// [DecodeLogDataMismatch]: Data size of 32 bytes is too small for non-indexed event parameters.
+// [DecodeLogDataMismatch]: 非索引事件参数的数据大小为 32 字节，太小。
 ```
 
-It is possible for `decodeEventLog` to try and partially decode the Log, this can be done by setting the `strict` argument to `false`:
+`decodeEventLog` 可以尝试部分解码日志，可以通过将 `strict` 参数设置为 `false` 来实现：
 
 ```ts 
 decodeEventLog({ // [!code focus]
@@ -106,7 +106,7 @@ decodeEventLog({ // [!code focus]
  */
 ```
 
-## Return Value
+## 返回值
 
 ```ts
 {
@@ -115,15 +115,15 @@ decodeEventLog({ // [!code focus]
 }
 ```
 
-Decoded ABI event topics.
+解码的 ABI 事件主题。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const topics = decodeEventLog({
@@ -139,9 +139,9 @@ const topics = decodeEventLog({
 
 ### topics
 
-- **Type:** `[Hex, ...(Hex | Hex[] | null)[]]`
+- **类型:** `[Hex, ...(Hex | Hex[] | null)[]]`
 
-A set of topics (encoded indexed args) from the [Event Log](/docs/glossary/terms#event-log).
+一组来自 [事件日志](/docs/glossary/terms#event-log) 的主题（编码的索引参数）。
 
 ```ts
 const topics = decodeEventLog({
@@ -155,11 +155,11 @@ const topics = decodeEventLog({
 })
 ```
 
-### data (optional)
+### data（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-The data (encoded non-indexed args) from the [Event Log](/docs/glossary/terms#event-log).
+来自 [事件日志](/docs/glossary/terms#event-log) 的数据（编码的非索引参数）。
 
 ```ts
 const topics = decodeEventLog({
@@ -173,11 +173,11 @@ const topics = decodeEventLog({
 })
 ```
 
-### eventName (optional)
+### eventName（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-An event name from the ABI. Provide an `eventName` to infer the return type of `decodeEventLog`.
+来自 ABI 的事件名称。提供 `eventName` 以推断 `decodeEventLog` 的返回类型。
 
 ```ts
 const topics = decodeEventLog({
@@ -191,13 +191,13 @@ const topics = decodeEventLog({
 })
 ```
 
-### strict (optional)
+### strict（可选）
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认值:** `true`
 
-If `true`, `decodeEventLog` will throw an error if the `data` & `topics` lengths to not conform to the event on the ABI. 
-If `false`, `decodeEventLog` will try and [partially decode](#partial-decode).
+如果为 `true`，`decodeEventLog` 将在 `data` 和 `topics` 长度不符合 ABI 中的事件时抛出错误。
+如果为 `false`，`decodeEventLog` 将尝试 [部分解码](#partial-decode)。
 
 ```ts
 const topics = decodeEventLog({

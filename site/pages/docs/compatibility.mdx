@@ -1,26 +1,26 @@
-# Platform Compatibility [Platforms compatible with Viem]
+# 平台兼容性 [与 Viem 兼容的平台]
 
-**Viem supports all modern browsers (Chrome, Edge, Firefox, etc) & runtime environments (Node 18+, Deno, Bun, etc).**
+**Viem 支持所有现代浏览器（Chrome、Edge、Firefox 等）和运行时环境（Node 18+、Deno、Bun 等）。**
 
-Viem uses modern EcmaScript features such as:
+Viem 使用现代的 EcmaScript 特性，例如：
 
 - [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 - [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- Error [`cause`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause)
+- 错误 [`cause`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause)
 - TextEncoder [`encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encode)
 
-You can check support for these features on [Can I use...](https://caniuse.com/)
+你可以在 [Can I use...](https://caniuse.com/) 上检查这些特性的支持情况
 
 ## Polyfills
 
-If your platform does not support one of the required features, it is also possible to import a polyfill.
+如果你的平台不支持某个必需的特性，也可以导入一个 polyfill。
 
 ### `fetch`
 
 - [isomorphic-unfetch](https://github.com/developit/unfetch/tree/main/packages/isomorphic-unfetch)
 - [node-fetch](https://github.com/node-fetch/node-fetch#providing-global-access)
 
-### Error `cause`
+### 错误 `cause`
 
 - [core-js](https://github.com/zloirock/core-js)
 

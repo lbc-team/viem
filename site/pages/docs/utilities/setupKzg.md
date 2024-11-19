@@ -1,28 +1,28 @@
 ---
-description: Sets up and returns a KZG interface.
+description: 设置并返回 KZG 接口。
 ---
 
 # setupKzg
 
-Sets up and defines a [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) compatible [KZG interface](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#How-%E2%80%9Ccomplicated%E2%80%9D-and-%E2%80%9Cnew%E2%80%9D-is-KZG). The KZG interface is used in the blob transaction signing process to generate KZG commitments & proofs.
+设置并定义一个与 [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) 兼容的 [KZG 接口](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#How-%E2%80%9Ccomplicated%E2%80%9D-and-%E2%80%9Cnew%E2%80%9D-is-KZG)。KZG 接口用于 blob 交易签名过程，以生成 KZG 承诺和证明。
 
-`setupKzg` accepts a KZG interface that implements three functions:
+`setupKzg` 接受一个实现了三个函数的 KZG 接口：
 
-- `loadTrustedSetup`: A function to initialize the KZG trusted setup.
-- `blobToKzgCommitment`: A function that takes a blob and returns it's KZG commitment.
-- `computeBlobKzgProof`: A function that takes a blob and it's commitment, and returns the KZG proof.
+- `loadTrustedSetup`: 用于初始化 KZG 可信设置的函数。
+- `blobToKzgCommitment`: 接受一个 blob 并返回其 KZG 承诺的函数。
+- `computeBlobKzgProof`: 接受一个 blob 及其承诺，并返回 KZG 证明的函数。
 
-A couple of KZG implementations we recommend are:
-- [c-kzg](https://github.com/ethereum/c-kzg-4844): Node.js bindings to c-kzg.
-- [kzg-wasm](https://github.com/ethereumjs/kzg-wasm): WebAssembly bindings to c-kzg.
+我们推荐的几个 KZG 实现是：
+- [c-kzg](https://github.com/ethereum/c-kzg-4844): Node.js 对 c-kzg 的绑定。
+- [kzg-wasm](https://github.com/ethereumjs/kzg-wasm): WebAssembly 对 c-kzg 的绑定。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { setupKzg } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import * as cKzg from 'c-kzg'
@@ -32,20 +32,20 @@ import { mainnetTrustedSetupPath } from 'viem/node'
 const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 ```
 
-### Trusted Setups
+### 可信设置
 
-As seen above, when you set up your KZG interface, you will need to provide a trusted setup file. You can either import a trusted setup via the [`viem/node` entrypoint](#viemnode-entrypoint) (if you're using an engine that supports Node.js' `node:fs` module), or you can directly import the trusted setup `.json` via the [`viem/trusted-setups` entrypoint](#viemtrusted-setups-entrypoint).
+如上所示，当你设置 KZG 接口时，你需要提供一个可信设置文件。你可以通过 [`viem/node` 入口点](#viemnode-entrypoint) 导入可信设置（如果你使用的引擎支持 Node.js 的 `node:fs` 模块），或者你可以直接通过 [`viem/trusted-setups` 入口点](#viemtrusted-setups-entrypoint) 导入可信设置 `.json` 文件。
 
-Viem exports the following trusted setups:
+Viem 导出以下可信设置：
 
-- `mainnet.json`: For Ethereum Mainnet & it's Testnets (Sepolia, Goerli, etc).
-- `minimal.json`: For low-resource local dev testnets, and spec-testing.
+- `mainnet.json`: 适用于以太坊主网及其测试网（Sepolia、Goerli 等）。
+- `minimal.json`: 适用于低资源本地开发测试网和规范测试。
 
-The trusted setup files are retrieved from the Ethereum [consensus-specs repository](https://github.com/ethereum/consensus-specs/tree/dev/presets).
+可信设置文件从以太坊 [共识规范库](https://github.com/ethereum/consensus-specs/tree/dev/presets) 中获取。
 
-#### `viem/node` Entrypoint
+#### `viem/node` 入口点
 
-Viem exports **paths to the trusted setup** via the `viem/node` entrypoint, designed to be used with `setupKzg`. 
+Viem 通过 `viem/node` 入口点导出 **可信设置的路径**，旨在与 `setupKzg` 一起使用。
 
 ```ts
 import {
@@ -54,28 +54,28 @@ import {
 } from 'viem/node'
 ```
 
-#### `viem/trusted-setups` Entrypoint
+#### `viem/trusted-setups` 入口点
 
-Alternatively, you can directly import the **contents of the trusted setup** file from the `viem/trusted-setups` entrypoint.
+或者，你可以直接从 `viem/trusted-setups` 入口点导入 **可信设置** 文件的内容。
 
 ```ts
 import mainnetTrustedSetup from 'viem/trusted-setups/mainnet.json'
 import minimalTrustedSetup from 'viem/trusted-setups/minimal.json'
 ```
 
-## Returns
+## 返回
 
 `Kzg`
 
-The KZG interface.
+KZG 接口。
 
-## Parameters
+## 参数
 
 ### kzg
 
-- **Type:** `Kzg & { loadTrustedSetup(path: string): void }`
+- **类型:** `Kzg & { loadTrustedSetup(path: string): void }`
 
-The [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) compatible [KZG interface](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#How-%E2%80%9Ccomplicated%E2%80%9D-and-%E2%80%9Cnew%E2%80%9D-is-KZG).
+与 [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) 兼容的 [KZG 接口](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#How-%E2%80%9Ccomplicated%E2%80%9D-and-%E2%80%9Cnew%E2%80%9D-is-KZG)。
 
 ```ts twoslash
 import * as cKzg from 'c-kzg' // [!code focus]
@@ -90,9 +90,9 @@ const kzg = setupKzg(
 
 ### path
 
-- **Type:** `string`
+- **类型:** `string`
 
-The path to the trusted setup file. 
+可信设置文件的路径。
 
 ```ts twoslash
 import * as cKzg from 'c-kzg'
@@ -104,4 +104,3 @@ const kzg = setupKzg(
   mainnetTrustedSetupPath // [!code focus]
 )
 ```
-

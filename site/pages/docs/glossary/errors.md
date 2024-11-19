@@ -1,6 +1,6 @@
-# Errors [Glossary of Errors in viem.]
+# 错误 [viem 中的错误词汇表]
 
-All errors in viem extend the [`BaseError`](https://github.com/wevm/viem/blob/main/src/errors/base.ts).
+viem 中的所有错误都扩展自 [`BaseError`](https://github.com/wevm/viem/blob/main/src/errors/base.ts)。
 
 ## ABI
 
@@ -29,23 +29,23 @@ All errors in viem extend the [`BaseError`](https://github.com/wevm/viem/blob/ma
 ### `InvalidDefinitionTypeError`
 ### `UnsupportedPackedAbiType`
 
-## Account
+## 账户
 
 ### `AccountNotFoundError`
 
-When no account is provided to an action that requires an account.
+当没有提供账户给需要账户的操作时。
 
-## Address
+## 地址
 
 ### `InvalidAddressError`
 
-When address is invalid.
+当地址无效时。
 
-## Block
+## 区块
 
 ### `BlockNotFoundError`
 
-## Chain
+## 链
 
 ### `ChainDoesNotSupportContract`
 ### `ChainMismatchError`
@@ -53,7 +53,7 @@ When address is invalid.
 ### `ClientChainNotConfiguredError`
 ### `InvalidChainIdError`
 
-## Contract
+## 合约
 
 ### `CallExecutionError`
 ### `ContractFunctionExecutionError`
@@ -61,11 +61,11 @@ When address is invalid.
 ### `ContractFunctionZeroDataError`
 ### `RawContractError`
 
-## Data
+## 数据
 
 ### `SizeExceedsPaddingSizeError`
 
-## Encoding
+## 编码
 
 ### `DataLengthTooLongError`
 ### `DataLengthTooShortError`
@@ -83,15 +83,15 @@ When address is invalid.
 ### `EnsAvatarUnsupportedNamespaceError`
 ### `EnsAvatarUriResolutionError`
 
-## Estimate Gas
+## 估算 Gas
 
 ### `EstimateGasExecutionError`
 
-## Log
+## 日志
 
 ### `FilterTypeNotSupportedError`
 
-## Node
+## 节点
 
 ### `ExecutionRevertedError`
 ### `FeeCapTooHighError`
@@ -106,7 +106,7 @@ When address is invalid.
 ### `TransactionTypeNotSupportedError`
 ### `UnknownNodeError`
 
-## Request
+## 请求
 
 ### `HttpRequestError`
 ### `RpcRequestError`
@@ -143,7 +143,7 @@ When address is invalid.
 ### SiweInvalidMessageFieldErrorType
 ### VerifySiweMessageErrorType
 
-## Transaction
+## 交易
 
 ### `FeeConflictError`
 ### `InvalidLegacyVError`
@@ -156,7 +156,6 @@ When address is invalid.
 ### `TransactionReceiptNotFoundError`
 ### `WaitForTransactionReceiptTimeoutError`
 
-## Transport
+## 传输
 
 ### `UrlRequiredError`
-

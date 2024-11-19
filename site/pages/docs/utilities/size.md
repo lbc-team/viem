@@ -1,10 +1,10 @@
 ---
-description: Retrieves the size of the value (in bytes).
+description: 获取值的大小（以字节为单位）。
 ---
 
 # size
 
-Retrieves the size of the value (in bytes).
+获取值的大小（以字节为单位）。
 
 ## Install
 
@@ -26,7 +26,7 @@ size(new Uint8Array([1, 122, 51, 123])) // 4
 
 `number`
 
-The size of the value (in bytes).
+值的大小（以字节为单位）。
 
 ## Parameters
 
@@ -34,7 +34,4 @@ The size of the value (in bytes).
 
 - **Type:** [`Hex`](/docs/glossary/types#hex) | `ByteArray`
 
-The value (hex or byte array) to retrieve the size of.
-
-
-
+要获取大小的值（十六进制或字节数组）。

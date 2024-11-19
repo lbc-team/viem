@@ -1,12 +1,12 @@
 ---
-description: Returns the number of Transactions at a block number, hash or tag.
+description: 返回指定区块号、哈希或标签的交易数量。
 ---
 
 # getBlockTransactionCount
 
-Returns the number of Transactions at a block number, hash or tag.
+返回指定区块号、哈希或标签的交易数量。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -14,7 +14,7 @@ Returns the number of Transactions at a block number, hash or tag.
 import { publicClient } from './client'
 
 const count = await publicClient.getBlockTransactionCount() // [!code focus:99]
-// @log: Output: 23
+// @log: 输出: 23
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -29,19 +29,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `number`
 
-The block transaction count.
+区块交易数量。
 
-## Parameters
+## 参数
 
-### blockHash (optional)
+### blockHash (可选)
 
-- **Type:** [`Hash`](/docs/glossary/types#hash)
+- **类型:** [`Hash`](/docs/glossary/types#hash)
 
-Count at a given block hash.
+在给定区块哈希下的计数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -51,11 +51,11 @@ const count = await publicClient.getBlockTransactionCount({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Count at a given block number.
+在给定区块号下的计数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -65,12 +65,12 @@ const block = await publicClient.getBlockTransactionCount({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-Count at a given block tag.
+在给定区块标签下的计数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -80,7 +80,7 @@ const block = await publicClient.getBlockTransactionCount({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
-- Calls [`eth_getBlockTransactionCountByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbynumber) for `blockNumber` & `blockTag`.
-- Calls [`eth_getBlockTransactionCountByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbyhash) for `blockHash`.
+- 对于 `blockNumber` 和 `blockTag` 调用 [`eth_getBlockTransactionCountByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbynumber)。
+- 对于 `blockHash` 调用 [`eth_getBlockTransactionCountByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbyhash)。

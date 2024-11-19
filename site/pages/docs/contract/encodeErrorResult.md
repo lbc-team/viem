@@ -1,18 +1,18 @@
 ---
-description: Encodes a reverted error from a function call.
+description: 编码来自函数调用的回退错误。
 ---
 
 # encodeErrorResult
 
-Encodes a reverted error from a function call. The opposite of [`decodeErrorResult`](/docs/contract/decodeErrorResult).
+编码来自函数调用的回退错误。与 [`decodeErrorResult`](/docs/contract/decodeErrorResult) 相对。
 
-## Install
+## 安装
 
 ```ts
 import { encodeErrorResult } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -47,9 +47,9 @@ export const wagmiAbi = [
 
 :::
 
-### Without `errorName`
+### 没有 `errorName`
 
-If your `abi` contains only one ABI item, you can omit the `errorName` (it becomes optional):
+如果你的 `abi` 只包含一个 ABI 项，可以省略 `errorName`（它变为可选）：
 
 ```ts
 import { decodeErrorResult } from 'viem'
@@ -68,19 +68,19 @@ const value = encodeErrorResult({
 // 0xb758934b000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000b68656c6c6f20776f726c64000000000000000000000000000000000000000000
 ```
 
-## Return Value
+## 返回值
 
 [`Hex`](/docs/glossary/types#hex)
 
-The encoded error.
+编码的错误。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const value = decodeErrorResult({
@@ -92,9 +92,9 @@ const value = decodeErrorResult({
 
 ### errorName
 
-- **Type:** `string`
+- **类型:** `string`
 
-The error name on the ABI.
+ABI 中的错误名称。
 
 ```ts
 const value = encodeErrorResult({
@@ -104,11 +104,11 @@ const value = encodeErrorResult({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** Inferred.
+- **类型:** 推断。
 
-Arguments (if required) to pass to the error.
+传递给错误的参数（如果需要）。
 
 ```ts
 const value = encodeErrorResult({

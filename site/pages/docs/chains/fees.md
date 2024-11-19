@@ -1,8 +1,8 @@
-# Fees [Configure chain-based fee data in Viem]
+# 费用 [在 Viem 中配置基于链的费用数据]
 
-You can modify how fees are derived by using the `fees` property on the Chain.
+你可以通过使用链上的 `fees` 属性来修改费用的衍生方式。
 
-## Usage
+## 用法
 
 ```tsx
 import { defineChain } from 'viem'
@@ -20,16 +20,16 @@ export const example = defineChain({
 
 ### `fees.baseFeeMultiplier`
 
-- **Type**: `number`
-- **Default**: `1.2`
+- **类型**: `number`
+- **默认值**: `1.2`
 
-The fee multiplier to use to account for fee fluctuations. Used in the [`estimateFeesPerGas` Action](/docs/actions/public/estimateFeesPerGas) against the latest block's base fee per gas to derive a final `maxFeePerGas` (EIP-1193), or gas price to derive a final `gasPrice` (Legacy).
+用于考虑费用波动的费用乘数。用于 [`estimateFeesPerGas` 操作](/docs/actions/public/estimateFeesPerGas) 以最新区块的每单位 gas 基础费用来推导最终的 `maxFeePerGas`（EIP-1193），或 gas 价格来推导最终的 `gasPrice`（传统）。
 
-**Parameters**
+**参数**
 
-- `block`: The latest block.
-- `client`: The Client instance.
-- `request`: The transaction request (if exists).
+- `block`: 最新区块。
+- `client`: 客户端实例。
+- `request`: 交易请求（如果存在）。
 
 ```ts
 import { defineChain } from 'viem'
@@ -38,9 +38,9 @@ const example = defineChain({
   /* ... */
   fees: { // [!code focus:8]
     baseFeeMultiplier: 1.2,
-    // or
+    // 或
     async baseFeeMultiplier({ block, request }) {
-      // some async work
+      // 一些异步工作
       return // ...
     },
   },
@@ -49,17 +49,17 @@ const example = defineChain({
 
 ### `fees.defaultPriorityFee`
 
-- **Type**: `number | ((args: FeesFnParameters) => Promise<bigint> | bigint)`
+- **类型**: `number | ((args: FeesFnParameters) => Promise<bigint> | bigint)`
 
-The default `maxPriorityFeePerGas` to use when a priority fee is not defined upon sending a transaction.
+在发送交易时，当未定义优先费用时使用的默认 `maxPriorityFeePerGas`。
 
-Also overrides the return value in the [`estimateMaxPriorityFeePerGas` Action](/docs/actions/public/estimateMaxPriorityFeePerGas) and `maxPriorityFeePerGas` value in [`estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas).
+还会覆盖 [`estimateMaxPriorityFeePerGas` 操作](/docs/actions/public/estimateMaxPriorityFeePerGas) 和 [`estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas) 中的 `maxPriorityFeePerGas` 值的返回值。
 
-**Parameters**
+**参数**
 
-- `block`: The latest block.
-- `client`: The Client instance.
-- `request`: The transaction request (if exists).
+- `block`: 最新区块。
+- `client`: 客户端实例。
+- `request`: 交易请求（如果存在）。
 
 ```ts
 import { defineChain } from 'viem'
@@ -68,9 +68,9 @@ const example = defineChain({
   /* ... */
   fees: { // [!code focus:8]
     defaultPriorityFee: parseGwei('0.01'),
-    // or
+    // 或
     async defaultPriorityFee({ block, request }) {
-      // some async work
+      // 一些异步工作
       return // ...
     },
   },
@@ -79,19 +79,19 @@ const example = defineChain({
 
 ### `fees.estimateFeesPerGas`
 
-- **Type**: `(args: FeesFnParameters) => Promise<EstimateFeesPerGasResponse>`
+- **类型**: `(args: FeesFnParameters) => Promise<EstimateFeesPerGasResponse>`
 
-Allows customization of fee per gas values (ie. `maxFeePerGas`, `maxPriorityFeePerGas`, `gasPrice`).
+允许自定义每单位 gas 的费用值（即 `maxFeePerGas`、`maxPriorityFeePerGas`、`gasPrice`）。
 
-Also overrides the return value in [`estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas).
+还会覆盖 [`estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas) 中的返回值。
 
-**Parameters**
+**参数**
 
-- `block`: The latest block.
-- `client`: The Client instance.
-- `multiply`: A function to apply the `baseFeeMultiplier` to the provided value.
-- `request`: The transaction request (if exists).
-- `type`: The transaction type (ie. `legacy` or `eip1559`).
+- `block`: 最新区块。
+- `client`: 客户端实例。
+- `multiply`: 一个函数，用于将 `baseFeeMultiplier` 应用到提供的值。
+- `request`: 交易请求（如果存在）。
+- `type`: 交易类型（即 `legacy` 或 `eip1559`）。
 
 ```ts
 import { defineChain } from 'viem'

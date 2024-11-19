@@ -1,16 +1,16 @@
 ---
-description: Returns an estimate for the fees per gas (in wei) for a transaction to be likely included in the next block.
+description: 返回一个交易的每单位 gas 费用（以 wei 为单位）的估算值，该交易可能会被包含在下一个区块中。
 ---
 
 # estimateFeesPerGas 
 
-Returns an estimate for the fees per gas (in wei) for a transaction to be likely included in the next block.
+返回一个交易的每单位 gas 费用（以 wei 为单位）的估算值，该交易可能会被包含在下一个区块中。
 
-If [`chain.fees.estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas) is set on the [Client Chain](/docs/clients/public#chain-optional) or [override Chain](#chain-optional), it will use the returned value.
+如果 [`chain.fees.estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas) 在 [Client Chain](/docs/clients/public#chain-optional) 或 [override Chain](#chain-optional) 上被设置，它将使用返回的值。
 
-Otherwise, for EIP-1559 Transactions, viem will estimate the fees using a combination of the block's base fee per gas (to derive `maxFeePerGas`) + the [`estimateMaxPriorityFeePerGas` Action](/docs/actions/public/estimateMaxPriorityFeePerGas) (to derive `maxPriorityFeePerGas`). For Legacy Transactions, viem will estimate the fee based on the gas price (via the [`getGasPrice` Action](/docs/actions/public/getGasPrice)).
+否则，对于 EIP-1559 交易，viem 将使用区块的每单位 gas 基础费用（以推导 `maxFeePerGas`）和 [`estimateMaxPriorityFeePerGas` Action](/docs/actions/public/estimateMaxPriorityFeePerGas)（以推导 `maxPriorityFeePerGas`）的组合来估算费用。对于传统交易，viem 将根据 gas 价格（通过 [`getGasPrice` Action](/docs/actions/public/getGasPrice)）来估算费用。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -44,20 +44,20 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 [`FeeValues`](/docs/glossary/types#feevalues)
 
-An estimate (in wei) for the fees per gas.
+每单位 gas 费用的估算值（以 wei 为单位）。
 
-## Parameters
+## 参数
 
-### chain (optional)
+### chain（可选）
 
-- **Type:** [Chain](/docs/glossary/types#chain)
-- **Default:** [`client.chain`](/docs/clients/public#chain-optional)
+- **类型：** [Chain](/docs/glossary/types#chain)
+- **默认值：** [`client.chain`](/docs/clients/public#chain-optional)
 
-Optional Chain override. Used to infer the fees per gas from [`chain.fees.estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas).
+可选的链覆盖。用于从 [`chain.fees.estimateFeesPerGas`](/docs/actions/public/estimateFeesPerGas) 推导每单位 gas 费用。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -70,10 +70,10 @@ const { maxFeePerGas, maxPriorityFeePerGas } =
   })
 ```
 
-### type (optional)
+### type（可选）
 
-- **Type:** `"legacy" | "eip1559"`
-- **Default:** `"eip1559"`
+- **类型：** `"legacy" | "eip1559"`
+- **默认值：** `"eip1559"`
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]

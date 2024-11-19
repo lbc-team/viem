@@ -1,40 +1,40 @@
-# Frequently Asked Questions
+# 常见问题解答
 
-Frequently asked questions related to viem.
+与 viem 相关的常见问题。
 
-**TL;DR: viem tries to avoid creating unnecessary abstractions on top of existing systems.**
+**TL;DR: viem 尝试避免在现有系统之上创建不必要的抽象。**
 
-Feel free to add to this document if you notice frequently asked questions that are not covered here.
+如果你发现此文档中未涵盖的常见问题，请随时添加。
 
 {/* [[toc]] */}
 
-## Why use the terms "Wallet" & "Account" instead of "Signer"
+## 为什么使用“钱包”和“账户”而不是“签名者”
 
-viem attempts to align to the "Wallet" and "Account" [terminology on Ethereum.org](https://ethereum.org/en/glossary/). The term "Signer" was adapted from ethers.js.
+viem 尝试与 [Ethereum.org](https://ethereum.org/en/glossary/) 上的“钱包”和“账户”术语保持一致。术语“签名者”是从 ethers.js 中改编而来的。
 
-Let's clear up on some terms before we dive in.
+在深入之前，让我们澄清一些术语。
 
-- Wallet: An application or interface that holds Account(s).
-- Account: An object that represents an address, balance, nonce, and optional storage and code.
-- Private Key: Proves ownership of an Account, and can sign messages & transactions.
+- 钱包：一个持有账户的应用程序或接口。
+- 账户：一个表示地址、余额、nonce 以及可选存储和代码的对象。
+- 私钥：证明对账户的拥有权，并可以签署消息和交易。
 
-In the context of viem, a Wallet Client is an interface that can hold an Account. The Account may or may not hold a Private Key.
+在 viem 的上下文中，钱包客户端是一个可以持有账户的接口。账户可能持有或不持有私钥。
 
-In viem, there are two types of Accounts:
-- Local Account: can **synchronously & directly** sign messages and transactions using its Private Key. A signature is guaranteed.
-- JSON-RPC Account: **asynchronously requests** signing of messages and transactions from the target Wallet over JSON-RPC (e.g. Browser Extension or WalletConnect). The target Wallet holds the Account & Private Key. A signature is not guaranteed (the target Wallet may not have permitted the Account, or the Wallet may have rejected the request).
+在 viem 中，有两种类型的账户：
+- 本地账户：可以**同步和直接**使用其私钥签署消息和交易。签名是有保证的。
+- JSON-RPC 账户：**异步请求**通过 JSON-RPC 从目标钱包签署消息和交易（例如，浏览器扩展或 WalletConnect）。目标钱包持有账户和私钥。签名没有保证（目标钱包可能未允许该账户，或者钱包可能已拒绝请求）。
 
-We do not use the term "Signer" because there are noticeable behavioral differences between signing locally and signing over JSON-RPC.
+我们不使用“签名者”这个术语，因为本地签名和通过 JSON-RPC 签名之间存在明显的行为差异。
 
-## Why are contract function `args` with fully-named inputs represented as unnamed tuple types instead of object types?
+## 为什么合约函数的 `args` 使用完全命名的输入表示为未命名的元组类型而不是对象类型？
 
-Let's look at an example! Suppose I have the following function in my contract:
+让我们看一个例子！假设我在合约中有以下函数：
 
 ```solidity
 function transferFrom(address sender, address recipient, uint256 amount) returns (bool)
 ```
 
-All the inputs are named (`sender`, `recipient`, and `amount`) so I might be tempted to represent the parameters as the following TypeScript type:
+所有输入都有名称（`sender`、`recipient` 和 `amount`），所以我可能会倾向于将参数表示为以下 TypeScript 类型：
 
 ```ts
 type Args = {
@@ -44,7 +44,7 @@ type Args = {
 }
 ```
 
-This improves developer experience a bit because now I can see the names of the parameters in my editor.
+这稍微改善了开发者体验，因为现在我可以在编辑器中看到参数的名称。
 
 ```ts
 import { createWalletClient, parseAbi } from 'viem'
@@ -64,7 +64,7 @@ client.writeContract({
 })
 ```
 
-However, this only works if all the inputs are named (some compilers will strip names from inputs). If any of the inputs are unnamed, then you'll have to use a tuple instead:
+然而，这仅在所有输入都有名称时有效（某些编译器会从输入中删除名称）。如果任何输入没有名称，则必须使用元组：
 
 ```ts
 client.writeContract({
@@ -77,14 +77,14 @@ client.writeContract({
 })
 ```
 
-This can get even more complicated when a function has overloads:
+当一个函数有重载时，这可能会变得更加复杂：
 
 ```solidity
 function safeTransferFrom(address, address, uint256) {}
 function safeTransferFrom(address from, address to, uint256 tokenId, bytes data) {}
 ```
 
-In this case, the type of the overload parameters start to diverge from each other:
+在这种情况下，重载参数的类型开始彼此分歧：
 
 ```ts
 type Args =
@@ -97,7 +97,7 @@ type Args =
     }
 ```
 
-If you want to switch between the two overloads in your code, you'll need to completely change the type instead of just adding or removing a single positional argument from the end. (Objects also don't enforce type-level ordering so you can put them in whatever order you want. This would also mean that viem would also need to internally validate order during runtime, adding some extra overhead.)
+如果你想在代码中切换这两个重载，你需要完全更改类型，而不仅仅是添加或删除一个位置参数（对象也不强制执行类型级别的顺序，因此你可以随意排列它们。这也意味着 viem 还需要在运行时内部验证顺序，从而增加一些额外的开销）。
 
 ```diff
 client.writeContract({
@@ -117,19 +117,19 @@ client.writeContract({
 })
 ```
 
-Even though overloads are an edge case, it would be sufficiently [astonishing](https://en.wikipedia.org/wiki/Principle_of_least_astonishment) to come across this behavior. So what's the best way to represent `args`? Well, they are positional at the contract-level so it makes sense to represent them that way in viem too.
+尽管重载是一个边缘情况，但遇到这种行为会令人感到相当[惊讶](https://en.wikipedia.org/wiki/Principle_of_least_astonishment) 。那么，表示 `args` 的最佳方式是什么呢？好吧，它们在合约级别是位置性的，因此在 viem 中以这种方式表示它们也是有意义的。
 
-Not all is lost when it comes to developer experience though! Tuple types in TypeScript can have [names](https://www.typescriptlang.org/play?ts=4.0.2#example/named-tuples) attached to them:
+不过，在开发者体验方面并非一无所获！TypeScript 中的元组类型可以附加[名称](https://www.typescriptlang.org/play?ts=4.0.2#example/named-tuples) ：
 
 ```ts
 type Args = [from: `0x${string}`, to: `0x${string}`, tokenId: bigint]
 ```
 
-These names show up in your editor so you get nice developer experience when using autocomplete, etc. Unfortunately, TypeScript doesn't support dynamic named tuples right now, but we are watching [this issue](https://github.com/microsoft/TypeScript/issues/44939) closely and once it is implemented, we will add it to viem. In the meantime, hang tight!
+这些名称会出现在你的编辑器中，因此在使用自动补全等功能时，你会获得良好的开发者体验。不幸的是，TypeScript 目前不支持动态命名元组，但我们正在密切关注[这个问题](https://github.com/microsoft/TypeScript/issues/44939) ，一旦实现，我们将把它添加到 viem 中。与此同时，请耐心等待！
 
-## Why is a contract function return type returning an array instead of an object?
+## 为什么合约函数的返回类型返回一个数组而不是一个对象？
 
-Suppose your ABI looks like this:
+假设你的 ABI 看起来像这样：
 
 ```ts
 [
@@ -149,7 +149,7 @@ Suppose your ABI looks like this:
 ]
 ```
 
-You might be confused why the following does not return an object:
+你可能会困惑为什么以下内容不返回一个对象：
 
 ```ts
 import { createPublicClient, parseAbi } from 'viem'
@@ -157,16 +157,16 @@ import { createPublicClient, parseAbi } from 'viem'
 const client = createPublicClient(…)
 const res = await client.readContract({
   address: '0x…',
-  abi: […], // abi from above
+  abi: […], // 上面的 abi
   functionName: 'latestRoundData',
 })
 res
 // ^? const res: [bigint, bigint, bigint, bigint, bigint]
 ```
 
-This is expected. `"latestRoundData"` `outputs` is an array of types, so you get an array of decoded values as the return type. viem only maps explicitly typed tuples as objects
+这是预期的。`"latestRoundData"` 的 `outputs` 是一个类型数组，因此你得到的是解码值的数组作为返回类型。viem 仅将显式类型的元组映射为对象。
 
-Why does viem follow this approach? Here is the contract function definition for `latestRoundData` with two different return types:
+为什么 viem 遵循这种方法？这是 `latestRoundData` 的合约函数定义，具有两种不同的返回类型：
 
 ```solidity
 function latestRoundData() external view
@@ -189,10 +189,10 @@ struct Data {
 function latestRoundData() external view returns (Data data);
 ```
 
-The first function returns a set of five items, so viem maps it to an array. The reason why we don't convert it to an object is because things get ambiguous when we come to decode structs. How do you determine the difference between a "return" tuple (first function) and a "struct" tuple (second function).
+第一个函数返回五个项目的集合，因此 viem 将其映射为数组。我们不将其转换为对象的原因是，当我们解码结构体时，事情会变得模糊。如何确定“返回”元组（第一个函数）和“结构”元组（第二个函数）之间的区别。
 
-Another reason is that folks might expect it to be an array (because it is a set of return items). Other libraries, like ethers, mitigate this by returning a hybrid Array/Object type, but that kind of type is not serializable in JavaScript, and viem prefers to not try and "hack" JavaScript types.
+另一个原因是，人们可能会期望它是一个数组（因为它是一组返回项）。其他库，如 ethers，通过返回混合数组/对象类型来缓解这一点，但这种类型在 JavaScript 中是不可序列化的，而 viem 更倾向于不尝试“破解” JavaScript 类型。
 
-## Why doesn't Wallet Client support public actions?
+## 为什么钱包客户端不支持公共操作？
 
-Wallet Client doesn't support public actions because wallet providers (Injected `window.ethereum`, WalletConnect v2, etc.) may not provide a large majority of "node"/"public" RPC methods like `eth_call`, `eth_newFilter`, `eth_getLogs`, etc. This is because these methods are not required for a wallet provider to function properly. For example, a wallet provider may only support `eth_sendTransaction` and `eth_sign` and nothing else.
+钱包客户端不支持公共操作，因为钱包提供者（注入的 `window.ethereum`、WalletConnect v2 等）可能不提供大多数“节点”/“公共”RPC 方法，如 `eth_call`、`eth_newFilter`、`eth_getLogs` 等。这是因为这些方法并不是钱包提供者正常运行所必需的。例如，一个钱包提供者可能只支持 `eth_sendTransaction` 和 `eth_sign`，而不支持其他任何方法。

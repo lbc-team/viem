@@ -1,18 +1,18 @@
 ---
-description: Parses human-readable ABI item (e.g. error, event, function) into ABI item.
+description: 解析人类可读的 ABI 项（例如错误、事件、函数）为 ABI 项。
 ---
 
 # parseAbiItem
 
-Parses human-readable ABI item (e.g. error, event, function) into ABI item. Re-exported from [ABIType](https://abitype.dev/api/human#parseabiitem-1).
+解析人类可读的 ABI 项（例如错误、事件、函数）为 ABI 项。重新导出自 [ABIType](https://abitype.dev/api/human#parseabiitem-1)。
 
-## Import
+## 导入
 
 ```ts
 import { parseAbiItem } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseAbiItem } from 'viem'
@@ -23,19 +23,19 @@ const abiItem = parseAbiItem(
 )
 ```
 
-## Returns
+## 返回
 
 [`Abi`](/docs/glossary/types#abi)
 
-Parsed ABI item.
+解析后的 ABI 项。
 
-## Parameters
+## 参数
 
 ### signatures
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-Human-Readable ABI item.
+人类可读的 ABI 项。
 
 ```ts
 import { parseAbiItem } from 'viem'

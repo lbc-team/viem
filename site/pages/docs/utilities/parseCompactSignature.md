@@ -1,18 +1,18 @@
 ---
-description: Parses a hex formatted compact signature into a structured compact signature.
+description: 将十六进制格式的紧凑签名解析为结构化的紧凑签名。
 ---
 
 # parseCompactSignature
 
-Parses a hex formatted compact signature into a structured ("split") compact signature.
+将十六进制格式的紧凑签名解析为结构化的（“分割”）紧凑签名。
 
-## Import
+## 导入
 
 ```ts
 import { parseCompactSignature } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseCompactSignature } from 'viem'
@@ -26,16 +26,16 @@ parseCompactSignature('0x9328da16089fcba9bececa81663203989f2df5fe1faa6291a45381c
  */
 ```
 
-## Returns
+## 返回
 
 [`CompactSignature`](/docs/glossary/types#compactsignature)
 
-The structured ("split") compact signature.
+结构化的（“分割”）紧凑签名。
 
-## Parameters
+## 参数
 
 ### signatureHex
 
-The compact signature in hex format.
+十六进制格式的紧凑签名。
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)

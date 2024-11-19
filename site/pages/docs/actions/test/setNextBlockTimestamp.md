@@ -1,12 +1,12 @@
 ---
-description: Sets the next block's timestamp.
+description: 设置下一个区块的时间戳。
 ---
 
 # setNextBlockTimestamp
 
-Sets the next block's timestamp.
+设置下一个区块的时间戳。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,11 +31,11 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### timestamp
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
 ```ts
 await testClient.setNextBlockTimestamp({
@@ -43,6 +43,6 @@ await testClient.setNextBlockTimestamp({
 })
 ```
 
-## Notes
+## 注意事项
 
-- The next Block `timestamp` cannot be lesser than the current Block `timestamp`.
+- 下一个区块的 `timestamp` 不能小于当前区块的 `timestamp`。

@@ -1,12 +1,12 @@
 ---
-description: Removes setBlockTimestampInterval if it exists.
+description: 如果存在，则移除 setBlockTimestampInterval。
 ---
 
 # removeBlockTimestampInterval
 
-Removes [`setBlockTimestampInterval`](/docs/actions/test/setBlockTimestampInterval) if it exists.
+移除 [`setBlockTimestampInterval`](/docs/actions/test/setBlockTimestampInterval) 如果它存在。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,4 +28,3 @@ export const testClient = createTestClient({
 ```
 
 :::
-

@@ -1,8 +1,8 @@
-# multicall [Batches up multiple functions on a contract in a single call.]
+# multicall [在单个调用中批量处理合约的多个函数。]
 
-Similar to [`readContract`](/docs/contract/readContract), but batches up multiple functions on a contract in a single RPC call via the [`multicall3` contract](https://github.com/mds1/multicall). 
+类似于 [`readContract`](/docs/contract/readContract)，但通过 [`multicall3` 合约](https://github.com/mds1/multicall) 在单个 RPC 调用中批量处理合约的多个函数。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -81,23 +81,23 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Return Value
+## 返回值
 
 `({ data: <inferred>, status: 'success' } | { error: string, status: 'reverted' })[]`
 
-An array of results with accompanying status.
+一个包含结果及其状态的数组。
 
-Additionally, when [`allowFailure`](#allowfailure-optional) is set to `false`, it directly returns an array of inferred data:
+此外，当 [`allowFailure`](#allowfailure-optional) 设置为 `false` 时，它会直接返回一个推断数据的数组：
 
 `(<inferred>)[]`
 
-## Parameters
+## 参数
 
 ### contracts.address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const results = await publicClient.multicall({
@@ -114,9 +114,9 @@ const results = await publicClient.multicall({
 
 ### contracts.abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract ABI.
+合约 ABI。
 
 ```ts
 const results = await publicClient.multicall({
@@ -133,9 +133,9 @@ const results = await publicClient.multicall({
 
 ### contracts.functionName
 
-- **Type**: `string`
+- **类型**: `string`
 
-The function name to call.
+要调用的函数名称。
 
 ```ts
 const results = await publicClient.multicall({
@@ -150,11 +150,11 @@ const results = await publicClient.multicall({
 })
 ```
 
-### contracts.args (optional)
+### contracts.args (可选)
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Arguments to pass to function call.
+传递给函数调用的参数。
 
 ```ts
 const results = await publicClient.multicall({
@@ -170,12 +170,12 @@ const results = await publicClient.multicall({
 })
 ```
 
-### allowFailure (optional)
+### allowFailure (可选)
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认:** `true`
 
-Whether or not the `multicall` function should throw if a call reverts. If set to `true` (default), and a call reverts, then `multicall` will fail silently and its error will be logged in the `results` array.
+如果调用失败，`multicall` 函数是否应该抛出异常。如果设置为 `true`（默认），并且调用失败，则 `multicall` 将静默失败，并且其错误将记录在 `results` 数组中。
 
 ```ts
 const results = await publicClient.multicall({
@@ -191,14 +191,14 @@ const results = await publicClient.multicall({
 })
 ```
 
-### batchSize (optional)
+### batchSize (可选)
 
-- **Type:** `number`
-- **Default:** [`client.batch.multicall.batchSize`](/docs/clients/public#batch-multicall-batchsize-optional) (if set) or `1024`
+- **类型:** `number`
+- **默认:** [`client.batch.multicall.batchSize`](/docs/clients/public#batch-multicall-batchsize-optional)（如果设置）或 `1024`
 
-The maximum size (in bytes) for each calldata chunk. Set to `0` to disable the size limit.
+每个 calldata 块的最大大小（以字节为单位）。设置为 `0` 以禁用大小限制。
 
-> Note: Some RPC Providers limit the amount of calldata (`data`) that can be sent in a single `eth_call` request. It is best to check with your RPC Provider to see if there are any calldata size limits to `eth_call` requests.
+> 注意：某些 RPC 提供商限制可以在单个 `eth_call` 请求中发送的 calldata（`data`）的数量。最好与你的 RPC 提供商确认是否对 `eth_call` 请求有任何 calldata 大小限制。
 
 ```ts
 const results = await publicClient.multicall({
@@ -214,11 +214,11 @@ const results = await publicClient.multicall({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const results = await publicClient.multicall({
@@ -234,12 +234,12 @@ const results = await publicClient.multicall({
 })
 ```
 
-### multicallAddress (optional)
+### multicallAddress (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
-- **Default:** `client.chain.contracts.multicall3.address`
+- **类型:** [`Address`](/docs/glossary/types#address)
+- **默认:** `client.chain.contracts.multicall3.address`
 
-Address of Multicall Contract.
+Multicall 合约的地址。
 
 ```ts
 const results = await publicClient.multicall({
@@ -255,11 +255,11 @@ const results = await publicClient.multicall({
 })
 ```
 
-### stateOverride (optional)
+### stateOverride (可选)
 
-- **Type:** [`StateOverride`](/docs/glossary/types#stateoverride)
+- **类型:** [`StateOverride`](/docs/glossary/types#stateoverride)
 
-The state override set is an optional address-to-state mapping, where each entry specifies some state to be ephemerally overridden prior to executing the call.
+状态覆盖集是一个可选的地址到状态的映射，其中每个条目在执行调用之前指定一些状态以临时覆盖。
 
 ```ts
 const data = await publicClient.multicall({
@@ -286,8 +286,8 @@ const data = await publicClient.multicall({
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `multicall` in the live [Multicall Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_multicall) below.
+查看下面的实时 [Multicall 示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_multicall) 中 `multicall` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_multicall?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>

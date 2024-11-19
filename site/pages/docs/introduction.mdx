@@ -1,45 +1,45 @@
-# Why Viem [A brief preamble on why we built Viem]
+# 为什么选择 Viem [关于我们为何构建 Viem 的简要前言]
 
-## The Problems
+## 问题
 
-The current state of low-level Ethereum interface abstractions lack in at least one of the following four areas: **developer experience**, **stability**, **bundle size** and/or **performance** — a quadrilemma.
+当前低级以太坊接口抽象在以下四个领域中至少存在一个不足：**开发者体验**、**稳定性**、**包大小**和/或 **性能** — 这是一个四重困境。
 
-As the authors of [wagmi](https://wagmi.sh), a popular React Hooks library for Ethereum, we struggled to work with the existing low-level TypeScript Ethereum libraries. We wanted to provide the users of wagmi with the best possible developer experience, but we were limited by the underlying technologies wagmi was built on. We knew an _always_ stable, predictable implementation with a tiny bundle size and performant modules was paramount to interacting with the world's largest blockchain ecosystem.
+作为 [wagmi](https://wagmi.sh) 的作者，一个流行的以太坊 React Hooks 库，我们在使用现有的低级 TypeScript 以太坊库时遇到了困难。我们希望为 wagmi 的用户提供最佳的开发者体验，但受到 wagmi 所基于的底层技术的限制。我们知道，始终稳定、可预测的实现，配合小巧的包大小和高性能的模块，对于与世界上最大的区块链生态系统进行交互至关重要。
 
-So we created **viem**: a TypeScript Interface for Ethereum that provides low-level stateless primitives for interacting with Ethereum. An alternative to ethers.js and web3.js with a focus on reliability, efficiency, and excellent developer experience.
+因此，我们创建了 **viem**：一个用于以太坊的 TypeScript 接口，提供用于与以太坊交互的低级无状态原语。它是 ethers.js 和 web3.js 的替代品，专注于可靠性、效率和出色的开发者体验。
 
-## Developer Experience
+## 开发者体验
 
-viem delivers a great developer experience through modular and composable APIs, comprehensive documentation, and automatic type safety and inference.
+viem 通过模块化和可组合的 API、全面的文档以及自动类型安全和推断，提供了出色的开发者体验。
 
-It provides developers with intuitive building blocks to build their Ethereum apps and libraries. While viem's APIs may be more verbose than alternative libraries, we believe this is the right trade-off as it makes viem's modular building blocks extremely flexible. Easy to move around, change, and remove. It also allows the developers to better understand Ethereum concepts as well as understand _what_ and _why_ certain properties are being passed through. Learning how to use viem is a great way to learn how to interact with Ethereum in general.
+它为开发者提供了直观的构建块，以构建他们的以太坊应用和库。虽然 viem 的 API 可能比替代库更冗长，但我们认为这是正确的权衡，因为这使得 viem 的模块化构建块极其灵活。易于移动、修改和删除。它还使开发者能够更好地理解以太坊概念，以及理解 _什么_ 和 _为什么_ 某些属性被传递。学习如何使用 viem 是学习如何与以太坊交互的绝佳方式。
 
-We aim to provide extensive API documentation and usage for _every_ module in viem. viem uses a [documentation](https://gist.github.com/zsup/9434452) and [test driven](<https://en.wikipedia.org/wiki/Test-driven_development#:~:text=Test%2Ddriven%20development%20(TDD),software%20against%20all%20test%20cases.>) development approach to building modules, which leads to predictable and stable APIs.
+我们旨在为 viem 中的 _每个_ 模块提供广泛的 API 文档和使用说明。viem 采用 [文档](https://gist.github.com/zsup/9434452) 和 [测试驱动](<https://en.wikipedia.org/wiki/Test-driven_development#:~:text=Test%2Ddriven%20development%20(TDD),software%20against%20all%20test%20cases.>) 的开发方法来构建模块，这导致了可预测和稳定的 API。
 
-viem also provides consumers with [strongly typed APIs](/docs/typescript), allowing consumers to get the best possible experience through [autocomplete](https://twitter.com/awkweb/status/1555678944770367493), [type inference](https://twitter.com/_jxom/status/1570244174502588417?s=20), as well as static validation.
+viem 还为消费者提供了 [强类型 API](/docs/typescript)，使消费者能够通过 [自动补全](https://twitter.com/awkweb/status/1555678944770367493)、[类型推断](https://twitter.com/_jxom/status/1570244174502588417?s=20) 以及静态验证获得最佳体验。
 
-## Stability
+## 稳定性
 
-Stability is a fundamental principle for viem. As the authors of [wagmi](https://wagmi.sh), we have many organizations, large and small, that rely heavily on the library and expect it to be entirely stable for their users.
+稳定性是 viem 的基本原则。作为 [wagmi](https://wagmi.sh) 的作者，我们有许多大大小小的组织严重依赖该库，并期望它对他们的用户完全稳定。
 
-viem takes the following steps to ensure stability:
+viem 采取以下措施以确保稳定性：
 
-- We run our test suite against a forked Ethereum node
-- We aim for complete test coverage and test all potential behavioral cases
-- We build deterministic and pure APIs
+- 我们在一个分叉的以太坊节点上运行我们的测试套件
+- 我们力求实现完全的测试覆盖，并测试所有潜在的行为案例
+- 我们构建确定性和纯粹的 API
 
-## Bundle Size
+## 包大小
 
-Maintaining a low bundle size is critical when building web applications. End users should not be required to download a module of over 100kB in order to interact with Ethereum. On a slow 3G mobile network loading a 100kB library would take at least **two seconds** (plus additional time to establish an HTTP connection).
+在构建 Web 应用程序时，保持低包大小至关重要。最终用户不应被要求下载超过 100kB 的模块以与以太坊进行交互。在慢速 3G 移动网络上，加载一个 100kB 的库至少需要 **两秒**（加上建立 HTTP 连接的额外时间）。
 
-Furthermore, viem is tree-shakable, meaning only the modules you use are included in your final bundle.
+此外，viem 是可树摇的，这意味着只有你使用的模块才会包含在最终包中。
 
 <div className="h-4"></div>
 <img src="/bench-bundlesize.svg" />
 
-## Performance
+## 性能
 
-In addition to the fast load times mentioned above, viem further tunes performance by only executing heavy asynchronous tasks when required and optimized encoding/parsing algorithms. The benchmarks speak for themselves:
+除了上述快速加载时间外，viem 还通过仅在需要时执行重的异步任务和优化的编码/解析算法进一步提升性能。基准测试不言自明：
 
 <div className="m-auto mt-10 space-y-14 w-10/12">
   <img src="/bench-isaddress.svg" />
@@ -47,10 +47,10 @@ In addition to the fast load times mentioned above, viem further tunes performan
   <img src="/bench-encodeabi.svg" />
 </div>
 
-## Opinions & Escape Hatches
+## 意见与逃生通道
 
-Unlike other low-level interfaces that impose opinions on consumers, viem enables consumers to choose their opinions while still maintaining sensible and secure defaults. This allows consumers to create their own opinionated implementations, such as [wagmi](https://wagmi.sh), without the need for tedious workarounds.
+与其他对消费者施加意见的低级接口不同，viem 使消费者能够选择自己的意见，同时仍然保持合理和安全的默认值。这使得消费者能够创建自己的有意见的实现，例如 [wagmi](https://wagmi.sh)，而无需繁琐的变通方法。
 
 ---
 
-**viem** will help developers build with a higher level of accuracy and correctness through type safety and developer experience. It will also integrate extremely well with [wagmi](https://wagmi.sh) so folks can start using it without much upfront switching cost.
+**viem** 将通过类型安全和开发者体验帮助开发者以更高的准确性和正确性进行构建。它还将与 [wagmi](https://wagmi.sh) 极其良好地集成，使人们可以在没有太多前期切换成本的情况下开始使用它。

@@ -1,14 +1,14 @@
-# IPC Transport [A function to create an IPC Transport for a Client]
+# IPC 传输 [为客户端创建 IPC 传输的函数]
 
-The `ipc` Transport connects to a JSON-RPC API via IPC (inter-process communication).
+`ipc` 传输通过 IPC（进程间通信）连接到 JSON-RPC API。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { ipc } from 'viem/node'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { createPublicClient } from 'viem'
@@ -21,13 +21,13 @@ const client = createPublicClient({
 })
 ```
 
-## Parameters
+## 参数
 
 ### path
 
-- **Type:** `string`
+- **类型:** `string`
 
-IPC Path the transport should connect to.
+IPC 传输应连接的路径。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -35,12 +35,12 @@ import { ipc } from 'viem/node'
 const transport = ipc('/tmp/reth.ipc')
 ```
 
-### key (optional)
+### key（可选）
 
-- **Type:** `string`
-- **Default:** `"ipc"`
+- **类型:** `string`
+- **默认:** `"ipc"`
 
-A key for the Transport.
+传输的键。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -50,12 +50,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-### name (optional)
+### name（可选）
 
-- **Type:** `string`
-- **Default:** `"IPC JSON-RPC"`
+- **类型:** `string`
+- **默认:** `"IPC JSON-RPC"`
 
-A name for the Transport
+传输的名称。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -65,12 +65,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-### reconnect (optional)
+### reconnect（可选）
 
-- **Type:** `boolean | { maxAttempts?: number, delay?: number }`
-- **Default:** `true`
+- **类型:** `boolean | { maxAttempts?: number, delay?: number }`
+- **默认:** `true`
 
-Whether or not to attempt to reconnect on socket failure.
+是否在套接字失败时尝试重新连接。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -80,12 +80,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-#### reconnect.attempts (optional)
+#### reconnect.attempts（可选）
 
-- **Type:** `number`
-- **Default:** `5`
+- **类型:** `number`
+- **默认:** `5`
 
-The max number of times to attempt to reconnect.
+尝试重新连接的最大次数。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -97,12 +97,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-#### reconnect.delay (optional)
+#### reconnect.delay（可选）
 
-- **Type:** `number`
-- **Default:** `2_000`
+- **类型:** `number`
+- **默认:** `2_000`
 
-Retry delay (in ms) between reconnect attempts.
+重新连接尝试之间的重试延迟（以毫秒为单位）。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -114,12 +114,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-### retryCount (optional)
+### retryCount（可选）
 
-- **Type:** `number`
-- **Default:** `3`
+- **类型:** `number`
+- **默认:** `3`
 
-The max number of times to retry when a request fails.
+请求失败时的最大重试次数。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -129,12 +129,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-### retryDelay (optional)
+### retryDelay（可选）
 
-- **Type:** `number`
-- **Default:** `150`
+- **类型:** `number`
+- **默认:** `150`
 
-The base delay (in ms) between retries. By default, the Transport will use [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) (`~~(1 << count) * retryDelay`), which means the time between retries is not constant.
+重试之间的基本延迟（以毫秒为单位）。默认情况下，传输将使用 [指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)（`~~(1 << count) * retryDelay`），这意味着重试之间的时间不是恒定的。
 
 ```ts twoslash
 import { ipc } from 'viem/node'
@@ -144,12 +144,12 @@ const transport = ipc('/tmp/reth.ipc', {
 })
 ```
 
-### timeout (optional)
+### timeout（可选）
 
-- **Type:** `number`
-- **Default:** `10_000`
+- **类型:** `number`
+- **默认:** `10_000`
 
-The timeout for async IPC requests.
+异步 IPC 请求的超时。
 
 ```ts twoslash
 import { ipc } from 'viem/node'

@@ -1,12 +1,12 @@
 ---
-description: Sets the backend RPC URL.
+description: 设置后端 RPC URL。
 ---
 
 # setRpcUrl
 
-Sets the backend RPC URL.
+设置后端 RPC URL。
 
-## Usage
+## 用法
 
 :::code-group
 

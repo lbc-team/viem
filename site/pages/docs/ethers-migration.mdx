@@ -1,8 +1,8 @@
-# Ethers v5 → viem Migration Guide [Migrate from Ethers v5 to viem]
+# Ethers v5 → viem 迁移指南 [从 Ethers v5 迁移到 viem]
 
-This is a long document. Feel free to use the search bar above (⌘ K) or the Table of Contents to the side. If there is an API you need which is missing or cannot find, create a [Parity Request here](https://github.com/wagmi-dev/viem/discussions/new?category=feature-request&title=Parity%20Request:).
+这是一个较长的文档。请随意使用上方的搜索栏 (⌘ K) 或侧边的目录。如果你需要的 API 缺失或找不到，请在这里创建一个 [Parity 请求](https://github.com/wagmi-dev/viem/discussions/new?category=feature-request&title=Parity%20Request:)。
 
-You may notice some of the APIs in viem are a little more verbose than Ethers. We prefer boring code and we want to strongly embrace [clarity & composability](/docs/introduction#developer-experience). We believe that [verbose APIs are more flexible](https://www.youtube.com/watch?v=4anAwXYqLG8&t=789s) to move, change and remove compared to code that is prematurely abstracted and hard to change.
+你可能会注意到 viem 中的一些 API 比 Ethers 更冗长。我们更喜欢简单的代码，并希望强烈拥抱 [清晰性与可组合性](/docs/introduction#developer-experience)。我们相信 [冗长的 API 更灵活](https://www.youtube.com/watch?v=4anAwXYqLG8&t=789s)，更容易移动、改变和删除，而不是那些过早抽象且难以更改的代码。
 
 ## Provider → Client
 
@@ -28,13 +28,13 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> We are more verbose here – we want to be explicit and clear what chain you are connecting to & what transport you are using to avoid any confusion. :)
+> 我们在这里更冗长 – 我们希望明确和清楚你正在连接哪个链以及你使用什么传输，以避免任何混淆。 :)
 
 ### JsonRpcProvider
 
 #### Ethers
 
-This is also interchangeable with `StaticJsonRpcProvider`.
+这也可以与 `StaticJsonRpcProvider` 互换。
 
 ```ts 
 import { providers } from 'ethers'
@@ -42,7 +42,7 @@ import { providers } from 'ethers'
 const provider = new providers.JsonRpcProvider('https://cloudflare-eth.com') // [!code hl]
 ```
 
-Custom Chain:
+自定义链：
 
 ```ts 
 import { providers } from 'ethers'
@@ -66,7 +66,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-Custom Chain:
+自定义链：
 
 ```ts 
 import { createPublicClient, http } from 'viem'
@@ -78,7 +78,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> viem exports custom EVM chains in the `viem/chains` entrypoint.
+> viem 在 `viem/chains` 入口点导出自定义 EVM 链。
 
 ### InfuraProvider
 
@@ -102,7 +102,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> viem does not have custom API Provider clients – you can just pass in their RPC URL.
+> viem 没有自定义 API 提供者客户端 – 你可以直接传入他们的 RPC URL。
 
 ### AlchemyProvider
 
@@ -126,7 +126,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> viem does not have custom API Provider clients – you can just pass in their RPC URL.
+> viem 没有自定义 API 提供者客户端 – 你可以直接传入他们的 RPC URL。
 
 ### CloudflareProvider
 
@@ -150,7 +150,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> viem does not have custom API Provider clients – you can just pass in their RPC URL.
+> viem 没有自定义 API 提供者客户端 – 你可以直接传入他们的 RPC URL。
 
 ### PocketProvider
 
@@ -174,7 +174,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> viem does not have custom API Provider clients – you can just pass in their RPC URL.
+> viem 没有自定义 API 提供者客户端 – 你可以直接传入他们的 RPC URL。
 
 ### AnkrProvider
 
@@ -198,7 +198,7 @@ const client = createPublicClient({ // [!code hl]
 }) // [!code hl]
 ```
 
-> viem does not have custom API Provider clients – you can just pass in their RPC URL.
+> viem 没有自定义 API 提供者客户端 – 你可以直接传入他们的 RPC URL。
 
 ### FallbackProvider
 
@@ -229,11 +229,11 @@ const client = createPublicClient({
 
 ### IpcProvider
 
-Coming soon.
+即将推出。
 
 ### JsonRpcBatchProvider
 
-Coming soon.
+即将推出。
 
 ### Web3Provider
 
@@ -313,9 +313,9 @@ const client = createWalletClient({
 client.sendTransaction({ ... })
 ```
 
-> viem uses the term ["Account"](https://ethereum.org/en/developers/docs/accounts/) rather than "Signer".
+> viem 使用术语 ["Account"](https://ethereum.org/en/developers/docs/accounts/) 而不是 "Signer"。
 
-### Wallet
+### 钱包
 
 #### Ethers
 
@@ -347,9 +347,9 @@ const client = createWalletClient({
 client.sendTransaction({ ... })
 ```
 
-> viem uses the term ["Account"](https://ethereum.org/en/developers/docs/accounts/) rather than "Signer".
+> viem 使用术语 ["Account"](https://ethereum.org/en/developers/docs/accounts/) 而不是 "Signer"。
 
-## Provider Methods
+## 提供者方法
 
 #### Ethers
 
@@ -379,11 +379,11 @@ client.getTransaction(...) // [!code hl]
 ...
 ```
 
-> Methods that extend off the Public Client are **Public Actions**. [Read more](/docs/actions/public/introduction).
+> 从公共客户端扩展的方法是 **公共操作**。 [阅读更多](/docs/actions/public/introduction)。
 
-> There are API differences in all of these methods. Use the search bar at the top of the page to learn more about them.
+> 这些方法之间存在 API 差异。使用页面顶部的搜索栏了解更多信息。
 
-## Signer Methods
+## 签名者方法
 
 ### JsonRpcSigner
 
@@ -421,13 +421,13 @@ client.signMessage({ ... }) // [!code hl]
 ...
 ```
 
-> Methods that extend off the Wallet Client are **Wallet Actions**. [Read more](/docs/actions/wallet/introduction).
+> 从钱包客户端扩展的方法是 **钱包操作**。 [阅读更多](/docs/actions/wallet/introduction)。
 
-> There are API differences in all of these methods. Use the search bar at the top of the page to learn more about them.
+> 这些方法之间存在 API 差异。使用页面顶部的搜索栏了解更多信息。
 
-## Contract Interaction
+## 合约交互
 
-### Reading from Contracts
+### 从合约读取
 
 #### Ethers
 
@@ -460,7 +460,7 @@ const supply = await client.readContract({ // [!code hl]
 }) // [!code hl]
 ```
 
-### Writing to Contracts
+### 向合约写入
 
 #### Ethers
 
@@ -499,7 +499,7 @@ const hash = await walletClient.writeContract({ // [!code hl]
 }) // [!code hl]
 ```
 
-### Deploying Contracts
+### 部署合约
 
 #### Ethers
 
@@ -537,7 +537,7 @@ await walletClient.deployContract({ // [!code hl]
 }) // [!code hl]
 ```
 
-### Contract Events
+### 合约事件
 
 #### Ethers
 
@@ -555,7 +555,7 @@ const listener = (from, to, amount, event) => { // [!code hl]
 } // [!code hl]
 contract.on('Transfer', listener) // [!code hl]
 
-// unsubscribe // [!code hl]
+// 取消订阅 // [!code hl]
 contract.off('Transfer', listener) // [!code hl]
 ```
 
@@ -580,13 +580,13 @@ const unwatch = client.watchContractEvent({ // [!code hl]
   }, // [!code hl]
 }) // [!code hl]
 
-// unsubscribe // [!code hl]
+// 取消订阅 // [!code hl]
 unwatch() // [!code hl]
 ```
 
-> Note: Logs are batched between polling intervals in viem to avoid excessive callback invocations. You can disable this behavior with `batch: false` however.
+> 注意：在 viem 中，日志在轮询间隔之间进行批处理，以避免过多的回调调用。你可以通过 `batch: false` 禁用此行为。
 
-### Gas Estimation
+### gas 估算
 
 #### Ethers
 
@@ -619,7 +619,7 @@ const gas = await client.estimateContractGas({ // [!code hl]
 }) // [!code hl]
 ```
 
-### Call
+### 调用
 
 #### Ethers
 
@@ -652,7 +652,7 @@ await client.simulateContract({ // [!code hl]
 }) // [!code hl]
 ```
 
-### Contract Instances
+### 合约实例
 
 #### Ethers
 
@@ -700,7 +700,7 @@ const unwatch = contract.watchEvent.Transfer({
 unwatch()
 ```
 
-## ABI Utilities
+## ABI 工具
 
 ### abiCoder.encode
 
@@ -711,13 +711,13 @@ import { utils } from 'ethers'
 
 const abiCoder = utils.defaultAbiCoder()
 
-// Object
+// 对象
 abiCoder.encode(
   [{ type: 'uint', name: 'x' }, { type: 'string', name: 'y' }],
   [1234, 'Hello world']
 )
 
-// Human Readable
+// 可读格式
 abiCoder.encode(
   ['uint', 'string'], 
   [1234, 'Hello World']
@@ -729,13 +729,13 @@ abiCoder.encode(
 ```ts
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
 
-// Object
+// 对象
 encodeAbiParameters(
   [{ type: 'uint', name: 'x' }, { type: 'string', name: 'y' }],
   [1234, 'Hello world']
 )
 
-// Human Readable
+// 可读格式
 encodeAbiParameters(
   parseAbiParameters('uint, string'),
   [1234, 'Hello world']
@@ -751,13 +751,13 @@ import { utils } from 'ethers'
 
 const abiCoder = utils.defaultAbiCoder()
 
-// Object
+// 对象
 abiCoder.decode(
   [{ type: 'uint', name: 'x' }, { type: 'string', name: 'y' }],
   '0x00000000000000000000000000000000000000000000000000000000000004d20000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000b48656c6c6f20576f726c64000000000000000000000000000000000000000000'
 )
 
-// Human Readable
+// 可读格式
 abiCoder.decode(
   ['uint', 'string'], 
   '0x00000000000000000000000000000000000000000000000000000000000004d20000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000b48656c6c6f20576f726c64000000000000000000000000000000000000000000'
@@ -769,30 +769,30 @@ abiCoder.decode(
 ```ts
 import { decodeAbiParameters, parseAbiParameters } from 'viem'
 
-// Object
+// 对象
 decodeAbiParameters(
   [{ type: 'uint', name: 'x' }, { type: 'string', name: 'y' }],
   '0x00000000000000000000000000000000000000000000000000000000000004d20000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000b48656c6c6f20576f726c64000000000000000000000000000000000000000000'
 )
 
-// Human Readable
+// 可读格式
 decodeAbiParameters(
   parseAbiParameters('uint, string'),
   '0x00000000000000000000000000000000000000000000000000000000000004d20000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000b48656c6c6f20576f726c64000000000000000000000000000000000000000000'
 )
 ```
 
-Notice: different from ethers, viem only supports [standard tuple expression](https://docs.soliditylang.org/en/latest/grammar#a4.SolidityParser.tupleExpression) for Human Readable.
-example: `(uint a, string b)` is valid, but `tuple(uint a, string b)` is not.
+注意：与 ethers 不同，viem 仅支持 [标准元组表达式](https://docs.soliditylang.org/en/latest/grammar#a4.SolidityParser.tupleExpression) 的可读格式。
+例如：`(uint a, string b)` 是有效的，但 `tuple(uint a, string b)` 不是。
 
-### Fragments & Interfaces
+### 片段与接口
 
-In viem, there is no concept of "fragments" & "interfaces". We want to stick as close to the wire as possible and not introduce middleware abstractions and extra layers over ABIs. Instead of working with "fragments", we encourage you to work with the ABI itself.
-We provide utilities such as `getAbiItem`, `parseAbi` `parseAbiItem`, `parseAbiParameters` and `parseAbiParameter` which covers the use cases of interfaces & fragments.
+在 viem 中，没有“片段”和“接口”的概念。我们希望尽可能贴近底层，不引入中间件抽象和额外的 ABI 层。我们鼓励你直接使用 ABI 本身，而不是处理“片段”。
+我们提供了 `getAbiItem`、`parseAbi`、`parseAbiItem`、`parseAbiParameters` 和 `parseAbiParameter` 等工具，涵盖接口和片段的用例。
 
 ### Interface.format
 
-viem only supports Human Readable → Object format.
+viem 仅支持可读格式 → 对象格式。
 
 #### Ethers
 
@@ -860,7 +860,7 @@ import { parseAbiParameter } from 'viem'
 const param = parseAbiParameter('address owner') // [!code hl]
 ```
 
-### Fragment Access
+### Fragment 访问
 
 #### Ethers
 
@@ -908,314 +908,179 @@ const data = encodeDeployData({ // [!code hl]
 }) // [!code hl]
 ```
 
-> Note: viem concatenates the contract bytecode onto the ABI encoded data.
-
-### Interface.encodeErrorResult
-
-#### Ethers
-
-```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
-
-const iface = new utils.Interface(abi);  // [!code hl]
-const data = iface.encodeErrorResult('AccountLocked', [ // [!code hl]
-  '0x8ba1f109551bD432803012645Ac136ddd64DBA72', // [!code hl]
-  utils.parseEther('1.0') // [!code hl]
-]); // [!code hl]
-```
+> 注意：viem 将合约字节码连接到 ABI 编码数据上。
 
 #### viem
 
 ```ts 
-import { encodeErrorResult, parseEther } from 'viem'
-import { abi } from './abi'
+import { getCreate2Address } from 'viem'
 
-const data = encodeErrorResult({  // [!code hl]
-  abi: wagmiAbi, // [!code hl]
-  errorName: 'AccountLocked', // [!code hl]
-  args: [ // [!code hl]
-    '0x8ba1f109551bD432803012645Ac136ddd64DBA72', // [!code hl]
-    parseEther('1.0') // [!code hl]
-  ] // [!code hl]
+const address = getCreate2Address({ 
+  from: '0x...', 
+  salt: '0x...', 
+  initCode: '0x...' 
 }) // [!code hl]
 ```
 
-### Interface.encodeFilterTopics
+### getChainId
 
 #### Ethers
 
 ```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
+import { providers } from 'ethers'
 
-const iface = new utils.Interface(abi);  // [!code hl]
-const data = iface.encodeFilterTopics('Transfer', [ // [!code hl]
-  null, // [!code hl]
-  '0x8ba1f109551bD432803012645Ac136ddd64DBA72' // [!code hl]
-]) // [!code hl]
+const provider = new providers.JsonRpcProvider('https://example.com');
+const chainId = await provider.getChainId(); // [!code hl]
 ```
 
 #### viem
 
 ```ts 
-import { encodeEventTopics } from 'viem'
-import { abi } from './abi'
+import { getChainId } from 'viem'
 
-const data = encodeEventTopics({ // [!code hl]
-  abi, // [!code hl]
-  eventName: 'Transfer', // [!code hl]
-  args: { // [!code hl]
-    to: '0x8ba1f109551bD432803012645Ac136ddd64DBA72' // [!code hl]
-  } // [!code hl]
-}) // [!code hl]
+const chainId = await getChainId(); // [!code hl]
 ```
 
-### Interface.encodeFunctionData
+### getBlock
 
 #### Ethers
 
 ```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
+import { providers } from 'ethers'
 
-const iface = new utils.Interface(abi); // [!code hl]
-const data = iface.encodeFunctionData('transferFrom', [ // [!code hl]
-  '0x8ba1f109551bD432803012645Ac136ddd64DBA72', // [!code hl]
-  '0xaB7C8803962c0f2F5BBBe3FA8bf41cd82AA1923C', // [!code hl]
-  parseEther('1.0') // [!code hl]
-]) // [!code hl]
+const provider = new providers.JsonRpcProvider('https://example.com');
+const block = await provider.getBlock(12345); // [!code hl]
 ```
 
 #### viem
 
 ```ts 
-import { encodeFunctionData, parseEther } from 'viem'
-import { abi } from './abi'
+import { getBlock } from 'viem'
 
-const data = encodeFunctionData({  // [!code hl]
-  abi, // [!code hl]
-  functionName: 'transferFrom', // [!code hl]
-  args: [ // [!code hl]
-    '0x8ba1f109551bD432803012645Ac136ddd64DBA72', // [!code hl]
-    '0xaB7C8803962c0f2F5BBBe3FA8bf41cd82AA1923C', // [!code hl]
-    parseEther('1.0') // [!code hl]
-  ] // [!code hl]
-}) // [!code hl]
+const block = await getBlock(12345); // [!code hl]
 ```
 
-### Interface.encodeFunctionResult
+### getTransaction
 
 #### Ethers
 
 ```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
+import { providers } from 'ethers'
 
-const iface = new utils.Interface(abi); // [!code hl]
-const data = iface.encodeFunctionResult('balanceOf', [ // [!code hl]
-  '0x8ba1f109551bD432803012645Ac136ddd64DBA72' // [!code hl]
-]) // [!code hl]
+const provider = new providers.JsonRpcProvider('https://example.com');
+const transaction = await provider.getTransaction('0x...'); // [!code hl]
 ```
 
 #### viem
 
 ```ts 
-import { encodeFunctionResult, parseEther } from 'viem'
-import { abi } from './abi'
+import { getTransaction } from 'viem'
 
-const data = encodeFunctionResult({  // [!code hl]
-  abi, // [!code hl]
-  functionName: 'balanceOf', // [!code hl]
-  value: ['0x8ba1f109551bD432803012645Ac136ddd64DBA72'] // [!code hl]
-}) // [!code hl]
+const transaction = await getTransaction('0x...'); // [!code hl]
 ```
 
-### Interface.decodeErrorResult
+### getTransactionReceipt
 
 #### Ethers
 
 ```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
+import { providers } from 'ethers'
 
-const iface = new utils.Interface(abi); // [!code hl] 
-const result = iface.decodeErrorResult("AccountLocked", '0xf7c3865a0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba720000000000000000000000000000000000000000000000000de0b6b3a7640000') // [!code hl]
-```
-
-#### viem
-
-```ts
-import { decodeErrorResult, parseEther } from 'viem'
-import { abi } from './abi'
-
-const result = decodeErrorResult({  // [!code hl]
-  abi, // [!code hl]
-  data: '0xf7c3865a0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba720000000000000000000000000000000000000000000000000de0b6b3a7640000' // [!code hl]
-}) // [!code hl]
-```
-
-### Interface.decodeEventLog
-
-#### Ethers
-
-```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
-
-const iface = new utils.Interface(abi); // [!code hl]
-const result = iface.decodeEventLog( // [!code hl]
-  'Transfer', // [!code hl]
-  data: '0x0000000000000000000000000000000000000000000000000de0b6b3a7640000', // [!code hl] 
-  topics: [ // [!code hl]
-    '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef', // [!code hl]
-    '0x0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba72', // [!code hl]
-    '0x000000000000000000000000ab7c8803962c0f2f5bbbe3fa8bf41cd82aa1923c' // [!code hl]
-  ] // [!code hl]
-); // [!code hl] 
+const provider = new providers.JsonRpcProvider('https://example.com');
+const receipt = await provider.getTransactionReceipt('0x...'); // [!code hl]
 ```
 
 #### viem
 
 ```ts 
-import { decodeEventLog, parseEther } from 'viem'
-import { abi } from './abi'
+import { getTransactionReceipt } from 'viem'
 
-const result = decodeEventLog({ // [!code hl]
-  abi, // [!code hl]
-  data: '0x0000000000000000000000000000000000000000000000000de0b6b3a7640000', // [!code hl] 
-  topics: [ // [!code hl]
-    '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef', // [!code hl]
-    '0x0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba72', // [!code hl]
-    '0x000000000000000000000000ab7c8803962c0f2f5bbbe3fa8bf41cd82aa1923c' // [!code hl]
-  ] // [!code hl]
-}) // [!code hl]
+const receipt = await getTransactionReceipt('0x...'); // [!code hl]
 ```
 
-### Interface.decodeFunctionData
+### getLogs
 
 #### Ethers
 
 ```ts 
-import { utils } from 'ethers'
-import { abi } from './abi'
+import { providers } from 'ethers'
 
-const iface = new utils.Interface(abi); // [!code hl]
-const result = iface.decodeFunctionData('transferFrom', '0x23b872dd0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba72000000000000000000000000ab7c8803962c0f2f5bbbe3fa8bf41cd82aa1923c0000000000000000000000000000000000000000000000000de0b6b3a7640000'); // [!code hl]
-```
-
-#### viem
-
-```ts
-import { decodeFunctionData, parseEther } from 'viem'
-import { abi } from './abi'
-
-const result = decodeFunctionData({ // [!code hl]
-  abi, // [!code hl]
-  data: '0x23b872dd0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba72000000000000000000000000ab7c8803962c0f2f5bbbe3fa8bf41cd82aa1923c0000000000000000000000000000000000000000000000000de0b6b3a7640000', // [!code hl]
-}) // [!code hl]
-```
-
-### Interface.decodeFunctionResult
-
-#### Ethers
-
-```ts
-import { utils } from 'ethers'
-import { abi } from './abi'
-
-const iface = new utils.Interface(abi); // [!code hl]
-const result = iface.decodeFunctionResult('balanceOf', '0x0000000000000000000000000000000000000000000000000de0b6b3a7640000'); // [!code hl]
-```
-
-#### viem
-
-```ts
-import { decodeFunctionResult, parseEther } from 'viem'
-import { abi } from './abi'
-
-const result = decodeFunctionResult({ // [!code hl]
-  abi, // [!code hl]
-  functionName: 'balanceOf', // [!code hl]
-  data: '0x0000000000000000000000000000000000000000000000000de0b6b3a7640000', // [!code hl]
-}) // [!code hl]
-```
-
-### Interface.getSighash
-
-#### Ethers
-
-```ts
-import { Interface, FunctionFragment } from '@ethersproject/abi';
-
-const hash = Interface.getSighash(FunctionFragment.from('function ownerOf(uint256)')); // [!code hl]
+const provider = new providers.JsonRpcProvider('https://example.com');
+const logs = await provider.getLogs({ 
+  fromBlock: 0, 
+  toBlock: 'latest', 
+  address: '0x...' 
+}); // [!code hl]
 ```
 
 #### viem
 
 ```ts 
-import { toFunctionHash } from 'viem'
+import { getLogs } from 'viem'
 
-const hash = toFunctionHash('function ownerOf(uint256)') // [!code hl]
+const logs = await getLogs({ 
+  fromBlock: 0, 
+  toBlock: 'latest', 
+  address: '0x...' 
+}); // [!code hl]
 ```
 
-## Address Utilities
-
-### getAddress
+### getGasPrice
 
 #### Ethers
 
 ```ts 
-import { utils } from 'ethers'
+import { providers } from 'ethers'
 
-const address = utils.getAddress('0x8ba1f109551bd432803012645ac136ddd64dba72') // [!code hl]
-```
-
-#### viem
-
-```ts
-import { getAddress } from 'viem'
-
-const address = getAddress('0x8ba1f109551bd432803012645ac136ddd64dba72') // [!code hl]
-```
-
-### isAddress
-
-#### Ethers
-
-```ts 
-import { utils } from 'ethers'
-
-const address = utils.isAddress('0x8ba1f109551bd432803012645ac136ddd64dba72') // [!code hl]
-```
-
-#### viem
-
-```ts
-import { isAddress } from 'viem'
-
-const address = isAddress('0x8ba1f109551bd432803012645ac136ddd64dba72') // [!code hl]
-```
-
-### getContractAddress
-
-#### Ethers
-
-```ts 
-import { utils } from 'ethers'
-
-const address = utils.getContractAddress({ from: '0x...', nonce: 5 }); // [!code hl]
+const provider = new providers.JsonRpcProvider('https://example.com');
+const gasPrice = await provider.getGasPrice(); // [!code hl]
 ```
 
 #### viem
 
 ```ts 
-import { getContractAddress } from 'viem'
+import { getGasPrice } from 'viem'
 
-const address = getContractAddress({ from: '0x...', nonce: 5 }) // [!code hl]
+const gasPrice = await getGasPrice(); // [!code hl]
 ```
 
-### getCreate2Address
+### getFeeData
+
+#### Ethers
+
+```ts 
+import { providers } from 'ethers'
+
+const provider = new providers.JsonRpcProvider('https://example.com');
+const feeData = await provider.getFeeData(); // [!code hl]
+```
+
+#### viem
+
+```ts 
+import { getFeeData } from 'viem'
+
+const feeData = await getFeeData(); // [!code hl]
+```
+
+### getAccounts
+
+#### Ethers
+
+```ts 
+import { providers } from 'ethers'
+
+const provider = new providers.JsonRpcProvider('https://example.com');
+const accounts = await provider.listAccounts(); // [!code hl]
+```
+
+#### viem
+
+```ts 
+import { getAccounts } from 'viem'
+
+const accounts = await getAccounts(); // [!code hl]
+```
 
 #### Ethers
  
@@ -1243,17 +1108,17 @@ const address = getContractAddress({ // [!code hl]
 }); // [!code hl]
 ```
 
-## BigNumber Utilities
+## BigNumber 工具
 
 ### Ethers
 
-Many.
+许多。
 
 ### viem
 
-None. We use browser native [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
+无。我们使用浏览器原生的 [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)。
 
-## Byte Manipulation Utilities
+## 字节操作工具
 
 ### isBytes
 
@@ -1547,7 +1412,7 @@ import { pad } from 'viem'
 pad('0x69', { size: 32 }) // [!code hl]
 ```
 
-## Display Logic & Input Utilities
+## 显示逻辑与输入工具
 
 ### formatUnits
 
@@ -1621,7 +1486,7 @@ import { parseEther } from 'viem'
 parseEther('1') // [!code hl]
 ```
 
-## Encoding Utilities
+## 编码工具
 
 ### RLP.encode
 
@@ -1659,7 +1524,7 @@ import { fromRlp } from 'viem'
 fromRlp('0x8412345678') // [!code hl]
 ```
 
-## Hashing Utilities
+## 哈希工具
 
 ### id
 
@@ -1705,15 +1570,15 @@ keccak256(toBytes('hello world')) // [!code hl]
 
 ### encodeBase64/decodeBase64
 
-viem does not provide Base64 encoding utilities. 
+viem 不提供 Base64 编码工具。
 
-You can use browser native [`atob`](https://developer.mozilla.org/en-US/docs/Web/API/atob) and [`btoa`](https://developer.mozilla.org/en-US/docs/Web/API/btoa) instead.
+你可以使用浏览器原生的 [`atob`](https://developer.mozilla.org/en-US/docs/Web/API/atob) 和 [`btoa`](https://developer.mozilla.org/en-US/docs/Web/API/btoa) 来代替。
 
 ### encodeBase58/decodeBase58
 
-viem does not provide Base58 encoding utilities.
+viem 不提供 Base58 编码工具。
 
-You can use libraries such as [`base58-js`](https://www.npmjs.com/package/base58-js) or [`bs58`](https://github.com/cryptocoinjs/bs58) instead.
+你可以使用 [`base58-js`](https://www.npmjs.com/package/base58-js) 或 [`bs58`](https://github.com/cryptocoinjs/bs58) 等库来代替。
 
 ### namehash
 
@@ -1753,7 +1618,7 @@ encodePacked(['int16', 'uint48'], [-1, 12]) // [!code hl]
 keccak256(encodePacked(['int16', 'uint48'], [-1, 12])) // [!code hl]
 ```
 
-## String Utilities
+## 字符串工具
 
 ### toUtf8Bytes
 
@@ -1791,7 +1656,7 @@ import { bytesToString } from 'viem'
 bytesToString(new Uint8Array([72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33])) // [!code hl]
 ```
 
-## Transaction Utilities
+## 交易工具
 
 ### serializeTransaction
 

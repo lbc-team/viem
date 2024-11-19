@@ -1,18 +1,18 @@
 ---
-description: Checks whether the value is a byte array or not.
+description: 检查值是否为字节数组。
 ---
 
 # isBytes
 
-Checks whether the value is a byte array or not.
+检查值是否为字节数组。
 
-## Install
+## 安装
 
 ```ts
 import { isBytes } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { isBytes } from 'viem'
@@ -24,8 +24,8 @@ isBytes([1, 69, 420])
 // false
 ```
 
-## Returns
+## 返回
 
 `boolean`
 
-Returns truthy is the value is a byte array.
+如果值是字节数组，则返回真值。

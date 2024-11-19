@@ -1,12 +1,12 @@
 ---
-description: Deploys a contract to the network, given bytecode & constructor arguments.
+description: 将合约部署到网络，给定字节码和构造函数参数。
 ---
 
 # deployContract
 
-Deploys a contract to the network, given bytecode & constructor arguments.
+将合约部署到网络，给定字节码和构造函数参数。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -43,15 +43,15 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 })
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-### Deploying with Constructor Args
+### 使用构造函数参数进行部署
 
 :::code-group
 
@@ -90,27 +90,27 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 })
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The [Transaction](/docs/glossary/terms#transaction) hash.
+[交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -122,11 +122,11 @@ const hash = await walletClient.deployContract({
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to deploy the contract from.
+用于部署合约的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -138,9 +138,9 @@ const hash = await walletClient.deployContract({
 
 ### bytecode
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The contract's bytecode.
+合约的字节码。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -150,11 +150,11 @@ const hash = await walletClient.deployContract({
 })
 ```
 
-### args (if required)
+### args（如果需要）
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Constructor arguments to call upon deployment.
+在部署时调用的构造函数参数。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -165,8 +165,8 @@ const hash = await walletClient.deployContract({
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `deployContract` in the live [Deploying Contracts Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_deploying-contracts) below.
+查看 `deployContract` 在实时 [部署合约示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_deploying-contracts) 中的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_deploying-contracts?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>

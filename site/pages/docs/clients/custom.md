@@ -1,20 +1,20 @@
-# Build your own Client
+# 构建你自己的客户端
 
-You can build your own viem Client by using the `createClient` function and optionally extending (`.extend`) it – this is how viem's internal Clients ([Public](/docs/clients/public), [Wallet](/docs/clients/wallet), and [Test](/docs/clients/test)) are built.
+你可以通过使用 `createClient` 函数并可选地扩展（`.extend`）它来构建自己的 viem 客户端——这就是 viem 的内部客户端（ [公共](/docs/clients/public) 、[钱包](/docs/clients/wallet) 和 [测试](/docs/clients/test)）的构建方式。
 
-Building your own Client is useful if you have specific requirements for how the Client should behave, and if you want to extend that Client with custom functionality (ie. create a [geth Debug](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug) Client).
+构建你自己的客户端在你对客户端的行为有特定要求时非常有用，并且如果你想用自定义功能扩展该客户端（即创建一个 [geth Debug](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug) 客户端）。
 
-The `createClient` function sets up a base viem Client with a given [Transport](/docs/clients/intro) configured with a [Chain](/docs/chains/introduction). After that, you can extend the Client with custom properties (that could be Actions or other configuration).
+`createClient` 函数设置一个基础的 viem 客户端，配置了给定的 [Transport](/docs/clients/intro) 和 [Chain](/docs/chains/introduction)。之后，你可以用自定义属性（可以是 Actions 或其他配置）扩展客户端。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createClient } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Initialize a Client with your desired [Chain](/docs/chains/introduction) (e.g. `mainnet`) and [Transport](/docs/clients/intro) (e.g. `http`).
+使用你所需的 [Chain](/docs/chains/introduction)（例如 `mainnet`）和 [Transport](/docs/clients/intro)（例如 `http`）初始化客户端。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -26,13 +26,13 @@ const client = createClient({
 })
 ```
 
-Next, you can either [extend your Client with Actions or configuration](#extending-with-actions-or-configuration), or you can use it as-is for the purpose of [maximizing tree-shaking in your app](#tree-shaking).
+接下来，你可以选择 [用 Actions 或配置扩展你的客户端](#extending-with-actions-or-configuration)，或者你可以直接使用它以实现 [最大化应用中的树摇](#tree-shaking)。
 
-### Extending with Actions or configuration
+### 用 Actions 或配置扩展
 
-You can extend your Client with custom Actions or configuration by using the `.extend` function.
+你可以通过使用 `.extend` 函数用自定义 Actions 或配置扩展你的客户端。
 
-Below is a naive implementation of implementing a [geth Debug](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug) Client with a `traceCall` Action that uses the `debug_traceCall` RPC method.
+下面是实现一个 [geth Debug](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-debug) 客户端的简单实现，带有一个使用 `debug_traceCall` RPC 方法的 `traceCall` Action。
 
 ```ts twoslash {12-21,23-29}
 // @noErrors
@@ -67,13 +67,13 @@ const response = await debugClient.traceCall({
 // { failed: false, gas: 69420, returnValue: '...', structLogs: [] }
 ```
 
-For a more succinct implementation of using `.extend`, check out viem's [Public Client implementation](https://github.com/wagmi-dev/viem/blob/29c053f5069a5b44e3791972c221368a2c71a254/src/clients/createPublicClient.ts#L48-L68) extended with [Public Actions](https://github.com/wagmi-dev/viem/blob/29c053f5069a5b44e3791972c221368a2c71a254/src/clients/decorators/public.ts#L1377-L1425).
+有关使用 `.extend` 的更简洁实现，请查看 viem 的 [公共客户端实现](https://github.com/wagmi-dev/viem/blob/29c053f5069a5b44e3791972c221368a2c71a254/src/clients/createPublicClient.ts#L48-L68)，它扩展了 [公共 Actions](https://github.com/wagmi-dev/viem/blob/29c053f5069a5b44e3791972c221368a2c71a254/src/clients/decorators/public.ts#L1377-L1425)。
 
-### Tree-shaking
+### 树摇
 
-You can use the Client as-is, with no decorated Actions, to maximize tree-shaking in your app. This is useful if you are pedantic about bundle size and want to only include the Actions you use.
+你可以直接使用客户端，而不带装饰的 Actions，以最大化应用中的树摇。这在你对包大小非常讲究并且只想包含你使用的 Actions 时非常有用。
 
-In the example below, instead of calling `getBlock` from the Public Client, we are importing the Action directly from `viem` and then injecting our Client as the first parameter to the Action.
+在下面的示例中，我们不是从公共客户端调用 `getBlock`，而是直接从 `viem` 导入该 Action，然后将我们的客户端作为第一个参数注入到该 Action 中。
 
 ```ts twoslash {3,10-11}
 // @noErrors
@@ -90,13 +90,13 @@ const blockNumber = await getBlock(client, { blockTag: 'latest' })
 const hash = await sendTransaction(client, { ... })
 ```
 
-## Parameters
+## 参数
 
 ### transport
 
-- **Type:** [Transport](/docs/glossary/types#transport)
+- **类型：** [Transport](/docs/glossary/types#transport)
 
-The [Transport](/docs/clients/intro) of the Public Client.
+公共客户端的 [Transport](/docs/clients/intro)。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -108,13 +108,13 @@ const client = createClient({
 })
 ```
 
-### account (optional)
+### account（可选）
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to use for the Client. This will be used for Actions that require an `account` as an argument.
+用于客户端的账户。这将用于需要 `account` 作为参数的 Actions。
 
-Accepts a [JSON-RPC Account](/docs/accounts/jsonRpc) or [Local Account (Private Key, etc)](/docs/accounts/local/privateKeyToAccount).
+接受 [JSON-RPC 账户](/docs/accounts/jsonRpc) 或 [本地账户（私钥等）](/docs/accounts/local/privateKeyToAccount)。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -129,11 +129,11 @@ const client = createClient({
 })
 ```
 
-### chain (optional)
+### chain（可选）
 
-- **Type:** [Chain](/docs/glossary/types#chain)
+- **类型：** [Chain](/docs/glossary/types#chain)
 
-The [Chain](/docs/chains/introduction) of the Public Client.
+公共客户端的 [Chain](/docs/chains/introduction)。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -145,16 +145,16 @@ const client = createClient({
 })
 ```
 
-### batch (optional)
+### batch（可选）
 
-Flags for batch settings.
+批处理设置的标志。
 
-### batch.multicall (optional)
+### batch.multicall（可选）
 
-- **Type:** `boolean | MulticallBatchOptions`
-- **Default:** `false`
+- **类型：** `boolean | MulticallBatchOptions`
+- **默认值：** `false`
 
-Toggle to enable `eth_call` multicall aggregation.
+切换以启用 `eth_call` 多重调用聚合。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -169,14 +169,14 @@ const client = createClient({
 })
 ```
 
-### batch.multicall.batchSize (optional)
+### batch.multicall.batchSize（可选）
 
-- **Type:** `number`
-- **Default:** `1_024`
+- **类型：** `number`
+- **默认值：** `1_024`
 
-The maximum size (in bytes) for each multicall (`aggregate3`) calldata chunk.
+每个多重调用（`aggregate3`）的最大大小（以字节为单位）。
 
-> Note: Some RPC Providers limit the amount of calldata that can be sent in a single request. It is best to check with your RPC Provider to see if there are any calldata size limits to `eth_call` requests.
+> 注意：某些 RPC 提供者限制可以在单个请求中发送的 calldata 数量。最好与你的 RPC 提供者确认是否对 `eth_call` 请求的 calldata 大小有限制。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -193,12 +193,12 @@ const client = createClient({
 })
 ```
 
-### batch.multicall.wait (optional)
+### batch.multicall.wait（可选）
 
-- **Type:** `number`
-- **Default:** `0` ([zero delay](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#zero_delays))
+- **类型：** `number`
+- **默认值：** `0`（ [零延迟](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop#zero_delays) ）
 
-The maximum number of milliseconds to wait before sending a batch.
+发送批处理之前等待的最大毫秒数。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -215,12 +215,12 @@ const client = createClient({
 })
 ```
 
-### key (optional)
+### key（可选）
 
-- **Type:** `string`
-- **Default:** `"public"`
+- **类型：** `string`
+- **默认值：** `"public"`
 
-A key for the Client.
+客户端的密钥。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -233,12 +233,12 @@ const client = createClient({
 })
 ```
 
-### name (optional)
+### name（可选）
 
-- **Type:** `string`
-- **Default:** `"Public Client"`
+- **类型：** `string`
+- **默认值：** `"Public Client"`
 
-A name for the Client.
+客户端的名称。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -251,12 +251,12 @@ const client = createClient({
 })
 ```
 
-### pollingInterval (optional)
+### pollingInterval（可选）
 
-- **Type:** `number`
-- **Default:** `4_000`
+- **类型：** `number`
+- **默认值：** `4_000`
 
-Frequency (in ms) for polling enabled Actions.
+启用轮询的操作的频率（以毫秒为单位）。
 
 ```ts twoslash
 import { createClient, http } from 'viem'
@@ -269,12 +269,12 @@ const client = createClient({
 })
 ```
 
-### rpcSchema (optional)
+### rpcSchema（可选）
 
-- **Type:** `RpcSchema`
-- **Default:** `WalletRpcSchema`
+- **类型：** `RpcSchema`
+- **默认值：** `WalletRpcSchema`
 
-Typed JSON-RPC schema for the client.
+客户端的类型化 JSON-RPC 架构。
 
 ```ts twoslash
 import { createClient, http } from 'viem'

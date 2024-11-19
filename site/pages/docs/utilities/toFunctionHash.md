@@ -1,26 +1,26 @@
 ---
-description: Returns the hash (of the function signature) for a given function definition.
+description: 返回给定函数定义的哈希（函数签名）。
 ---
 
 # toFunctionHash
 
-Returns the hash (of the function signature) for a given function definition.
+返回给定函数定义的哈希（函数签名）。
 
-## Install
+## 安装
 
 ```ts
 import { toFunctionHash } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toFunctionHash } from 'viem'
 
 const hash_1 = toFunctionHash('function ownerOf(uint256)')
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 
-// or from an `AbiEvent` on your contract ABI
+// 或者从你的合约 ABI 中的 `AbiEvent`
 const hash_2 = toFunctionHash({
   name: 'ownerOf',
   type: 'function',
@@ -28,20 +28,19 @@ const hash_2 = toFunctionHash({
   outputs: [],
   stateMutability: 'view',
 })
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The hash of the function signature.
+函数签名的哈希。
 
-## Parameters
+## 参数
 
 ### function
 
-- **Type:** `string` | [`AbiFunction`](https://abitype.dev/api/types#abifunction)
+- **类型:** `string` | [`AbiFunction`](https://abitype.dev/api/types#abifunction)
 
-The function to generate a hash for.
-
+要生成哈希的函数。

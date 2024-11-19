@@ -1,12 +1,12 @@
 ---
-description: Revert the state of the blockchain at the current block.
+description: 在当前区块还原区块链的状态。
 ---
 
 # revert
 
-Revert the state of the blockchain at the current block.
+在当前区块还原区块链的状态。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### id
 
-- **Type:** ``"0x${string}"``
+- **类型:** ``"0x${string}"``
 
-The snapshot ID.
+快照 ID。
 
 ```ts
 await testClient.revert({

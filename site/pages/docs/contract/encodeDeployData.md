@@ -1,20 +1,20 @@
 ---
-description: Encodes deploy data (bytecode & constructor args) into an ABI encoded value.
+description: 将部署数据（字节码和构造函数参数）编码为 ABI 编码值。
 ---
 
 # encodeDeployData
 
-Encodes deploy data (bytecode & constructor args) into an ABI encoded value.
+将部署数据（字节码和构造函数参数）编码为 ABI 编码值。
 
-## Install
+## 安装
 
 ```ts
 import { encodeDeployData } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Below is a very basic example of how to encode deploy data.
+以下是如何编码部署数据的一个非常基本的示例。
 
 :::code-group
 
@@ -43,13 +43,13 @@ export const wagmiAbi = [
 
 :::
 
-### Passing Arguments
+### 传递参数
 
-If your constructor requires argument(s), you can pass them through with the `args` attribute.
+如果你的构造函数需要参数，你可以通过 `args` 属性传递它们。
 
-TypeScript types for `args` will be inferred from the constructor & ABI, to guard you from inserting the wrong values.
+`args` 的 TypeScript 类型将从构造函数和 ABI 中推断，以防止你插入错误的值。
 
-For example, the `constructor` below requires an **address** argument, and it is typed as `["0x${string}"]`.
+例如，下面的 `constructor` 需要一个 **地址** 参数，并且它的类型为 `["0x${string}"]`。
 
 :::code-group
 
@@ -79,19 +79,19 @@ export const wagmiAbi = [
 
 :::
 
-## Return Value
+## 返回值
 
 [`Hex`](/docs/glossary/types#hex)
 
-ABI encoded data (bytecode & constructor arguments).
+ABI 编码的数据（字节码和构造函数参数）。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const data = encodeDeployData({
@@ -103,9 +103,9 @@ const data = encodeDeployData({
 
 ### bytecode
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-Contract bytecode.
+合约字节码。
 
 ```ts
 const data = encodeDeployData({
@@ -115,11 +115,11 @@ const data = encodeDeployData({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Arguments to pass to function call.
+传递给函数调用的参数。
 
 ```ts
 const data = encodeDeployData({

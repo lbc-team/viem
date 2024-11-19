@@ -1,20 +1,20 @@
 ---
-description: Parses a hex-formatted ERC-6492 flavoured signature.
+description: 解析十六进制格式的 ERC-6492 风格签名。
 ---
 
 # parseErc6492Signature
 
-Parses a hex-formatted [ERC-6492](https://eips.ethereum.org/EIPS/eip-6492) flavoured signature.
+解析十六进制格式的 [ERC-6492](https://eips.ethereum.org/EIPS/eip-6492) 风格签名。
 
-If the signature is not in ERC-6492 format, then the underlying (original) signature is returned.
+如果签名不是 ERC-6492 格式，则返回底层（原始）签名。
 
-## Import
+## 导入
 
 ```ts
 import { parseErc6492Signature } from 'viem/experimental'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { parseErc6492Signature } from 'viem/experimental'
@@ -33,16 +33,16 @@ const { // [!code focus:99]
  */
 ```
 
-## Returns
+## 返回
 
 `ParseErc6492SignatureReturnType`
 
-The ERC-6492 signature components.
+ERC-6492 签名组件。
 
-## Parameters
+## 参数
 
 ### signature
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The ERC-6492 signature in hex format.
+十六进制格式的 ERC-6492 签名。

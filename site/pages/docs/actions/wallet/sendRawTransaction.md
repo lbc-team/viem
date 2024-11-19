@@ -1,12 +1,12 @@
 ---
-description: Sends a signed transaction to the network
+description: 发送签名交易到网络
 ---
 
 # sendRawTransaction
 
-Sends a **signed** transaction to the network. Can be used with both [Public Clients](/docs/clients/public) and [Wallet Clients](/docs/clients/wallet)
+发送一个**签名**的交易到网络。可以与 [公共客户端](/docs/clients/public) 和 [钱包客户端](/docs/clients/wallet) 一起使用
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,27 +28,27 @@ const hash = await walletClient.sendRawTransaction({ serializedTransaction }) //
 // [!include ~/snippets/walletClient.ts]
 
 export const [account] = await walletClient.getAddresses()
-// @log: ↑ JSON-RPC Account
+// @log: ↑ JSON-RPC 账户
 
 // export const account = privateKeyToAccount(...)
-// @log: ↑ Local Account
+// @log: ↑ 本地账户
 ```
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The [Transaction](/docs/glossary/terms#transaction) hash.
+[交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### serializedTransaction
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The signed serialized transaction.
+签名的序列化交易。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]

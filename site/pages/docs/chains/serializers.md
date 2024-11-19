@@ -1,6 +1,6 @@
-# Serializers [Configure chain-based serializers in Viem]
+# 序列化器 [在 Viem 中配置基于链的序列化器]
 
-## Usage
+## 用法
 
 ```ts
 import { defineChain, serializeTransaction } from 'viem'
@@ -19,14 +19,14 @@ const example = defineChain({
 
 ### `serializers.transaction`
 
-- **Type**: `(transaction: Transaction, signature?: Signature) => "0x${string}"`
+- **类型**: `(transaction: Transaction, signature?: Signature) => "0x${string}"`
 
-You can modify how Transactions are serialized by using the `serializers.transaction` property on the Chain.
+你可以通过在链上使用 `serializers.transaction` 属性来修改交易的序列化方式。
 
-**Parameters**
+**参数**
 
-- `transaction`: The transaction to serialize.
-- `signature`: The transaction signature (if exists).
+- `transaction`: 要序列化的交易。
+- `signature`: 交易签名（如果存在）。
 
 ```ts
 import { defineChain, serializeTransaction } from 'viem'

@@ -1,8 +1,8 @@
-# call [An Action for executing a new message call.]
+# call [执行新消息调用的操作]
 
-Executes a new message call immediately without submitting a transaction to the network.
+立即执行新的消息调用，而无需向网络提交交易。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -21,10 +21,10 @@ import { createPublicClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// @log: ↓ JSON-RPC Account
+// @log: ↓ JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
 
-// @log: ↓ Local Account
+// @log: ↓ 本地账户
 // export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -35,23 +35,22 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Deployless Calls
+### 无需部署的调用
 
-It is possible to call a function on a contract that has not been deployed yet. For instance, we may want
-to call a function on an [ERC-4337 Smart Account](https://eips.ethereum.org/EIPS/eip-4337) contract which has not been deployed.
+可以调用尚未部署的合约上的函数。例如，我们可能想要调用尚未部署的 [ERC-4337 智能账户](https://eips.ethereum.org/EIPS/eip-4337) 合约上的函数。
 
-Viem offers two ways of performing a Deployless Call, via:
+Viem 提供了两种执行无部署调用的方法：
 
-- [Bytecode](#bytecode)
-- a [Deploy Factory](#deploy-factory): "temporarily deploys" a contract with a provided [Deploy Factory](https://docs.alchemy.com/docs/create2-an-alternative-to-deriving-contract-addresses#create2-contract-factory), and calls the function on the deployed contract.
+- [字节码](#bytecode)
+- [部署工厂](#deploy-factory)：使用提供的 [部署工厂](https://docs.alchemy.com/docs/create2-an-alternative-to-deriving-contract-addresses#create2-contract-factory) “临时部署”合约，并在已部署的合约上调用函数。
 
 :::tip
-The **Deployless Call** pattern is also accessible via the [`readContract`](/docs/contract/readContract#deployless-reads) & [Contract Instance](/docs/contract/getContract) APIs.
+**无部署调用**模式也可以通过 [`readContract`](/docs/contract/readContract#deployless-reads) 和 [合约实例](/docs/contract/getContract) API 访问。
 :::
 
-#### Bytecode
+#### 字节码
 
-The example below demonstrates how we can utilize a Deployless Call **via Bytecode** to call the `name` function on the [Wagmi Example ERC721 contract](https://etherscan.io/address/0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2#code) which has not been deployed:
+下面的示例演示了如何通过字节码使用无部署调用来调用尚未部署的 [Wagmi 示例 ERC721 合约](https://etherscan.io/address/0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2#code) 的 `name` 函数：
 
 :::code-group
 
@@ -60,9 +59,9 @@ import { encodeFunctionData, parseAbi } from 'viem'
 import { publicClient } from './config'
 
 const data = await publicClient.call({
-  // Bytecode of the contract. Accessible here: https://etherscan.io/address/0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2#code
+  // 合约的字节码。可在此处访问: https://etherscan.io/address/0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2#code
   code: '0x...',
-  // Function to call on the contract.
+  // 要在合约上调用的函数。
   data: encodeFunctionData({
     abi: parseAbi(['function name() view returns (string)']),
     functionName: 'name'
@@ -82,9 +81,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-#### Deploy Factory
+#### 部署工厂
 
-The example below demonstrates how we can utilize a Deployless Call **via a [Deploy Factory](https://docs.alchemy.com/docs/create2-an-alternative-to-deriving-contract-addresses#create2-contract-factory)** to call the `entryPoint` function on an [ERC-4337 Smart Account](https://eips.ethereum.org/EIPS/eip-4337) which has not been deployed:
+下面的示例演示了如何通过 [部署工厂](https://docs.alchemy.com/docs/create2-an-alternative-to-deriving-contract-addresses#create2-contract-factory) 使用无部署调用来调用尚未部署的 [ERC-4337 智能账户](https://eips.ethereum.org/EIPS/eip-4337) 的 `entryPoint` 函数：
 
 :::code-group
 
@@ -93,23 +92,23 @@ import { encodeFunctionData, parseAbi } from 'viem'
 import { owner, publicClient } from './config'
 
 const data = await publicClient.call({
-  // Address of the contract deployer (e.g. Smart Account Factory).
+  // 合约部署者的地址（例如，智能账户工厂）。
   factory: '0xE8Df82fA4E10e6A12a9Dab552bceA2acd26De9bb',
 
-  // Function to execute on the factory to deploy the contract.
+  // 在工厂上执行的函数以部署合约。
   factoryData: encodeFunctionData({
     abi: parseAbi(['function createAccount(address owner, uint256 salt)']),
     functionName: 'createAccount',
     args: [owner, 0n],
   }),
 
-  // Function to call on the contract (e.g. Smart Account contract).
+  // 要在合约（例如，智能账户合约）上调用的函数。
   data: encodeFunctionData({
     abi: parseAbi(['function entryPoint() view returns (address)']),
     functionName: 'entryPoint'
   }),
 
-  // Address of the contract.
+  // 合约的地址。
   to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
 })
 ```
@@ -129,24 +128,24 @@ export const publicClient = createPublicClient({
 :::
 
 :::note
-This example utilizes the [SimpleAccountFactory](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccountFactory.sol).
+此示例使用 [SimpleAccountFactory](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccountFactory.sol)。
 :::
 
-## Returns
+## 返回值
 
 `0x${string}`
 
-The call data.
+调用数据。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to call from.
+要调用的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -160,9 +159,9 @@ const data = await publicClient.call({
 
 ### data
 
-- **Type:** `0x${string}`
+- **类型：** `0x${string}`
 
-A contract hashed method call with encoded args.
+带有编码参数的合约哈希方法调用。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -176,9 +175,9 @@ const data = await publicClient.call({
 
 ### to
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型：** [`Address`](/docs/glossary/types#address)
 
-The contract address or recipient.
+合约地址或接收者。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -190,11 +189,11 @@ const data = await publicClient.call({
 })
 ```
 
-### accessList (optional)
+### accessList（可选）
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型：** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -212,11 +211,11 @@ const data = await publicClient.call({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber（可选）
 
-- **Type:** `number`
+- **类型：** `number`
 
-The block number to perform the call against.
+要执行调用的区块号。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -229,12 +228,12 @@ const data = await publicClient.call({
 })
 ```
 
-### blockTag (optional)
+### blockTag（可选）
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型：** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值：** `'latest'`
 
-The block tag to perform the call against.
+要执行调用的区块标签。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -247,11 +246,11 @@ const data = await publicClient.call({
 })
 ```
 
-### code (optional)
+### code（可选）
 
-- **Type:**
+- **类型：**
 
-Bytecode to perform the call against.
+要执行调用的字节码。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -262,11 +261,11 @@ const data = await publicClient.call({
 })
 ```
 
-### factory (optional)
+### factory (可选)
 
-- **Type:**
+- **类型：**
 
-Contract deployment factory address (ie. Create2 factory, Smart Account factory, etc).
+合约部署工厂地址（即 Create2 工厂、智能账户工厂等）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -279,11 +278,11 @@ const data = await publicClient.call({
 })
 ```
 
-### factoryData (optional)
+### factoryData (可选)
 
-- **Type:**
+- **类型：**
 
-Calldata to execute on the factory to deploy the contract.
+在工厂上执行的 calldata 以部署合约。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -296,11 +295,11 @@ const data = await publicClient.call({
 })
 ```
 
-### gas (optional)
+### gas (可选)
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-The gas provided for transaction execution.
+用于交易执行的 gas。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -313,11 +312,11 @@ const data = await publicClient.call({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice (可选)
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -332,11 +331,11 @@ const data = await publicClient.call({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction).
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -351,11 +350,11 @@ const data = await publicClient.call({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction).
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -371,11 +370,11 @@ const data = await publicClient.call({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -388,11 +387,11 @@ const data = await publicClient.call({
 })
 ```
 
-### stateOverride (optional)
+### stateOverride (可选)
 
-- **Type:** [`StateOverride`](/docs/glossary/types#stateoverride)
+- **类型：** [`StateOverride`](/docs/glossary/types#stateoverride)
 
-The state override set is an optional address-to-state mapping, where each entry specifies some state to be ephemerally overridden prior to executing the call.
+状态覆盖集是一个可选的地址到状态的映射，其中每个条目指定在执行调用之前要临时覆盖的一些状态。
 
 ```ts
 const data = await publicClient.call({
@@ -414,11 +413,11 @@ const data = await publicClient.call({
 })
 ```
 
-### value (optional)
+### value (可选)
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Value (in wei) sent with this transaction.
+与此交易一起发送的值（以 wei 为单位）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -433,6 +432,6 @@ const data = await publicClient.call({
 })
 ```
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_call`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_call)

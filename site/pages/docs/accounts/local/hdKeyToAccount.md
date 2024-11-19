@@ -1,26 +1,26 @@
-# hdKeyToAccount [A function to create a Hierarchical Deterministic (HD) Account.]
+# hdKeyToAccount [用于创建分层确定性 (HD) 账户的函数。]
 
-A [Hierarchical Deterministic (HD)](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract) Account is derived from a [HD Key](https://github.com/paulmillr/scure-bip32#usage) and an optional HD path.
+一个 [分层确定性 (HD)](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract) 账户是从一个 [HD 密钥](https://github.com/paulmillr/scure-bip32#usage) 和一个可选的 HD 路径派生而来的。
 
-It has the ability to sign transactions and messages with the private key derived from the HD Node.
+它能够使用从 HD 节点派生的私钥签署交易和消息。
 
 :::info
-viem internally uses [`@scure/bip32`](https://github.com/paulmillr/scure-bip32), an **audited** implementation of [BIP-32 HD wallets](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract), for hierarchical deterministic (HD) wallet derivation.
+viem 内部使用 [`@scure/bip32`](https://github.com/paulmillr/scure-bip32)，这是一个 **经过审计** 的 [BIP-32 HD 钱包](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract) 实现，用于分层确定性 (HD) 钱包的派生。
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { HDKey, hdKeyToAccount } from 'viem/accounts'
 ```
 
-> Note: viem [re-exports `HDKey`](https://github.com/paulmillr/scure-bip32#usage) from `@scure/bip32`.
+> 注意：viem [重新导出 `HDKey`](https://github.com/paulmillr/scure-bip32#usage) 来自 `@scure/bip32`。
 
-## Usage
+## 用法
 
-To initialize a HD Account, you will need to pass a [`HDKey` instance](https://github.com/paulmillr/scure-bip32#usage) to `hdKeyToAccount`.
+要初始化一个 HD 账户，你需要将一个 [`HDKey` 实例](https://github.com/paulmillr/scure-bip32#usage) 传递给 `hdKeyToAccount`。
 
-The `HDKey` instance comes with a few static methods to derive a HD Key:
+`HDKey` 实例带有一些静态方法来派生 HD 密钥：
 
 - `fromMasterSeed`
 - `fromExtendedKey`
@@ -45,13 +45,13 @@ const client = createWalletClient({
 })
 ```
 
-## Parameters
+## 参数
 
 ### hdKey
 
-- **Type:** `string`
+- **类型：** `string`
 
-The BIP-39 mnemonic phrase.
+BIP-39 助记词短语。
 
 ```ts twoslash
 // @noErrors
@@ -66,10 +66,10 @@ const account = hdKeyToAccount(
 
 ### options.accountIndex
 
-- **Type:** `number`
-- **Default:** `0`
+- **类型：** `number`
+- **默认值：** `0`
 
-The account index to use in the path (`"m/44'/60'/${accountIndex}'/0/0"`) to derive a private key.
+在路径中使用的账户索引 (`"m/44'/60'/${accountIndex}'/0/0"`) 以派生私钥。
 
 ```ts twoslash
 // @noErrors
@@ -87,10 +87,10 @@ const account = hdKeyToAccount(
 
 ### options.addressIndex
 
-- **Type:** `number`
-- **Default:** `0`
+- **类型：** `number`
+- **默认值：** `0`
 
-The address index to use in the path (`"m/44'/60'/0'/0/${addressIndex}"`) to derive a private key.
+在路径中使用的地址索引 (`"m/44'/60'/0'/0/${addressIndex}"`) 以派生私钥。
 
 ```ts twoslash
 // @noErrors
@@ -109,10 +109,10 @@ const account = hdKeyToAccount(
 
 ### options.changeIndex
 
-- **Type:** `number`
-- **Default:** `0`
+- **类型：** `number`
+- **默认值：** `0`
 
-The change index to use in the path (`"m/44'/60'/0'/${changeIndex}/0"`) to derive a private key.
+在路径中使用的变更索引 (`"m/44'/60'/0'/${changeIndex}/0"`) 以派生私钥。
 
 ```ts twoslash
 // @noErrors
@@ -132,9 +132,9 @@ const account = hdKeyToAccount(
 
 ### options.path
 
-- **Type:** `"m/44'/60'/${string}"`
+- **类型：** `"m/44'/60'/${string}"`
 
-The HD path to use to derive a private key.
+用于派生私钥的 HD 路径。
 
 ```ts twoslash
 // @noErrors

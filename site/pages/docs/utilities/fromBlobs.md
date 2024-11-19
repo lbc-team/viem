@@ -1,22 +1,22 @@
 ---
-description: Transforms blobs into the originating data.
+description: 将 blobs 转换为原始数据。
 ---
 
 # fromBlobs
 
-Transforms Viem-shaped blobs into the originating data. 
+将 Viem 形状的 blobs 转换为原始数据。
 
 :::warning
-This function transforms data from Viem-shaped blobs. It is designed to be used with Viem's `toBlobs` function to convert arbitrary data to blobs.
+此函数将数据从 Viem 形状的 blobs 转换。它旨在与 Viem 的 `toBlobs` 函数一起使用，以将任意数据转换为 blobs。
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { fromBlobs } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash [example.ts]
 import { fromBlobs } from 'viem'
@@ -24,19 +24,19 @@ import { fromBlobs } from 'viem'
 const data = fromBlobs({ blobs: ['0x...'] })
 ```
 
-## Returns
+## 返回值
 
 `Hex | ByteArray`
 
-Data extracted from blobs.
+从 blobs 中提取的数据。
 
-## Parameters
+## 参数
 
 ### blobs
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型:** `Hex[] | ByteArray[]`
 
-Transforms blobs into the originating data.
+将 blobs 转换为原始数据。
 
 ```ts twoslash
 import { fromBlobs } from 'viem'
@@ -48,9 +48,9 @@ const data = fromBlobs({
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
+- **类型:** `"bytes" | "hex"`
 
-The output type.
+输出类型。
 
 ```ts twoslash
 import { fromBlobs } from 'viem'
@@ -62,6 +62,4 @@ const data = fromBlobs({
 
 data // [!code focus]
 // ^?
-
-
 ```

@@ -1,24 +1,24 @@
 ---
-description: Returns the hash (of the event signature) for a given event definition.
+description: 返回给定事件定义的哈希（事件签名的哈希）。
 ---
 
 # toEventHash
 
-Returns the hash (of the event signature) for a given event definition.
+返回给定事件定义的哈希（事件签名的哈希）。
 
-## Install
+## 安装
 
 ```ts
 import { toEventHash } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toEventHash } from 'viem'
 
 const hash_1 = toEventHash('event Transfer(address,address,uint256)')
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 
 const hash_2 = toEventHash({
   name: 'Transfer',
@@ -29,20 +29,19 @@ const hash_2 = toEventHash({
     { name: 'amount', type: 'uint256', indexed: false },
   ],
 })
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The hash of the event signature.
+事件签名的哈希。
 
-## Parameters
+## 参数
 
 ### event
 
-- **Type:** `string` | [`AbiEvent`](https://abitype.dev/api/types#abievent)
+- **类型:** `string` | [`AbiEvent`](https://abitype.dev/api/types#abievent)
 
-The event to generate a hash for.
-
+要生成哈希的事件。

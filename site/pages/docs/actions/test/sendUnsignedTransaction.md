@@ -1,12 +1,12 @@
 ---
-description: Executes a transaction regardless of the signature.
+description: 无论签名如何，执行交易。
 ---
 
 # sendUnsignedTransaction
 
-Executes a transaction regardless of the signature.
+无论签名如何，执行交易。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -34,19 +34,19 @@ export const testClient = createTestClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The transaction hash.
+交易哈希。
 
-## Parameters
+## 参数
 
 ### from
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The Transaction sender.
+交易发送者。
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -58,9 +58,9 @@ const hash = await testClient.sendUnsignedTransaction({
 
 ### to
 
-- **Type:** `number`
+- **类型:** `number`
 
-The transaction recipient or contract address.
+交易接收者或合约地址。
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -71,11 +71,11 @@ const hash = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### accessList (optional)
+### accessList (可选)
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型:** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts
 const data = await testClient.sendUnsignedTransaction({
@@ -90,11 +90,11 @@ const data = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### data (optional)
+### data (可选)
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-A contract hashed method call with encoded args.
+带有编码参数的合约哈希方法调用。
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -105,11 +105,11 @@ const hash = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [Legacy Transactions](/docs/glossary/terms#legacy-transaction)。
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -120,11 +120,11 @@ const hash = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -135,11 +135,11 @@ const hash = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -151,11 +151,11 @@ const hash = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一编号，用于标识此交易。
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({
@@ -166,11 +166,11 @@ const hash = await testClient.sendUnsignedTransaction({
 })
 ```
 
-### value (optional)
+### value (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts
 const hash = await testClient.sendUnsignedTransaction({

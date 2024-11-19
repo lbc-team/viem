@@ -1,12 +1,12 @@
 ---
-description: Switch the target chain in a wallet.
+description: 在钱包中切换目标链。
 ---
 
 # switchChain
 
-Switch the target chain in a wallet.
+在钱包中切换目标链。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -24,14 +24,14 @@ await walletClient.switchChain({ id: avalanche.id }) // [!code focus]
 :::
 
 
-## Parameters
+## 参数
 
 ### id
 
-- **Type:** `number`
+- **类型:** `number`
 
-The Chain ID.
+链 ID。
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_switchEthereumChain`](https://eips.ethereum.org/EIPS/eip-3326)

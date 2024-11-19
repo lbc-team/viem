@@ -1,14 +1,14 @@
-# toAccount [A function to create a Custom Account.]
+# toAccount [创建自定义账户的函数]
 
-Creates an Account from a custom signing implementation
+从自定义签名实现创建一个账户
 
-## Import
+## 导入
 
 ```ts
 import { toAccount } from 'viem/accounts'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { 
@@ -38,13 +38,13 @@ const account = toAccount({ // [!code focus:15]
 })
 ```
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The Address of the Account.
+账户的地址。
 
 ```ts
 const account = toAccount({
@@ -63,7 +63,7 @@ const account = toAccount({
 
 ### signMessage
 
-Function to sign a message in [EIP-191 format](https://eips.ethereum.org/EIPS/eip-191).
+用于签署 [EIP-191 格式](https://eips.ethereum.org/EIPS/eip-191)消息的函数。
 
 ```ts
 const account = toAccount({
@@ -83,7 +83,7 @@ const account = toAccount({
 
 ### signTransaction
 
-Function to sign a transaction.
+用于签署交易的函数。
 
 ```ts
 const account = toAccount({
@@ -102,7 +102,7 @@ const account = toAccount({
 
 ### signTypedData
 
-Function to sign [EIP-712](https://eips.ethereum.org/EIPS/eip-712) typed data.
+用于签署 [EIP-712](https://eips.ethereum.org/EIPS/eip-712) 类型数据的函数。
 
 ```ts
 const account = toAccount({

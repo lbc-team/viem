@@ -1,3 +1,3 @@
 # toBase58
 
-Coming soon.
+敬请期待。

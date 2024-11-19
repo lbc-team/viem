@@ -1,14 +1,14 @@
 ---
-description: Retrieves a Transaction Receipt for a given Transaction hash.
+description: 检索给定交易哈希的交易收据。
 ---
 
 # waitForTransactionReceipt
 
-Waits for the [Transaction](/docs/glossary/terms#transaction) to be included on a [Block](/docs/glossary/terms#block) (one confirmation), and then returns the [Transaction Receipt](/docs/glossary/terms#transaction-receipt).
+等待 [Transaction](/docs/glossary/terms#transaction) 被包含在 [Block](/docs/glossary/terms#block) 中（一个确认），然后返回 [Transaction Receipt](/docs/glossary/terms#transaction-receipt)。
 
-The `waitForTransactionReceipt` action additionally supports Replacement detection (e.g. sped up Transactions).
+`waitForTransactionReceipt` 操作还支持替换检测（例如，加速交易）。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -39,20 +39,20 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`TransactionReceipt`](/docs/glossary/types#transactionreceipt)
 
-The transaction receipt.
+交易收据。
 
-## Parameters
+## 参数
 
-### confirmations (optional)
+### confirmations (可选)
 
-- **Type:** `number`
-- **Default:** `1`
+- **类型:** `number`
+- **默认:** `1`
 
-The number of confirmations (blocks that have passed) to wait before resolving.
+在解析之前等待的确认数量（已通过的区块数）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -65,11 +65,11 @@ const transaction = await publicClient.waitForTransactionReceipt(
 )
 ```
 
-### onReplaced (optional)
+### onReplaced (可选)
 
-- **Type:** `({ reason: 'replaced' | 'repriced' | 'cancelled', replacedTransaction: Transaction, transaction: Transaction, transactionReceipt: TransactionReceipt }) => void`
+- **类型:** `({ reason: 'replaced' | 'repriced' | 'cancelled', replacedTransaction: Transaction, transaction: Transaction, transactionReceipt: TransactionReceipt }) => void`
 
-Optional callback to emit if the transaction has been replaced.
+如果交易被替换，发出的可选回调。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -82,11 +82,11 @@ const transaction = await publicClient.waitForTransactionReceipt(
 )
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms). Defaults to the Client's `pollingInterval` config.
+轮询频率（以毫秒为单位）。默认为客户端的 `pollingInterval` 配置。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -99,12 +99,12 @@ const transaction = await publicClient.waitForTransactionReceipt(
 )
 ```
 
-### retryCount (optional)
+### retryCount (可选)
 
-- **Type:** `number`
-- **Default:** `6`
+- **类型:** `number`
+- **默认:** `6`
 
-Number of times to retry if the transaction or block is not found.
+如果未找到交易或区块，则重试的次数。
 
 ```ts
 const transaction = await publicClient.waitForTransactionReceipt(
@@ -115,12 +115,12 @@ const transaction = await publicClient.waitForTransactionReceipt(
 )
 ```
 
-### retryDelay (optional)
+### retryDelay (可选)
 
-- **Type:** `number | (({ count: number; error: Error }) => number)`
-- **Default:** `({ count }) => ~~(1 << count) * 200` (exponential backoff)
+- **类型:** `number | (({ count: number; error: Error }) => number)`
+- **默认:** `({ count }) => ~~(1 << count) * 200`（指数退避）
 
-Time to wait (in ms) between retries.
+重试之间等待的时间（以毫秒为单位）。
 
 ```ts
 const transaction = await publicClient.waitForTransactionReceipt(
@@ -131,12 +131,12 @@ const transaction = await publicClient.waitForTransactionReceipt(
 )
 ```
 
-### timeout (optional)
+### timeout (可选)
 
-- **Type:** `number`
-- **Default:** `180_000`
+- **类型:** `number`
+- **默认:** `180_000`
 
-Optional timeout (in milliseconds) to wait before stopping polling.
+在停止轮询之前等待的可选超时（以毫秒为单位）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -149,25 +149,25 @@ const transaction = await publicClient.waitForTransactionReceipt(
 )
 ```
 
-### Notes
+### 注意事项
 
-- Transactions can be replaced when a user modifies their transaction in their wallet (to speed up or cancel). Transactions are replaced when they are sent from the same nonce.
-- There are 3 types of Transaction Replacement reasons:
-  - `repriced`: The gas price has been modified (ie. different `maxFeePerGas`)
-  - `cancelled`: The Transaction has been cancelled (ie. `value === 0n`)
-  - `replaced`: The Transaction has been replaced (ie. different `value` or `data`)
+- 当用户在其钱包中修改交易（以加速或取消）时，交易可能会被替换。当从相同的 nonce 发送时，交易会被替换。
+- 交易替换的原因有 3 种类型：
+  - `repriced`：燃气价格已被修改（即不同的 `maxFeePerGas`）
+  - `cancelled`：交易已被取消（即 `value === 0n`）
+  - `replaced`：交易已被替换（即不同的 `value` 或 `data`）
 
-## Live Example
+## 实时示例
 
-Check out the usage of `waitForTransactionReceipt` in the live [Sending Transactions Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_sending-transactions) below.
+查看 `waitForTransactionReceipt` 在实时 [发送交易示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_sending-transactions) 中的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_sending-transactions?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-- Polls [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getTransactionReceipt) on each block until it has been processed.
-- If a Transaction has been replaced:
-  - Calls [`eth_getBlockByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbynumber) and extracts the transactions
-  - Checks if one of the Transactions is a replacement
-  - If so, calls [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getTransactionReceipt).
+- 在每个区块上轮询 [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getTransactionReceipt)，直到它被处理。
+- 如果交易被替换：
+  - 调用 [`eth_getBlockByNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbynumber) 并提取交易
+  - 检查其中一个交易是否为替换
+  - 如果是，调用 [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getTransactionReceipt)。

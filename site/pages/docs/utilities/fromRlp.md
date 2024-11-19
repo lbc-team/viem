@@ -1,18 +1,18 @@
 ---
-description: Decodes a RLP value into a decoded hex value or byte array.
+description: 将 RLP 值解码为解码后的十六进制值或字节数组。
 ---
 
 # fromRlp
 
-Decodes a [Recursive-Length Prefix (RLP)](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp) value into a decoded hex value or byte array.
+将 [递归长度前缀 (RLP)](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp) 值解码为解码后的十六进制值或字节数组。
 
-## Import
+## 导入
 
 ```ts
 import { fromRlp } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { fromRlp } from 'viem'
@@ -30,22 +30,22 @@ fromRlp(new Uint8Array ([133, 1, 35, 69, 103, 137]), 'hex')
 // "0x123456789"
 ```
 
-## Returns
+## 返回
 
 `Hex | ByteArray`
 
-The hex value or byte array.
+十六进制值或字节数组。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-The RLP value to decode.
+要解码的 RLP 值。
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
+- **类型:** `"bytes" | "hex"`
 
-The output type.
+输出类型。

@@ -1,12 +1,12 @@
 ---
-description: Serializes the current state into a savable data blob.
+description: 将当前状态序列化为可保存的数据块。
 ---
 
 # dumpState
 
-Serializes the current state (including contracts code, contract's storage, accounts properties, etc.) into a savable data blob.
+将当前状态（包括合约代码、合约存储、账户属性等）序列化为可保存的数据块。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,8 +30,8 @@ export const testClient = createTestClient({
 
 :::
 
-## Return Type
+## 返回类型
 
 `Hex`
 
-The state as a data blob.
+状态作为数据块。

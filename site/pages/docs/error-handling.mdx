@@ -1,10 +1,10 @@
-# Error Handling 
+# 错误处理
 
-Every module in viem exports an accompanying error type which you can use to strongly type your `catch` statements.
+viem 中的每个模块都导出了一个相应的错误类型，你可以使用它来强类型化你的 `catch` 语句。
 
-These types come in the form of `<Module>ErrorType`. For example, the `getBlockNumber` action exports a `GetBlockNumberErrorType` type.
+这些类型的形式为 `<Module>ErrorType`。例如，`getBlockNumber` 操作导出了一个 `GetBlockNumberErrorType` 类型。
 
-Unfortunately, [TypeScript doesn't have an abstraction for typed exceptions](https://github.com/microsoft/TypeScript/issues/13219), so the most pragmatic & vanilla approach would be to explicitly cast error types in the `catch` statement.
+不幸的是，[TypeScript 并没有对类型化异常的抽象](https://github.com/microsoft/TypeScript/issues/13219) ，因此最务实和常规的方法是在 `catch` 语句中显式地转换错误类型。
 
 :::code-group
 

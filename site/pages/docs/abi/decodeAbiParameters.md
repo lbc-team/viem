@@ -1,21 +1,21 @@
-# decodeAbiParameters [Decodes ABI encoded data.]
+# decodeAbiParameters [解码 ABI 编码数据]
 
-Decodes ABI encoded data using the [ABI specification](https://solidity.readthedocs.io/en/latest/abi-spec), given a set of ABI parameters (`inputs`/`outputs`) and the encoded ABI data.
+使用 [ABI 规范](https://solidity.readthedocs.io/en/latest/abi-spec) 解码 ABI 编码数据，给定一组 ABI 参数（`inputs`/`outputs`）和编码的 ABI 数据。
 
-The `decodeAbiParameters` function is used by the other contract decoding utilities (ie. `decodeFunctionData`, `decodeEventLog`, etc).
+`decodeAbiParameters` 函数被其他合约解码工具（即 `decodeFunctionData`、`decodeEventLog` 等）使用。
 
-## Install
+## 安装
 
 ```ts
 import { decodeAbiParameters } from 'viem'
 ```
 
-## Usage
+## 用法
 
-The `decodeAbiParameters` function takes in two parameters:
+`decodeAbiParameters` 函数接受两个参数：
 
-- a set of ABI Parameters (`params`), that can be in the shape of the `inputs` or `outputs` attribute of an ABI Item.
-- the ABI encoded data (`data`) that correspond to the given `params`.
+- 一组 ABI 参数（`params`），可以是 ABI 项的 `inputs` 或 `outputs` 属性的形状。
+- 与给定 `params` 对应的 ABI 编码数据（`data`）。
 
 ```ts
 import { decodeAbiParameters } from 'viem'
@@ -31,9 +31,9 @@ const values = decodeAbiParameters(
 // ['wagmi', 420n, true]
 ```
 
-### Human Readable
+### 可读性
 
-You can also pass in [Human Readable](/docs/glossary/terms#human-readable-abi) parameters with the [`parseAbiParameters` utility](/docs/abi/parseAbiParameters).
+你还可以使用 [`parseAbiParameters` 工具](/docs/abi/parseAbiParameters) 传入 [可读性](/docs/glossary/terms#human-readable-abi) 参数。
 
 ```ts
 import { decodeAbiParameters, parseAbiParameters } from 'viem'
@@ -45,19 +45,19 @@ const values = decodeAbiParameters(
 // ['wagmi', 420n, true]
 ```
 
-## Return Value
+## 返回值
 
-The decoded data. Type is inferred from the ABI.
+解码后的数据。类型从 ABI 中推断。
 
-## Parameters
+## 参数
 
 ### params
 
-- **Type**: [`AbiParameter[]`](/docs/glossary/types#abiparameter)
+- **类型**: [`AbiParameter[]`](/docs/glossary/types#abiparameter)
 
-The set of ABI parameters to decode against `data`, in the shape of the `inputs` or `outputs` attribute of an ABI event/function.
+要解码的 ABI 参数集，形状与 ABI 事件/函数的 `inputs` 或 `outputs` 属性相同。
 
-These parameters must include valid [ABI types](https://docs.soliditylang.org/en/develop/abi-spec#types).
+这些参数必须包含有效的 [ABI 类型](https://docs.soliditylang.org/en/develop/abi-spec#types)。
 
 ```ts
 const values = decodeAbiParameters(
@@ -68,9 +68,9 @@ const values = decodeAbiParameters(
 
 ### data
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型**: [`Hex`](/docs/glossary/types#hex)
 
-The ABI encoded data.
+ABI 编码数据。
 
 ```ts
 const values = decodeAbiParameters(
@@ -79,9 +79,9 @@ const values = decodeAbiParameters(
 )
 ```
 
-## More Examples
+## 更多示例
 
-### Simple struct
+### 简单结构体
 
 :::code-group
 

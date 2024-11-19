@@ -1,12 +1,12 @@
 ---
-description: Removes a transaction from the mempool.
+description: 从内存池中移除一个交易。
 ---
 
 # dropTransaction
 
-Remove a transaction from the mempool.
+从内存池中移除一个交易。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### hash
 
-- **Type:** [`Hash`](/docs/glossary/types#hash)
+- **类型:** [`Hash`](/docs/glossary/types#hash)
 
-The hash of the transaction.
+交易的哈希值。
 
 ```ts
 await testClient.dropTransaction({

@@ -1,18 +1,18 @@
 ---
-description: Creates EIP-4361 formatted message.
+description: 创建 EIP-4361 格式的消息。
 ---
 
 # createSiweMessage
 
-Creates [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) formatted message.
+创建 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 格式的消息。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -27,19 +27,19 @@ const message = createSiweMessage({
 })
 ```
 
-## Returns
+## 返回
 
 `string`
 
-EIP-4361 formatted message.
+EIP-4361 格式的消息。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The Ethereum address performing the signing.
+执行签名的以太坊地址。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -56,9 +56,9 @@ const message = createSiweMessage({
 
 ### chainId
 
-- **Type:** `number`
+- **类型:** `number`
 
-The [EIP-155](https://eips.ethereum.org/EIPS/eip-155) Chain ID to which the session is bound.
+与会话绑定的 [EIP-155](https://eips.ethereum.org/EIPS/eip-155) 链 ID。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -75,9 +75,9 @@ const message = createSiweMessage({
 
 ### domain
 
-- **Type:** `string`
+- **类型:** `string`
 
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) authority that is requesting the signing.
+请求签名的 [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) 权限。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -94,9 +94,9 @@ const message = createSiweMessage({
 
 ### nonce
 
-- **Type:** `string`
+- **类型:** `string`
 
-A random string typically chosen by the relying party and used to prevent replay attacks.
+通常由依赖方选择的随机字符串，用于防止重放攻击。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -113,9 +113,9 @@ const message = createSiweMessage({
 
 ### uri
 
-- **Type:** `string`
+- **类型:** `string`
 
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) URI referring to the resource that is the subject of the signing (as in the subject of a claim).
+指向签名主题的 [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) URI（如声明的主题）。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -132,9 +132,9 @@ const message = createSiweMessage({
 
 ### version
 
-- **Type:** `'1'`
+- **类型:** `'1'`
 
-The current version of the SIWE Message.
+SIWE 消息的当前版本。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -149,11 +149,11 @@ const message = createSiweMessage({
 })
 ```
 
-### expirationTime (optional)
+### expirationTime (可选)
 
-- **Type:** `Date`
+- **类型:** `Date`
 
-Time when the signed authentication message is no longer valid.
+签名的认证消息不再有效的时间。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -169,11 +169,11 @@ const message = createSiweMessage({
 })
 ```
 
-### issuedAt (optional)
+### issuedAt (可选)
 
-- **Type:** `Date`
+- **类型:** `Date`
 
-Time when the message was generated, typically the current time.
+消息生成的时间，通常是当前时间。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -189,11 +189,11 @@ const message = createSiweMessage({
 })
 ```
 
-### notBefore (optional)
+### notBefore (可选)
 
-- **Type:** `Date`
+- **类型:** `Date`
 
-Time when the signed authentication message will become valid.
+签名的认证消息何时变为有效的时间。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -209,11 +209,11 @@ const message = createSiweMessage({
 })
 ```
 
-### requestId (optional)
+### requestId (可选)
 
-- **Type:** `string`
+- **类型:** `string`
 
-A system-specific identifier that may be used to uniquely refer to the sign-in request.
+一个系统特定的标识符，可用于唯一引用登录请求。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -229,11 +229,11 @@ const message = createSiweMessage({
 })
 ```
 
-### resources (optional)
+### resources (可选)
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-A list of information or references to information the user wishes to have resolved as part of authentication by the relying party.
+用户希望在依赖方的认证过程中解决的信息或信息引用的列表。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -253,11 +253,11 @@ const message = createSiweMessage({
 })
 ```
 
-### scheme (optional)
+### scheme (可选)
 
-- **Type:** `string`
+- **类型:** `string`
 
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.1) URI scheme of the origin of the request.
+请求来源的 [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.1) URI 方案。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -273,11 +273,11 @@ const message = createSiweMessage({
 })
 ```
 
-### statement (optional)
+### statement (可选)
 
-- **Type:** `string`
+- **类型:** `string`
 
-A human-readable ASCII assertion that the user will sign.
+用户将签署的人类可读 ASCII 断言。
 
 ```ts twoslash
 import { createSiweMessage } from 'viem/siwe'
@@ -289,7 +289,6 @@ const message = createSiweMessage({
   nonce: 'foobarbaz',
   uri: 'https://example.com/path',
   version: '1',
-  statement: 'I accept the ExampleOrg Terms of Service: https://example.com/tos', // [!code focus]
+  statement: '我接受 ExampleOrg 服务条款: https://example.com/tos', // [!code focus]
 })
 ```
-

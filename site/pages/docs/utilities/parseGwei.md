@@ -1,18 +1,18 @@
 ---
-description: Converts a string representation of gwei to numerical wei.
+description: 将 gwei 的字符串表示转换为数值 wei。
 ---
 
 # parseGwei
 
-Converts a string representation of gwei to numerical wei.
+将 gwei 的字符串表示转换为数值 wei。
 
-## Import
+## 导入
 
 ```ts
 import { parseGwei } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseGwei } from 'viem'
@@ -21,14 +21,14 @@ parseGwei('420') // [!code focus:2]
 // 420000000000n
 ```
 
-## Returns
+## 返回
 
 `bigint`
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `string`
+- **类型:** `string`
 
-The string representation of gwei.
+gwei 的字符串表示。

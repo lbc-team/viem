@@ -1,14 +1,14 @@
 ---
-description: Gets the avatar of an ENS name.
+description: 获取 ENS 名称的头像。
 ---
 
 # getEnsAvatar
 
-Gets the avatar of an ENS name.
+获取 ENS 名称的头像。
 
-Calls [`getEnsText`](/docs/ens/actions/getEnsText) with `key` set to `'avatar'`.
+调用 [`getEnsText`](/docs/ens/actions/getEnsText)，`key` 设置为 `'avatar'`。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -36,24 +36,24 @@ export const publicClient = createPublicClient({
 :::
 
 :::warning
-Since ENS names prohibit certain forbidden characters (e.g. underscore) and have other validation rules, you likely want to [normalize ENS names](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) with [UTS-46 normalization](https://unicode.org/reports/tr46) before passing them to `getEnsAddress`. You can use the built-in [`normalize`](/docs/ens/utilities/normalize) function for this.
+由于 ENS 名称禁止某些禁止字符（例如下划线）并具有其他验证规则，因此在将其传递给 `getEnsAddress` 之前，你可能希望使用 [UTS-46 规范化](https://unicode.org/reports/tr46) 来 [规范化 ENS 名称](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names)。你可以使用内置的 [`normalize`](/docs/ens/utilities/normalize) 函数来实现。
 :::
 
-## Returns
+## 返回值
 
 `string | null`
 
-The avatar URI for ENS name.
+ENS 名称的头像 URI。
 
-Returns `null` if the avatar cannot be resolved from the ENS name.
+如果无法从 ENS 名称解析头像，则返回 `null`。
 
-## Parameters
+## 参数
 
 ### name
 
-- **Type:** `string`
+- **类型:** `string`
 
-ENS name to get Text for.
+要获取文本的 ENS 名称。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({
@@ -61,11 +61,11 @@ const ensText = await publicClient.getEnsAvatar({
 })
 ```
 
-### assetGatewayUrls (optional)
+### assetGatewayUrls (可选)
 
-- **Type:** `{ ipfs?: string; arweave?: string }`
+- **类型:** `{ ipfs?: string; arweave?: string }`
 
-Gateway urls to resolve IPFS and/or Arweave assets.
+用于解析 IPFS 和/或 Arweave 资产的网关 URL。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({
@@ -76,11 +76,11 @@ const ensText = await publicClient.getEnsAvatar({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({
@@ -89,12 +89,12 @@ const ensText = await publicClient.getEnsAvatar({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值:** `'latest'`
 
-The block tag to perform the read against.
+要执行读取的区块标签。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({
@@ -103,11 +103,11 @@ const ensText = await publicClient.getEnsAvatar({
 })
 ```
 
-### gatewayUrls (optional)
+### gatewayUrls (可选)
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-A set of Universal Resolver gateways, used for resolving CCIP-Read requests made through the ENS Universal Resolver Contract.
+一组通用解析器网关，用于解析通过 ENS 通用解析器合约发出的 CCIP-Read 请求。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({
@@ -116,12 +116,12 @@ const ensText = await publicClient.getEnsAvatar({
 })
 ```
 
-### strict (optional)
+### strict (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认值:** `false`
 
-A boolean value that when set to true will strictly propagate all ENS Universal Resolver Contract errors.
+一个布尔值，当设置为 true 时，将严格传播所有 ENS 通用解析器合约错误。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({
@@ -130,12 +130,12 @@ const ensText = await publicClient.getEnsAvatar({
 })
 ```
 
-### universalResolverAddress (optional)
+### universalResolverAddress (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
-- **Default:** `client.chain.contracts.ensUniversalResolver.address`
+- **类型:** [`Address`](/docs/glossary/types#address)
+- **默认值:** `client.chain.contracts.ensUniversalResolver.address`
 
-Address of ENS Universal Resolver Contract.
+ENS 通用解析器合约的地址。
 
 ```ts
 const ensText = await publicClient.getEnsAvatar({

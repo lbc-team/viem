@@ -1,12 +1,12 @@
 ---
-description: Mine a specified number of blocks.
+description: 挖掘指定数量的区块。
 ---
 
 # mine
 
-Mine a specified number of blocks.
+挖掘指定数量的区块。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### blocks
 
-- **Type:** `number`
+- **类型:** `number`
 
-Number of blocks to mine.
+要挖掘的区块数量。
 
 ```ts
 await testClient.mine({
@@ -45,12 +45,12 @@ await testClient.mine({
 })
 ```
 
-### interval (optional)
+### interval (可选)
 
-- **Type:** `number`
-- **Default:** `1`
+- **类型:** `number`
+- **默认值:** `1`
 
-Interval between each block in seconds.
+每个区块之间的间隔（秒）。
 
 ```ts
 await testClient.mine({

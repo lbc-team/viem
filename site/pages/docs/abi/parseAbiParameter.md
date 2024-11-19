@@ -1,18 +1,18 @@
 ---
-description: Parses human-readable ABI parameter into ABI parameter.
+description: 将人类可读的 ABI 参数解析为 ABI 参数。
 ---
 
 # parseAbiParameter
 
-Parses human-readable ABI parameter into [`AbiParameter`](/docs/glossary/types#abiparameter). Re-exported from [ABIType](https://abitype.dev/api/human#parseabiparameter-1).
+将人类可读的 ABI 参数解析为 [`AbiParameter`](/docs/glossary/types#abiparameter)。从 [ABIType](https://abitype.dev/api/human#parseabiparameter-1) 重新导出。
 
-## Import
+## 导入
 
 ```ts
 import { parseAbiParameter } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseAbiParameter } from 'viem'
@@ -21,19 +21,19 @@ const abiParameter = parseAbiParameter('address from')
 //    ^? const abiParameter: { type: "address"; name: "from"; }
 ```
 
-## Returns
+## 返回
 
 [`Abi`](/docs/glossary/types#abi)
 
-Parsed ABI parameter.
+解析后的 ABI 参数。
 
-## Parameters
+## 参数
 
 ### signature
 
-- **Type:** `string | string[]`
+- **类型:** `string | string[]`
 
-Human-Readable ABI parameter.
+人类可读的 ABI 参数。
 
 ```ts
 import { parseAbiParameter } from 'viem'

@@ -1,10 +1,10 @@
-# Installation
+# 安装
 
-Install Viem via your package manager, a `<script>` tag, or build from source.
+通过你的包管理器、`<script>` 标签或从源代码构建来安装 Viem。
 
-## Package Manager
+## 包管理器
 
-Install the required packages.
+安装所需的包。
 
 :::code-group
 ```bash [pnpm]
@@ -26,7 +26,7 @@ bun add viem
 
 ## CDN
 
-If you're not using a package manager, you can also use Viem via an ESM-compatible CDN such as [esm.sh](https://esm.sh). Simply add a `<script type="module">` tag to the bottom of your HTML file with the following content.
+如果你不使用包管理器，你也可以通过 ESM 兼容的 CDN 使用 Viem，例如 [esm.sh](https://esm.sh)。只需在 HTML 文件底部添加一个 `<script type="module">` 标签，内容如下。
 
 ```html
 <script type="module">
@@ -34,9 +34,9 @@ If you're not using a package manager, you can also use Viem via an ESM-compatib
 </script>
 ```
 
-## Using Unreleased Commits
+## 使用未发布的提交
 
-If you can't wait for a new release to test the latest features, you can either install from the `canary` tag (tracks the [`main`](https://github.com/wevm/viem/tree/main) branch).
+如果你迫不及待想测试最新功能，可以从 `canary` 标签安装（跟踪 [`main`](https://github.com/wevm/viem/tree/main) 分支）。
 
 :::code-group
 ```bash [pnpm]
@@ -56,7 +56,7 @@ bun add viem@canary
 ```
 :::
 
-Or clone the [Viem repo](https://github.com/wevm/viem) to your local machine, build, and link it yourself.
+或者将 [Viem 仓库](https://github.com/wevm/viem)克隆到本地机器，构建并自行链接。
 
 ```bash
 gh repo clone wevm/viem
@@ -66,13 +66,12 @@ pnpm build
 pnpm link --global
 ```
 
-Then go to the project where you are using Viem and run `pnpm link --global viem` (or the package manager that you used to link Viem globally).
+然后转到你使用 Viem 的项目，运行 `pnpm link --global viem`（或你用于全局链接 Viem 的包管理器）。
 
-## Security
+## 安全
 
-Ethereum-related projects are often targeted in attacks to steal users' assets. Make sure you follow security best-practices for your project. Some quick things to get started.
+与以太坊相关的项目常常成为攻击的目标，以窃取用户资产。确保你遵循项目的安全最佳实践。以下是一些快速入门的建议。
 
-- Pin package versions, upgrade mindfully, and inspect lockfile changes to minimize the risk of [supply-chain attacks](https://nodejs.org/en/guides/security/#supply-chain-attacks).
-- Install the [Socket Security](https://socket.dev) [GitHub App](https://github.com/apps/socket-security) to help detect and block supply-chain attacks.
-- Add a [Content Security Policy](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) to defend against external scripts running in your app.
-
+- 固定包版本，谨慎升级，并检查锁定文件的更改，以最小化 [供应链攻击](https://nodejs.org/en/guides/security/#supply-chain-attacks) 的风险。
+- 安装 [Socket Security](https://socket.dev) [GitHub 应用](https://github.com/apps/socket-security)，以帮助检测和阻止供应链攻击。
+- 添加 [内容安全策略](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html)，以防止外部脚本在你的应用中运行。

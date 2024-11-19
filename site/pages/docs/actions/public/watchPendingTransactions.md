@@ -1,15 +1,15 @@
 ---
-description: Watches and returns pending transaction hashes.
+description: 监视并返回待处理的交易哈希。
 ---
 
 # watchPendingTransactions
 
-Watches and returns pending transaction hashes.
+监视并返回待处理的交易哈希。
 
-This Action will batch up all the pending transactions found within the [`pollingInterval`](#pollinginterval-optional), and invoke them via [`onTransactions`](#ontransactions).
+此操作将批量处理在 [`pollingInterval`](#pollinginterval-optional) 中找到的所有待处理交易，并通过 [`onTransactions`](#ontransactions) 调用它们。
 
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -36,19 +36,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `UnwatchFn`
 
-A function that can be invoked to stop watching for new pending transaction hashes.
+一个可以调用的函数，用于停止监视新的待处理交易哈希。
 
-## Parameters
+## 参数
 
 ### onTransactions
 
-- **Type:** `(hashes: '0x${string}'[]) => void`
+- **类型:** `(hashes: '0x${string}'[]) => void`
 
-The new pending transaction hashes.
+新的待处理交易哈希。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -58,12 +58,12 @@ const unwatch = publicClient.watchPendingTransactions(
 )
 ```
 
-### batch (optional)
+### batch (可选)
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认值:** `true`
 
-Whether or not to batch the transaction hashes between polling intervals.
+是否在轮询间隔之间批量处理交易哈希。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -76,11 +76,11 @@ const unwatch = publicClient.watchPendingTransactions(
 )
 ```
 
-### onError (optional)
+### onError (可选)
 
-- **Type:** `(error: Error) => void`
+- **类型:** `(error: Error) => void`
 
-Error thrown from listening for new pending transactions.
+监听新的待处理交易时抛出的错误。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -94,14 +94,14 @@ const unwatch = publicClient.watchPendingTransactions(
 )
 ```
 
-### poll (optional)
+### poll (可选)
 
-- **Type:** `boolean`
-- **Default:** `false` for WebSocket Clients, `true` for non-WebSocket Clients
+- **类型:** `boolean`
+- **默认值:** 对于 WebSocket 客户端为 `false`，对于非 WebSocket 客户端为 `true`
 
-Whether or not to use a polling mechanism to check for new pending transactions instead of a WebSocket subscription.
+是否使用轮询机制检查新的待处理交易，而不是使用 WebSocket 订阅。
 
-This option is only configurable for Clients with a [WebSocket Transport](/docs/clients/transports/websocket).
+此选项仅适用于具有 [WebSocket 传输](/docs/clients/transports/websocket) 的客户端。
 
 ```ts twoslash
 import { createPublicClient, webSocket } from 'viem'
@@ -120,11 +120,11 @@ const unwatch = publicClient.watchPendingTransactions(
 )
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms). Defaults to the Client's `pollingInterval` config.
+轮询频率（以毫秒为单位）。默认为客户端的 `pollingInterval` 配置。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -138,9 +138,9 @@ const unwatch = publicClient.watchPendingTransactions(
 )
 ```
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-- When `poll: true`
-  - Calls [`eth_newPendingTransactionFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newpendingtransactionfilter) to initialize the filter.
-  - Calls [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getFilterChanges) on a polling interval.
-- When `poll: false` & WebSocket Transport, uses a WebSocket subscription via [`eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe-polygon) and the `"newPendingTransactions"` event. 
+- 当 `poll: true`
+  - 调用 [`eth_newPendingTransactionFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newpendingtransactionfilter) 来初始化过滤器。
+  - 在轮询间隔上调用 [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getFilterChanges)。
+- 当 `poll: false` 且使用 WebSocket 传输时，通过 [`eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe-polygon) 和 `"newPendingTransactions"` 事件使用 WebSocket 订阅。

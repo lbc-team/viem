@@ -1,18 +1,18 @@
 ---
-description: Parses human-readable ABI into JSON.
+description: 将可读的 ABI 解析为 JSON。
 ---
 
 # parseAbi
 
-Parses human-readable ABI into JSON [`Abi`](/docs/glossary/types#abi). Re-exported from [ABIType](https://abitype.dev/api/human#parseabi-1).
+将可读的 ABI 解析为 JSON [`Abi`](/docs/glossary/types#abi)。从 [ABIType](https://abitype.dev/api/human#parseabi-1) 重新导出。
 
-## Import
+## 导入
 
 ```ts
 import { parseAbi } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseAbi } from 'viem'
@@ -24,19 +24,19 @@ const abi = parseAbi([
 ])
 ```
 
-## Returns
+## 返回
 
 [`Abi`](/docs/glossary/types#abi)
 
-The JSON ABI.
+JSON ABI。
 
-## Parameters
+## 参数
 
 ### signatures
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-Human-readable ABI.
+可读的 ABI。
 
 ```ts
 import { parseAbi } from 'viem'

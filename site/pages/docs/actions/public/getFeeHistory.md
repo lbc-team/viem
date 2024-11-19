@@ -1,12 +1,12 @@
 ---
-description: Returns a collection of historical gas information.
+description: 返回一组历史 gas 信息。
 ---
 
 # getFeeHistory
 
-Returns a collection of historical gas information.
+返回一组历史 gas 信息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,19 +31,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`FeeHistory`](/docs/glossary/types#feehistory)
 
-The fee history.
+费用历史。
 
-## Parameters
+## 参数
 
 ### blockCount
 
-- **Type:** `number`
+- **类型:** `number`
 
-Number of blocks in the requested range. Between 1 and 1024 blocks can be requested in a single query. Less than requested may be returned if not all blocks are available.
+请求范围内的区块数量。单次查询可以请求 1 到 1024 个区块。如果并非所有区块都可用，可能会返回少于请求的数量。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -56,9 +56,9 @@ const feeHistory = await publicClient.getFeeHistory({
 
 ### rewardPercentiles
 
-- **Type:** `number[]`
+- **类型:** `number[]`
 
-A monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
+一个单调递增的百分位值列表，从每个区块的有效优先费用中按 gas 升序采样，按使用的 gas 加权。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -69,11 +69,11 @@ const feeHistory = await publicClient.getFeeHistory({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Highest number block of the requested range.
+请求范围内的最高区块编号。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -85,12 +85,12 @@ const feeHistory = await publicClient.getFeeHistory({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值:** `'latest'`
 
-Highest number block of the requested range.
+请求范围内的最高区块编号。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -102,6 +102,6 @@ const feeHistory = await publicClient.getFeeHistory({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
-- Calls [`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory).
+- 调用 [`eth_feeHistory`](https://docs.alchemy.com/reference/eth-feehistory)。

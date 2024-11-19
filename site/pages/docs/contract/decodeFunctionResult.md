@@ -1,20 +1,20 @@
 ---
-description: Decodes the result of a function call on a contract.
+description: 解码合约函数调用的结果。
 ---
 
 # decodeFunctionResult
 
-Decodes the result of a function call on a contract.
+解码合约函数调用的结果。
 
-## Install
+## 安装
 
 ```ts
 import { decodeFunctionResult } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Given an ABI (`abi`) and a function (`functionName`), pass through the encoded calldata (`data`) to retrieve the decoded value:
+给定一个 ABI (`abi`) 和一个函数 (`functionName`)，传入编码的 calldata (`data`) 以检索解码的值：
 
 :::code-group
 
@@ -46,9 +46,9 @@ export const wagmiAbi = [
 
 :::
 
-### Without `functionName`
+### 没有 `functionName`
 
-If your `abi` contains only one ABI item, you can omit the `functionName` (it becomes optional):
+如果你的 `abi` 只包含一个 ABI 项，可以省略 `functionName`（它变为可选）：
 
 :::code-group
 
@@ -76,7 +76,7 @@ const abiItem = {
 :::
 
 
-### A more complex example
+### 更复杂的示例
 
 :::code-group
 
@@ -150,17 +150,17 @@ export const wagmiAbi = [
 
 :::
 
-## Return Value
+## 返回值
 
-The decoded data. Type is inferred from the ABI.
+解码后的数据。类型从 ABI 中推断。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const value = decodeFunctionResult({
@@ -172,9 +172,9 @@ const value = decodeFunctionResult({
 
 ### functionName
 
-- **Type:** `string`
+- **类型:** `string`
 
-The function to encode from the ABI.
+要从 ABI 编码的函数。
 
 ```ts
 const value = decodeFunctionResult({
@@ -186,9 +186,9 @@ const value = decodeFunctionResult({
 
 ### data
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The calldata.
+calldata。
 
 ```ts
 const value = decodeFunctionResult({

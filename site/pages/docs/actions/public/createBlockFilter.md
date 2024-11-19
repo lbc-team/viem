@@ -1,8 +1,8 @@
-# createBlockFilter [An Action for creating a new Block Filter.]
+# createBlockFilter [用于创建新区块过滤器的操作。]
 
-Creates a Filter to listen for new block hashes that can be used with [`getFilterChanges`](/docs/actions/public/getFilterChanges).
+创建一个过滤器，以监听可以与 [`getFilterChanges`](/docs/actions/public/getFilterChanges) 一起使用的新区块哈希。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -25,10 +25,10 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Filter`](/docs/glossary/types#filter)
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_newBlockFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newBlockFilter)

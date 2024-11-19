@@ -1,20 +1,20 @@
 ---
-description: Encodes structured return data into ABI encoded data.
+description: 将结构化返回数据编码为 ABI 编码数据。
 ---
 
 # encodeFunctionResult
 
-Encodes structured return data into ABI encoded data. It is the opposite of [`decodeFunctionResult`](/docs/contract/decodeFunctionResult).
+将结构化返回数据编码为 ABI 编码数据。它是 [`decodeFunctionResult`](/docs/contract/decodeFunctionResult) 的反向操作。
 
-## Install
+## 安装
 
 ```ts
 import { encodeFunctionResult } from 'viem';
 ```
 
-## Usage
+## 用法
 
-Given an ABI (`abi`) and a function (`functionName`), pass through the values (`values`) to encode:
+给定一个 ABI (`abi`) 和一个函数 (`functionName`)，传入要编码的值 (`values`)：
 
 :::code-group
 
@@ -46,7 +46,7 @@ export const wagmiAbi = [
 
 :::
 
-### A more complex example
+### 更复杂的示例
 
 :::code-group
 
@@ -120,9 +120,9 @@ export const wagmiAbi = [
 
 :::
 
-### Without `functionName`
+### 没有 `functionName`
 
-If your `abi` contains only one ABI item, you can omit the `functionName` (it becomes optional):
+如果你的 `abi` 只包含一个 ABI 项，可以省略 `functionName`（它变为可选）：
 
 ```ts
 import { encodeFunctionResult } from 'viem';
@@ -143,17 +143,17 @@ const data = encodeFunctionResult({
 // '0x000000000000000000000000a5cc3c03994db5b0d9a5eedd10cabab0813678ac'
 ```
 
-## Return Value
+## 返回值
 
-The decoded data. Type is inferred from the ABI.
+解码后的数据。类型从 ABI 中推断。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const data = encodeFunctionResult({
@@ -165,9 +165,9 @@ const data = encodeFunctionResult({
 
 ### functionName
 
-- **Type:** `string`
+- **类型:** `string`
 
-The function to encode from the ABI.
+要从 ABI 编码的函数。
 
 ```ts
 const data = encodeFunctionResult({
@@ -179,9 +179,9 @@ const data = encodeFunctionResult({
 
 ### values
 
-- **Type**: [`Hex`](/docs/glossary/types#hex)
+- **类型**: [`Hex`](/docs/glossary/types#hex)
 
-Return values to encode.
+要编码的返回值。
 
 ```ts
 const data = encodeFunctionResult({

@@ -1,12 +1,12 @@
 ---
-description: Decodes a byte array to a string, hex value, boolean or number.
+description: 解码字节数组为字符串、十六进制值、布尔值或数字。
 ---
 
 # fromBytes
 
-Decodes a byte array to a string, hex value, boolean or number.
+解码字节数组为字符串、十六进制值、布尔值或数字。
 
-Shortcut Functions:
+快捷函数：
 
 - [bytesToHex](#bytestohex)
 - [bytesToString](#bytestostring)
@@ -14,13 +14,13 @@ Shortcut Functions:
 - [bytesToBigInt](#bytestobigint)
 - [bytesToBool](#bytestobool)
 
-## Import
+## 导入
 
 ```ts
 import { fromBytes } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { fromBytes } from 'viem'
@@ -44,25 +44,25 @@ fromBytes(new Uint8Array([1]), 'boolean')
 // true
 ```
 
-## Returns
+## 返回
 
 `string | Hex | number | bigint | boolean`
 
-The targeted type.
+目标类型。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `ByteArray`
+- **类型:** `ByteArray`
 
-The byte array to decode.
+要解码的字节数组。
 
 ### toOrOptions
 
-- **Type:** `"string" | "hex" | "number" | "bigint" | "boolean" | Options`
+- **类型:** `"string" | "hex" | "number" | "bigint" | "boolean" | Options`
 
-The output type or options.
+输出类型或选项。
 
 ```ts 
 fromBytes(
@@ -83,13 +83,13 @@ fromBytes(
 // 'Hello world'
 ```
 
-## Shortcut Functions
+## 快捷函数
 
 ### bytesToHex
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a byte array to a hex value.
+解码字节数组为十六进制值。
 
 ```ts
 import { bytesToHex } from 'viem'
@@ -108,9 +108,9 @@ bytesToHex( // [!code focus:5]
 
 ### bytesToString
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Decodes a byte array to a string.
+解码字节数组为字符串。
 
 ```ts
 import { bytesToString } from 'viem'
@@ -129,9 +129,9 @@ bytesToString( // [!code focus:5]
 
 ### bytesToNumber
 
-- **Type:** `number`
+- **类型:** `number`
 
-Decodes a byte array to a number.
+解码字节数组为数字。
 
 ```ts
 import { bytesToNumber } from 'viem'
@@ -148,9 +148,9 @@ bytesToNumber( // [!code focus:5]
 
 ### bytesToBigInt
 
-- **Type:** `number`
+- **类型:** `number`
 
-Decodes a byte array to a number.
+解码字节数组为数字。
 
 ```ts
 import { bytesToBigInt } from 'viem'
@@ -169,9 +169,9 @@ bytesToBigInt( // [!code focus:5]
 
 ### bytesToBool
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Decodes a byte array to a boolean.
+解码字节数组为布尔值。
 
 ```ts
 import { bytesToBool } from 'viem'

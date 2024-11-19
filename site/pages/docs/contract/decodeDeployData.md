@@ -1,20 +1,20 @@
 ---
-description: Decodes ABI encoded deploy data (bytecode & arguments).
+description: 解码 ABI 编码的部署数据（字节码和参数）。
 ---
 
 # decodeDeployData
 
-Decodes ABI encoded deploy data (bytecode & arguments).
+解码 ABI 编码的部署数据（字节码和参数）。
 
-The opposite of [`encodeDeployData`](/docs/contract/encodeDeployData).
+与 [`encodeDeployData`](/docs/contract/encodeDeployData) 相对。
 
-## Install
+## 安装
 
 ```ts
 import { decodeDeployData } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -49,7 +49,7 @@ export const wagmiAbi = [
 
 :::
 
-## Return Value
+## 返回值
 
 ```ts
 {
@@ -58,15 +58,15 @@ export const wagmiAbi = [
 }
 ```
 
-Decoded deploy data.
+解码后的部署数据。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const { args } = decodeDeployData({
@@ -78,9 +78,9 @@ const { args } = decodeDeployData({
 
 ### bytecode
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-Contract bytecode.
+合约字节码。
 
 ```ts
 const { args } = decodeDeployData({
@@ -92,9 +92,9 @@ const { args } = decodeDeployData({
 
 ### data
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The encoded calldata.
+编码的调用数据。
 
 ```ts
 const { args } = decodeDeployData({

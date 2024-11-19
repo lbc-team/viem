@@ -1,20 +1,20 @@
 ---
-description: Encodes the function name and parameters into an ABI encoded value (4 byte selector & arguments).
+description: 将函数名称和参数编码为 ABI 编码值（4 字节选择器和参数）。
 ---
 
 # encodeFunctionData
 
-Encodes the function name and parameters into an ABI encoded value (4 byte selector & arguments).
+将函数名称和参数编码为 ABI 编码值（4 字节选择器和参数）。
 
-## Install
+## 安装
 
 ```ts
 import { encodeFunctionData } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Below is a very basic example of how to encode a function to calldata.
+下面是如何将函数编码为 calldata 的一个非常基本的示例。
 
 :::code-group
 
@@ -44,13 +44,13 @@ export const wagmiAbi = [
 
 :::
 
-### Passing Arguments
+### 传递参数
 
-If your function requires argument(s), you can pass them through with the `args` attribute.
+如果你的函数需要参数，你可以通过 `args` 属性传递它们。
 
-TypeScript types for `args` will be inferred from the function name & ABI, to guard you from inserting the wrong values.
+`args` 的 TypeScript 类型将从函数名称和 ABI 中推断，以防止你插入错误的值。
 
-For example, the `balanceOf` function name below requires an **address** argument, and it is typed as `["0x${string}"]`.
+例如，下面的 `balanceOf` 函数名称需要一个 **address** 参数，并且它的类型为 `["0x${string}"]`。
 
 :::code-group
 
@@ -81,9 +81,9 @@ export const wagmiAbi = [
 
 :::
 
-### Without `functionName`
+### 没有 `functionName`
 
-If your `abi` contains only one ABI item, you can omit the `functionName` (it becomes optional):
+如果你的 `abi` 只包含一个 ABI 项，你可以省略 `functionName`（它变为可选）：
 
 ```ts
 import { encodeFunctionData } from 'viem'
@@ -103,9 +103,9 @@ const data = encodeFunctionData({
 })
 ```
 
-### Preparation (Performance Optimization)
+### 准备（性能优化）
 
-If you are calling the same function multiple times, you can prepare the function selector once and reuse it.
+如果你多次调用相同的函数，可以一次准备函数选择器并重复使用它。
 
 ```ts
 import { prepareEncodeFunctionData, encodeFunctionData } from 'viem'
@@ -123,19 +123,19 @@ for (const address of addresses) {
 }
 ```
 
-## Return Value
+## 返回值
 
 [`Hex`](/docs/glossary/types#hex)
 
-ABI encoded data (4byte function selector & arguments).
+ABI 编码数据（4 字节函数选择器和参数）。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const data = encodeFunctionData({
@@ -146,9 +146,9 @@ const data = encodeFunctionData({
 
 ### functionName
 
-- **Type:** `string`
+- **类型:** `string`
 
-The function to encode from the ABI.
+要从 ABI 编码的函数。
 
 ```ts
 const data = encodeFunctionData({
@@ -157,11 +157,11 @@ const data = encodeFunctionData({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Arguments to pass to function call.
+传递给函数调用的参数。
 
 ```ts
 const data = encodeFunctionData({

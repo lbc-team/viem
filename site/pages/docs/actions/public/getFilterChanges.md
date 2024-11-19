@@ -1,21 +1,21 @@
 ---
-description: Returns a list of logs or hashes based on a Filter.
+description: 返回基于过滤器的日志或哈希列表。
 ---
 
 # getFilterChanges
 
-Returns a list of logs or hashes based on a [Filter](/docs/glossary/terms#filter) since the last time it was called.
+返回自上次调用以来基于[过滤器](/docs/glossary/terms#filter)的日志或哈希列表。
 
-A Filter can be created from the following actions:
+可以通过以下操作创建过滤器：
 
 - [`createBlockFilter`](/docs/actions/public/createBlockFilter)
 - [`createContractEventFilter`](/docs/contract/createContractEventFilter)
 - [`createEventFilter`](/docs/actions/public/createEventFilter)
 - [`createPendingTransactionFilter`](/docs/actions/public/createPendingTransactionFilter)
 
-## Usage
+## 用法
 
-### Blocks
+### 区块
 
 :::code-group
 
@@ -24,7 +24,7 @@ import { publicClient } from './client'
 
 const filter = await publicClient.createBlockFilter() // [!code focus:99]
 const hashes = await publicClient.getFilterChanges({ filter })
-// @log: Output: ["0x10d86dc08ac2f18f00ef0daf7998dcc8673cbcf1f1501eeb2fac1afd2f851128", ...]
+// @log: 输出: ["0x10d86dc08ac2f18f00ef0daf7998dcc8673cbcf1f1501eeb2fac1afd2f851128", ...]
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -39,7 +39,7 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Contract Events
+### 合约事件
 
 :::code-group
 
@@ -52,7 +52,7 @@ const filter = await publicClient.createContractEventFilter({ // [!code focus:99
   eventName: 'Transfer'
 })
 const logs = await publicClient.getFilterChanges({ filter })
-// @log: Output: [{ ... }, { ... }, { ... }]
+// @log: 输出: [{ ... }, { ... }, { ... }]
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -67,7 +67,7 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Raw Events
+### 原始事件
 
 :::code-group
 
@@ -80,7 +80,7 @@ const filter = await publicClient.createEventFilter({ // [!code focus:99]
   event: parseAbiItem('event Transfer(address indexed, address indexed, uint256)'),
 })
 const logs = await publicClient.getFilterChanges({ filter })
-// @log: Output: [{ ... }, { ... }, { ... }]
+// @log: 输出: [{ ... }, { ... }, { ... }]
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -95,7 +95,7 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Transactions
+### 交易
 
 :::code-group
 
@@ -104,7 +104,7 @@ import { publicClient } from './client'
 
 const filter = await publicClient.createPendingTransactionFilter() // [!code focus:99]
 const hashes = await publicClient.getFilterChanges({ filter })
-// @log: Output: ["0x89b3aa1c01ca4da5d15eca9fab459d062db5c0c9b76609acb0741901f01f6d19", ...]
+// @log: 输出: ["0x89b3aa1c01ca4da5d15eca9fab459d062db5c0c9b76609acb0741901f01f6d19", ...]
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -119,31 +119,31 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 [`Log[]`](/docs/glossary/types#log)
 
-If the filter was created with `createContractEventFilter` or `createEventFilter`, it returns a list of logs.
+如果过滤器是通过`createContractEventFilter`或`createEventFilter`创建的，则返回日志列表。
 
-**OR**
-
-`"0x${string}"[]`
-
-If the filter was created with `createPendingTransactionFilter`, it returns a list of transaction hashes.
-
-**OR**
+**或者**
 
 `"0x${string}"[]`
 
-If the filter was created with `createBlockFilter`, it returns a list of block hashes.
+如果过滤器是通过`createPendingTransactionFilter`创建的，则返回交易哈希列表。
 
-## Parameters
+**或者**
+
+`"0x${string}"[]`
+
+如果过滤器是通过`createBlockFilter`创建的，则返回区块哈希列表。
+
+## 参数
 
 ### filter
 
-- **Type:** [`Filter`](/docs/glossary/types#filter)
+- **类型:** [`Filter`](/docs/glossary/types#filter)
 
-A created filter.
+已创建的过滤器。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -154,6 +154,6 @@ const logs = await publicClient.getFilterChanges({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
-- Calls [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges).
+- 调用 [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges)。

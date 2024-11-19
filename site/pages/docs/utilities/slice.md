@@ -1,18 +1,18 @@
 ---
-description: Returns a section of the hex or byte array given a start/end bytes offset.
+description: 返回给定起始/结束字节偏移的十六进制或字节数组的一部分。
 ---
 
 # slice
 
-Returns a section of the hex or byte array given a start/end bytes offset.
+返回给定起始/结束字节偏移的十六进制或字节数组的一部分。
 
-## Install
+## 安装
 
 ```ts
 import { slice } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { slice } from 'viem'
@@ -24,19 +24,19 @@ slice(new Uint8Array([1, 122, 51, 123]), 1, 3)
 // Uint8Array [122, 51]
 ```
 
-## Returns
+## 返回
 
 `Hex | ByteArray`
 
-The section of the sliced value.
+切片值的部分。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-The hex or byte array to slice.
+要切片的十六进制或字节数组。
 
 ```ts
 slice(
@@ -46,11 +46,11 @@ slice(
 )
 ```
 
-### start (optional)
+### start (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The start offset (in bytes).
+起始偏移量（以字节为单位）。
 
 ```ts
 slice(
@@ -59,11 +59,11 @@ slice(
 )
 ```
 
-### end (optional)
+### end (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The end offset (in bytes).
+结束偏移量（以字节为单位）。
 
 ```ts
 slice(
@@ -73,19 +73,17 @@ slice(
 )
 ```
 
-#### options.strict (optional)
+#### options.strict (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认:** `false`
 
-
-Whether or not the end offset should be inclusive of the bounds of the data.
+结束偏移量是否应包含数据的边界。
 
 ```ts
 slice('0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678', 0, 20, { strict: true })
-// [SliceOffsetOutOfBoundsError] Slice ending at offset "20" is out-of-bounds (size: 19).
+// [SliceOffsetOutOfBoundsError] 切片结束于偏移量 "20" 超出范围（大小: 19）。
 
 slice('0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC', 0, 20, { strict: true })
 // 0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC
 ```
-

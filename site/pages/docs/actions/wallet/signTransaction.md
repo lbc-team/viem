@@ -1,12 +1,12 @@
 ---
-description: Signs a transaction.
+description: 签署交易。
 ---
 
 # signTransaction
 
-Signs a transaction.
+签署交易。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,19 +29,19 @@ const hash = await walletClient.sendRawTransaction(signature)
 // [!include ~/snippets/walletClient.ts]
 
 export const [account] = await walletClient.getAddresses()
-// @log: ↑ JSON-RPC Account
+// @log: ↑ JSON-RPC 账户
 
 // export const account = privateKeyToAccount(...)
-// @log: ↑ Local Account
+// @log: ↑ 本地账户
 ```
 
 :::
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `prepareTransactionRequest`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `prepareTransactionRequest` 中传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -59,10 +59,10 @@ const signature = await walletClient.signTransaction(request) // [!code focus:2]
 const hash = await walletClient.sendRawTransaction(signature)
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, custom } from 'viem'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -73,7 +73,7 @@ export const walletClient = createWalletClient({
 })
 ```
 
-```ts twoslash [config.ts (Local Account)] filename="config.ts"
+```ts twoslash [config.ts (本地账户)] filename="config.ts"
 import { createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 
@@ -85,21 +85,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The signed serialized transaction.
+签署的序列化交易。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -114,9 +114,9 @@ const signature = await walletClient.signTransaction({
 
 ### to
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-The transaction recipient or contract address.
+交易接收者或合约地址。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -130,11 +130,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### accessList (optional)
+### accessList（可选）
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型:** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -152,11 +152,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### authorizationList (optional)
+### authorizationList（可选）
 
-- **Type:** `AuthorizationList`
+- **类型:** `AuthorizationList`
 
-Signed EIP-7702 Authorization list.
+签署的 EIP-7702 授权列表。
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -185,16 +185,16 @@ const signature = await walletClient.signTransaction({
 ```
 
 :::note
-**References**
-- [EIP-7702 Overview](/experimental/eip7702)
-- [`signAuthorization` Docs](/experimental/eip7702/signAuthorization)
+**参考**
+- [EIP-7702 概述](/experimental/eip7702)
+- [`signAuthorization` 文档](/experimental/eip7702/signAuthorization)
 :::
 
-### blobs (optional)
+### blobs（可选）
 
-- **Type:** `Hex[]`
+- **类型:** `Hex[]`
 
-Blobs for [Blob Transactions](/docs/guides/blob-transactions). 
+用于 [Blob 交易](/docs/guides/blob-transactions) 的 blobs。
 
 ```ts
 import * as kzg from 'c-kzg'
@@ -211,14 +211,14 @@ const hash = await walletClient.signTransaction({
 })
 ```
 
-### chain (optional)
+### chain（可选）
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `walletClient.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认:** `walletClient.chain`
 
-The target chain. If there is a mismatch between the wallet's current chain & the target chain, an error will be thrown.
+目标链。如果钱包的当前链与目标链不匹配，将抛出错误。
 
-The chain is also used to infer its request type (e.g. the Celo chain has a `gatewayFee` that you can pass through to `signTransaction`).
+该链还用于推断其请求类型（例如，Celo 链有一个 `gatewayFee`，你可以通过 `signTransaction` 传递）。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -234,11 +234,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### data (optional)
+### data（可选）
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-A contract hashed method call with encoded args.
+带有编码参数的合约哈希方法调用。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -252,11 +252,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -270,13 +270,13 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### kzg (optional)
+### kzg（可选）
 
-- **Type:** `KZG`
+- **类型:** `KZG`
 
-KZG implementation for [Blob Transactions](/docs/guides/blob-transactions). 
+用于 [Blob 交易](/docs/guides/blob-transactions) 的 KZG 实现。
 
-See [`setupKzg`](/docs/utilities/setupKzg) for more information.
+有关更多信息，请参见 [`setupKzg`](/docs/utilities/setupKzg)。
 
 ```ts
 import * as kzg from 'c-kzg'
@@ -294,11 +294,11 @@ const signature = await walletClient.signTransaction({
 ```
 
 
-### maxFeePerGas (optional)
+### maxFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每单位 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -312,11 +312,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每单位 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -331,11 +331,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一编号，用于标识此交易。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -349,11 +349,11 @@ const signature = await walletClient.signTransaction({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]

@@ -1,18 +1,18 @@
 ---
-description: Transforms a list of sidecars to their versioned hashes.
+description: 将侧车列表转换为其版本哈希。
 ---
 
 # sidecarsToVersionedHashes
 
-Transforms a list of sidecars to their versioned hashes.
+将侧车列表转换为其版本哈希。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { sidecarsToVersionedHashes } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,19 +35,19 @@ export const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 
 :::
 
-## Returns
+## 返回
 
 `Hex[] | ByteArray[]`
 
-Versioned hashes from the input sidecars.
+来自输入侧车的版本哈希。
 
-## Parameters
+## 参数
 
 ### sidecars
 
-- **Type:** `BlobSidecars<Hex | ByteArray>`
+- **类型:** `BlobSidecars<Hex | ByteArray>`
 
-Sidecars to transform to versioned hashes.
+要转换为版本哈希的侧车。
 
 ```ts twoslash 
 import { toBlobSidecars, sidecarsToVersionedHashes } from 'viem'
@@ -62,9 +62,9 @@ const versionedHashes = sidecarsToVersionedHashes({
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
+- **类型:** `"bytes" | "hex"`
 
-Commitments corresponding to the input blobs.
+与输入 blob 对应的承诺。
 
 ```ts twoslash 
 import { toBlobSidecars, sidecarsToVersionedHashes } from 'viem'
@@ -84,10 +84,10 @@ versionedHashes  // [!code focus]
 
 ### version
 
-- **Type:** `number`
-- **Default:** `1`
+- **类型:** `number`
+- **默认:** `1`
 
-Version to tag onto the hashes. Defaults to `1`.
+要标记到哈希上的版本。默认为 `1`。
 
 ```ts twoslash 
 import { toBlobSidecars, sidecarsToVersionedHashes } from 'viem'

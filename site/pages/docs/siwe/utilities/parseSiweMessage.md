@@ -1,18 +1,18 @@
 ---
-description: Parses EIP-4361 formatted message into message fields object.
+description: 解析 EIP-4361 格式的消息为消息字段对象。
 ---
 
 # parseSiweMessage
 
-Parses [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) formatted message into message fields object.
+解析 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 格式的消息为消息字段对象。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { parseSiweMessage } from 'viem/siwe'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { parseSiweMessage } from 'viem/siwe'
@@ -35,18 +35,16 @@ fields.address
 
 ```
 
-## Returns
+## 返回
 
 `SiweMessage`
 
-EIP-4361 fields object
+EIP-4361 字段对象
 
-## Parameters
+## 参数
 
 ### message
 
-- **Type:** `string`
+- **类型:** `string`
 
-EIP-4361 formatted message
-
-
+EIP-4361 格式的消息

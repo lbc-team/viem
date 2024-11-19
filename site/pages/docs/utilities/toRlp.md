@@ -1,18 +1,18 @@
 ---
-description: Encodes a hex value or byte array into a RLP encoded value.
+description: 将十六进制值或字节数组编码为 RLP 编码值。
 ---
 
 # toRlp
 
-Encodes a hex value or byte array into a [Recursive-Length Prefix (RLP)](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/) encoded value.
+将十六进制值或字节数组编码为 [递归长度前缀 (RLP)](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/) 编码值。
 
-## Import
+## 导入
 
 ```ts
 import { toRlp } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { toRlp } from 'viem'
@@ -30,26 +30,26 @@ toRlp('0x123456789', 'bytes')
 // Uint8Array [133, 1, 35, 69, 103, 137]
 ```
 
-## Returns
+## 返回
 
 `Hex | ByteArray`
 
-The hex value or byte array.
+十六进制值或字节数组。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-The value to RLP encode.
+要进行 RLP 编码的值。
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
-- **Default:** `"hex"`
+- **类型:** `"bytes" | "hex"`
+- **默认:** `"hex"`
 
-The output type.
+输出类型。
 
 ```ts
 toRlp('0x123456789', 'bytes')

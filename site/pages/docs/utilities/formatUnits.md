@@ -1,18 +1,18 @@
 ---
-description: Divides a number by a given exponent of base 10, and formats it into a string representation of the number.
+description: 将一个数字除以给定的 10 的指数，并将其格式化为数字的字符串表示。
 ---
 
 # formatUnits
 
-Divides a number by a given exponent of base 10 (10<sup>exponent</sup>), and formats it into a string representation of the number.
+将一个数字除以给定的 10 的指数 (10<sup>exponent</sup>)，并将其格式化为数字的字符串表示。
 
-## Import
+## 导入
 
 ```ts
 import { formatUnits } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { formatUnits } from 'viem'
@@ -21,20 +21,20 @@ formatUnits(420000000000n, 9) // [!code focus:2]
 // '420'
 ```
 
-## Returns
+## 返回
 
 `string`
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The number to divide.
+要除的数字。
 
 ### exponent 
 
-- **Type:** `number`
+- **类型:** `number`
 
-The exponent.
+指数。

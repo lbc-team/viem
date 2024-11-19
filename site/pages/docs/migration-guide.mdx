@@ -2,30 +2,30 @@
 head:
   - - meta
     - property: og:title
-      content: Migration Guide
+      content: 迁移指南
   - - meta
     - name: description
-      content: Guide to migrate to newer versions of viem.
+      content: 迁移到更新版本的 viem 的指南。
   - - meta
     - property: og:description
-      content: Guide to migrate to newer versions of viem.
+      content: 迁移到更新版本的 viem 的指南。
 ---
 
-# Migration Guide
+# 迁移指南
 
-If you are coming from an earlier version of `viem`, you will need to make sure to update the following APIs listed below.
+如果你是从早期版本的 `viem` 过来的，你需要确保更新以下列出的 API。
 
-## 2.x.x Breaking changes
+## 2.x.x 破坏性更改
 
-The 2.x.x release includes very minor breaking changes to the Contract Instances API, entrypoints, chain modules, and miscellaneous actions + utilities listed below.
+2.x.x 版本包含对合约实例 API、入口点、链模块以及下面列出的杂项操作 + 工具的非常小的破坏性更改。
 
-Not ready to migrate? [Head to the 1.x.x docs.](https://v1.viem.sh)
+还没准备好迁移？[前往 1.x.x 文档。](https://v1.viem.sh)
 
-### Actions: Modified `getContract` Client API
+### 操作：修改后的 `getContract` 客户端 API
 
-The `publicClient` and `walletClient` parameters of the `getContract` API has been removed in favour of `client` to support Client's that [extend](/docs/clients/wallet#optional-extend-with-public-actions) (ie. [a Wallet Client extended with Public Actions](/docs/clients/wallet#optional-extend-with-public-actions)).
+`getContract` API 的 `publicClient` 和 `walletClient` 参数已被移除，取而代之的是 `client`，以支持 [扩展](/docs/clients/wallet#optional-extend-with-public-actions) 的客户端（即 [扩展了公共操作的钱包客户端](/docs/clients/wallet#optional-extend-with-public-actions)）。
 
-[Read more.](/docs/contract/getContract)
+[阅读更多。](/docs/contract/getContract)
 
 ```tsx
 import { getContract } from 'viem'
@@ -43,9 +43,9 @@ const contract = getContract({
 })
 ```
 
-### Removed entrypoints
+### 移除的入口点
 
-The following entrypoints have been removed:
+以下入口点已被移除：
 
 - `viem/abi`
 - `viem/contract`
@@ -53,7 +53,7 @@ The following entrypoints have been removed:
 - `viem/test`
 - `viem/wallet`
 
-You can import the entrypoints directly from `viem`:
+你可以直接从 `viem` 导入入口点：
 
 ```ts
 import { encodeAbiParameters } from 'viem/abi' // [!code --]
@@ -70,16 +70,16 @@ import { // [!code ++]
 } from 'viem' // [!code ++]
 ```
 
-### Moved chain-specific exports in `viem/chains/utils`
+### 移动链特定导出到 `viem/chains/utils`
 
-Chain-specific exports in `viem/chains/utils` have been moved to `viem/{celo|op-stack|zksync}`:
+链特定导出已从 `viem/chains/utils` 移动到 `viem/{celo|op-stack|zksync}`：
 
 ```ts
 import {
   parseTransactionCelo,
-  parseTransaction // [!code ++]
+  parseTransaction, // [!code ++]
   serializeTransactionCelo, // [!code --]
-  serializeTransaction // [!code ++]
+  serializeTransaction, // [!code ++]
   // ...
 } from 'viem/chains/utils' // [!code --]
 } from 'viem/celo' // [!code ++]
@@ -99,9 +99,9 @@ import {
 } from 'viem/zksync' // [!code ++]
 ```
 
-### Actions: `getBlockNumber`
+### 操作：`getBlockNumber`
 
-The `maxAge` parameter has been removed in favor of `cacheTime`.
+`maxAge` 参数已被移除，取而代之的是 `cacheTime`。
 
 ```ts
 const blockNumber = await client.getBlockNumber({
@@ -110,9 +110,9 @@ const blockNumber = await client.getBlockNumber({
 })
 ```
 
-### Actions: `OnLogFn` & `OnLogParameter` types
+### 操作：`OnLogFn` 和 `OnLogParameter` 类型
 
-The `OnLogFn` & `OnLogParameter` types have been renamed.
+`OnLogFn` 和 `OnLogParameter` 类型已被重命名。
 
 ```ts
 import {
@@ -123,9 +123,9 @@ import {
 } from 'viem' 
 ```
 
-### Actions: `prepareRequest`
+### 操作：`prepareRequest`
 
-The `prepareRequest` Action has been renamed to `prepareTransactionRequest` and moved to `viem/actions` entrypoint.
+`prepareRequest` 操作已被重命名为 `prepareTransactionRequest` 并移动到 `viem/actions` 入口点。
 
 ```ts
 import {
@@ -135,9 +135,9 @@ import {
 } from 'viem/actions' // [!code ++]
 ```
 
-### Actions: `SimulateContractParameters` & `SimulateContractReturnType` types
+### 操作：`SimulateContractParameters` 和 `SimulateContractReturnType` 类型
 
-Note the following breaking generic slot changes:
+请注意以下破坏性通用插槽更改：
 
 ```ts
 type SimulateContractParameters<
@@ -160,13 +160,13 @@ type SimulateContractReturnType<
 >
 ```
 
-### Utilities: Removed `extractFunctionParts`, `extractFunctionName`, `extractFunctionParams`, `extractFunctionType`
+### 工具：移除 `extractFunctionParts`、`extractFunctionName`、`extractFunctionParams`、`extractFunctionType`
 
-The `extractFunctionParts`, `extractFunctionName`, `extractFunctionParams`, `extractFunctionType` utility functions have been removed. You can use the [`parseAbiItem` utility function from abitype](https://abitype.dev/api/human#parseabiitem-1) instead.
+`extractFunctionParts`、`extractFunctionName`、`extractFunctionParams`、`extractFunctionType` 工具函数已被移除。你可以使用 [`parseAbiItem` 工具函数来自 abitype](https://abitype.dev/api/human#parseabiitem-1) 代替。
 
-### Utilities: Renamed `bytesToBigint`
+### 工具：重命名 `bytesToBigint`
 
-The `bytesToBigint` utility function has been renamed to `bytesToBigInt`.
+`bytesToBigint` 工具函数已被重命名为 `bytesToBigInt`。
 
 ```ts
 import {
@@ -175,9 +175,9 @@ import {
 } from 'viem'
 ```
 
-### Utilities: Renamed chain types
+### 工具：重命名链类型
 
-The following chain types have been renamed:
+以下链类型已被重命名：
 
 ```ts
 import {
@@ -196,11 +196,11 @@ import {
 } from 'viem'
 ```
 
-### Utilities: `isAddress` & `getAddress` perform checksum validation
+### 工具：`isAddress` 和 `getAddress` 执行校验和验证
 
-The `isAddress` utility function now performs checksum validation by default. 
+`isAddress` 工具函数现在默认执行校验和验证。
 
-To opt-out of this behavior, you can pass `strict: false` or lowercase the address.
+要选择退出此行为，你可以传递 `strict: false` 或将地址转换为小写。
 
 ```ts
 import { isAddress } from 'viem'
@@ -214,21 +214,21 @@ isAddress(
 )
 ```
 
-## 1.x.x Breaking changes
+## 1.x.x 破坏性更改
 
-The 1.x.x release only includes very minor changes to the behavior in event log decoding, and removes the redundant ethers.js Wallet Adapter. If you do not directly use these APIs, you do not need to update any of your code for this version.
+1.x.x 版本仅包含对事件日志解码行为的非常小的更改，并移除了冗余的 ethers.js 钱包适配器。如果你不直接使用这些 API，则无需更新此版本的任何代码。
 
-### Removed `ethersWalletToAccount`
+### 移除 `ethersWalletToAccount`
 
-The `ethersWalletToAccount` adapter has been removed.
+`ethersWalletToAccount` 适配器已被移除。
 
-This adapter was introduced when viem did not have Private Key & HD Accounts. Since 0.2, viem provides all the utilities needed to create and import [Private Key](https://viem.sh/docs/accounts/local/privateKeyToAccount) & [HD Accounts](https://viem.sh/docs/accounts/local/mnemonicToAccount).
+该适配器是在 viem 没有私钥和 HD 账户时引入的。从 0.2 开始，viem 提供了创建和导入 [私钥](https://viem.sh/docs/accounts/local/privateKeyToAccount) 和 [HD 账户](https://viem.sh/docs/accounts/local/mnemonicToAccount) 所需的所有工具。
 
-If you still need it, you can copy + paste the [old implementation](https://github.com/wevm/viem/blob/a9a71507032db896295fa1f3fa2dd6c2bdc85137/src/adapters/ethers.ts).
+如果你仍然需要它，可以复制 + 粘贴 [旧实现](https://github.com/wevm/viem/blob/a9a71507032db896295fa1f3fa2dd6c2bdc85137/src/adapters/ethers.ts)。
 
-### `logIndex` & `transactionIndex` on Logs
+### `logIndex` 和 `transactionIndex` 在日志中
 
-`logIndex` & `transactionIndex` on `Log` now return a `number` instead of a `bigint`.
+`logIndex` 和 `transactionIndex` 在 `Log` 上现在返回 `number` 而不是 `bigint`。
 
 ```ts
 const log: Log = {
@@ -241,17 +241,17 @@ const log: Log = {
 }
 ```
 
-### Minor: `decodeEventLog` behavior change
+### 小变化：`decodeEventLog` 行为变化
 
-`decodeEventLog` no longer attempts to partially decode events. If the Log does not conform to the ABI (mismatch between the number of indexed/non-indexed arguments to topics/data), it will throw an error. 
+`decodeEventLog` 不再尝试部分解码事件。如果日志不符合 ABI（索引/非索引参数与主题/数据之间的数量不匹配），它将抛出错误。
 
-For example, the following Log will throw an error as there is a mismatch in non-`indexed` arguments & `data` length.
+例如，以下日志将抛出错误，因为非 `indexed` 参数与 `data` 长度不匹配。
 
 ```ts 
 decodeEventLog({
   abi: parseAbi(['event Transfer(address indexed, address, uint256)']), // [!code focus]
-  // `data` should be 64 bytes, but is only 32 bytes. // [!code focus]
-  data: '0x0000000000000000000000000000000000000000000000000000000000000001' // [!code focus]
+  // `data` 应该是 64 字节，但只有 32 字节。 // [!code focus]
+  data: '0x0000000000000000000000000000000000000000000000000000000000000001', // [!code focus]
   topics: [
     '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
     '0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266',
@@ -259,14 +259,14 @@ decodeEventLog({
 })
 ```
 
-Previously, the above would only decode the `indexed` arguments. 
+之前，上述代码仅解码 `indexed` 参数。
 
-If you would like to partially decode event logs (previous behavior), you can turn off `strict` mode:
+如果你想要部分解码事件日志（之前的行为），可以关闭 `strict` 模式：
 
 ```ts 
 decodeEventLog({
   abi: parseAbi(['event Transfer(address indexed, address, uint256)']),
-  data: '0x0000000000000000000000000000000000000000000000000000000000000001'
+  data: '0x0000000000000000000000000000000000000000000000000000000000000001',
   topics: [
     '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
     '0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266',
@@ -275,37 +275,37 @@ decodeEventLog({
 })
 ```
 
-## 0.3.x Breaking changes
+## 0.3.x 破坏性更改
 
-The 0.3.x release only includes breaking changes around RPC errors. If you do not directly use the APIs listed below, you do not need to update any of your code for this version.
+0.3.x 版本仅包含与 RPC 错误相关的破坏性更改。如果你没有直接使用下面列出的 API，则无需更新此版本的任何代码。
 
-### Renamed `RequestError` to `RpcError`
+### 将 `RequestError` 重命名为 `RpcError`
 
-`RequestError` was renamed `RpcError` for clarity.
+为了清晰起见，将 `RequestError` 重命名为 `RpcError`。
 
 ```ts
 import { RequestError } from 'viem'  // [!code --]
 import { RpcError } from 'viem'  // [!code ++]
 
-throw new RequestError(new Error('An error occurred.'))  // [!code --]
-throw new RpcError(new Error('An error occurred.'))  // [!code ++]
+throw new RequestError(new Error('发生错误。'))  // [!code --]
+throw new RpcError(new Error('发生错误。'))  // [!code ++]
 ```
 
-### Removed `RpcRequestError`
+### 移除 `RpcRequestError`
 
-`RpcRequestError` was removed. Use `RpcError` instead.
+`RpcRequestError` 被移除。请改用 `RpcError`。
 
 ```ts
 import { RpcRequestError } from 'viem' // [!code --]
 import { RpcError } from 'viem'  // [!code ++]
 
-throw new RpcRequestError(new Error('An error occurred.')) // [!code --]
-throw new RpcError(new Error('An error occurred.')) // [!code ++]
+throw new RpcRequestError(new Error('发生错误。')) // [!code --]
+throw new RpcError(new Error('发生错误。')) // [!code ++]
 ```
 
-### Renamed `RpcError` to `RpcRequestError`
+### 将 `RpcError` 重命名为 `RpcRequestError`
 
-`RpcError` was renamed `RpcRequestError` for consistency.
+为了保持一致性，将 `RpcError` 重命名为 `RpcRequestError`。
 
 ```ts
 import { RpcError } from 'viem' // [!code --]
@@ -314,18 +314,18 @@ import { RpcRequestError } from 'viem'  // [!code ++]
 const err = new RpcError({ // [!code --]
 const err = new RpcRequestError({  // [!code ++]
   body: { foo: 'bar' },
-  error: { code: 420, message: 'Error' },
+  error: { code: 420, message: '错误' },
   url: 'https://example-rpc.com',
 })
 ```
 
-## 0.2.x Breaking changes
+## 0.2.x 破坏性更改
 
-### `chain` is required for `sendTransaction`, `writeContract`, `deployContract`
+### `chain` 是 `sendTransaction`、`writeContract`、`deployContract` 的必需项
 
-A chain is now required for the `sendTransaction`, `writeContract`, `deployContract` Actions.
+现在在 `sendTransaction`、`writeContract`、`deployContract` 操作中需要提供链。
 
-You can hoist the Chain on the Client:
+你可以在客户端中提升链：
 
 ```ts
 import { createWalletClient, custom, getAccount } from 'viem'
@@ -345,7 +345,7 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-Alternatively, you can pass the Chain directly to the Action:
+或者，你可以直接将链传递给操作：
 
 ```ts
 import { createWalletClient, custom, getAccount } from 'viem'
@@ -366,9 +366,9 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### `recoverAddress`, `recoverMessageAddress`, `verifyMessage` are now async
+### `recoverAddress`、`recoverMessageAddress`、`verifyMessage` 现在是异步的
 
-The following functions are now `async` functions instead of synchronous functions:
+以下函数现在是异步函数，而不是同步函数：
 
 - `recoverAddress`
 - `recoverMessageAddress`
@@ -381,9 +381,9 @@ recoverMessageAddress({ message: 'hello world', signature: '0x...' }) // [!code 
 await recoverMessageAddress({ message: 'hello world', signature: '0x...' }) // [!code ++]
 ```
 
-### `assertChain` removed from `sendTransaction`
+### 从 `sendTransaction` 中移除 `assertChain`
 
-Removed `assertChain` argument on `sendTransaction`, `writeContract` & `deployContract`. If you wish to bypass the chain check (not recommended unless for testing purposes), you can pass `chain: null`.
+移除了 `sendTransaction`、`writeContract` 和 `deployContract` 中的 `assertChain` 参数。如果你希望绕过链检查（不推荐，除非用于测试目的），可以传递 `chain: null`。
 
 ```ts
 await walletClient.sendTransaction({
@@ -393,13 +393,13 @@ await walletClient.sendTransaction({
 })
 ```
 
-### `getAccount` removed
+### 移除 `getAccount`
 
-Removed the `getAccount` function.
+移除了 `getAccount` 函数。
 
-#### For JSON-RPC Accounts, use the address itself.
+#### 对于 JSON-RPC 账户，直接使用地址。
 
-You can now pass the address directly to the `account` option.
+你现在可以直接将地址传递给 `account` 选项。
 
 ```ts
 import { createWalletClient, custom } from 'viem'
@@ -415,11 +415,11 @@ const client = createWalletClient({
 })
 ```
 
-#### For Ethers Wallet Adapter, use `ethersWalletToAccount`.
+#### 对于 Ethers 钱包适配器，使用 `ethersWalletToAccount`。
 
-If you were using the Ethers Wallet adapter, you can use the `ethersWalletToAccount` function.
+如果你使用的是 Ethers 钱包适配器，可以使用 `ethersWalletToAccount` 函数。
 
-> Note: viem 0.2.0 now has a [Private Key](/docs/accounts/local/privateKeyToAccount) & [Mnemonic Account](/docs/accounts/local/mnemonicToAccount) implementation. You probably do not need this adapter anymore. This adapter may be removed in a future version.
+> 注意：viem 0.2.0 现在有 [私钥](/docs/accounts/local/privateKeyToAccount) 和 [助记词账户](/docs/accounts/local/mnemonicToAccount) 的实现。你可能不再需要此适配器。此适配器可能在未来版本中被移除。
 
 ```ts
 import { createWalletClient, custom } from 'viem'
@@ -438,9 +438,9 @@ const client = createWalletClient({
 })
 ```
 
-#### For Local Accounts, use `toAccount`.
+#### 对于本地账户，使用 `toAccount`。
 
-If you are using a custom signing implementation, you can use the `toAccount` function.
+如果你使用自定义签名实现，可以使用 `toAccount` 函数。
 
 ```ts
 import { createWalletClient, http, getAccount } from 'viem' // [!code --]
@@ -471,9 +471,9 @@ const client = createWalletClient({
 })
 ```
 
-### `data` renamed in `signMessage`
+### 在 `signMessage` 中重命名 `data`
 
-Renamed the `data` parameter in `signMessage` to `message`.
+将 `signMessage` 中的 `data` 参数重命名为 `message`。
 
 ```ts
 walletClient.signMessage({

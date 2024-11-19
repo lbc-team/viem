@@ -1,12 +1,12 @@
 ---
-description: Jump forward in time by the given amount of time, in seconds.
+description: 按给定的时间（以秒为单位）向前跳跃。
 ---
 
 # increaseTime
 
-Jump forward in time by the given amount of time, in seconds.
+按给定的时间（以秒为单位）向前跳跃。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### seconds
 
-- **Type:** `number`
+- **类型:** `number`
 
-The amount of seconds to jump forward in time.
+向前跳跃的秒数。
 
 ```ts
 await testClient.increaseTime({

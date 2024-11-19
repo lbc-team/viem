@@ -1,25 +1,25 @@
 ---
-description: Encodes a string, number, boolean or byte array to a hex value value.
+description: 将字符串、数字、布尔值或字节数组编码为十六进制值。
 ---
 
 # toHex
 
-Encodes a string, number, boolean or byte array to a hex value value.
+将字符串、数字、布尔值或字节数组编码为十六进制值。
 
-Shortcut Functions: 
+快捷函数：
 
 - [numberToHex](#numbertohex)
 - [stringToHex](#stringtohex)
 - [bytesToHex](#bytestohex)
 - [boolToHex](#booltohex)
 
-## Import
+## 导入
 
 ```ts
 import { toHex } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { toHex } from 'viem'
@@ -39,19 +39,19 @@ toHex(true)
 // "0x1"
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The hex value.
+十六进制值。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `string | number | bigint | ByteArray`
+- **类型:** `string | number | bigint | ByteArray`
 
-The value to hex encode.
+要进行十六进制编码的值。
 
 ```ts 
 toHex(
@@ -70,13 +70,13 @@ toHex(
 // '0x48656c6c6f20776f726c642e0000000000000000000000000000000000000000'
 ```
 
-## Shortcut Functions
+## 快捷函数
 
 ### numberToHex
 
-- **Type:** `number | bigint`
+- **类型:** `number | bigint`
 
-Encodes a number value to a hex value.
+将数字值编码为十六进制值。
 
 ```ts
 import { numberToHex } from 'viem'
@@ -96,9 +96,9 @@ numberToHex(4206942069420694206942069420694206942069n, { size: 32 })
 
 ### stringToHex
 
-- **Type:** `string`
+- **类型:** `string`
 
-Encodes a UTF-8 string value to a hex value.
+将 UTF-8 字符串值编码为十六进制值。
 
 ```ts
 import { stringToHex } from 'viem'
@@ -112,9 +112,9 @@ stringToHex('Hello World!', { size: 32 })
 
 ### bytesToHex
 
-- **Type:** `ByteArray`
+- **类型:** `ByteArray`
 
-Encodes a byte array to a hex value.
+将字节数组编码为十六进制值。
 
 ```ts
 import { bytesToHex } from 'viem'
@@ -133,9 +133,9 @@ bytesToHex(
 
 ### boolToHex
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Encodes a boolean to a hex value.
+将布尔值编码为十六进制值。
 
 ```ts
 import { boolToHex } from 'viem'

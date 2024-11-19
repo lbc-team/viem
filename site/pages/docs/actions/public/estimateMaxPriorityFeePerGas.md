@@ -1,16 +1,16 @@
 ---
-description: Returns an estimate for the max priority fee per gas (in wei) for a transaction to be likely included in the next block.
+description: 返回一个估算的最大优先费用（以 wei 为单位），用于交易可能被包含在下一个区块中。
 ---
 
 # estimateMaxPriorityFeePerGas
 
-Returns an estimate for the max priority fee per gas (in wei) for a transaction to be likely included in the next block.
+返回一个估算的最大优先费用（以 wei 为单位），用于交易可能被包含在下一个区块中。
 
-If [`chain.fees.defaultPriorityFee`](/docs/chains/fees#feesdefaultpriorityfee) is set on the [Client Chain](/docs/clients/public#chain-optional) or [override Chain](#chain-optional), it will use that value.
+如果在 [Client Chain](/docs/clients/public#chain-optional) 或 [override Chain](#chain-optional) 上设置了 [`chain.fees.defaultPriorityFee`](/docs/chains/fees#feesdefaultpriorityfee)，将使用该值。
 
-Otherwise, the Action will either call [`eth_maxPriorityFeePerGas`](https://github.com/ethereum/execution-apis/blob/fe8e13c288c592ec154ce25c534e26cb7ce0530d/src/eth/fee_market.yaml#L9-L16) (if supported) or manually calculate the max priority fee per gas based on the current block base fee per gas + gas price.
+否则，Action 将调用 [`eth_maxPriorityFeePerGas`](https://github.com/ethereum/execution-apis/blob/fe8e13c288c592ec154ce25c534e26cb7ce0530d/src/eth/fee_market.yaml#L9-L16)（如果支持）或根据当前区块的基础费用加上 gas 价格手动计算最大优先费用。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -18,7 +18,7 @@ Otherwise, the Action will either call [`eth_maxPriorityFeePerGas`](https://gith
 import { publicClient } from './client'
 
 const maxPriorityFeePerGas = await publicClient.estimateMaxPriorityFeePerGas()
-// @log: Output: 1_000_000_000n
+// @log: 输出: 1_000_000_000n
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -33,20 +33,20 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-An estimate (in wei) for the max priority fee per gas.
+最大优先费用的估算值（以 wei 为单位）。
 
-## Parameters
+## 参数
 
-### chain (optional)
+### chain（可选）
 
-- **Type:** [Chain](/docs/glossary/types#chain)
-- **Default:** [`client.chain`](/docs/clients/public#chain-optional)
+- **类型:** [Chain](/docs/glossary/types#chain)
+- **默认:** [`client.chain`](/docs/clients/public#chain-optional)
 
-Optional Chain override. Used to infer the default `maxPriorityFeePerGas` from [`chain.fees.defaultPriorityFee`](/docs/chains/fees#feesdefaultpriorityfee).
+可选的链覆盖。用于从 [`chain.fees.defaultPriorityFee`](/docs/chains/fees#feesdefaultpriorityfee) 推断默认的 `maxPriorityFeePerGas`。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]

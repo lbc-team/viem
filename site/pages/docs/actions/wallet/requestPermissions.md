@@ -1,12 +1,12 @@
 ---
-description: Requests permissions for a wallet.
+description: 请求钱包权限。
 ---
 
 # requestPermissions
 
-Requests permissions for a wallet.
+请求钱包权限。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -22,13 +22,12 @@ const permissions = await walletClient.requestPermissions({ eth_accounts: {} }) 
 
 :::
 
-## Returns
+## 返回值
 
 [`WalletPermission[]`](/docs/glossary/types#walletpermission)
 
-The wallet permissions.
+钱包权限。
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`wallet_requestPermissions`](https://eips.ethereum.org/EIPS/eip-2255)
-

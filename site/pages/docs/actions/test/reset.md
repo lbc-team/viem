@@ -1,12 +1,12 @@
 ---
-description: Resets the fork back to its original state.
+description: 将分叉重置回其原始状态。
 ---
 
 # reset
 
-Resets the fork back to its original state.
+将分叉重置回其原始状态。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,13 +29,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Resets the fork to a given block number.
+将分叉重置到给定的区块号。
 
 ```ts
 await testClient.reset({
@@ -44,11 +44,11 @@ await testClient.reset({
 })
 ```
 
-### jsonRpcUrl (optional)
+### jsonRpcUrl (可选)
 
-- **Type:** `string`
+- **类型:** `string`
 
-Resets the fork with a given JSON RPC URL.
+使用给定的 JSON RPC URL 重置分叉。
 
 ```ts
 await testClient.reset({

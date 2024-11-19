@@ -1,10 +1,10 @@
-# createEventFilter [An Action for creating a new Event Filter.]
+# createEventFilter [创建新事件过滤器的操作。]
 
-Creates a Filter to listen for new events that can be used with [`getFilterChanges`](/docs/actions/public/getFilterChanges).
+创建一个过滤器以监听新事件，可与 [`getFilterChanges`](/docs/actions/public/getFilterChanges) 一起使用。
 
-## Usage
+## 用法
 
-By default, an Event Filter with no arguments will query for/listen to all events.
+默认情况下，带有无参数的事件过滤器将查询/监听所有事件。
 
 :::code-group
 
@@ -28,16 +28,16 @@ export const publicClient = createPublicClient({
 :::
 
 :::tip
-Check out [`createContractEventFilter`](/docs/contract/createContractEventFilter) if you are after a first-class solution for querying events on a contract without needing to manually craft ABI event parameters.
+如果你想要一个一流的解决方案来查询合约上的事件，而无需手动构造 ABI 事件参数，请查看 [`createContractEventFilter`](/docs/contract/createContractEventFilter)。
 :::
 
-## Scoping
+## 范围
 
-You can also scope a Filter to a set of given attributes (listed below).
+你还可以将过滤器限制为一组给定的属性（如下所示）。
 
-### Address
+### 地址
 
-A Filter can be scoped to an **address**:
+过滤器可以限制为一个 **地址**：
 
 :::code-group
 
@@ -61,11 +61,11 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Event
+### 事件
 
-A Filter can be scoped to an **event**.
+过滤器可以限制为一个 **事件**。
 
-The `event` argument takes in an event in ABI format – we have a [`parseAbiItem` utility](/docs/abi/parseAbiItem) that you can use to convert from a human-readable event signature → ABI.
+`event` 参数接受 ABI 格式的事件 – 我们有一个 [`parseAbiItem` 工具](/docs/abi/parseAbiItem)，你可以用它将人类可读的事件签名转换为 ABI。
 
 :::code-group
 
@@ -91,7 +91,7 @@ export const publicClient = createPublicClient({
 
 :::
 
-By default, `event` accepts the [`AbiEvent`](/docs/glossary/types#abievent) type:
+默认情况下，`event` 接受 [`AbiEvent`](/docs/glossary/types#abievent) 类型：
 
 :::code-group
 
@@ -123,9 +123,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Arguments
+### 参数
 
-A Filter can be scoped to given **_indexed_ arguments**:
+过滤器可以限制为给定的 **_索引_ 参数**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -142,9 +142,9 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-Only indexed arguments in `event` are candidates for `args`.
+只有 `event` 中的索引参数才是 `args` 的候选。
 
-A Filter Argument can also be an array to indicate that other values can exist in the position:
+过滤器参数也可以是一个数组，以指示该位置可以存在其他值：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -155,7 +155,7 @@ const filter = await publicClient.createEventFilter({
   address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
   event: parseAbiItem('event Transfer(address indexed from, address indexed to, uint256 value)'),
   args: { // [!code focus:8]
-    // '0xd8da...' OR '0xa5cc...' OR '0xa152...'
+    // '0xd8da...' 或 '0xa5cc...' 或 '0xa152...'
     from: [
       '0xd8da6bf26964af9d7eed9e03e53415d37aa96045', 
       '0xa5cc3c03994db5b0d9a5eedd10cabab0813678ac',
@@ -165,9 +165,9 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-### Block Range
+### 区块范围
 
-A Filter can be scoped to a **block range**:
+过滤器可以限制为一个 **区块范围**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -182,9 +182,9 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-### Multiple Events
+### 多个事件
 
-A Filter can be scoped to **multiple events**:
+过滤器可以限制为 **多个事件**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -199,12 +199,12 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-Note: A Filter scoped to multiple events cannot be also scoped with [indexed arguments](#arguments) (`args`).
+注意：限制为多个事件的过滤器不能同时限制为 [索引参数](#arguments) (`args`)。
 
-### Strict Mode
+### 严格模式
 
-By default, `createEventFilter` will include logs that [do not conform](/docs/glossary/terms#non-conforming-log) to the indexed & non-indexed arguments on the `event`.
-viem will not return a value for arguments that do not conform to the ABI, thus, some arguments on `args` may be undefined.
+默认情况下，`createEventFilter` 将包括 [不符合](/docs/glossary/terms#non-conforming-log) 索引和非索引参数的日志。
+viem 不会返回不符合 ABI 的参数值，因此，`args` 中的一些参数可能是未定义的。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -227,7 +227,7 @@ logs[0].args
 
 ```
 
-You can turn on `strict` mode to only return logs that conform to the indexed & non-indexed arguments on the `event`, meaning that `args` will always be defined. The trade-off is that non-conforming logs will be filtered out.
+你可以开启 `strict` 模式，仅返回符合索引和非索引参数的日志，这意味着 `args` 将始终被定义。权衡是，非符合的日志将被过滤掉。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -251,17 +251,17 @@ logs[0].args
 
 ```
 
-## Returns
+## 返回
 
 [`Filter`](/docs/glossary/types#filter)
 
-## Parameters
+## 参数
 
-### address (optional)
+### address (可选)
 
-- **Type:** `Address | Address[]`
+- **类型：** `Address | Address[]`
 
-The contract address or a list of addresses from which Logs should originate.
+合约地址或应来源于的地址列表。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -271,13 +271,13 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-### event (optional)
+### event (可选)
 
-- **Type:** [`AbiEvent`](/docs/glossary/types#abievent)
+- **类型：** [`AbiEvent`](/docs/glossary/types#abievent)
 
-The event in ABI format.
+ABI 格式的事件。
 
-A [`parseAbiItem` utility](/docs/abi/parseAbiItem) is exported from viem that converts from a human-readable event signature → ABI.
+从 viem 导出的 [`parseAbiItem` 工具](/docs/abi/parseAbiItem) 可以将人类可读的事件签名转换为 ABI。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -290,11 +290,11 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-### args (optional)
+### args (可选)
 
-- **Type:** Inferred.
+- **类型:** 推断。
 
-A list of _indexed_ event arguments.
+一组*索引*事件参数。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -311,11 +311,11 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-### fromBlock (optional)
+### fromBlock (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Block to start querying/listening from.
+开始查询/监听的区块。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -325,11 +325,11 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-### toBlock (optional)
+### toBlock (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Block to query/listen until.
+查询/监听直到的区块。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -339,6 +339,6 @@ const filter = await publicClient.createEventFilter({
 })
 ```
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_newFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter)

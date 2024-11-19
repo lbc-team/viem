@@ -1,12 +1,12 @@
 ---
-description: Modifies the bytecode stored at an account's address.
+description: 修改存储在账户地址的字节码。
 ---
 
 # setCode
 
-Modifies the bytecode stored at an account's address.
+修改存储在账户地址的字节码。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -32,13 +32,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The account address.
+账户地址。
 
 ```ts
 await testClient.setCode({
@@ -49,9 +49,9 @@ await testClient.setCode({
 
 ### bytecode
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The stored bytecode.
+存储的字节码。
 
 ```ts
 await testClient.setCode({

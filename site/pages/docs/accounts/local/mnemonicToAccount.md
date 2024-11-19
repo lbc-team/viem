@@ -1,22 +1,22 @@
-# mnemonicToAccount [A function to create a Mnemonic Account.]
+# mnemonicToAccount [创建助记词账户的函数]
 
-A Mnemonic Account is a [Hierarchical Deterministic (HD) Account](/docs/accounts/local/hdKeyToAccount) that is derived from a [BIP-39 mnemonic phrase](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) and an optional HD path.
+助记词账户是一个 [分层确定性 (HD) 账户](/docs/accounts/local/hdKeyToAccount)，它是从 [BIP-39 助记词短语](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) 和一个可选的 HD 路径派生而来的。
 
-It has the ability to sign transactions and messages with the private key derived from the HD Node.
+它能够使用从 HD 节点派生的私钥签署交易和消息。
 
 :::info
-viem internally uses [`@scure/bip32`](https://github.com/paulmillr/scure-bip32), an **audited** implementation of [BIP-32 HD wallets](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract), for hierarchical deterministic (HD) wallet derivation.
+viem 内部使用 [`@scure/bip32`](https://github.com/paulmillr/scure-bip32)，这是一个经过**审计**的 [BIP-32 HD 钱包](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#abstract) 实现，用于分层确定性 (HD) 钱包的派生。
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { mnemonicToAccount } from 'viem/accounts'
 ```
 
-## Usage
+## 用法
 
-To initialize a Mnemonic Account, you will need to pass a mnemonic phrase to `mnemonicToAccount`:
+要初始化一个助记词账户，你需要将助记词短语传递给 `mnemonicToAccount`：
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -32,11 +32,11 @@ const client = createWalletClient({
 })
 ```
 
-> Note: the above is a valid mnemonic, but it is not a "real" mnemonic. Please do not use it for anything other than testing.
+> 注意：上述是一个有效的助记词，但它不是一个“真实”的助记词。请不要将其用于除测试以外的任何用途。
 
-### Generating Mnemonics
+### 生成助记词
 
-You can generate a random BIP-39 mnemonic using the `generateMnemonic` function with a wordlist:
+你可以使用 `generateMnemonic` 函数和单词列表生成一个随机的 BIP-39 助记词：
 
 ```ts twoslash
 import { english, generateMnemonic } from 'viem/accounts'
@@ -45,10 +45,10 @@ const mnemonic = generateMnemonic(english)
 ```
 
 :::tip
-You can customize the strength of the generated mnemonic by passing a value between 128 and 256 as the second argument to the `generateMnemonic` function. This value must be a multiple of 32.
+你可以通过将一个介于 128 和 256 之间的值作为 `generateMnemonic` 函数的第二个参数来定制生成的助记词的强度。该值必须是 32 的倍数。
 :::
 
-Available wordlists:
+可用的单词列表：
 
 - `czech`
 - `english`
@@ -61,13 +61,13 @@ Available wordlists:
 - `spanish`
 - `traditionalChinese`
 
-## Parameters
+## 参数
 
 ### mnemonic
 
-- **Type:** `string`
+- **类型：** `string`
 
-The BIP-39 mnemonic phrase.
+BIP-39 助记词短语。
 
 ```ts twoslash
 import { mnemonicToAccount } from 'viem/accounts'
@@ -79,10 +79,10 @@ const account = mnemonicToAccount(
 
 ### options.accountIndex
 
-- **Type:** `number`
-- **Default:** `0`
+- **类型：** `number`
+- **默认值：** `0`
 
-The account index to use in the path (`"m/44'/60'/${accountIndex}'/0/0"`) to derive a private key.
+在路径中使用的账户索引 (`"m/44'/60'/${accountIndex}'/0/0"`) 以派生私钥。
 
 ```ts twoslash
 import { mnemonicToAccount } from 'viem/accounts'
@@ -97,10 +97,10 @@ const account = mnemonicToAccount(
 
 ### options.addressIndex
 
-- **Type:** `number`
-- **Default:** `0`
+- **类型：** `number`
+- **默认值：** `0`
 
-The address index to use in the path (`"m/44'/60'/0'/0/${addressIndex}"`) to derive a private key.
+在路径中使用的地址索引 (`"m/44'/60'/0'/0/${addressIndex}"`) 以派生私钥。
 
 ```ts twoslash
 import { mnemonicToAccount } from 'viem/accounts'
@@ -116,10 +116,10 @@ const account = mnemonicToAccount(
 
 ### options.changeIndex
 
-- **Type:** `number`
-- **Default:** `0`
+- **类型：** `number`
+- **默认值：** `0`
 
-The change index to use in the path (`"m/44'/60'/0'/${changeIndex}/0"`) to derive a private key.
+在路径中使用的变更索引 (`"m/44'/60'/0'/${changeIndex}/0"`) 以派生私钥。
 
 ```ts twoslash
 import { mnemonicToAccount } from 'viem/accounts'
@@ -136,9 +136,9 @@ const account = mnemonicToAccount(
 
 ### options.path
 
-- **Type:** `"m/44'/60'/${string}"`
+- **类型：** `"m/44'/60'/${string}"`
 
-The HD path to use to derive a private key.
+用于派生私钥的 HD 路径。
 
 ```ts twoslash
 import { mnemonicToAccount } from 'viem/accounts'

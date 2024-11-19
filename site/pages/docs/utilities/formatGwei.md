@@ -1,18 +1,18 @@
 ---
-description: Converts numerical wei to a string representation of gwei.
+description: 将数值 wei 转换为 gwei 的字符串表示。
 ---
 
 # formatGwei
 
-Converts numerical wei to a string representation of gwei.
+将数值 wei 转换为 gwei 的字符串表示。
 
-## Import
+## 导入
 
 ```ts
 import { formatGwei } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { formatGwei } from 'viem'
@@ -21,14 +21,14 @@ formatGwei(1000000000n) // [!code focus:2]
 // '1'
 ```
 
-## Returns
+## 返回
 
 `string`
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The wei value.
+wei 值。

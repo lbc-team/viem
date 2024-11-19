@@ -1,18 +1,18 @@
-# Local Accounts (Private Key, Mnemonic, etc)
+# 本地账户（私钥、助记词等）
 
-A Local Account is an Account whose signing keys are stored on the consuming user's machine. It performs signing of transactions & messages with a private key **before** broadcasting the transaction or message over JSON-RPC.
+本地账户是一个其签名密钥存储在使用者机器上的账户。它在通过 JSON-RPC 广播交易或消息之前，使用私钥对交易和消息进行签名。
 
-There are three types of Local Accounts in viem:
+在 viem 中有三种类型的本地账户：
 
-- [Private Key Account](/docs/accounts/local/privateKeyToAccount)
-- [Mnemonic Account](/docs/accounts/local/mnemonicToAccount)
-- [Hierarchical Deterministic (HD) Account](/docs/accounts/local/hdKeyToAccount)
+- [私钥账户](/docs/accounts/local/privateKeyToAccount)
+- [助记词账户](/docs/accounts/local/mnemonicToAccount)
+- [分层确定性（HD）账户](/docs/accounts/local/hdKeyToAccount)
 
-## Instantiation
+## 实例化
 
-### 1. Initialize a Wallet Client
+### 1. 初始化钱包客户端
 
-Before we set up our Account and start consuming Wallet Actions, we will need to set up our Wallet Client with the [`http` Transport](/docs/clients/transports/http):
+在我们设置账户并开始使用钱包操作之前，我们需要使用 [`http` 传输](/docs/clients/transports/http) 设置钱包客户端：
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -24,9 +24,9 @@ const client = createWalletClient({
 })
 ```
 
-### 2. Set up your Local Account
+### 2. 设置本地账户
 
-Next, we will instantiate a Private Key Account using `privateKeyToAccount`:
+接下来，我们将使用 `privateKeyToAccount` 实例化一个私钥账户：
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -41,9 +41,9 @@ const client = createWalletClient({
 const account = privateKeyToAccount('0x...') // [!code focus:1]
 ```
 
-### 3. Consume [Wallet Actions](/docs/actions/wallet/introduction)
+### 3. 使用 [钱包操作](/docs/actions/wallet/introduction)
 
-Now you can use that Account within Wallet Actions that need a signature from the user:
+现在你可以在需要用户签名的钱包操作中使用该账户：
 
 ```ts twoslash
 import { createWalletClient, http, parseEther } from 'viem'
@@ -64,9 +64,9 @@ const hash = await client.sendTransaction({ // [!code focus:5]
 })
 ```
 
-### 4. Optional: Hoist the Account
+### 4. 可选：提升账户
 
-If you do not wish to pass an account around to every Action that requires an `account`, you can also hoist the account into the Wallet Client.
+如果你不希望将账户传递给每个需要 `account` 的操作，你也可以将账户提升到钱包客户端中。
 
 ```ts twoslash
 import { createWalletClient, http, parseEther } from 'viem'
@@ -88,11 +88,11 @@ const hash = await client.sendTransaction({
 })
 ```
 
-### 5. Optional: Extend with Public Actions
+### 5. 可选：扩展公共操作
 
-When using a Local Account, you may be finding yourself using a [Public Client](/docs/clients/public) instantiated with the same parameters (`transport`, `chain`, etc) as your Wallet Client.
+在使用本地账户时，你可能会发现自己使用与钱包客户端具有相同参数（`transport`、`chain` 等）的 [公共客户端](/docs/clients/public) 实例。
 
-In this case, you can extend your Wallet Client with [Public Actions](/docs/actions/public/introduction) to avoid having to handle multiple Clients.
+在这种情况下，你可以通过 [公共操作](/docs/actions/public/introduction) 扩展你的钱包客户端，以避免处理多个客户端。
 
 ```ts twoslash {12}
 // @noErrors
@@ -108,6 +108,6 @@ const client = createWalletClient({
   transport: http()
 }).extend(publicActions) // [!code ++]
 
-const { request } = await client.simulateContract({ ... }) // Public Action
-const hash = await client.writeContract(request) // Wallet Action
+const { request } = await client.simulateContract({ ... }) // 公共操作
+const hash = await client.writeContract(request) // 钱包操作
 ```

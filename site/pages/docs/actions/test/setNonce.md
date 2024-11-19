@@ -1,12 +1,12 @@
 ---
-description: Modifies (overrides) the nonce of an account.
+description: 修改（覆盖）账户的 nonce。
 ---
 
 # setNonce
 
-Modifies (overrides) the nonce of an account.
+修改（覆盖）账户的 nonce。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -32,13 +32,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the target account.
+目标账户的地址。
 
 ```ts
 await testClient.setNonce({
@@ -47,11 +47,11 @@ await testClient.setNonce({
 })
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-The nonce.
+nonce。
 
 ```ts
 await testClient.setNonce({

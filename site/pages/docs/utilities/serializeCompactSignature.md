@@ -1,18 +1,18 @@
 ---
-description: Serializes a compact signature into hex format.
+description: 将紧凑签名序列化为十六进制格式。
 ---
 
 # serializeCompactSignature
 
-Serializes a [EIP-2098](https://eips.ethereum.org/EIPS/eip-2098) compact signature into hex format.
+将 [EIP-2098](https://eips.ethereum.org/EIPS/eip-2098) 紧凑签名序列化为十六进制格式。
 
-## Import
+## 导入
 
 ```ts
 import { serializeCompactSignature } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { serializeCompactSignature } from 'viem'
@@ -25,16 +25,16 @@ serializeCompactSignature({ // [!code focus:8]
 // "0x68a020a209d3d56c46f38cc50a33f704f4a9a10a59377f8dd762ac66910e9b907e865ad05c4035ab5792787d4a0297a43617ae897930a6fe4d822b8faea52064"
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The hex formatted signature.
+十六进制格式的签名。
 
-## Parameters
+## 参数
 
 ### compactSignature
 
-The compact signature.
+紧凑签名。
 
-- **Type:** [`CompactSignature`](/docs/glossary/types#CompactSignature)
+- **类型:** [`CompactSignature`](/docs/glossary/types#CompactSignature)

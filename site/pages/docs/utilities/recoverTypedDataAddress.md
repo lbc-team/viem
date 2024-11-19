@@ -1,14 +1,14 @@
 ---
-description: Recovers the signing address from EIP-712 typed data & signature.
+description: 从 EIP-712 类型数据和签名中恢复签名地址。
 ---
 
 # recoverTypedDataAddress
 
-Recovers the original signing address from EIP-712 typed data & signature.
+从 EIP-712 类型数据和签名中恢复原始签名地址。
 
-Useful for obtaining the address of a message that was signed with [`signTypedData`](/docs/actions/wallet/signTypedData).
+用于获取使用 [`signTypedData`](/docs/actions/wallet/signTypedData) 签名的消息的地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -46,7 +46,7 @@ const address = await recoverTypedDataAddress({ // [!code focus:99]
 ```
 
 ```ts [data.ts]
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -54,7 +54,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
  
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -80,19 +80,19 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The signing address.
+签名地址。
 
-## Parameters
+## 参数
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型:** `TypedDataDomain`
 
-The typed data domain.
+类型数据域。
 
 ```ts
 const address = await recoverTypedDataAddress({
@@ -121,7 +121,7 @@ const address = await recoverTypedDataAddress({
 
 ### types
 
-The type definitions for the typed data.
+类型数据的类型定义。
 
 ```ts
 const address = await recoverTypedDataAddress({
@@ -155,9 +155,9 @@ const address = await recoverTypedDataAddress({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型:** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts
 const address = await recoverTypedDataAddress({
@@ -191,7 +191,7 @@ const address = await recoverTypedDataAddress({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型:** 从 `types` 和 `primaryType` 推断。
 
 ```ts
 const address = await recoverTypedDataAddress({
@@ -225,9 +225,9 @@ const address = await recoverTypedDataAddress({
 
 ### signature
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-The signature of the typed data.
+类型数据的签名。
 
 ```ts
 const address = await recoverTypedDataAddress({

@@ -1,18 +1,18 @@
-# Test Client [A function to create a Test Client]
+# 测试客户端 [创建测试客户端的函数]
 
-A Test Client is an interface to "test" JSON-RPC API methods accessible through a local Ethereum test node such as [Anvil](https://book.getfoundry.sh/anvil/) or [Hardhat](https://hardhat.org/) such as mining blocks, impersonating accounts, setting fees, etc through [Test Actions](/docs/actions/test/introduction).
+测试客户端是一个接口，用于“测试”通过本地以太坊测试节点（如 [Anvil](https://book.getfoundry.sh/anvil/) 或 [Hardhat](https://hardhat.org/)）访问的 JSON-RPC API 方法，例如挖矿区块、模拟账户、设置费用等，通过 [测试操作](/docs/actions/test/introduction)。
 
-The `createTestClient` function sets up a Test RPC Client with a given [Transport](/docs/clients/intro).
+`createTestClient` 函数使用给定的 [Transport](/docs/clients/intro) 设置一个测试 RPC 客户端。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createTestClient } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Initialize a Client with your desired [Chain](/docs/chains/introduction), [Transport](/docs/clients/intro) (e.g. `http`) and [mode](#mode) (e.g. `"anvil"`).
+使用你所需的 [Chain](/docs/chains/introduction)、[Transport](/docs/clients/intro)（例如 `http`）和 [mode](#mode)（例如 `"anvil"`）初始化客户端。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -25,7 +25,7 @@ const client = createTestClient({
 })
 ```
 
-Then you can consume [Test Actions](/docs/actions/test/introduction):
+然后你可以使用 [测试操作](/docs/actions/test/introduction)：
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -40,9 +40,9 @@ const client = createTestClient({
 const mine = await client.mine({ blocks: 1 }) // [!code focus:10]
 ```
 
-### Extending with Public & Wallet Actions
+### 扩展公共和钱包操作
 
-When interacting with a Ethereum test node, you may also find yourself wanting to interact with [Public Actions](/docs/actions/public/introduction) and [Wallet Actions](/docs/actions/wallet/introduction) with the same `chain` and `transport`. Instead of creating three different Clients, you can instead just extend the Test Client with those actions:
+在与以太坊测试节点交互时，你可能还希望与相同的 `chain` 和 `transport` 交互 [公共操作](/docs/actions/public/introduction) 和 [钱包操作](/docs/actions/wallet/introduction)。你可以通过扩展测试客户端来实现，而不是创建三个不同的客户端：
 
 ```ts twoslash
 // @noErrors
@@ -57,18 +57,18 @@ const client = createTestClient({
   .extend(publicActions) // [!code hl]
   .extend(walletActions) // [!code hl]
 
-const blockNumber = await client.getBlockNumber() // Public Action
-const hash = await client.sendTransaction({ ... }) // Wallet Action
-const mine = await client.mine({ blocks: 1 }) // Test Action
+const blockNumber = await client.getBlockNumber() // 公共操作
+const hash = await client.sendTransaction({ ... }) // 钱包操作
+const mine = await client.mine({ blocks: 1 }) // 测试操作
 ```
 
-## Parameters
+## 参数
 
 ### mode
 
-- **Type:** `"anvil" | "hardhat" | "ganache"`
+- **类型：** `"anvil" | "hardhat" | "ganache"`
 
-Mode of the Test Client.
+测试客户端的模式。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -83,9 +83,9 @@ const client = createTestClient({
 
 ### transport
 
-- **Type:** [Transport](/docs/glossary/types#transport)
+- **类型：** [Transport](/docs/glossary/types#transport)
 
-[Transport](/docs/clients/intro) of the Test Client.
+测试客户端的 [Transport](/docs/clients/intro)。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -98,13 +98,13 @@ const client = createTestClient({
 })
 ```
 
-### account (optional)
+### account (可选)
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to use for the Client. This will be used for Actions that require an `account` as an argument.
+用于客户端的账户。这将用于需要 `account` 作为参数的操作。
 
-Accepts a [JSON-RPC Account](/docs/accounts/jsonRpc) or [Local Account (Private Key, etc)](/docs/accounts/local/privateKeyToAccount).
+接受 [JSON-RPC 账户](/docs/accounts/jsonRpc) 或 [本地账户（私钥等）](/docs/accounts/local/privateKeyToAccount)。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -120,11 +120,11 @@ const client = createTestClient({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [Chain](/docs/glossary/types#chain)
+- **类型：** [Chain](/docs/glossary/types#chain)
 
-[Chain](/docs/chains/introduction) of the Test Client.
+测试客户端的 [Chain](/docs/chains/introduction)。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -137,12 +137,12 @@ const client = createTestClient({
 })
 ```
 
-### cacheTime (optional)
+### cacheTime (可选)
 
-- **Type:** `number`
-- **Default:** `client.pollingInterval`
+- **类型：** `number`
+- **默认值：** `client.pollingInterval`
 
-Time (in ms) that cached data will remain in memory.
+缓存数据在内存中保留的时间（以毫秒为单位）。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -156,12 +156,12 @@ const client = createTestClient({
 })
 ```
 
-### name (optional)
+### name (可选)
 
-- **Type:** `string`
-- **Default:** `"Test Client"`
+- **类型：** `string`
+- **默认值：** `"Test Client"`
 
-A name for the Client.
+客户端的名称。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -175,12 +175,12 @@ const client = createTestClient({
 })
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
-- **Default:** `4_000`
+- **类型：** `number`
+- **默认值：** `4_000`
 
-Frequency (in ms) for polling enabled Actions.
+启用操作的轮询频率（以毫秒为单位）。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'
@@ -194,12 +194,12 @@ const client = createTestClient({
 })
 ```
 
-### rpcSchema (optional)
+### rpcSchema (可选)
 
-- **Type:** `RpcSchema`
-- **Default:** `TestRpcSchema`
+- **类型：** `RpcSchema`
+- **默认值：** `TestRpcSchema`
 
-Typed JSON-RPC schema for the client.
+客户端的类型化 JSON-RPC 架构。
 
 ```ts twoslash
 import { createTestClient, http } from 'viem'

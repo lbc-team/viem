@@ -1,14 +1,14 @@
-# Fallback Transport [A function to create a Fallback Transport for a Client]
+# 回退传输 [为客户端创建回退传输的函数]
 
-The `fallback` Transport consumes **multiple** Transports. If a Transport request fails, it will fall back to the next one in the list.
+`fallback` 传输消耗 **多个** 传输。如果一个传输请求失败，它将回退到列表中的下一个传输。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { fallback } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash 
 import { createPublicClient, fallback, http } from 'viem'
@@ -23,15 +23,15 @@ const client = createPublicClient({
 })
 ```
 
-### Transport Ranking
+### 传输排名
 
-Transport Ranking enables each of the Transports passed to the `fallback` Transport are automatically ranked based on their **latency** & **stability** via a weighted moving score algorithm. 
+传输排名使得传递给 `fallback` 传输的每个传输都可以通过加权移动评分算法自动根据其 **延迟** 和 **稳定性** 进行排名。
 
-Every 10 seconds (`interval`), the `fallback` Transport will ping each transport in the list. For the past 10 pings (`sampleCount`), they will be ranked based on if they responded (stability) and how fast they responded (latency). The algorithm applies a weight of `0.7` to the stability score, and a weight of `0.3` to the latency score to derive the final score which it is ranked on. 
+每 10 秒（`interval`），`fallback` 传输将对列表中的每个传输进行 ping。对于过去的 10 次 ping（`sampleCount`），它们将根据是否响应（稳定性）和响应速度（延迟）进行排名。该算法对稳定性评分应用 `0.7` 的权重，对延迟评分应用 `0.3` 的权重，以得出最终评分并进行排名。
 
-The Transport that has the best latency & stability score over the sample period is prioritized first. 
+在样本期间，具有最佳延迟和稳定性评分的传输将优先考虑。
 
-You can turn on automated ranking with the `rank` option:
+你可以通过 `rank` 选项开启自动排名：
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -46,7 +46,7 @@ const client = createPublicClient({
 })
 ```
 
-You can also modify the default rank config:
+你还可以修改默认的排名配置：
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -74,14 +74,14 @@ const client = createPublicClient({
 })
 ```
 
-## Parameters
+## 参数
 
-### rank (optional)
+### rank (可选)
 
-- **Type:** `boolean | RankOptions`
-- **Default:** `false`
+- **类型:** `boolean | RankOptions`
+- **默认:** `false`
 
-Whether or not to automatically rank the Transports based on their latency & stability. Set to `false` to disable automatic ranking.
+是否根据传输的延迟和稳定性自动排名。设置为 `false` 以禁用自动排名。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -94,12 +94,12 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### rank.interval (optional)
+### rank.interval (可选)
 
-- **Type:** `number`
-- **Default:** `client.pollingInterval`
+- **类型:** `number`
+- **默认:** `client.pollingInterval`
 
-The polling interval (in ms) at which the ranker should ping the RPC URL.
+排名器应 ping RPC URL 的轮询间隔（以毫秒为单位）。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -114,12 +114,12 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### rank.sampleCount (optional)
+### rank.sampleCount (可选)
 
-- **Type:** `number`
-- **Default:** `10`
+- **类型:** `number`
+- **默认:** `10`
 
-The number of previous samples to perform ranking on.
+用于排名的先前样本数量。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -134,12 +134,12 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### rank.timeout (optional)
+### rank.timeout (可选)
 
-- **Type:** `number`
-- **Default:** `1_000`
+- **类型:** `number`
+- **默认:** `1_000`
 
-Timeout when sampling transports.
+采样传输时的超时。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -154,12 +154,12 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### rank.weights.latency (optional)
+### rank.weights.latency (可选)
 
-- **Type:** `number`
-- **Default:** `0.3`
+- **类型:** `number`
+- **默认:** `0.3`
 
-The weight to apply to the latency score. The weight is proportional to the other values in the `weights` object.
+应用于延迟评分的权重。该权重与 `weights` 对象中的其他值成比例。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -177,12 +177,12 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### rank.weights.stability (optional)
+### rank.weights.stability (可选)
 
-- **Type:** `number`
-- **Default:** `0.7`
+- **类型:** `number`
+- **默认:** `0.7`
 
-The weight to apply to the stability score. The weight is proportional to the other values in the `weights` object.
+应用于稳定性评分的权重。该权重与 `weights` 对象中的其他值成比例。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -200,14 +200,14 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### retryCount (optional)
+### retryCount (可选)
 
-- **Type:** `number`
-- **Default:** `3`
+- **类型:** `number`
+- **默认:** `3`
 
-The max number of times to retry when a request fails. 
+请求失败时的最大重试次数。
 
-> Note: The fallback will first try all the Transports before retrying.
+> 注意：回退将首先尝试所有传输，然后再重试。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -220,12 +220,12 @@ const transport = fallback([alchemy, infura], {
 })
 ```
 
-### retryDelay (optional)
+### retryDelay (可选)
 
-- **Type:** `number`
-- **Default:** `150`
+- **类型:** `number`
+- **默认:** `150`
 
-The base delay (in ms) between retries. By default, the Transport will use [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) (`~~(1 << count) * retryDelay`), which means the time between retries is not constant.
+重试之间的基本延迟（以毫秒为单位）。默认情况下，传输将使用 [指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)（`~~(1 << count) * retryDelay`），这意味着重试之间的时间不是恒定的。
 
 ```ts twoslash
 import { createPublicClient, fallback, http } from 'viem'
@@ -237,4 +237,3 @@ const transport = fallback([alchemy, infura], {
   retryDelay: 100, // [!code focus]
 })
 ```
-

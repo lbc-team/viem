@@ -1,12 +1,12 @@
 ---
-description: Signs typed data with the Account's private key.
+description: 使用账户的私钥签名类型化数据。
 ---
 
 # signTypedData
 
-Signs typed data and calculates an Ethereum-specific signature in [https://eips.ethereum.org/EIPS/eip-712](https://eips.ethereum.org/EIPS/eip-712): `sign(keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message)))`
+签名类型化数据并计算以 Ethereum 为特定的签名，参考 [https://eips.ethereum.org/EIPS/eip-712](https://eips.ethereum.org/EIPS/eip-712)：`sign(keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message)))`
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -34,7 +34,7 @@ const signature = await walletClient.signTypedData({
 ```
 
 ```ts twoslash [data.ts]
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -42,7 +42,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
  
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -60,19 +60,19 @@ export const types = {
 // [!include ~/snippets/walletClient.ts]
 
 export const [account] = await walletClient.getAddresses()
-// @log: ↑ JSON-RPC Account
+// @log: ↑ JSON-RPC 账户
 
 // export const account = privateKeyToAccount(...)
-// @log: ↑ Local Account
+// @log: ↑ 本地账户
 ```
 
 :::
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `signTypedData`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望将 `account` 传递给每个 `signTypedData`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#withaccount).
+[了解更多](/docs/clients/wallet#withaccount)。
 
 :::code-group
 
@@ -99,7 +99,7 @@ const signature = await walletClient.signTypedData({
 ```
 
 ```ts twoslash [data.ts]
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -107,7 +107,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
  
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -121,10 +121,10 @@ export const types = {
 } as const
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, custom } from 'viem'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -135,7 +135,7 @@ export const walletClient = createWalletClient({
 })
 ```
 
-```ts twoslash [config.ts (Local Account)] filename="config.ts"
+```ts twoslash [config.ts (本地账户)] filename="config.ts"
 import { createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 
@@ -147,21 +147,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回值
 
 `0x${string}`
 
-The signed data.
+签名数据。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to use for signing.
+用于签名的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -202,9 +202,9 @@ const signature = await walletClient.signTypedData({
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型：** `TypedDataDomain`
 
-The typed data domain.
+类型化数据域。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -245,7 +245,7 @@ const signature = await walletClient.signTypedData({
 
 ### types
 
-The type definitions for the typed data.
+类型化数据的类型定义。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -286,9 +286,9 @@ const signature = await walletClient.signTypedData({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型：** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -329,7 +329,7 @@ const signature = await walletClient.signTypedData({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型:** 从 `types` 和 `primaryType` 推断得出。
 
 ```ts twoslash
 // [!include ~/snippets/walletClient.ts]
@@ -368,15 +368,15 @@ const signature = await walletClient.signTypedData({
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `signTypedData` in the live [Sign Typed Data Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/signing_typed-data) below.
+查看下面的实时 [签名类型数据示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/signing_typed-data) 中 `signTypedData` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/signing_typed-data?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-- JSON-RPC Accounts:
+- JSON-RPC 账户:
   - [`eth_signTypedData_v4`](https://docs.metamask.io/guide/signing-data#signtypeddata-v4)
-- Local Accounts
-  - Signs locally. No JSON-RPC request.
+- 本地账户
+  - 本地签名。无 JSON-RPC 请求。

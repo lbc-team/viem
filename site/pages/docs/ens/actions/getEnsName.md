@@ -1,14 +1,14 @@
 ---
-description: Gets primary name for specified address.
+description: 获取指定地址的主名称。
 ---
 
 # getEnsName
 
-Gets primary name for specified address.
+获取指定地址的主名称。
 
-Calls `reverse(bytes)` on ENS Universal Resolver Contract to "reverse resolve" the address to the primary ENS name.
+在 ENS 通用解析器合约上调用 `reverse(bytes)` 以“反向解析”地址到主 ENS 名称。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -33,21 +33,21 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `string`
 
-The primary ENS name for the address.
+指定地址的主 ENS 名称。
 
-Returns `null` if address does not have primary name assigned.
+如果地址没有分配主名称，则返回 `null`。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-Address to get primary ENS name for.
+要获取主 ENS 名称的地址。
 
 ```ts
 const ensName = await publicClient.getEnsName({
@@ -55,11 +55,11 @@ const ensName = await publicClient.getEnsName({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const ensName = await publicClient.getEnsName({
@@ -68,12 +68,12 @@ const ensName = await publicClient.getEnsName({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值:** `'latest'`
 
-The block tag to perform the read against.
+要执行读取的区块标签。
 
 ```ts
 const ensName = await publicClient.getEnsName({
@@ -82,11 +82,11 @@ const ensName = await publicClient.getEnsName({
 })
 ```
 
-### gatewayUrls (optional)
+### gatewayUrls (可选)
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-A set of Universal Resolver gateways, used for resolving CCIP-Read requests made through the ENS Universal Resolver Contract.
+一组通用解析器网关，用于解析通过 ENS 通用解析器合约发出的 CCIP-Read 请求。
 
 ```ts
 const ensName = await publicClient.getEnsName({
@@ -95,12 +95,12 @@ const ensName = await publicClient.getEnsName({
 })
 ```
 
-### strict (optional)
+### strict (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认值:** `false`
 
-A boolean value that when set to true will strictly propagate all ENS Universal Resolver Contract errors.
+一个布尔值，当设置为 true 时，将严格传播所有 ENS 通用解析器合约错误。
 
 ```ts
 const ensName = await publicClient.getEnsName({
@@ -109,12 +109,12 @@ const ensName = await publicClient.getEnsName({
 })
 ```
 
-### universalResolverAddress (optional)
+### universalResolverAddress (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
-- **Default:** `client.chain.contracts.ensUniversalResolver.address`
+- **类型:** [`Address`](/docs/glossary/types#address)
+- **默认值:** `client.chain.contracts.ensUniversalResolver.address`
 
-Address of ENS Universal Resolver Contract.
+ENS 通用解析器合约的地址。
 
 ```ts
 const ensName = await publicClient.getEnsName({
@@ -123,8 +123,8 @@ const ensName = await publicClient.getEnsName({
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `getEnsName` in the live [ENS Examples](https://stackblitz.com/github/wevm/viem/tree/main/examples/ens) below.
+查看下面的实时 [ENS 示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/ens) 中 `getEnsName` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/ens?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>

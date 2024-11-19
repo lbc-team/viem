@@ -1,17 +1,17 @@
-# Getting Started [Get started with viem in just a few lines of code.]
+# 入门 [仅需几行代码即可开始使用 viem。]
 
-## Overview
+## 概述
 
-viem is a TypeScript interface for Ethereum that provides low-level stateless primitives for interacting with Ethereum. viem is focused on developer experience, stability, bundle size, and performance:
+viem 是一个用于以太坊的 TypeScript 接口，提供与以太坊交互的低级无状态原语。viem 专注于开发者体验、稳定性、包大小和性能：
 
-- **Developer experience** Automatic [type safety and inference](/docs/typescript), comprehensive documentation, composable APIs.
-- **Stability** Test suite runs against forked Ethereum networks, complete [test coverage](https://app.codecov.io/gh/wevm/viem).
-- **Bundle size** Tree-shakable lightweight modules.
-- **Performance** Optimized encoding/parsing, async tasks only when necessary.
+- **开发者体验** 自动的 [类型安全和推断](/docs/typescript)、全面的文档、可组合的 API。
+- **稳定性** 测试套件在分叉的以太坊网络上运行，完整的 [测试覆盖率](https://app.codecov.io/gh/wevm/viem)。
+- **包大小** 可树摇的轻量级模块。
+- **性能** 优化的编码/解析，仅在必要时执行异步任务。
 
-You can learn more about the rationale behind the project in the [Why viem](/docs/introduction) section.
+你可以在 [为什么选择 viem](/docs/introduction) 部分了解更多关于该项目的背景信息。
 
-## Installation
+## 安装
 
 :::code-group
 
@@ -29,11 +29,11 @@ bun i viem
 
 :::
 
-## Quick Start
+## 快速开始
 
-### 1. Set up your Client & Transport
+### 1. 设置你的客户端和传输
 
-Firstly, set up your [Client](/docs/clients/intro) with a desired [Transport](/docs/clients/intro) & [Chain](/docs/chains/introduction).
+首先，使用所需的 [传输](/docs/clients/intro) 和 [链](/docs/chains/introduction) 设置你的 [客户端](/docs/clients/intro)。
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem'
@@ -46,12 +46,12 @@ const client = createPublicClient({ // [!code focus]
 ```
 
 :::info
-In a production app, it is highly recommended to pass through your authenticated RPC provider URL (Alchemy, Infura, Ankr, etc). If no URL is provided, viem will default to a public RPC provider. [Read more](/docs/clients/transports/http#usage).
+在生产应用中，强烈建议传入你的认证 RPC 提供者 URL（Alchemy、Infura、Ankr 等）。如果未提供 URL，viem 将默认使用公共 RPC 提供者。 [阅读更多](/docs/clients/transports/http#usage)。
 :::
 
-### 2. Consume Actions
+### 2. 消费操作
 
-Now that you have a Client set up, you can now interact with Ethereum and consume [Actions](/docs/actions/public/introduction)!
+现在你已经设置了客户端，可以与以太坊交互并消费 [操作](/docs/actions/public/introduction)！
 
 ```ts twoslash 
 import { createPublicClient, http } from 'viem'
@@ -65,6 +65,6 @@ const client = createPublicClient({
 const blockNumber = await client.getBlockNumber() // [!code focus]
 ```
 
-## Live example
+## 实时示例
 
 <iframe className="mt-6" width="100%" height="600px" frameBorder="0" src="https://stackblitz.com/edit/viem-getting-started?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=1&hideExplorer=1&devtoolsheight=1&ctl=1"></iframe>

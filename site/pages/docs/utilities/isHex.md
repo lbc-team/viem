@@ -1,18 +1,18 @@
 ---
-description: Checks whether the value is a hex value or not.
+description: 检查值是否为十六进制值。
 ---
 
 # isHex
 
-Checks whether the value is a hex value or not.
+检查值是否为十六进制值。
 
-## Install
+## 安装
 
 ```ts
 import { isHex } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { isHex } from 'viem'
@@ -25,19 +25,19 @@ isHex('foo')
 // false
 ```
 
-## Returns
+## 返回
 
 `boolean`
 
-Returns truthy is the value is a hex value.
+如果值是十六进制值，则返回真值。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `unknown`
+- **类型:** `unknown`
 
-The value to check.
+要检查的值。
 
 ```ts
 isHex(
@@ -48,11 +48,11 @@ isHex(
 
 ### options.strict
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认:** `true`
 
-When enabled, checks if the value strictly consists of only hex characters (`"0x[0-9a-fA-F]*"`).
-When disabled, checks if the value loosely matches hex format (`value.startsWith('0x')`).
+启用时，检查值是否严格由十六进制字符组成（`"0x[0-9a-fA-F]*"`）。
+禁用时，检查值是否松散匹配十六进制格式（`value.startsWith('0x')`）。
 
 ```ts
 isHex('0xlol', { strict: false })

@@ -1,26 +1,25 @@
 ---
-description: Generates ABI encoded data.
+description: 生成 ABI 编码数据。
 ---
 
 # encodeAbiParameters
 
-Generates ABI encoded data using the [ABI specification](https://docs.soliditylang.org/en/latest/abi-spec.html), given a set of ABI parameters (`inputs`/`outputs`) and their corresponding values.
+根据一组 ABI 参数（`inputs`/`outputs`）及其对应的值，生成使用 [ABI 规范](https://docs.soliditylang.org/en/latest/abi-spec.html) 的 ABI 编码数据。
 
-The `encodeAbiParameters` function is used by the other contract encoding utilities (ie. `encodeFunctionData`, `encodeEventTopics`, etc).
+`encodeAbiParameters` 函数被其他合约编码工具（即 `encodeFunctionData`、`encodeEventTopics` 等）使用。
 
-## Import
+## 导入
 
 ```ts
 import { encodeAbiParameters } from 'viem'
 ```
 
-## Usage
+## 用法
 
-The `encodeAbiParameters` function takes in two parameters:
+`encodeAbiParameters` 函数接受两个参数：
 
-- a set of ABI Parameters (`params`), that can be in the shape of the `inputs` or `outputs` attribute of an ABI Item.
-- a set of values (`values`) that correspond to the given `params`.
-
+- 一组 ABI 参数（`params`），可以是 ABI 项的 `inputs` 或 `outputs` 属性的形状。
+- 一组值（`values`），对应于给定的 `params`。
 
 ```ts
 import { encodeAbiParameters } from 'viem'
@@ -36,9 +35,9 @@ const encodedData = encodeAbiParameters(
 // 0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000001a4000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000057761676d69000000000000000000000000000000000000000000000000000000
 ```
 
-### Human Readable
+### 可读性
 
-You can also pass in [Human Readable](/docs/glossary/terms#human-readable-abi) parameters with the [`parseAbiParameters` utility](/docs/abi/parseAbiParameters).
+你还可以使用 [`parseAbiParameters` 工具](/docs/abi/parseAbiParameters) 传入 [可读性](/docs/glossary/terms#human-readable-abi) 参数。
 
 ```ts
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
@@ -50,21 +49,21 @@ const encodedData = encodeAbiParameters(
 // 0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000001a4000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000057761676d69000000000000000000000000000000000000000000000000000000
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The ABI encoded data.
+ABI 编码数据。
 
-## Parameters
+## 参数
 
 ### params
 
-- **Type**: [`AbiParameter[]`](/docs/glossary/terms#abiparameter)
+- **类型**: [`AbiParameter[]`](/docs/glossary/terms#abiparameter)
 
-The set of ABI parameters to encode, in the shape of the `inputs` or `outputs` attribute of an ABI event/function.
+要编码的 ABI 参数集，形状为 ABI 事件/函数的 `inputs` 或 `outputs` 属性。
 
-These parameters must include valid [ABI types](https://docs.soliditylang.org/en/develop/abi-spec#types).
+这些参数必须包含有效的 [ABI 类型](https://docs.soliditylang.org/en/develop/abi-spec#types)。
 
 ```ts
 encodeAbiParameters(
@@ -75,9 +74,9 @@ encodeAbiParameters(
 
 ### values
 
-- **Type**: [`AbiParametersToPrimitiveTypes<AbiParameter[]>`](/docs/glossary/terms#abiparameterstoprimitivetypes)
+- **类型**: [`AbiParametersToPrimitiveTypes<AbiParameter[]>`](/docs/glossary/terms#abiparameterstoprimitivetypes)
 
-The set of primitive values that correspond to the ABI types defined in `params`.
+与 `params` 中定义的 ABI 类型对应的一组原始值。
 
 ```ts
 encodeAbiParameters(
@@ -86,9 +85,9 @@ encodeAbiParameters(
 )
 ```
 
-## More Examples
+## 更多示例
 
-### Simple struct
+### 简单结构体
 
 :::code-group
 

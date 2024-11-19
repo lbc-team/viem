@@ -1,12 +1,12 @@
 ---
-description: Enables or disables the automatic mining of new blocks with each new transaction submitted to the network.
+description: 启用或禁用每次提交到网络的新交易时自动挖掘新块。
 ---
 
 # setAutomine
 
-Enables or disables the automatic mining of new blocks with each new transaction submitted to the network.
+启用或禁用每次提交到网络的新交易时自动挖掘新块。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,11 +29,11 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### enabled
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
 ```ts
 await testClient.setAutomine(false) // [!code focus]

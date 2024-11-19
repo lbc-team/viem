@@ -1,12 +1,12 @@
 ---
-description: Adds state previously dumped to the current chain.
+description: 将先前转储的状态添加到当前链。
 ---
 
 # loadState
 
-Adds state previously dumped with `dumpState` to the current chain.
+将先前使用 `dumpState` 转储的状态添加到当前链。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,10 +29,10 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### state
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The state as a data blob.
+作为数据块的状态。

@@ -1,22 +1,22 @@
-# Blob Transactions [Sending your first Blob Transaction with Viem.]
+# Blob 交易 [使用 Viem 发送你的第一个 Blob 交易]
 
-Blob Transactions are a new type of transaction in Ethereum (introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844)) that allows you to broadcast BLObs (Binary Large Objects) to the Ethereum network. Blob Transactions are like any other transaction, but with the added ability to carry a payload of Blobs. Blobs are extremely larger than regular calldata (~128kB), however unlike regular calldata, they are not accessible on the EVM. The EVM can only view the commitments of the blobs. Blobs are also transient, and only last for 4096 epochs (approx. 18 days).
+Blob 交易是以太坊中的一种新型交易（在 [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) 中引入），允许你将 BLObs（大二进制对象）广播到以太坊网络。Blob 交易与其他交易类似，但增加了携带 Blob 负载的能力。Blob 的大小远大于常规的 calldata（约 128kB），然而与常规的 calldata 不同，它们在 EVM 上不可访问。EVM 只能查看 Blob 的承诺。Blob 也是瞬态的，仅持续 4096 个纪元（约 18 天）。
 
-To read more on Blob Transactions and EIP-4844, check out these resources: 
+要了解更多关于 Blob 交易和 EIP-4844 的信息，请查看以下资源：
 
-- [EIP-4844 Spec](https://eips.ethereum.org/EIPS/eip-4844)
-- [EIP-4844 Website](https://www.eip4844.com/#faq)
-- [EIP-4844 FAQ](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#Proto-Danksharding-FAQ)
+- [EIP-4844 规范](https://eips.ethereum.org/EIPS/eip-4844)
+- [EIP-4844 网站](https://www.eip4844.com/#faq)
+- [EIP-4844 常见问题](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#Proto-Danksharding-FAQ)
 
-In this guide, we will walk you through how to send your first Blob Transaction with Viem.
+在本指南中，我们将带你通过使用 Viem 发送你的第一个 Blob 交易。
 
 ::::steps
 
-## Set up Client
+## 设置客户端
 
-We will first set up our Viem Client. 
+我们将首先设置我们的 Viem 客户端。
 
-Let's create a `client.ts` file that holds our Client.
+让我们创建一个 `client.ts` 文件来保存我们的客户端。
 
 ```ts twoslash [client.ts] filename="client.ts"
 import { createWalletClient, http } from 'viem'
@@ -32,13 +32,13 @@ export const client = createWalletClient({
 })
 ```
 
-## Install KZG bindings
+## 安装 KZG 绑定
 
-Next, we will need to install some KZG bindings. KZG will be used to compute the commitments of the blobs, and generate proofs from the blobs & commitments. The commitments and proofs are needed to serialize and sign the Blob Transaction before we send it off.
+接下来，我们需要安装一些 KZG 绑定。KZG 将用于计算 Blob 的承诺，并从 Blob 和承诺中生成证明。承诺和证明在我们发送 Blob 交易之前是序列化和签名所必需的。
 
-A couple of KZG implementations we recommend are:
-- [c-kzg](https://github.com/ethereum/c-kzg-4844): Node.js bindings to c-kzg.
-- [kzg-wasm](https://github.com/ethereumjs/kzg-wasm): WebAssembly bindings to c-kzg.
+我们推荐的几个 KZG 实现是：
+- [c-kzg](https://github.com/ethereum/c-kzg-4844)：Node.js 对 c-kzg 的绑定。
+- [kzg-wasm](https://github.com/ethereumjs/kzg-wasm)：WebAssembly 对 c-kzg 的绑定。
 
 :::code-group
 
@@ -62,11 +62,11 @@ bun i kzg-wasm
 
 :::
 
-## Set up KZG interface
+## 设置 KZG 接口
 
-After that, we will need to hook up the KZG bindings to Viem.
+之后，我们需要将 KZG 绑定连接到 Viem。
 
-Let's create a `kzg.ts` file that holds our KZG interface.
+让我们创建一个 `kzg.ts` 文件来保存我们的 KZG 接口。
 
 :::code-group
 
@@ -84,11 +84,11 @@ export const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 
 :::
 
-## Send Blob Transaction
+## 发送 Blob 交易
 
-Now that we have our Client and KZG interface set up, we can send our first Blob Transaction.
+现在我们已经设置了客户端和 KZG 接口，我们可以发送我们的第一个 Blob 交易。
 
-For demonstration purposes, we will construct a blob with a simple string: `"hello world"`, and send it to the zero address.
+为了演示，我们将构造一个包含简单字符串的 Blob：“hello world”，并将其发送到零地址。
 
 :::code-group
 
@@ -119,8 +119,8 @@ const hash = await client.sendTransaction({
 
 ::::
 
-## That's it!
+## 就这样！
 
-You've just sent your first Blob Transaction with Viem. 
+你刚刚使用 Viem 发送了你的第一个 Blob 交易。
 
-With the `hash` you received in Step 4, you can now track your Blob Transaction on a blob explorer like [Blobscan](https://blobscan.com/).
+使用你在第 4 步中收到的 `hash`，你现在可以在像 [Blobscan](https://blobscan.com/) 这样的 Blob 浏览器上跟踪你的 Blob 交易。

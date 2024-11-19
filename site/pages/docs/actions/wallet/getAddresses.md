@@ -1,12 +1,12 @@
 ---
-description: Returns a list of addresses owned by the wallet or client.
+description: 返回钱包或客户端拥有的地址列表。
 ---
 
 # getAddresses
 
-Returns a list of account addresses owned by the wallet or client.
+返回钱包或客户端拥有的账户地址列表。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -23,13 +23,13 @@ const accounts = await walletClient.getAddresses() // [!code focus:99]
 
 :::
 
-## Returns
+## 返回
 
 [`Address[]`](/docs/glossary/types#address)
 
-A list of checksummed addresses.
+一个包含校验和地址的列表。
 
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_accounts`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_accounts)

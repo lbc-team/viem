@@ -1,18 +1,18 @@
 ---
-description: Validates EIP-4361 message.
+description: 验证 EIP-4361 消息。
 ---
 
 # validateSiweMessage
 
-Validates [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) message.
+验证 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 消息。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { validateSiweMessage } from 'viem/siwe'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { validateSiweMessage } from 'viem/siwe'
@@ -30,47 +30,47 @@ const valid = validateSiweMessage({
 })
 ```
 
-## Returns
+## 返回
 
 `boolean`
 
-Whether the message fields are valid.
+消息字段是否有效。
 
-## Parameters
+## 参数
 
 ### message
 
-- **Type:** `Partial<SiweMessage>`
+- **类型:** `Partial<SiweMessage>`
 
-EIP-4361 message fields.
+EIP-4361 消息字段。
 
-### address (optional)
+### address（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-Ethereum address to check against.
+要检查的以太坊地址。
 
-### domain (optional)
+### domain（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) authority to check against.
+[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) 权限以进行检查。
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-Random string to check against.
+要检查的随机字符串。
 
-### scheme (optional)
+### scheme（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.1) URI scheme to check against.
+[RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.1) URI 方案以进行检查。
 
-### time (optional)
+### time（可选）
 
-- **Type:** `Date`
-- **Default:** `new Date()`
+- **类型:** `Date`
+- **默认:** `new Date()`
 
-Current time to check optional [`expirationTime`](http://localhost:5173/docs/siwe/utilities/createSiweMessage#expirationtime-optional) and [`notBefore`](/docs/siwe/utilities/createSiweMessage#notbefore-optional) message fields.
+当前时间以检查可选的 [`expirationTime`](http://localhost:5173/docs/siwe/utilities/createSiweMessage#expirationtime-optional) 和 [`notBefore`](/docs/siwe/utilities/createSiweMessage#notbefore-optional) 消息字段。

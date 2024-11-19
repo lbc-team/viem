@@ -1,18 +1,18 @@
 ---
-description: Parses a hex formatted signature into a structured signature.
+description: 将十六进制格式的签名解析为结构化签名。
 ---
 
 # parseSignature
 
-Parses a hex formatted signature into a structured ("split") signature.
+将十六进制格式的签名解析为结构化（“分割”）签名。
 
-## Import
+## 导入
 
 ```ts
 import { parseSignature } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseSignature } from 'viem'
@@ -27,16 +27,16 @@ parseSignature('0x6e100a352ec6ad1b70802290e18aeed190704973570f3b8ed42cb9808e2ea6
  */
 ```
 
-## Returns
+## 返回
 
 [`Signature`](/docs/glossary/types#signature)
 
-The structured ("split") signature.
+结构化（“分割”）签名。
 
-## Parameters
+## 参数
 
 ### signatureHex
 
-The signature in hex format.
+十六进制格式的签名。
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)

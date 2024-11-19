@@ -1,10 +1,10 @@
-# createContractEventFilter [Creates a Filter to retrieve contract event logs.]
+# createContractEventFilter [创建一个过滤器以检索合约事件日志。]
 
-Creates a Filter to retrieve event logs that can be used with [`getFilterChanges`](/docs/actions/public/getFilterChanges) or [`getFilterLogs`](/docs/actions/public/getFilterLogs).
+创建一个过滤器以检索事件日志，可以与 [`getFilterChanges`](/docs/actions/public/getFilterChanges) 或 [`getFilterLogs`](/docs/actions/public/getFilterLogs) 一起使用。
 
-## Usage
+## 用法
 
-By default, an Event Filter with an ABI (`abi`) will retrieve events defined on the ABI.
+默认情况下，带有 ABI (`abi`) 的事件过滤器将检索在 ABI 中定义的事件。
 
 :::code-group
 
@@ -60,13 +60,13 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Scoping
+## 范围
 
-You can also scope a Filter to a set of given attributes (listed below).
+你还可以将过滤器的范围限制为一组给定的属性（如下所列）。
 
-### Address
+### 地址
 
-A Filter can be scoped to an **address**:
+过滤器可以限制为一个 **地址**：
 
 ```ts 
 const filter = await publicClient.createContractEventFilter({
@@ -75,9 +75,9 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### Event
+### 事件
 
-A Filter can be scoped to an **event**:
+过滤器可以限制为一个 **事件**：
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -87,9 +87,9 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### Arguments
+### 参数
 
-A Filter can be scoped to given **_indexed_ arguments**:
+过滤器可以限制为给定的 **_indexed_ 参数**：
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -103,9 +103,9 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-Only indexed arguments in `event` are candidates for `args`.
+只有 `event` 中的索引参数才是 `args` 的候选。
 
-A Filter Argument can also be an array to indicate that other values can exist in the position:
+过滤器参数也可以是一个数组，以指示该位置可以存在其他值：
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -113,7 +113,7 @@ const filter = await publicClient.createContractEventFilter({
   address: '0xfba3912ca04dd458c843e2ee08967fc04f3579c2',
   eventName: 'Transfer',
   args: { // [!code focus:8]
-    // '0xd8da...' OR '0xa5cc...' OR '0xa152...'
+    // '0xd8da...' 或 '0xa5cc...' 或 '0xa152...'
     from: [
       '0xd8da6bf26964af9d7eed9e03e53415d37aa96045', 
       '0xa5cc3c03994db5b0d9a5eedd10cabab0813678ac',
@@ -123,9 +123,9 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### Block Range
+### 区块范围
 
-A Filter can be scoped to a **block range**:
+过滤器可以限制为一个 **区块范围**：
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -137,10 +137,10 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### Strict Mode
+### 严格模式
 
-By default, `createContractEventFilter` will include logs that [do not conform](/docs/glossary/terms#non-conforming-log) to the indexed & non-indexed arguments on the `event`.
-viem will not return a value for arguments that do not conform to the ABI, thus, some arguments on `args` may be undefined.
+默认情况下，`createContractEventFilter` 将包括 [不符合](/docs/glossary/terms#non-conforming-log) 索引和非索引参数的日志。
+viem 将不会返回不符合 ABI 的参数的值，因此，`args` 中的一些参数可能是未定义的。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -152,7 +152,7 @@ logs[0].args // [!code focus]
 //      ^? { address?: Address, to?: Address, value?: bigint } // [!code focus]
 ```
 
-You can turn on `strict` mode to only return logs that conform to the indexed & non-indexed arguments on the `event`, meaning that `args` will always be defined. The trade-off is that non-conforming logs will be filtered out.
+你可以开启 `strict` 模式，仅返回符合索引和非索引参数的日志，这意味着 `args` 将始终被定义。缺点是不符合的日志将被过滤掉。
 
 ```ts 
 const filter = await publicClient.createContractEventFilter({
@@ -165,17 +165,17 @@ logs[0].args // [!code focus]
 //      ^? { address: Address, to: Address, value: bigint } // [!code focus]
 ```
 
-## Returns
+## 返回
 
 [`Filter`](/docs/glossary/types#filter)
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -183,11 +183,11 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### address (optional)
+### address (可选)
 
-- **Type:** `Address | Address[]`
+- **类型:** `Address | Address[]`
 
-The contract address or a list of addresses from which Logs should originate. If no addresses are provided, then it will query all events matching the event signatures on the ABI.
+合约地址或日志应来自的地址列表。如果未提供地址，则将查询所有与 ABI 上的事件签名匹配的事件。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -196,11 +196,11 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### eventName (optional)
+### eventName (可选)
 
-- **Type:** `string`
+- **类型:** `string`
 
-The event name.
+事件名称。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -209,11 +209,11 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### args (optional)
+### args (可选)
 
-- **Type:** Inferred.
+- **类型:** 推断。
 
-A list of _indexed_ event arguments.
+一组 _indexed_ 事件参数。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -226,11 +226,11 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### fromBlock (optional)
+### fromBlock (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Block to start querying/listening from.
+开始查询/监听的区块。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({
@@ -239,11 +239,11 @@ const filter = await publicClient.createContractEventFilter({
 })
 ```
 
-### toBlock (optional)
+### toBlock (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Block to query/listen until.
+查询/监听直到的区块。
 
 ```ts
 const filter = await publicClient.createContractEventFilter({

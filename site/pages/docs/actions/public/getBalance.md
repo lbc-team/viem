@@ -1,12 +1,12 @@
 ---
-description: Returns the balance of an address in wei.
+description: 返回地址的余额（以 wei 为单位）。
 ---
 
 # getBalance
 
-Returns the balance of an address in wei.
+返回地址的余额（以 wei 为单位）。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -25,19 +25,19 @@ const balance = await publicClient.getBalance({ // [!code focus:4]
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-The balance of the address in wei.
+地址的余额（以 wei 为单位）。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the account.
+账户的地址。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -47,11 +47,11 @@ const balance = await publicClient.getBalance({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The balance of the account at a block number.
+在特定区块号下账户的余额。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -62,11 +62,11 @@ const balance = await publicClient.getBalance({
 })
 ```
 
-### blockTag (optional)
+### blockTag（可选）
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
 
-The balance of the account at a block tag.
+在特定区块标签下账户的余额。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -77,9 +77,9 @@ const balance = await publicClient.getBalance({
 })
 ```
 
-## Tips
+## 提示
 
-- You can convert the balance to ether units with [`formatEther`](/docs/utilities/formatEther).
+- 你可以使用 [`formatEther`](/docs/utilities/formatEther) 将余额转换为以太单位。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -94,6 +94,6 @@ const balanceAsEther = formatEther(balance) // [!code focus:2]
 // "6.942"
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getBalance`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getbalance)

@@ -1,22 +1,22 @@
 ---
-description: Decodes ABI encoded data (4 byte selector & arguments) into a function name and arguments.
+description: 解码 ABI 编码的数据（4 字节选择器和参数）为函数名称和参数。
 ---
 
 # decodeFunctionData
 
-Decodes ABI encoded data (4 byte selector & arguments) into a function name and arguments.
+解码 ABI 编码的数据（4 字节选择器和参数）为函数名称和参数。
 
-The opposite of [`encodeFunctionData`](/docs/contract/encodeFunctionData).
+与 [`encodeFunctionData`](/docs/contract/encodeFunctionData) 相对。
 
-## Install
+## 安装
 
 ```ts
 import { decodeFunctionData } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Below is a very basic example of how to decode a function to calldata.
+下面是一个非常基本的示例，演示如何解码函数到 calldata。
 
 :::code-group
 
@@ -47,9 +47,9 @@ export const wagmiAbi = [
 
 :::
 
-### Extracting Arguments
+### 提取参数
 
-If your calldata includes argument(s) after the 4byte function signature, you can extract them with the `args` return value.
+如果你的 calldata 包含在 4 字节函数签名之后的参数，你可以通过 `args` 返回值提取它们。
 
 :::code-group
 
@@ -81,7 +81,7 @@ export const wagmiAbi = [
 
 :::
 
-## Return Value
+## 返回值
 
 ```ts
 {
@@ -90,27 +90,27 @@ export const wagmiAbi = [
 }
 ```
 
-Decoded ABI function data.
+解码后的 ABI 函数数据。
 
 ### functionName
 
-- **Type**: `string`
+- **类型**: `string`
 
-The decoded function name.
+解码后的函数名称。
 
 ### args
 
-- **Type**: `unknown[] | undefined`
+- **类型**: `unknown[] | undefined`
 
-The decoded function arguments.
+解码后的函数参数。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const { functionName } = decodeFunctionData({
@@ -121,9 +121,9 @@ const { functionName } = decodeFunctionData({
 
 ### data
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The encoded calldata.
+编码的 calldata。
 
 ```ts
 const { functionName } = decodeFunctionData({

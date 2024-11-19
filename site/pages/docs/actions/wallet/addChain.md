@@ -1,12 +1,12 @@
 ---
-description: Adds an EVM chain to the wallet.
+description: 将 EVM 链添加到钱包中。
 ---
 
 # addChain
 
-Adds an EVM chain to the wallet.
+将 EVM 链添加到钱包中。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -23,14 +23,14 @@ await walletClient.addChain({ chain: avalanche }) // [!code focus]
 
 :::
 
-## Parameters
+## 参数
 
 ### chain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The chain to add to the wallet.
+要添加到钱包中的链。
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_addEthereumChain`](https://eips.ethereum.org/EIPS/eip-3085)

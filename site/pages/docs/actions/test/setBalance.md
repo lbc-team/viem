@@ -1,12 +1,12 @@
 ---
-description: Modifies the balance of an account.
+description: 修改账户的余额。
 ---
 
 # setBalance
 
-Modifies the balance of an account.
+修改账户的余额。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -33,13 +33,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the target account.
+目标账户的地址。
 
 ```ts
 await testClient.setBalance({
@@ -48,11 +48,11 @@ await testClient.setBalance({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The value (in wei) to set.
+要设置的值（以 wei 为单位）。
 
 ```ts
 await testClient.setBalance({

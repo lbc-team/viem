@@ -1,20 +1,20 @@
 ---
-description: 'Extracts & decodes logs from a set of opaque logs.'
+description: '从一组不透明日志中提取和解码日志。'
 ---
 
 # parseEventLogs
 
-Extracts & decodes logs matching the provided `abi` (and optional `eventName`) from a set of opaque logs.
+从一组不透明日志中提取和解码与提供的 `abi`（和可选的 `eventName`）匹配的日志。
 
-Useful for decoding logs on Transaction Receipts.
+对于解码交易收据上的日志非常有用。
 
-## Install
+## 安装
 
 ```ts
 import { parseEventLogs } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -95,9 +95,9 @@ export const client = createPublicClient({
 
 :::
 
-### Scoping to Event Name(s)
+### 限定事件名称
 
-You can scope the logs to a specific event name by providing the `eventName` argument:
+你可以通过提供 `eventName` 参数来限制日志到特定事件名称：
 
 :::code-group
 
@@ -179,7 +179,7 @@ export const client = createPublicClient({
 
 :::
 
-You can also pass an array to scope multiple event names:
+你还可以传递一个数组以限制多个事件名称：
 
 :::code-group
 
@@ -262,9 +262,9 @@ export const client = createPublicClient({
 
 :::
 
-### Scoping to Arguments
+### 限定参数
 
-You can scope the logs to arguments by providing the `args` argument:
+你可以通过提供 `args` 参数来限制日志到参数：
 
 :::code-group
 
@@ -348,7 +348,7 @@ export const client = createPublicClient({
 
 :::
 
-You can also pass an array to scope multiple values of an argument:
+你还可以传递一个数组以限制参数的多个值：
 
 :::code-group
 
@@ -435,17 +435,17 @@ export const client = createPublicClient({
 
 :::
 
-### Partial Decode
+### 部分解码
 
-By default, if the `topics` and `data` does not conform to the ABI (a mismatch between the number of indexed/non-indexed arguments), `parseEventLogs` will not return return the decoded log.
+默认情况下，如果 `topics` 和 `data` 不符合 ABI（索引参数和非索引参数的数量不匹配），`parseEventLogs` 将不会返回解码的日志。
 
-For example, the following will not return the nonconforming log as there is a mismatch in non-`indexed` arguments & `data` length.
+例如，以下内容将不会返回不符合的日志，因为在非 `indexed` 参数和 `data` 长度之间存在不匹配。
 
 ```ts
 parseEventLogs({
   abi: parseAbi(['event Transfer(address indexed, address, uint256)']),
   logs: [{
-    // `data` should be 64 bytes, but is only 32 bytes. // [!code hl]
+    // `data` 应该是 64 字节，但只有 32 字节。 // [!code hl]
     data: '0x0000000000000000000000000000000000000000000000000000000000000001', // [!code hl]
     topics: [
       '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -457,7 +457,7 @@ parseEventLogs({
 // []
 ```
 
-It is possible for `parseEventLogs` to try and partially decode the Log, this can be done by setting the `strict` argument to `false`:
+`parseEventLogs` 可以尝试部分解码日志，这可以通过将 `strict` 参数设置为 `false` 来实现：
 
 ```ts
 parseEventLogs({
@@ -485,19 +485,19 @@ parseEventLogs({
  */
 ```
 
-## Return Value
+## 返回值
 
 `Log[]`
 
-Decoded logs.
+解码后的日志。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const topics = parseEventLogs({
@@ -518,9 +518,9 @@ const topics = parseEventLogs({
 
 ### logs
 
-- **Type:** `Log[]`
+- **类型:** `Log[]`
 
-An array of logs to parse.
+要解析的日志数组。
 
 ```ts
 const topics = parseEventLogs({
@@ -539,11 +539,11 @@ const topics = parseEventLogs({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** `{ [property: string]: string | string[] | null }`
+- **类型:** `{ [property: string]: string | string[] | null }`
 
-Arguments to scope the logs to.
+用于限制日志的参数。
 
 ```ts
 const topics = parseEventLogs({
@@ -565,11 +565,11 @@ const topics = parseEventLogs({
 })
 ```
 
-### eventName (optional)
+### eventName（可选）
 
-- **Type:** `string`
+- **类型:** `string`
 
-An event name from the ABI.
+ABI 中的事件名称。
 
 ```ts
 const topics = parseEventLogs({
@@ -589,13 +589,13 @@ const topics = parseEventLogs({
 })
 ```
 
-### strict (optional)
+### strict（可选）
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认值:** `true`
 
-If `true`, `parseEventLogs` will not return [nonconforming logs](#partial-decode). 
-If `false`, `parseEventLogs` will try and [partially decode](#partial-decode) nonconforming logs.
+如果为 `true`，`parseEventLogs` 将不会返回 [不符合的日志](#partial-decode)。 
+如果为 `false`，`parseEventLogs` 将尝试 [部分解码](#partial-decode) 不符合的日志。
 
 ```ts
 const topics = parseEventLogs({

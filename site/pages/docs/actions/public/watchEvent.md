@@ -1,20 +1,20 @@
 ---
-description: Watches and returns emitted Event Logs.
+description: 监听并返回发出的事件日志。
 ---
 
 # watchEvent
 
-Watches and returns emitted [Event Logs](/docs/glossary/terms#event-log).
+监听并返回发出的 [事件日志](/docs/glossary/terms#event-log)。
 
-This Action will batch up all the Event Logs found within the [`pollingInterval`](#pollinginterval-optional), and invoke them via [`onLogs`](#onlogs).
+此操作将批量处理在 [`pollingInterval`](#pollinginterval-optional) 中找到的所有事件日志，并通过 [`onLogs`](#onlogs) 调用它们。
 
-`watchEvent` will attempt to create an [Event Filter](https://viem.sh/docs/actions/public/createEventFilter) and listen to changes to the Filter per polling interval, however, if the RPC Provider does not support Filters (ie. `eth_newFilter`), then `watchEvent` will fall back to using [`getLogs`](/docs/actions/public/getLogs) instead.
+`watchEvent` 将尝试创建一个 [事件过滤器](https://viem.sh/docs/actions/public/createEventFilter) 并根据轮询间隔监听过滤器的变化，但是，如果 RPC 提供者不支持过滤器（即 `eth_newFilter`），则 `watchEvent` 将回退到使用 [`getLogs`](/docs/actions/public/getLogs)。
 
-## Usage
+## 用法
 
-By default, you can watch all broadcasted events to the blockchain by just passing `onLogs`.
+默认情况下，你可以通过传递 `onLogs` 来监听所有广播到区块链的事件。
 
-These events will be batched up into [Event Logs](/docs/glossary/terms#event-log) and sent to `onLogs`:
+这些事件将被批量处理为 [事件日志](/docs/glossary/terms#event-log) 并发送到 `onLogs`：
 
 :::code-group
 
@@ -42,13 +42,13 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Scoping
+## 范围
 
-You can also scope `watchEvent` to a set of given attributes (listed below).
+你还可以将 `watchEvent` 限定为一组给定的属性（如下所列）。
 
-### Address
+### 地址
 
-`watchEvent` can be scoped to an **address**:
+`watchEvent` 可以限定为一个 **地址**：
 
 :::code-group
 
@@ -77,11 +77,11 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Event
+### 事件
 
-`watchEvent` can be scoped to an **event**.
+`watchEvent` 可以限定为一个 **事件**。
 
-The `event` argument takes in an event in ABI format – we have a [`parseAbiItem` utility](/docs/abi/parseAbiItem) that you can use to convert from a human-readable event signature → ABI.
+`event` 参数接受 ABI 格式的事件 – 我们有一个 [`parseAbiItem` 工具](/docs/abi/parseAbiItem)，你可以用它将人类可读的事件签名转换为 ABI。
 
 :::code-group
 
@@ -112,7 +112,7 @@ export const publicClient = createPublicClient({
 
 :::
 
-By default, `event` accepts the [`AbiEvent`](/docs/glossary/types#abievent) type:
+默认情况下，`event` 接受 [`AbiEvent`](/docs/glossary/types#abievent) 类型：
 
 :::code-group
 
@@ -145,9 +145,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Arguments
+### 参数
 
-`watchEvent` can be scoped to given **_indexed_ arguments** on the event:
+`watchEvent` 可以限定为给定的 **_索引_ 参数**：
 
 :::code-group
 
@@ -181,9 +181,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-Only indexed arguments in `event` are candidates for `args`.
+只有在 `event` 中的索引参数才是 `args` 的候选。
 
-These arguments can also be an array to indicate that other values can exist in the position:
+这些参数也可以是一个数组，以指示该位置可以存在其他值：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -194,7 +194,7 @@ const unwatch = publicClient.watchEvent({
   address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
   event: parseAbiItem('event Transfer(address indexed from, address indexed to, uint256 value)'),
   args: { // [!code focus:8]
-    // '0xd8da...' OR '0xa5cc...' OR '0xa152...'
+    // '0xd8da...' 或 '0xa5cc...' 或 '0xa152...'
     from: [
       '0xd8da6bf26964af9d7eed9e03e53415d37aa96045', 
       '0xa5cc3c03994db5b0d9a5eedd10cabab0813678ac',
@@ -205,9 +205,9 @@ const unwatch = publicClient.watchEvent({
 })
 ```
 
-### Multiple Events
+### 多个事件
 
-`watchEvent` can be scoped to **multiple events**:
+`watchEvent` 可以限定为 **多个事件**：
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -223,21 +223,21 @@ const unwatch = publicClient.watchEvent({
 })
 ```
 
-Note: `watchEvent` scoped to multiple events cannot be also scoped with [indexed arguments](#arguments) (`args`).
+注意：`watchEvent` 限定为多个事件时，不能同时使用 [索引参数](#arguments) (`args`)。
 
-## Returns
+## 返回值
 
 `UnwatchFn`
 
-A function that can be invoked to stop watching for new Event Logs.
+一个可以调用的函数，用于停止监听新的事件日志。
 
-## Parameters
+## 参数
 
 ### onLogs
 
-- **Type:** `(logs: Log[]) => void`
+- **类型:** `(logs: Log[]) => void`
 
-The new Event Logs.
+新的事件日志。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -247,11 +247,11 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### address (optional)
+### address (可选)
 
-- **Type:** `Address | Address[]`
+- **类型:** `Address | Address[]`
 
-The contract address or a list of addresses from which Logs should originate.
+合约地址或应来源于的地址列表。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -264,13 +264,13 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### event (optional)
+### event (可选)
 
-- **Type:** [`AbiEvent`](/docs/glossary/types#abievent)
+- **类型:** [`AbiEvent`](/docs/glossary/types#abievent)
 
-The event in ABI format.
+ABI 格式的事件。
 
-A [`parseAbiItem` utility](/docs/abi/parseAbiItem) is exported from viem that converts from a human-readable event signature → ABI.
+从 viem 导出的 [`parseAbiItem` 工具](/docs/abi/parseAbiItem) 可以将人类可读的事件签名转换为 ABI。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -286,11 +286,11 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### args (optional)
+### args (可选)
 
-- **Type:** Inferred.
+- **类型:** 推断。
 
-A list of _indexed_ event arguments.
+一个 _indexed_ 事件参数的列表。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -310,12 +310,12 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### batch (optional)
+### batch (可选)
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认值:** `true`
 
-Whether or not to batch the Event Logs between polling intervals.
+是否在轮询间隔之间批量处理事件日志。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -328,11 +328,11 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### onError (optional)
+### onError (可选)
 
-- **Type:** `(error: Error) => void`
+- **类型:** `(error: Error) => void`
 
-Error thrown from listening for new Event Logs.
+监听新事件日志时抛出的错误。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -345,14 +345,14 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### poll (optional)
+### poll (可选)
 
-- **Type:** `boolean`
-- **Default:** `false` for WebSocket Clients, `true` for non-WebSocket Clients
+- **类型:** `boolean`
+- **默认值:** 对于 WebSocket 客户端为 `false`，对于非 WebSocket 客户端为 `true`
 
-Whether or not to use a polling mechanism to check for new logs instead of a WebSocket subscription.
+是否使用轮询机制检查新日志，而不是使用 WebSocket 订阅。
 
-This option is only configurable for Clients with a [WebSocket Transport](/docs/clients/transports/websocket).
+此选项仅适用于具有 [WebSocket 传输](/docs/clients/transports/websocket) 的客户端。
 
 ```ts twoslash
 import { createPublicClient, webSocket } from 'viem'
@@ -371,11 +371,11 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms). Defaults to the Client's `pollingInterval` config.
+轮询频率（以毫秒为单位）。默认为客户端的 `pollingInterval` 配置。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -388,11 +388,11 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-### fromBlock (optional)
+### fromBlock (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The block number to start listening for logs from.
+开始监听日志的区块号。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -405,23 +405,23 @@ const unwatch = publicClient.watchEvent(
 )
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `watchEvent` in the live [Event Logs Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/logs_event-logs) below.
+查看下面的实时 [事件日志示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/logs_event-logs) 中 `watchEvent` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/logs_event-logs?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-**When poll `true` and RPC Provider supports `eth_newFilter`:**
+**当 poll 为 `true` 且 RPC 提供者支持 `eth_newFilter` 时：**
 
-- Calls [`eth_newFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter) to create a filter (called on initialize).
-- On a polling interval, it will call [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges).
+- 调用 [`eth_newFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter) 创建一个过滤器（在初始化时调用）。
+- 在轮询间隔内，它将调用 [`eth_getFilterChanges`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges)。
 
-**When poll `true` RPC Provider does not support `eth_newFilter`:**
+**当 poll 为 `true` 且 RPC 提供者不支持 `eth_newFilter` 时：**
 
-- Calls [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs) for each block between the polling interval.
+- 在轮询间隔内，对于每个区块调用 [`eth_getLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs)。
 
-**When poll `false` and WebSocket Transport:**
+**当 poll 为 `false` 且使用 WebSocket 传输时：**
 
-- Uses a WebSocket subscription via `eth_subscribe` and the "logs" event.
+- 通过 `eth_subscribe` 和 "logs" 事件使用 WebSocket 订阅。

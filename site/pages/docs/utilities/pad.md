@@ -1,20 +1,20 @@
 ---
-description: Pads a hex value or byte array with leading or trailing zeros.
+description: 用前导或后导零填充十六进制值或字节数组。
 ---
 
 # pad
 
-Pads a hex value or byte array with leading or trailing zeros.
+用前导或后导零填充十六进制值或字节数组。
 
-## Install
+## 安装
 
 ```ts
 import { pad } from 'viem'
 ```
 
-## Usage
+## 用法
 
-By default, `pad` will pad a value with leading zeros up to 32 bytes (64 hex chars).
+默认情况下，`pad` 将用前导零填充值，直到 32 字节（64 个十六进制字符）。
 
 ```ts
 import { pad } from 'viem'
@@ -26,20 +26,20 @@ pad(new Uint8Array([1, 122, 51, 123]))
 // Uint8Array [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,122,51,123]
 ```
 
-## Returns
+## 返回值
 
 `Hex | ByteArray`
 
-The value with padded zeros.
+填充零后的值。
 
-## Parameters
+## 参数
 
 ### dir
 
-- **Type:** `"left" | "right"`
-- **Default:** `"left"`
+- **类型:** `"left" | "right"`
+- **默认:** `"left"`
 
-The direction in which to pad the zeros – either leading (left), or trailing (right).
+填充零的方向 - 前导（左）或后导（右）。
 
 ```ts
 pad('0xa4e12a45', {
@@ -50,10 +50,10 @@ pad('0xa4e12a45', {
 
 ### size
 
-- **Type:** `number`
-- **Default:** `32`
+- **类型:** `number`
+- **默认:** `32`
 
-Size (in bytes) of the targeted value.
+目标值的大小（以字节为单位）。
 
 ```ts
 pad('0xa4e12a45', {
@@ -61,4 +61,3 @@ pad('0xa4e12a45', {
 })
 // 0x000000000000000000000000a4e12a45
 ```
-

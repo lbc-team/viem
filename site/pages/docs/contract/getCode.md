@@ -1,12 +1,12 @@
 ---
-description: Retrieves the bytecode at an address.
+description: 检索地址处的字节码。
 ---
 
 # getCode
 
-Retrieves the bytecode at an address.
+检索地址处的字节码。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,19 +30,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Return Value
+## 返回值
 
 [`Hex`](/docs/glossary/types#hex)
 
-The contract's bytecode.
+合约的字节码。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const bytecode = await publicClient.getCode({
@@ -50,11 +50,11 @@ const bytecode = await publicClient.getCode({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the bytecode read against.
+要执行字节码读取的区块号。
 
 ```ts
 const bytecode = await publicClient.getCode({
@@ -63,12 +63,12 @@ const bytecode = await publicClient.getCode({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值:** `'latest'`
 
-The block tag to perform the bytecode read against.
+要执行字节码读取的区块标签。
 
 ```ts
 const bytecode = await publicClient.getCode({
@@ -77,6 +77,6 @@ const bytecode = await publicClient.getCode({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getCode`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getcode)

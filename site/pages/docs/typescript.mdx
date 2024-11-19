@@ -1,13 +1,13 @@
-# TypeScript [TypeScript support for Viem]
+# TypeScript [TypeScript 对 Viem 的支持]
 
-viem is designed to be as type-safe as possible! Things to keep in mind:
+viem 旨在尽可能地类型安全！需要注意的事项：
 
-- Types currently require using TypeScript v5.0.4 or greater.
-- Changes to types in this repository are considered non-breaking and are usually released as patch semver changes (otherwise every type enhancement would be a major version!).
-- It is highly recommended that you lock your `viem` package version to a specific patch release and upgrade with the expectation that types may be fixed or upgraded between any release.
-- The non-type-related public API of `viem` still follows semver very strictly.
+- 类型当前需要使用 TypeScript v5.0.4 或更高版本。
+- 本库中类型的更改被视为非破坏性，并通常作为补丁版本的 semver 更改发布（否则每个类型增强都会是一个主要版本！）。
+- 强烈建议将 `viem` 包版本锁定为特定的补丁版本，并在升级时预期类型可能在任何版本之间被修复或升级。
+- `viem` 的非类型相关公共 API 仍然严格遵循 semver。
 
-To ensure everything works correctly, make sure that your `tsconfig.json` has [`strict`](https://www.typescriptlang.org/tsconfig#strict) mode set to `true`:
+为了确保一切正常工作，请确保你的 `tsconfig.json` 中的 [`strict`](https://www.typescriptlang.org/tsconfig#strict) 模式设置为 `true`：
 
 ```json [tsconfig.json]
 {
@@ -17,11 +17,11 @@ To ensure everything works correctly, make sure that your `tsconfig.json` has [`
 }
 ```
 
-## Type Inference
+## 类型推断
 
-viem can infer types based on [ABI](https://docs.soliditylang.org/en/v0.8.24/abi-spec.html#json) and [EIP-712](https://eips.ethereum.org/EIPS/eip-712) Typed Data definitions (powered by [ABIType](https://abitype.dev)), giving you full end-to-end type-safety from your contracts to your frontend and incredible developer experience (e.g. autocomplete ABI function names and catch misspellings, strongly-typed ABI function arguments, etc.).
+viem 可以根据 [ABI](https://docs.soliditylang.org/en/v0.8.24/abi-spec.html#json) 和 [EIP-712](https://eips.ethereum.org/EIPS/eip-712) 类型数据定义（由 [ABIType](https://abitype.dev) 提供支持）推断类型，为你的合约到前端提供完整的端到端类型安全和出色的开发体验（例如，自动完成 ABI 函数名称并捕获拼写错误，强类型的 ABI 函数参数等）。
 
-For this to work, you must either add [const assertions](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4#const-assertions) to specific configuration parameters (more info on those below) or **define them inline**. For example, [`readContract`](/docs/contract/readContract)'s `abi` configuration parameter:
+为了使其正常工作，你必须将 [const 断言](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4#const-assertions) 添加到特定的配置参数（有关这些的更多信息见下文）或 **在线定义它们**。例如，[`readContract`](/docs/contract/readContract) 的 `abi` 配置参数：
 
 ```ts twoslash
 import { createPublicClient, http, parseAbi } from 'viem'
@@ -37,7 +37,7 @@ const abi = [{ // [!code focus]
   inputs: [{ type: 'address' }], // [!code focus]
   outputs: [{ type: 'uint256' }], // [!code focus]
 }] as const // [!code focus]
-// @log:       ↑ const assertion
+// @log:       ↑ const 断言
 
 const result = client.readContract({
   address: '0x27a69ffba1e939ddcfecc8c7e0f967b872bac65c',
@@ -54,7 +54,7 @@ const client = createPublicClient({
   transport: http()
 })
 // ---cut---
-// @log:   ↓ defined inline
+// @log:   ↓ 在线定义
 const result = client.readContract({
   address: '0x27a69ffba1e939ddcfecc8c7e0f967b872bac65c',
   abi: [{ // [!code focus]
@@ -69,17 +69,17 @@ const result = client.readContract({
 })
 ```
 
-If type inference isn't working, it's likely you forgot to add a `const` assertion or define the configuration parameter inline.
+如果类型推断不起作用，可能是你忘记添加 `const` 断言或在线定义配置参数。
 
 :::tip
-Unfortunately [TypeScript doesn't support importing JSON as const](https://github.com/microsoft/TypeScript/issues/32063). Check out [`@wagmi/cli`](https://wagmi.sh/cli) to help with this! It can automatically fetch ABIs from Etherscan, resolve ABIs from your Foundry/Hardhat projects, and much more.
+不幸的是，[TypeScript 不支持将 JSON 作为 const 导入](https://github.com/microsoft/TypeScript/issues/32063) 。请查看 [`@wagmi/cli`](https://wagmi.sh/cli) 来帮助实现这一点！它可以自动从 Etherscan 获取 ABIs，从你的 Foundry/Hardhat 项目解析 ABIs，等等。
 :::
 
-### Contract ABIs
+### 合约 ABIs
 
-The following actions and utilities support type inference when you add a const assertion to `abi` or define `abi` inline:
+以下操作和工具在你向 `abi` 添加 const 断言或在线定义 `abi` 时支持类型推断：
 
-#### Actions
+#### 操作
 
 - [`createEventFilter`](/docs/actions/public/createEventFilter)
 - [`watchEvent`](/docs/actions/public/watchEvent)
@@ -92,7 +92,7 @@ The following actions and utilities support type inference when you add a const 
 - [`writeContract`](/docs/contract/writeContract)
 - [`watchContractEvent`](/docs/contract/watchContractEvent)
 
-#### Utilities
+#### 工具
 
 - [`decodeEventLog` ](/docs/contract/decodeEventLog)
 - [`decodeFunctionResult` ](/docs/contract/decodeFunctionResult)
@@ -103,7 +103,7 @@ The following actions and utilities support type inference when you add a const 
 - [`encodeFunctionResult` ](/docs/contract/encodeFunctionResult)
 - [`getAbiItem` ](/docs/abi/getAbiItem)
 
-For example, `readContract`:
+例如，`readContract`：
 
 ```ts twoslash
 // @noErrors
@@ -124,16 +124,16 @@ const result = await client.readContract({
   
   
 
-  // ↑ Notice how "transfer" is not included since it is not a "read" function
+  // ↑ 注意 "transfer" 没有包含，因为它不是 "read" 函数
 
   args: ['0x27a69ffba1e939ddcfecc8c7e0f967b872bac65c'],
   // ^?
 })
 ```
 
-### EIP-712 Typed Data
+### EIP-712 类型数据
 
-Adding a const assertion to `types` or defining `types` inline adds type inference to [`signTypedData`](/docs/actions/wallet/signTypedData)'s `value` configuration parameter:
+向 `types` 添加 const 断言或在线定义 `types` 会为 [`signTypedData`](/docs/actions/wallet/signTypedData) 的 `value` 配置参数添加类型推断：
 
 ```ts twoslash
 import { createWalletClient, http, erc20Abi, parseAbi } from 'viem'
@@ -192,9 +192,9 @@ const result = client.signTypedData({
 })
 ```
 
-### Other
+### 其他
 
-The following utilities support type inference when you use const assertions or define arguments inline:
+以下工具在你使用 const 断言或在线定义参数时支持类型推断：
 
 - [`decodeAbiParameters` ](/docs/abi/decodeAbiParameters)
 - [`encodeAbiParameters` ](/docs/abi/encodeAbiParameters)
@@ -204,13 +204,13 @@ The following utilities support type inference when you use const assertions or 
 - [`parseAbiParameter` ](/docs/abi/parseAbiParameter)
 - [`parseAbiParameters` ](/docs/abi/parseAbiParameters)
 
-## Configuring Internal Types
+## 配置内部类型
 
-For advanced use-cases, you may want to configure viem's internal types. Most of viem's types relating to ABIs and EIP-712 Typed Data are powered by [ABIType](https://abitype.dev). See ABIType's [documentation](https://abitype.dev/config) for more info on how to configure types.
+对于高级用例，你可能希望配置 viem 的内部类型。viem 的大多数与 ABIs 和 EIP-712 类型数据相关的类型由 [ABIType](https://abitype.dev) 提供支持。有关如何配置类型的更多信息，请参阅 ABIType 的 [文档](https://abitype.dev/config)。
 
 ## `window` Polyfill
 
-By importing the `viem/window` Polyfill, the global `window.ethereum` will typed as an [`EIP1193Provider`](https://github.com/wagmi-dev/viem/blob/4bdbf15be0d61b52a195e11c97201e707fb616cc/src/types/eip1193.ts#L24-L26) (including a fully-typed `request` function & typed events).
+通过导入 `viem/window` Polyfill，全球的 `window.ethereum` 将被类型化为 [`EIP1193Provider`](https://github.com/wagmi-dev/viem/blob/4bdbf15be0d61b52a195e11c97201e707fb616cc/src/types/eip1193.ts#L24-L26)（包括一个完全类型化的 `request` 函数和类型化事件）。
 
 ```ts twoslash
 // @noErrors

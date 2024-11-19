@@ -1,18 +1,18 @@
 ---
-description: Estimates the gas required to successfully execute a contract write function call. 
+description: 估算成功执行合约写入函数调用所需的 gas。
 ---
 
 # estimateContractGas
 
-Estimates the gas required to successfully execute a contract write function call.
+估算成功执行合约写入函数调用所需的 gas。
 
-Internally, `estimateContractGas` uses a [Public Client](/docs/clients/public) to call the [`estimateGas` action](/docs/actions/public/estimateGas) with [ABI-encoded `data`](/docs/contract/encodeFunctionData).
+在内部，`estimateContractGas` 使用 [公共客户端](/docs/clients/public) 调用 [`estimateGas` 操作](/docs/actions/public/estimateGas)，并使用 [ABI 编码的 `data`](/docs/contract/encodeFunctionData)。
 
-## Usage
+## 用法
 
-Below is a very basic example of how to estimate gas (with no arguments).
+以下是一个非常基本的估算 gas 的示例（没有参数）。
 
-The `mint` function accepts no arguments, and returns a token ID.
+`mint` 函数不接受任何参数，并返回一个代币 ID。
 
 :::code-group
 
@@ -48,9 +48,9 @@ import { createPublicClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -61,13 +61,13 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Passing Arguments
+### 传递参数
 
-If your function requires argument(s), you can pass them through with the `args` attribute.
+如果你的函数需要参数，可以通过 `args` 属性传递它们。
 
-TypeScript types for `args` will be inferred from the function name & ABI, to guard you from inserting the wrong values.
+`args` 的 TypeScript 类型将从函数名称和 ABI 推断，以防止你插入错误的值。
 
-For example, the `mint` function name below requires a **tokenId** argument, and it is typed as `[number]`.
+例如，下面的 `mint` 函数名称需要一个 **tokenId** 参数，并且它的类型为 `[number]`。
 
 :::code-group
 
@@ -104,9 +104,9 @@ import { createPublicClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -117,19 +117,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Return Value
+## 返回值
 
 `bigint`
 
-The gas estimate.
+gas 估算值。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型：** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -142,9 +142,9 @@ const { result } = await publicClient.estimateContractGas({
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型：** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -157,9 +157,9 @@ const { result } = await publicClient.estimateContractGas({
 
 ### functionName
 
-- **Type:** `string`
+- **类型：** `string`
 
-A function to extract from the ABI.
+要从 ABI 中提取的函数。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -172,11 +172,11 @@ const { result } = await publicClient.estimateContractGas({
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to estimate gas from.
+用于估算 gas 的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -187,11 +187,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### accessList (optional)
+### accessList（可选）
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型：** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -207,11 +207,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** Inferred from ABI.
+- **类型：** 从 ABI 推断。
 
-Arguments to pass to function call.
+传递给函数调用的参数。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -223,11 +223,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice（可选）
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -240,11 +240,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -257,11 +257,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -275,11 +275,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `number`
+- **类型：** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -292,11 +292,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `number`
+- **类型：** `number`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -309,11 +309,11 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber（可选）
 
-- **Type:** `number`
+- **类型：** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({
@@ -325,12 +325,12 @@ const { result } = await publicClient.estimateContractGas({
 })
 ```
 
-### blockTag (optional)
+### blockTag（可选）
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型：** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值：** `'latest'`
 
-The block tag to perform the read against.
+要执行读取的区块标签。
 
 ```ts
 const { result } = await publicClient.estimateContractGas({

@@ -1,22 +1,22 @@
 ---
-description: Transforms arbitrary data into blob sidecars.
+description: 将任意数据转换为 blob 边车。
 ---
 
 # toBlobSidecars
 
-Transforms arbitrary data (or blobs, commitments, & proofs) into a blob sidecar array.
+将任意数据（或 blobs、承诺和证明）转换为 blob 边车数组。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { toBlobSidecars } from 'viem'
 ```
 
-## Usage
+## 用法
 
-### With Arbitrary Data
+### 使用任意数据
 
-You can generate blob sidecars from arbitrary data without having to compute the blobs, commitments, and proofs first (that's done internally).
+你可以从任意数据生成 blob 边车，而无需先计算 blobs、承诺和证明（这些在内部完成）。
 
 :::code-group
 
@@ -38,9 +38,9 @@ export const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 
 :::
 
-### With Blobs, Commitments, and Proofs
+### 使用 Blobs、承诺和证明
 
-Alternatively, you can reach for the lower-level API and insert the blobs, commitments, and proofs directly.
+或者，你可以使用更低级的 API，直接插入 blobs、承诺和证明。
 
 :::code-group
 
@@ -70,19 +70,19 @@ export const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 
 :::
 
-## Returns
+## 返回
 
 `BlobSidecars`
 
-Blob sidecars from the input data.
+从输入数据生成的 blob 边车。
 
-## Parameters
+## 参数
 
 ### blobs
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型：** `Hex[] | ByteArray[]`
 
-Blobs to transform into blob sidecars.
+要转换为 blob 边车的 blobs。
 
 ```ts twoslash
 import { 
@@ -106,9 +106,9 @@ const sidecars = toBlobSidecars({
 
 ### commitments
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型：** `Hex[] | ByteArray[]`
 
-Commitments corresponding to the input blobs.
+与输入 blobs 对应的承诺。
 
 ```ts twoslash
 import { 
@@ -132,9 +132,9 @@ const sidecars = toBlobSidecars({
 
 ### data
 
-- **Type:** `Hex | ByteArray`
+- **类型：** `Hex | ByteArray`
 
-Data to transform into blob sidecars.
+要转换为 blob 边车的数据。
 
 ```ts twoslash
 import { toBlobSidecars } from 'viem'
@@ -148,9 +148,9 @@ const sidecars = toBlobSidecars({
 
 ### kzg
 
-- **Type:** `KZG`
+- **类型：** `KZG`
 
-KZG implementation. See [`setupKzg`](/docs/utilities/setupKzg) for more information.
+KZG 实现。有关更多信息，请参见 [`setupKzg`](/docs/utilities/setupKzg)。
 
 ```ts twoslash
 // @noErrors
@@ -168,9 +168,9 @@ const sidecars = toBlobSidecars({
 
 ### proofs
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型：** `Hex[] | ByteArray[]`
 
-Proofs corresponding to the input blobs.
+与输入 blobs 对应的证明。
 
 ```ts twoslash
 import { 
@@ -194,9 +194,9 @@ const sidecars = toBlobSidecars({
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
+- **类型：** `"bytes" | "hex"`
 
-The output type.
+输出类型。
 
 ```ts twoslash
 import { defineKzg } from 'viem'
@@ -213,6 +213,4 @@ const sidecars = toBlobSidecars({
 
 sidecars // [!code focus]
 // ^?
-
-
 ```

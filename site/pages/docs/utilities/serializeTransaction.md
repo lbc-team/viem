@@ -1,18 +1,18 @@
 ---
-description: Serializes a transaction object.
+description: 序列化交易对象。
 ---
 
 # serializeTransaction
 
-Serializes a transaction object. Supports EIP-1559, EIP-2930, and Legacy transactions.
+序列化交易对象。支持 EIP-1559、EIP-2930 和传统交易。
 
-## Import
+## 导入
 
 ```ts
 import { serializeTransaction } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { serializeTransaction } from 'viem'
@@ -28,9 +28,9 @@ const serialized = serializeTransaction({
 })
 ```
 
-## Returns
+## 返回值
 
-Returns a template `Hex` value based on transaction type:
+根据交易类型返回一个模板 `Hex` 值：
 
 - `eip1559`: [TransactionSerializedEIP1559](/docs/glossary/types#TransactionSerializedEIP1559)
 - `eip2930`: [TransactionSerializedEIP2930](/docs/glossary/types#TransactionSerializedEIP2930)
@@ -38,13 +38,13 @@ Returns a template `Hex` value based on transaction type:
 - `eip7702`: [TransactionSerializedEIP7702](/docs/glossary/types#TransactionSerializedEIP7702)
 - `legacy`: [TransactionSerializedLegacy](/docs/glossary/types#TransactionSerializedLegacy) 
 
-## Parameters
+## 参数
 
 ### transaction
 
-- **Type:** `TransactionSerializable`
+- **类型:** `TransactionSerializable`
 
-The transaction object to serialize.
+要序列化的交易对象。
 
 ```ts
 const serialized = serializeTransaction({
@@ -60,9 +60,9 @@ const serialized = serializeTransaction({
 
 ### signature
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Optional signature to include.
+可选的签名以包含。
 
 ```ts
 const serialized = serializeTransaction({

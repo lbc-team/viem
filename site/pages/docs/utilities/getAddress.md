@@ -1,18 +1,18 @@
 ---
-description: Converts an address into an address that is checksum encoded.
+description: 将地址转换为校验和编码的地址。
 ---
 
 # getAddress
 
-Converts an address into an address that is [checksum encoded](https://eips.ethereum.org/EIPS/eip-55). Supports [EIP-1191](https://eips.ethereum.org/EIPS/eip-1191).
+将地址转换为[校验和编码](https://eips.ethereum.org/EIPS/eip-55)的地址。支持 [EIP-1191](https://eips.ethereum.org/EIPS/eip-1191)。
 
-## Import
+## 导入
 
 ```ts
 import { getAddress } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { getAddress } from 'viem'
@@ -21,32 +21,30 @@ getAddress('0xa5cc3c03994db5b0d9a5eEdD10Cabab0813678ac') // [!code focus:2]
 // '0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC'
 ```
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The checksummed address.
+校验和地址。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `string`
+- **类型:** `string`
 
-An Ethereum address.
+以太坊地址。
 
-### chainId (optional)
+### chainId（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-The chain ID of the network the address is on. Complies to [EIP-1191](https://eips.ethereum.org/EIPS/eip-1191).
+地址所在网络的链 ID。符合 [EIP-1191](https://eips.ethereum.org/EIPS/eip-1191)。
 
-:::warning[Warning]
-EIP-1191 checksum addresses are generally not backwards compatible with 
-the wider Ethereum ecosystem, meaning it will break when validated against 
-an application/tool that relies on EIP-55 checksum encoding (checksum without chainId).
+:::warning[警告]
+EIP-1191 校验和地址通常与更广泛的以太坊生态系统不向后兼容，这意味着在与依赖于 EIP-55 校验和编码（没有 chainId 的校验和）的应用程序/工具进行验证时会出现问题。
 
-It is highly recommended to not use this feature unless you know what you are doing.
+强烈建议在不确定的情况下不要使用此功能。
 
-See more: https://github.com/ethereum/EIPs/issues/1121
+更多信息请参见: https://github.com/ethereum/EIPs/issues/1121
 :::

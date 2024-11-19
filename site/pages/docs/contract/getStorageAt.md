@@ -1,12 +1,12 @@
 ---
-description: Returns the value from a storage slot at a given address.
+description: 返回给定地址的存储槽中的值。
 ---
 
 # getStorageAt
 
-Returns the value from a storage slot at a given address.
+返回给定地址的存储槽中的值。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -33,19 +33,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Return Value
+## 返回值
 
 [`Hex`](/docs/glossary/types#hex)
 
-The value of the storage slot.
+存储槽的值。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const data = await publicClient.getStorageAt({
@@ -56,9 +56,9 @@ const data = await publicClient.getStorageAt({
 
 ### slot
 
-- **Type**: [`Hex`](/docs/glossary/types#hex)
+- **类型**: [`Hex`](/docs/glossary/types#hex)
 
-The storage position (as a hex encoded value).
+存储位置（以十六进制编码的值）。
 
 ```ts
 const data = await publicClient.getStorageAt({
@@ -67,11 +67,11 @@ const data = await publicClient.getStorageAt({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the storage slot read against.
+要执行存储槽读取的区块号。
 
 ```ts
 const bytecode = await publicClient.getStorageAt({
@@ -81,12 +81,12 @@ const bytecode = await publicClient.getStorageAt({
 })
 ```
 
-### blockTag (optional)
+### blockTag（可选）
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-The block tag to perform the storage slot read against.
+要执行存储槽读取的区块标签。
 
 ```ts
 const bytecode = await publicClient.getStorageAt({
@@ -96,6 +96,6 @@ const bytecode = await publicClient.getStorageAt({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getStorageAt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat)

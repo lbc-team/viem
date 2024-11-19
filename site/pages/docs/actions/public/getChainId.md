@@ -1,12 +1,12 @@
 ---
-description: Returns the chain ID associated with the current network
+description: 返回与当前网络关联的链 ID
 ---
 
 # getChainId
 
-Returns the chain ID associated with the current network
+返回与当前网络关联的链 ID
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,12 +29,12 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `number`
 
-The current chain ID.
+当前链 ID。
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
-- Calls [`eth_chainId`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_chainid).
+- 调用 [`eth_chainId`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_chainid)。

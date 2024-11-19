@@ -1,14 +1,14 @@
 ---
-description: Returns a list of event logs since the filter was created. 
+description: 返回自过滤器创建以来的事件日志列表。
 ---
 
 # getFilterLogs
 
-Returns a list of **event** logs since the filter was created. 
+返回自过滤器创建以来的**事件**日志列表。
 
-Note: `getFilterLogs` is only compatible with **event filters**.
+注意：`getFilterLogs` 仅与 **事件过滤器** 兼容。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -36,20 +36,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-
-## Returns
+## 返回
 
 [`Log[]`](/docs/glossary/types#log)
 
-A list of event logs.
+事件日志列表。
 
-## Parameters
+## 参数
 
 ### filter
 
-- **Type:** [`Filter`](/docs/glossary/types#filter)
+- **类型:** [`Filter`](/docs/glossary/types#filter)
 
-An **event** filter.
+一个 **事件** 过滤器。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -60,6 +59,6 @@ const logs = await publicClient.getFilterChanges({
 })
 ```
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getFilterLogs`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterlogs)

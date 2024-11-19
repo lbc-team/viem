@@ -1,16 +1,16 @@
-# simulateContract [Simulates & validates a contract interaction.]
+# simulateContract [模拟和验证合约交互]
 
-The `simulateContract` function **simulates**/**validates** a contract interaction. This is useful for retrieving **return data** and **revert reasons** of contract write functions.
+`simulateContract` 函数 **模拟**/**验证** 合约交互。这对于检索合约写入函数的 **返回数据** 和 **回退原因** 非常有用。
 
-This function does not require gas to execute and _**does not**_ change the state of the blockchain. It is almost identical to [`readContract`](/docs/contract/readContract), but also supports contract write functions.
+此函数执行时不需要 gas，并且 ***不会*** 更改区块链的状态。它与 [`readContract`](/docs/contract/readContract) 几乎相同，但也支持合约写入函数。
 
-Internally, `simulateContract` uses a [Public Client](/docs/clients/public) to call the [`call` action](/docs/actions/public/call) with [ABI-encoded `data`](/docs/contract/encodeFunctionData).
+在内部，`simulateContract` 使用 [Public Client](/docs/clients/public) 调用 [`call` 操作](/docs/actions/public/call) 以及 [ABI 编码的 `data`](/docs/contract/encodeFunctionData)。
 
-## Usage
+## 用法
 
-Below is a very basic example of how to simulate a write function on a contract (with no arguments).
+以下是如何在合约上模拟写入函数（无参数）的非常基本的示例。
 
-The `mint` function accepts no arguments, and returns a token ID.
+`mint` 函数不接受任何参数，并返回一个代币 ID。
 
 :::code-group
 
@@ -45,9 +45,9 @@ import { createPublicClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -58,13 +58,13 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Passing Arguments
+### 传递参数
 
-If your function requires argument(s), you can pass them through with the `args` attribute.
+如果你的函数需要参数，可以通过 `args` 属性传递它们。
 
-TypeScript types for `args` will be inferred from the function name & ABI, to guard you from inserting the wrong values.
+`args` 的 TypeScript 类型将根据函数名称和 ABI 推断，以防止你插入错误的值。
 
-For example, the `mint` function name below requires a **tokenId** argument, and it is typed as `[number]`.
+例如，下面的 `mint` 函数名称需要一个 **tokenId** 参数，并且它的类型为 `[number]`。
 
 :::code-group
 
@@ -100,9 +100,9 @@ import { createPublicClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -113,11 +113,11 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Pairing with `writeContract`
+### 与 `writeContract` 配对
 
-The `simulateContract` function also pairs well with `writeContract`.
+`simulateContract` 函数也与 `writeContract` 很好地配对。
 
-In the example below, we are **validating** if the contract write will be successful via `simulateContract`. If no errors are thrown, then we are all good. After that, we perform a contract write to execute the transaction.
+在下面的示例中，我们正在 **验证** 合约写入是否会成功，通过 `simulateContract`。如果没有抛出错误，那么一切都很好。之后，我们执行合约写入以执行交易。
 
 :::code-group
 
@@ -153,9 +153,9 @@ import { createPublicClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const walletClient = createWalletClient({
@@ -171,11 +171,11 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Handling Custom Errors
+### 处理自定义错误
 
-In the example below, we are **catching** a [custom error](https://blog.soliditylang.org/2021/04/21/custom-errors/) thrown by the `simulateContract`. It is important to include the custom error item in the contract `abi`.
+在下面的示例中，我们正在 **捕获** `simulateContract` 抛出的 [自定义错误](https://blog.soliditylang.org/2021/04/21/custom-errors/)。在合约的 `abi` 中包含自定义错误项非常重要。
 
-You can access the custom error through the `data` attribute of the error:
+你可以通过错误的 `data` 属性访问自定义错误：
 
 :::code-group
 
@@ -196,7 +196,7 @@ try {
     const revertError = err.walk(err => err instanceof ContractFunctionRevertedError)
     if (revertError instanceof ContractFunctionRevertedError) {
       const errorName = revertError.data?.errorName ?? ''
-      // do something with `errorName`
+      // 对 `errorName` 做一些处理
     }
   }
 }
@@ -213,7 +213,7 @@ export const wagmiAbi = [
     stateMutability: "view",
     type: "function",
   },
-  // Custom solidity error
+  // 自定义 Solidity 错误
   {
     type: 'error',
     inputs: [],
@@ -244,9 +244,9 @@ import { createPublicClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const walletClient = createWalletClient({
@@ -262,9 +262,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### State Overrides
+### 状态覆盖
 
-When using `simulateContract`, there sometimes needs to be an initial state change to make the transaction pass. A common use case would be an approval. For that, there are [state overrides](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-eth#eth-call). In the example below, we are simulating sending a token on behalf of another user. To do this, we need to modify the state of the token contract to have maximum approve from the token owner.
+在使用 `simulateContract` 时，有时需要进行初始状态更改以使交易通过。一个常见的用例是批准。为此，有 [状态覆盖](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-eth#eth-call)。在下面的示例中，我们正在模拟代表另一个用户发送代币。为此，我们需要修改代币合约的状态，以便从代币所有者那里获得最大批准。
 
 :::code-group
 
@@ -272,10 +272,10 @@ When using `simulateContract`, there sometimes needs to be an initial state chan
 import { account, publicClient } from './config'
 import { abi, address } from './contract'
 
-// Allowance slot: A 32 bytes hex string representing the allowance slot of the sender.
+// 允许额度槽：一个 32 字节的十六进制字符串，表示发送者的允许额度槽。
 const allowanceSlot = '0x....'
 
-// Max allowance: A 32 bytes hex string representing the maximum allowance (2^256 - 1)
+// 最大允许额度：一个 32 字节的十六进制字符串，表示最大允许额度 (2^256 - 1)
 const maxAllowance = numberToHex(maxUint256)
 
 const { result } = await publicClient.simulateContract({
@@ -290,7 +290,7 @@ const { result } = await publicClient.simulateContract({
   ],
   stateOverride: [ // [!code hl]
     { // [!code hl]
-      // modifying the state of the token contract // [!code hl]
+      // 修改代币合约的状态 // [!code hl]
       address, // [!code hl]
       stateDiff: [ // [!code hl]
         { // [!code hl]
@@ -303,7 +303,7 @@ const { result } = await publicClient.simulateContract({
 })
 
 console.log(result)
-// @log: Output: true
+// @log: 输出: true
 ```
 
 ```ts twoslash [contract.ts] filename="contract.ts"
@@ -352,17 +352,17 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Return Value
+## 返回值
 
-The simulation result and write request. Type is inferred.
+模拟结果和写入请求。类型是推断的。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -375,9 +375,9 @@ const { result } = await publicClient.simulateContract({
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -390,9 +390,9 @@ const { result } = await publicClient.simulateContract({
 
 ### functionName
 
-- **Type:** `string`
+- **类型:** `string`
 
-A function to extract from the ABI.
+要从 ABI 中提取的函数。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -405,11 +405,11 @@ const { result } = await publicClient.simulateContract({
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to simulate the contract method from.
+要模拟合约方法的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -420,11 +420,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### accessList (optional)
+### accessList (可选)
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型:** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -440,11 +440,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### authorizationList (optional)
+### authorizationList (可选)
 
-- **Type:** `AuthorizationList`
+- **类型:** `AuthorizationList`
 
-Signed EIP-7702 Authorization list.
+签名的 EIP-7702 授权列表。
 
 ```ts
 const authorization = await walletClient.signAuthorization({ 
@@ -461,16 +461,16 @@ const { result } = await publicClient.simulateContract({
 ```
 
 :::note
-**References**
-- [EIP-7702 Overview](/experimental/eip7702)
-- [`signAuthorization` Docs](/experimental/eip7702/signAuthorization)
+**参考**
+- [EIP-7702 概述](/experimental/eip7702)
+- [`signAuthorization` 文档](/experimental/eip7702/signAuthorization)
 :::
 
-### args (optional)
+### args (可选)
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Arguments to pass to function call.
+传递给函数调用的参数。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -482,11 +482,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -498,12 +498,12 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-The block tag to perform the read against.
+要执行读取的区块标签。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -515,11 +515,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### dataSuffix (optional)
+### dataSuffix (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Data to append to the end of the calldata. Useful for adding a ["domain" tag](https://opensea.notion.site/opensea/Seaport-Order-Attributions-ec2d69bf455041a5baa490941aad307f).
+要附加到 calldata 末尾的数据。用于添加 ["domain" 标签](https://opensea.notion.site/opensea/Seaport-Order-Attributions-ec2d69bf455041a5baa490941aad307f)。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -531,11 +531,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### gas (optional)
+### gas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The gas limit for the transaction.
+交易的 gas 限制。
 
 ```ts
 await walletClient.writeContract({
@@ -547,11 +547,11 @@ await walletClient.writeContract({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -564,11 +564,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -581,11 +581,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -599,11 +599,11 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -616,20 +616,20 @@ const { result } = await publicClient.simulateContract({
 })
 ```
 
-### stateOverride (optional)
+### stateOverride (可选)
 
-- **Type:** [`StateOverride`](/docs/glossary/types#stateoverride)
+- **类型:** [`StateOverride`](/docs/glossary/types#stateoverride)
 
-The state override set is an optional address-to-state mapping, where each entry specifies some state to be ephemerally overridden prior to executing the call.
+状态覆盖集是一个可选的地址到状态的映射，其中每个条目指定在执行调用之前要临时覆盖的某些状态。
 
-> Note: By using state overrides, you simulate the contract based on a fake state. Using this is useful for testing purposes, but making a transaction based on the returned `request` object might fail regardless of the simulation result.
+> 注意：通过使用状态覆盖，你可以基于虚假状态模拟合约。使用此功能对于测试目的很有用，但基于返回的 `request` 对象进行交易可能会失败，无论模拟结果如何。
 
 ```ts
 const data = await publicClient.simulateContract({
   address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
   abi: wagmiAbi,
   functionName: 'mint',
-  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
+  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
   stateOverride: [ // [!code focus]
     { // [!code focus]
       address: '0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC', // [!code focus]
@@ -645,11 +645,11 @@ const data = await publicClient.simulateContract({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `number`
+- **类型：** `number`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts
 const { result } = await publicClient.simulateContract({
@@ -657,13 +657,13 @@ const { result } = await publicClient.simulateContract({
   abi: wagmiAbi,
   functionName: 'mint',
   args: [69420],
-  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
+  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
   value: parseEther('1') // [!code focus]
 })
 ```
 
-## Live Example
+## 实时示例
 
-Check out the usage of `simulateContract` in the live [Writing to Contracts Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_writing-to-contracts) below.
+查看下面的实时 [写入合约示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_writing-to-contracts) 中 `simulateContract` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/contracts_writing-to-contracts?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>

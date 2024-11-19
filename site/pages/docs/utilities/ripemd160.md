@@ -1,20 +1,20 @@
 ---
-description: Calculates the Ripemd160 hash of a byte array.
+description: 计算字节数组的 Ripemd160 哈希值。
 ---
 
 # ripemd160
 
-Calculates the [Ripemd160](https://en.wikipedia.org/wiki/RIPEMD) hash of a byte array or hex value.
+计算字节数组或十六进制值的 [Ripemd160](https://en.wikipedia.org/wiki/RIPEMD) 哈希值。
 
-This function is a re-export of `ripemd160` from [`@noble/hashes`](https://github.com/paulmillr/noble-hashes) – an audited & minimal JS hashing library.
+此函数是从 [`@noble/hashes`](https://github.com/paulmillr/noble-hashes) 重新导出的 `ripemd160` – 一个经过审计的最小化 JS 哈希库。
 
-## Install
+## 安装
 
 ```ts
 import { ripemd160 } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { ripemd160 } from 'viem'
@@ -26,26 +26,26 @@ ripemd160('0xdeadbeef')
 // 0x226821c2f5423e11fe9af68bd285c249db2e4b5a
 ```
 
-## Returns
+## 返回值
 
 `Hex | ByteArray`
 
-The hashed value.
+哈希值。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-The hex value or byte array to hash.
+要哈希的十六进制值或字节数组。
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
-- **Default:** `"hex"`
+- **类型:** `"bytes" | "hex"`
+- **默认值:** `"hex"`
 
-The output type.
+输出类型。
 
 ```ts
 import { ripemd160 } from 'viem'

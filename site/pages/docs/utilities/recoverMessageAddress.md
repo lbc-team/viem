@@ -1,14 +1,14 @@
 ---
-description: Recovers the signing address from a message & signature.
+description: 从消息和签名中恢复签名地址。
 ---
 
 # recoverMessageAddress
 
-Recovers the original signing address from a message & signature.
+从消息和签名中恢复原始签名地址。
 
-Useful for obtaining the address of a message that was signed with [`signMessage`](/docs/actions/wallet/signMessage).
+用于获取使用 [`signMessage`](/docs/actions/wallet/signMessage) 签名的消息的地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,29 +35,29 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 })
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount('0x...')
 ```
 
 :::
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The signing address.
+签名地址。
 
-## Parameters
+## 参数
 
 ### message
 
-- **Type:** `string | { raw: Hex | ByteArray }`
+- **类型:** `string | { raw: Hex | ByteArray }`
 
-The message that was signed.
+被签名的消息。
 
-By default, viem verifies the UTF-8 representation of the message.
+默认情况下，viem 验证消息的 UTF-8 表示。
 
 ```ts
 const address = await recoverMessageAddress({ 
@@ -66,7 +66,7 @@ const address = await recoverMessageAddress({
 })
 ```
 
-To verify the data representation of the message, you can use the `raw` attribute.
+要验证消息的数据表示，可以使用 `raw` 属性。
 
 ```ts
 const address = await recoverMessageAddress({ 
@@ -77,9 +77,9 @@ const address = await recoverMessageAddress({
 
 ### signature
 
-- **Type:** `Hex | ByteArray | Signature`
+- **类型:** `Hex | ByteArray | Signature`
 
-The signature of the message.
+消息的签名。
 
 ```ts
 const address = await recoverMessageAddress({ 

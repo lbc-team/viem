@@ -1,27 +1,27 @@
 ---
-description: Defines a KZG interface.
+description: 定义 KZG 接口。
 ---
 
 # defineKzg
 
-Defines a [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) compatible [KZG interface](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#How-%E2%80%9Ccomplicated%E2%80%9D-and-%E2%80%9Cnew%E2%80%9D-is-KZG). The KZG interface is used in the blob transaction signing process to generate KZG commitments & proofs.
+定义一个与 [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) 兼容的 [KZG 接口](https://notes.ethereum.org/@vbuterin/proto_danksharding_faq#How-%E2%80%9Ccomplicated%E2%80%9D-and-%E2%80%9Cnew%E2%80%9D-is-KZG)。KZG 接口用于 blob 交易签名过程，以生成 KZG 承诺和证明。
 
-`defineKzg` accepts a KZG interface that implements two functions:
+`defineKzg` 接受一个实现了两个函数的 KZG 接口：
 
-- `blobToKzgCommitment`: A function that takes a blob and returns it's KZG commitment.
-- `computeBlobKzgProof`: A function that takes a blob and it's commitment, and returns the KZG proof.
+- `blobToKzgCommitment`：一个接受 blob 并返回其 KZG 承诺的函数。
+- `computeBlobKzgProof`：一个接受 blob 及其承诺并返回 KZG 证明的函数。
 
-A couple of KZG implementations we recommend are:
-- [c-kzg](https://github.com/ethereum/c-kzg-4844): Node.js bindings to c-kzg.
-- [kzg-wasm](https://github.com/ethereumjs/kzg-wasm): WebAssembly bindings to c-kzg.
+我们推荐的几个 KZG 实现是：
+- [c-kzg](https://github.com/ethereum/c-kzg-4844)：Node.js 对 c-kzg 的绑定。
+- [kzg-wasm](https://github.com/ethereumjs/kzg-wasm)：WebAssembly 对 c-kzg 的绑定。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { defineKzg } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import * as cKzg from 'c-kzg'
@@ -33,22 +33,22 @@ cKzg.loadTrustedSetup(mainnetTrustedSetupPath)
 const kzg = defineKzg(cKzg)
 ```
 
-## Returns
+## 返回
 
 `Kzg`
 
-The KZG interface.
+KZG 接口。
 
-## Parameters
+## 参数
 
 ### blobToKzgCommitment
 
-- **Type:** `(blob: ByteArray) => ByteArray`
+- **类型：** `(blob: ByteArray) => ByteArray`
 
-Convert a blob to a KZG commitment.
+将 blob 转换为 KZG 承诺。
 
 ### computeBlobKzgProof
 
-- **Type:** `(blob: ByteArray, commitment: ByteArray) => ByteArray`
+- **类型：** `(blob: ByteArray, commitment: ByteArray) => ByteArray`
 
-Given a blob, return the KZG proof that is used to verify it against the commitment.
+给定一个 blob，返回用于验证其与承诺的 KZG 证明。

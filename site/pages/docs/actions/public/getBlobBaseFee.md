@@ -1,12 +1,12 @@
 ---
-description: Returns the current blob base fee (in wei).
+description: 返回当前的 blob 基础费用（以 wei 为单位）。
 ---
 
 # getBlobBaseFee
 
-Returns the current blob base fee (in wei).
+返回当前的 blob 基础费用（以 wei 为单位）。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,12 +28,12 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `bigint`
 
-the blob base fee (in wei).
+blob 基础费用（以 wei 为单位）。
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_blobBaseFee`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gasprice)

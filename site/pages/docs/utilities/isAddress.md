@@ -1,18 +1,18 @@
 ---
-description: Checks if the address is valid.
+description: 检查地址是否有效。
 ---
 
 # isAddress
 
-Checks if the address is valid. By default, it also verifies whether the address is in checksum format.
+检查地址是否有效。默认情况下，它还会验证地址是否为校验和格式。
 
-## Import
+## 导入
 
 ```ts
 import { isAddress } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { isAddress } from 'viem'
@@ -21,26 +21,26 @@ isAddress('0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC') // [!code focus:2]
 // true
 ```
 
-## Returns
+## 返回值
 
 `boolean`
 
-Whether or not the address is valid.
+地址是否有效。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `string`
+- **类型:** `string`
 
-An Ethereum address.
+以太坊地址。
 
-### options.strict (optional)
+### options.strict (可选)
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型:** `boolean`
+- **默认值:** `true`
 
-Enables strict mode. If enabled, it also verifies whether the address is in checksum format.
+启用严格模式。如果启用，它还会验证地址是否为校验和格式。
 
 ```ts
 isAddress('0xa5cc3c03994db5b0d9a5eedd10cabab0813678ac', { strict: false })

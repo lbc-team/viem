@@ -1,12 +1,12 @@
 ---
-description: Returns the details of all transactions currently pending for inclusion in the next block(s).
+description: 返回当前待包含在下一个区块中的所有交易的详细信息。
 ---
 
 # getTxpoolContent
 
-Returns the details of all transactions currently pending for inclusion in the next block(s), as well as the ones that are being scheduled for future execution only. [Read more](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool).
+返回当前待包含在下一个区块中的所有交易的详细信息，以及仅被安排用于未来执行的交易。 [阅读更多](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool) 。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,6 +29,6 @@ export const testClient = createTestClient({
 
 :::
 
-## Returns
+## 返回
 
-Transaction pool content. [See here](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool).
+交易池内容。 [查看这里](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-txpool) 。

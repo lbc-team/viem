@@ -1,25 +1,25 @@
 ---
-description: Encodes a string, hex value, number or boolean to a byte array.
+description: 将字符串、十六进制值、数字或布尔值编码为字节数组。
 ---
 
 # toBytes
 
-Encodes a string, hex value, number or boolean to a byte array.
+将字符串、十六进制值、数字或布尔值编码为字节数组。
 
-Shortcut Functions:
+快捷函数：
 
 - [hexToBytes](#hextobytes)
 - [stringToBytes](#stringtobytes)
 - [numberToBytes](#numbertobytes)
 - [boolToBytes](#booltobytes)
 
-## Import
+## 导入
 
 ```ts
 import { toBytes } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { toBytes } from 'viem'
@@ -37,19 +37,19 @@ toBytes(true)
 // Uint8Array([1])
 ```
 
-## Returns
+## 返回
 
 `ByteArray`
 
-The byte array represented as a `Uint8Array`.
+字节数组表示为 `Uint8Array`。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `string | Hex`
+- **类型:** `string | Hex`
 
-The value to encode as bytes.
+要编码为字节的值。
 
 ```ts 
 toBytes(
@@ -68,13 +68,13 @@ toBytes(
 // Uint8Array([72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 ```
 
-## Shortcut Functions
+## 快捷函数
 
 ### hexToBytes
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Encodes a hex value to a byte array.
+将十六进制值编码为字节数组。
 
 ```ts
 import { hexToBytes } from 'viem'
@@ -88,9 +88,9 @@ hexToBytes('0x48656c6c6f20576f726c6421', { size: 32 }) // [!code focus:2]
 
 ### stringToBytes
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Encodes a string to a byte array.
+将字符串编码为字节数组。
 
 ```ts
 import { stringToBytes } from 'viem'
@@ -104,9 +104,9 @@ stringToBytes('Hello world', { size: 32 }) // [!code focus:2]
 
 ### numberToBytes
 
-- **Type:** `number | bigint`
+- **类型:** `number | bigint`
 
-Encodes a number to a byte array.
+将数字编码为字节数组。
 
 ```ts
 import { numberToBytes } from 'viem'
@@ -120,9 +120,9 @@ numberToBytes(420, { size: 32 }) // [!code focus:2]
 
 ### boolToBytes
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Encodes a boolean to a byte array.
+将布尔值编码为字节数组。
 
 ```ts
 import { boolToBytes } from 'viem'

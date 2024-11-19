@@ -1,20 +1,20 @@
 ---
-description: Calculates the Keccak256 hash of a byte array.
+description: 计算字节数组的 Keccak256 哈希值。
 ---
 
 # keccak256
 
-Calculates the [Keccak256](https://en.wikipedia.org/wiki/SHA-3) hash of a byte array or hex value.
+计算字节数组或十六进制值的 [Keccak256](https://en.wikipedia.org/wiki/SHA-3) 哈希值。
 
-This function is a re-export of `keccak_256` from [`@noble/hashes`](https://github.com/paulmillr/noble-hashes) – an audited & minimal JS hashing library.
+此函数是 [`@noble/hashes`](https://github.com/paulmillr/noble-hashes) 中 `keccak_256` 的重新导出 – 一个经过审计的最小化 JS 哈希库。
 
-## Install
+## 安装
 
 ```ts
 import { keccak256 } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { keccak256 } from 'viem'
@@ -25,31 +25,29 @@ keccak256(new Uint8Array([72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33
 keccak256('0xdeadbeef')
 // 0xd4fd4e189132273036449fc9e11198c739161b4c0116a9a2dccdfa1c492006f1
 
-// hash utf-8 string
+// 哈希 utf-8 字符串
 keccak256(toHex('hello world'))
 // 0x3ea2f1d0abf3fc66cf29eebb70cbd4e7fe762ef8a09bcc06c8edf641230afec0
 ```
 
-## Returns
+## 返回
 
 `Hex | ByteArray`
 
-The hashed value.
+哈希值。
 
-## Parameters
+## 参数
 
 ### value
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-The hex value or byte array to hash.
+要哈希的十六进制值或字节数组。
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
-- **Default:** `"hex"`
-
-The output type.
+- **类型:** `"bytes" | "hex"`
+- **默认:** `"hex"`
 
 ```ts
 import { keccak256 } from 'viem'

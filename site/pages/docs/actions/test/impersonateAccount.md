@@ -1,12 +1,12 @@
 ---
-description: Impersonate an account or contract address.
+description: 冒充一个账户或合约地址。
 ---
 
 # impersonateAccount
 
-Impersonate an account or contract address. This lets you send transactions from that account even if you don't have access to its private key.
+冒充一个账户或合约地址。这允许你从该账户发送交易，即使你没有访问其私钥。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The address of the target account.
+目标账户的地址。
 
 ```ts
 await testClient.impersonateAccount({

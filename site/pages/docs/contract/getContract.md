@@ -1,20 +1,20 @@
 ---
-description: A Contract Instance is a type-safe interface for performing contract-related actions with a specific ABI and address, created by the getContract function.
+description: 合约实例是一个类型安全的接口，用于使用特定的 ABI 和地址执行合约相关操作，由 `getContract` 函数创建。
 ---
 
-# Contract Instances
+# 合约实例
 
-A Contract Instance is a type-safe interface for performing contract-related actions with a specific ABI and address, created by the `getContract` function.
+合约实例是一个类型安全的接口，用于使用特定的 ABI 和地址执行合约相关操作，由 `getContract` 函数创建。
 
-## Import
+## 导入
 
 ```ts
 import { getContract } from 'viem'
 ```
 
-## Usage
+## 用法
 
-You can create a Contract Instance with the `getContract` function by passing in a [ABI](/docs/glossary/types#abi), address, and [Public](/docs/clients/public) and/or [Wallet Client](/docs/clients/wallet). Once created, you can call contract methods, fetch for events, listen to events, etc.
+你可以通过传入 [ABI](/docs/glossary/types#abi)、地址和 [公共](/docs/clients/public) 和/或 [钱包客户端](/docs/clients/wallet) 来使用 `getContract` 函数创建合约实例。创建后，你可以调用合约方法、获取事件、监听事件等。
 
 :::code-group
 
@@ -23,17 +23,17 @@ import { getContract } from 'viem'
 import { wagmiAbi } from './abi'
 import { publicClient, walletClient } from './client'
 
-// 1. Create contract instance
+// 1. 创建合约实例
 const contract = getContract({
   address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
   abi: wagmiAbi,
-  // 1a. Insert a single client
+  // 1a. 插入单个客户端
   client: publicClient,
-  // 1b. Or public and/or wallet clients
+  // 1b. 或公共和/或钱包客户端
   client: { public: publicClient, wallet: walletClient }
 })
 
-// 2. Call contract methods, fetch events, listen to events, etc.
+// 2. 调用合约方法，获取事件，监听事件等
 const result = await contract.read.totalSupply()
 const logs = await contract.getEvents.Transfer()
 const unwatch = contract.watchEvent.Transfer(
@@ -52,13 +52,13 @@ export const publicClient = createPublicClient({
   transport: http(),
 })
 
-// eg: Metamask
+// 例如：Metamask
 export const walletClient = createWalletClient({
   chain: mainnet,
   transport: custom(window.ethereum!),
 })
 
-// eg: WalletConnect
+// 例如：WalletConnect
 const provider = await EthereumProvider.init({
   projectId: "abcd1234",
   showQrModal: true,
@@ -104,7 +104,7 @@ export const wagmiAbi = [
 
 :::
 
-Using Contract Instances can make it easier to work with contracts if you don't want to pass the `abi` and `address` properties every time you perform contract actions, e.g. [`readContract`](/docs/contract/readContract), [`writeContract`](/docs/contract/writeContract), [`estimateContractGas`](/docs/contract/estimateContractGas), etc. Switch between the tabs below to see the difference between standalone Contract Actions and Contract Instance Actions:
+使用合约实例可以更轻松地与合约进行交互，如果你不想在每次执行合约操作时都传递 `abi` 和 `address` 属性，例如 [`readContract`](/docs/contract/readContract)、[`writeContract`](/docs/contract/writeContract)、[`estimateContractGas`](/docs/contract/estimateContractGas) 等。切换下面的选项卡以查看独立合约操作和合约实例操作之间的区别：
 
 :::code-group
 
@@ -167,18 +167,18 @@ const unwatch = publicClient.watchContractEvent({
 :::
 
 :::tip
-While Contract Instances are great for reducing code duplication, they pull in multiple contract actions (e.g. `createContractEventFilter`, `estimateContractGas`, `readContract`, `simulateContract`, `watchContractEvent`, `writeContract`), so they can be a bit heavier than individual calls. If you only need a couple contract methods and you care about minimizing bundle size to the fullest extent, you may want to use individual calls instead.
+虽然合约实例非常适合减少代码重复，但它们会引入多个合约操作（例如 `createContractEventFilter`、`estimateContractGas`、`readContract`、`simulateContract`、`watchContractEvent`、`writeContract`），因此它们可能比单独的调用稍重。如果你只需要几个合约方法，并且希望尽可能减少包的大小，你可能想要使用单独的调用。
 :::
 
-## Return Value
+## 返回值
 
-Contract instance object. Type is inferred.
+合约实例对象。类型是推断的。
 
-Depending on if you create a contract instance with a Public Client, Wallet Client, or both, the methods available on the contract instance will vary.
+根据你是使用公共客户端、钱包客户端还是两者创建合约实例，合约实例上可用的方法将有所不同。
 
-#### With Public Client
+#### 使用公共客户端
 
-If you pass in a [`publicClient`](https://viem.sh/docs/clients/public), the following methods are available:
+如果你传入一个 [`publicClient`](https://viem.sh/docs/clients/public)，则可以使用以下方法：
 
 - [`createEventFilter`](/docs/contract/createContractEventFilter)
 - [`estimateGas`](/docs/contract/estimateContractGas)
@@ -187,36 +187,36 @@ If you pass in a [`publicClient`](https://viem.sh/docs/clients/public), the foll
 - [`simulate`](/docs/contract/simulateContract)
 - [`watchEvent`](/docs/contract/watchContractEvent)
 
-#### With Wallet Client
+#### 使用钱包客户端
 
-If you pass in a [`walletClient`](/docs/clients/wallet), the following methods are available:
+如果你传入一个 [`walletClient`](/docs/clients/wallet)，则可以使用以下方法：
 
 - [`estimateGas`](/docs/contract/estimateContractGas)
 - [`write`](/docs/contract/writeContract)
 
-#### Calling methods
+#### 调用方法
 
-If you are using [TypeScript](/docs/typescript) with viem, your editor will be able to provide autocomplete suggestions for the methods available on the contract instance, as well as the arguments and other options for each method.
+如果你在 viem 中使用 [TypeScript](/docs/typescript)，你的编辑器将能够为合约实例上可用的方法、每个方法的参数和其他选项提供自动补全建议。
 
-In general, contract instance methods follow the following format:
+一般来说，合约实例方法遵循以下格式：
 
 ```ts
-// function
+// 函数
 contract.(estimateGas|read|simulate|write).(functionName)(args, options)
 
-// event
+// 事件
 contract.(createEventFilter|getEvents|watchEvent).(eventName)(args, options)
 ```
 
-If the contract function/event you are using does not accept arguments (e.g. function has no inputs, event has no indexed inputs), then you can omit the `args` parameter so `options` is the first and only parameter.
+如果你使用的合约函数/事件不接受参数（例如函数没有输入，事件没有索引输入），则可以省略 `args` 参数，使 `options` 成为第一个也是唯一的参数。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const contract = getContract({
@@ -228,9 +228,9 @@ const contract = getContract({
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const contract = getContract({
@@ -242,9 +242,9 @@ const contract = getContract({
 
 ### client
 
-- **Type:** [`Client | { public: Client; wallet: Client }`](/docs/clients/public)
+- **类型:** [`Client | { public: Client; wallet: Client }`](/docs/clients/public)
 
-The Client used for performing [contract actions](/docs/contract/getContract#return-value).
+用于执行 [合约操作](/docs/contract/getContract#return-value) 的客户端。
 
 ```ts
 const contract = getContract({
@@ -254,7 +254,7 @@ const contract = getContract({
 })
 ```
 
-You can also pass in multiple clients (ie. a Wallet Client and a Public Client):
+你还可以传入多个客户端（即一个钱包客户端和一个公共客户端）：
 
 ```ts
 const contract = getContract({

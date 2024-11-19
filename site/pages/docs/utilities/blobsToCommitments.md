@@ -1,18 +1,18 @@
 ---
-description: Compute commitments from a list of blobs.
+description: 从一组 blobs 计算承诺。
 ---
 
 # blobsToCommitments
 
-Compute commitments from a list of blobs.
+从一组 blobs 计算承诺。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { blobsToCommitments } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,19 +35,19 @@ export const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 
 :::
 
-## Returns
+## 返回
 
 `Hex[] | ByteArray[]`
 
-List of commitments corresponding to the input blobs.
+与输入 blobs 对应的承诺列表。
 
-## Parameters
+## 参数
 
 ### blobs
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型:** `Hex[] | ByteArray[]`
 
-List of blobs to transform into commitments.
+要转换为承诺的 blobs 列表。
 
 ```ts twoslash
 import { defineKzg } from 'viem'
@@ -64,9 +64,9 @@ const commitments = blobsToCommitments({
 
 ### kzg
 
-- **Type:** `KZG`
+- **类型:** `KZG`
 
-KZG implementation. See [`setupKzg`](/docs/utilities/setupKzg) for more information.
+KZG 实现。有关更多信息，请参见 [`setupKzg`](/docs/utilities/setupKzg)。
 
 ```ts twoslash
 // @noErrors
@@ -84,9 +84,9 @@ const commitments = blobsToCommitments({
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
+- **类型:** `"bytes" | "hex"`
 
-The output type.
+输出类型。
 
 ```ts twoslash
 import { defineKzg } from 'viem'

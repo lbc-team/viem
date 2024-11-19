@@ -1,8 +1,8 @@
-# createPendingTransactionFilter [An Action for creating a new pending transaction filter.]
+# createPendingTransactionFilter [用于创建新的待处理交易过滤器的操作。]
 
-Creates a Filter to listen for new pending transaction hashes that can be used with [`getFilterChanges`](/docs/actions/public/getFilterChanges).
+创建一个过滤器，以监听可以与 [`getFilterChanges`](/docs/actions/public/getFilterChanges) 一起使用的新待处理交易哈希。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -10,7 +10,7 @@ Creates a Filter to listen for new pending transaction hashes that can be used w
 import { publicClient } from './client'
 
 const filter = await publicClient.createPendingTransactionFilter() // [!code focus:99]
-// @log: Output: { id: "0x345a6572337856574a76364e457a4366", type: 'transaction' }
+// @log: 输出: { id: "0x345a6572337856574a76364e457a4366", type: 'transaction' }
 ```
 
 ```ts twoslash [client.ts] filename="client.ts"
@@ -25,10 +25,10 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Filter`](/docs/glossary/types#filter)
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_newPendingTransactionFilter`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newpendingtransactionfilter)

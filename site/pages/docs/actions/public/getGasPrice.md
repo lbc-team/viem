@@ -1,12 +1,12 @@
 ---
-description: Returns the current price of gas (in wei).
+description: 返回当前的 gas 价格（以 wei 为单位）。
 ---
 
 # getGasPrice
 
-Returns the current price of gas (in wei).
+返回当前的 gas 价格（以 wei 为单位）。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,12 +28,12 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `bigint`
 
-The gas price (in wei).
+gas 价格（以 wei 为单位）。
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_gasPrice`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gasprice)

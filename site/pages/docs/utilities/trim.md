@@ -1,20 +1,20 @@
 ---
-description: Trims the leading or trailing zero byte data from a hex value or byte array.
+description: 修剪十六进制值或字节数组中的前导或尾随零字节数据。
 ---
 
 # trim
 
-Trims the leading or trailing zero byte data from a hex value or byte array.
+修剪十六进制值或字节数组中的前导或尾随零字节数据。
 
-## Install
+## 安装
 
 ```ts
 import { trim } from 'viem'
 ```
 
-## Usage
+## 用法
 
-By default, `trim` will trim the leading zero byte data from a hex value or byte array.
+默认情况下，`trim` 将修剪十六进制值或字节数组中的前导零字节数据。
 
 ```ts
 import { trim } from 'viem'
@@ -26,20 +26,20 @@ trim(new Uint8Array([0, 0, 0, 0, 0, 0, 1, 122, 51, 123]))
 // Uint8Array [1,122,51,123]
 ```
 
-## Returns
+## 返回值
 
 `Hex | ByteArray`
 
-The trimmed value.
+修剪后的值。
 
-## Parameters
+## 参数
 
 ### dir
 
-- **Type:** `"left" | "right"`
-- **Default:** `"left"`
+- **类型:** `"left" | "right"`
+- **默认:** `"left"`
 
-The direction in which to trim the zero byte data – either leading (left), or trailing (right).
+修剪零字节数据的方向 - 可以是前导（左）或尾随（右）。
 
 ```ts
 trim('0xa4e12a4510000000000000000000000000000000000000000000000000000000', {
@@ -47,4 +47,3 @@ trim('0xa4e12a4510000000000000000000000000000000000000000000000000000000', {
 })
 // 0xa4e12a4510
 ```
-

@@ -1,20 +1,20 @@
 ---
-description: Encodes an event (with optional arguments) into filter topics.
+description: 将事件（可选参数）编码为过滤器主题。
 ---
 
 # encodeEventTopics
 
-Encodes an event (with optional arguments) into filter topics.
+将事件（可选参数）编码为过滤器主题。
 
-## Install
+## 安装
 
 ```ts
 import { encodeEventTopics } from 'viem'
 ```
 
-## Usage
+## 用法
 
-Below is a very basic example of how to encode event topics without arguments.
+下面是一个非常基本的示例，演示如何在没有参数的情况下编码事件主题。
 
 :::code-group
 
@@ -55,13 +55,13 @@ export const wagmiAbi = [
 
 :::
 
-### Passing Arguments
+### 传递参数
 
-If your event has indexed parameters, you can pass their values through with the `args` attribute.
+如果你的事件有索引参数，可以通过 `args` 属性传递它们的值。
 
-TypeScript types for `args` will be inferred from the event name & ABI, to guard you from inserting the wrong values.
+`args` 的 TypeScript 类型将根据事件名称和 ABI 推断，以防止你插入错误的值。
 
-For example, the `Transfer` event below accepts an **address** argument for the `from` and `to` attributes, and it is typed as `"0x${string}"`.
+例如，下面的 `Transfer` 事件接受 **address** 参数用于 `from` 和 `to` 属性，并且其类型为 `"0x${string}"`。
 
 :::code-group
 
@@ -70,7 +70,7 @@ import { encodeEventTopics } from 'viem'
 
 const topics = encodeEventTopics({
   abi: wagmiAbi,
-  eventName: 'Transfer'
+  eventName: 'Transfer',
   args: {
     from: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
     to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8'
@@ -105,9 +105,9 @@ export const wagmiAbi = [
 
 :::
 
-### Without `eventName`
+### 没有 `eventName`
 
-If your `abi` contains only one ABI item, you can omit the `eventName` (it becomes optional):
+如果你的 `abi` 仅包含一个 ABI 项，你可以省略 `eventName`（它变为可选）：
 
 ```ts
 import { encodeEventTopics } from 'viem'
@@ -137,17 +137,17 @@ const topics = encodeEventTopics({
 // ["0x406dade31f7ae4b5dbc276258c28dde5ae6d5c2773c5745802c493a2360e55e0"]
 ```
 
-## Return Value
+## 返回值
 
-Encoded topics.
+编码后的主题。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型：** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const data = encodeEventTopics({
@@ -158,9 +158,9 @@ const data = encodeEventTopics({
 
 ### eventName
 
-- **Type:** `string`
+- **类型：** `string`
 
-Name of the event.
+事件的名称。
 
 ```ts
 const data = encodeEventTopics({
@@ -169,11 +169,11 @@ const data = encodeEventTopics({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** `string`
+- **类型：** `string`
 
-A list of _indexed_ event arguments.
+一组 _indexed_ 事件参数。
 
 ```ts
 const data = encodeEventTopics({

@@ -1,18 +1,18 @@
 ---
-description: Retrieves an item from the ABI array.
+description: 从 ABI 数组中检索项目。
 ---
 
 # getAbiItem
 
-Retrieves an item from the ABI.
+从 ABI 中检索项目。
 
-## Import
+## 导入
 
 ```ts
 import { getAbiItem } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { getAbiItem } from 'viem'
@@ -54,19 +54,19 @@ const encodedData = getAbiItem({
  */
 ```
 
-## Returns
+## 返回
 
 `AbiItem`
 
-The ABI item.
+ABI 项目。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const encodedData = getAbiItem({
@@ -77,9 +77,9 @@ const encodedData = getAbiItem({
 
 ### name
 
-- **Type:** `string`
+- **类型:** `string`
 
-Name of the ABI item to extract.
+要提取的 ABI 项目的名称。
 
 ```ts
 const encodedData = getAbiItem({
@@ -88,7 +88,7 @@ const encodedData = getAbiItem({
 })
 ```
 
-You can also provide the ABI item's 4byte selector:
+你还可以提供 ABI 项目的 4 字节选择器：
 
 ```ts
 const encodedData = getAbiItem({
@@ -97,11 +97,11 @@ const encodedData = getAbiItem({
 })
 ```
 
-### args (optional)
+### args（可选）
 
-- **Type:** Inferred.
+- **类型:** 推断。
 
-Optional arguments to identify function overrides.
+可选参数以识别函数重载。
 
 ```ts
 const encodedData = getAbiItem({

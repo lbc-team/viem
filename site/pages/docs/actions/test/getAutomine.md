@@ -1,12 +1,12 @@
 ---
-description: Returns the automatic mining status of the node.
+description: 返回节点的自动挖矿状态。
 ---
 
 # getAutomine
 
-Returns the automatic mining status of the node.
+返回节点的自动挖矿状态。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,8 +29,8 @@ export const testClient = createTestClient({
 
 :::
 
-## Returns
+## 返回
 
 `boolean`
 
-Whether or not the node is auto mining.
+节点是否正在自动挖矿。

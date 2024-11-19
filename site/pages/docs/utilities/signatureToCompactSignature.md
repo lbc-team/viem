@@ -1,18 +1,18 @@
 ---
-description: Parses a signature into a compact signature.
+description: 将签名解析为紧凑签名。
 ---
 
 # signatureToCompactSignature
 
-Parses a signature into a [EIP-2098](https://eips.ethereum.org/EIPS/eip-2098) compact signature.
+将签名解析为 [EIP-2098](https://eips.ethereum.org/EIPS/eip-2098) 紧凑签名。
 
-## Import
+## 导入
 
 ```ts
 import { signatureToCompactSignature } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { signatureToCompactSignature, Signature } from 'viem'
@@ -28,16 +28,16 @@ signatureToCompactSignature({  // [!code focus:9]
 // }
 ```
 
-## Returns
+## 返回
 
 [`CompactSignature`](/docs/glossary/types#compactsignature)
 
-The compact signature.
+紧凑签名。
 
-## Parameters
+## 参数
 
 ### signature
 
-The signature.
+签名。
 
-- **Type:** [`Signature`](/docs/glossary/types#signature)
+- **类型:** [`Signature`](/docs/glossary/types#signature)

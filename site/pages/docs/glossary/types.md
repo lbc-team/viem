@@ -1,159 +1,159 @@
-# Types [Glossary of Types in viem.]
+# 类型 [viem 中的类型词汇表]
 
 ## `Abi`
 
-Type matching the [Contract ABI Specification](https://docs.soliditylang.org/en/latest/abi-spec.html#json)
+与 [合约 ABI 规范](https://docs.soliditylang.org/en/latest/abi-spec.html#json) 匹配的类型
 
-Re-exported from [ABIType](https://abitype.dev/api/types#abi).
+从 [ABIType](https://abitype.dev/api/types#abi) 重新导出。
 
 ## `AbiError`
 
-ABI [Error](https://docs.soliditylang.org/en/latest/abi-spec#errors) type.
+ABI [错误](https://docs.soliditylang.org/en/latest/abi-spec#errors) 类型。
 
-Re-exported from [ABIType](https://abitype.dev/api/types#abierror).
+从 [ABIType](https://abitype.dev/api/types#abierror) 重新导出。
 
 ## `AbiEvent`
 
-ABI [Event](https://docs.soliditylang.org/en/latest/abi-spec#events) type.
+ABI [事件](https://docs.soliditylang.org/en/latest/abi-spec#events) 类型。
 
-Re-exported from [ABIType](https://abitype.dev/api/types#abievent).
+从 [ABIType](https://abitype.dev/api/types#abievent) 重新导出。
 
 ## `AbiFunction`
 
-ABI [Function](https://docs.soliditylang.org/en/latest/abi-spec#argument-encoding) type.
+ABI [函数](https://docs.soliditylang.org/en/latest/abi-spec#argument-encoding) 类型。
 
-Re-exported from [ABIType](https://abitype.dev/api/types#abifunction).
+从 [ABIType](https://abitype.dev/api/types#abifunction) 重新导出。
 
 ## `AbiParameter`
 
-`inputs` and `outputs` item for ABI functions, events, and errors.
+ABI 函数、事件和错误的 `inputs` 和 `outputs` 项。
 
-Re-exported from [ABIType](https://abitype.dev/api/types#abiparameter).
+从 [ABIType](https://abitype.dev/api/types#abiparameter) 重新导出。
 
 ## `AbiParameterToPrimitiveTypes`
 
-Converts `AbiParameter` to corresponding TypeScript primitive type.
+将 `AbiParameter` 转换为相应的 TypeScript 原始类型。
 
-[See more](https://abitype.dev/api/utilities#abiparametertoprimitivetype)
+[查看更多](https://abitype.dev/api/utilities#abiparametertoprimitivetype)
 
 ## `AbiParametersToPrimitiveTypes`
 
-Converts array of `AbiParameter` to corresponding TypeScript primitive types.
+将 `AbiParameter` 数组转换为相应的 TypeScript 原始类型。
 
-[See more](https://abitype.dev/api/utilities#abiparameterstoprimitivetypes)
+[查看更多](https://abitype.dev/api/utilities#abiparameterstoprimitivetypes)
 
 ## `AccessList`
 
-An access list.
+访问列表。
 
 ## `Address`
 
-An address.
+地址。
 
-Re-exported from [ABIType](https://abitype.dev/api/types#address).
+从 [ABIType](https://abitype.dev/api/types#address) 重新导出。
 
 ## `Block`
 
-A type for a [Block](/docs/glossary/terms#block).
+[区块](/docs/glossary/terms#block) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/block.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/block.ts)
 
 ## `Chain`
 
-A type for a [Chain](/docs/glossary/terms#chain).
+[链](/docs/glossary/terms#chain) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/chain.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/chain.ts)
 
 ## `CompactSignature`
 
-A type for [EIP-2098](https://eips.ethereum.org/EIPS/eip-2098) compact signatures.
+[EIP-2098](https://eips.ethereum.org/EIPS/eip-2098) 紧凑签名的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/misc.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/misc.ts)
 
 ## `FeeHistory`
 
-A type for fee history.
+费用历史的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/fee.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/fee.ts)
 
 ## `FeeValues`
 
-A type for fee values.
+费用值的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/fee.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/fee.ts)
 
 ## `Filter`
 
-A type for a [Filter](/docs/glossary/terms#filter).
+[过滤器](/docs/glossary/terms#filter) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/filter.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/filter.ts)
 
 ## `Hash`
 
-Type for a hashed value – a "0x"-prefixed string: `"0x${string}"`
+哈希值的类型 – 以 "0x" 开头的字符串：`"0x${string}"`
 
 ## `Hex`
 
-Type for a hex value – a "0x"-prefixed string: `"0x${string}"`
+十六进制值的类型 – 以 "0x" 开头的字符串：`"0x${string}"`
 
 ## `Log`
 
-A type for [Event Logs](/docs/glossary/terms#event-log).
+[事件日志](/docs/glossary/terms#event-log) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/log.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/log.ts)
 
 ## `Signature`
 
-A type for a structured signature.
+结构化签名的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/misc.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/misc.ts)
 
 ## `Transaction`
 
-A type for [Transactions](/docs/glossary/terms#transaction).
+[交易](/docs/glossary/terms#transaction) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/transaction.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/transaction.ts)
 
 ## `TransactionReceipt`
 
-A type for [Transaction Receipts](/docs/glossary/terms#transaction-receipt).
+[交易回执](/docs/glossary/terms#transaction-receipt) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/transaction.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/transaction.ts)
 
 ## `Transport`
 
-A type for [Transports](/docs/glossary/terms#transports).
+[传输](/docs/glossary/terms#transports) 的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/clients/transports/createTransport.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/clients/transports/createTransport.ts)
 
 ## `WalletPermission`
 
-A type for wallet (JSON-RPC Account) permissions.
+钱包（JSON-RPC 账户）权限的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/eip1193.ts)
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/eip1193.ts)
 
 ## `TransactionSerializedEIP1559`
 
-EIP-1559 transaction hex value – a "0x02"-prefixed string: `"0x02${string}"`
+EIP-1559 交易十六进制值 – 以 "0x02" 开头的字符串：`"0x02${string}"`
 
 ## `TransactionSerializedEIP2930`
 
-EIP-2930 transaction hex value – a "0x01"-prefixed string: `"0x01${string}"`
+EIP-2930 交易十六进制值 – 以 "0x01" 开头的字符串：`"0x01${string}"`
 
 ## `TransactionSerializedLegacy`
 
-Legacy transaction hex value – a "0x"-prefixed string: `"0x${string}"`
+传统交易十六进制值 – 以 "0x" 开头的字符串：`"0x${string}"`
 
 ## `TransactionType`
 
-All types of transactions. `"eip1559" | "eip2930" | "eip4844" | "eip7702" | "legacy"`
+所有类型的交易。`"eip1559" | "eip2930" | "eip4844" | "eip7702" | "legacy"`
 
 ## `TransactionRequest`
 
-A type for all transaction requests.
+所有交易请求的类型。
 
-[See Type](https://github.com/wevm/viem/blob/main/src/types/transaction.ts).
+[查看类型](https://github.com/wevm/viem/blob/main/src/types/transaction.ts)。
 
 ## `StateOverride`
 
-A type defining state overrides for `eth_call` method. [See more](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-eth#eth-call)
+定义 `eth_call` 方法的状态覆盖的类型。 [查看更多](https://geth.ethereum.org/docs/interacting-with-geth/rpc/ns-eth#eth-call)

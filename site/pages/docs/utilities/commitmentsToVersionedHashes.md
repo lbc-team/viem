@@ -1,18 +1,18 @@
 ---
-description: Transform a list of commitments to their versioned hashes.
+description: 将承诺列表转换为其版本化哈希。
 ---
 
 # commitmentsToVersionedHashes
 
-Transform a list of commitments to their versioned hashes.
+将承诺列表转换为其版本化哈希。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { commitmentsToVersionedHashes } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -42,19 +42,19 @@ export const kzg = setupKzg(cKzg, mainnetTrustedSetupPath)
 
 :::
 
-## Returns
+## 返回
 
 `Hex[] | ByteArray[]`
 
-List of versioned hashes corresponding to the input commitments.
+与输入承诺对应的版本化哈希列表。
 
-## Parameters
+## 参数
 
 ### commitments
 
-- **Type:** `Hex[] | ByteArray[]`
+- **类型:** `Hex[] | ByteArray[]`
 
-List of commitments to transform into versioned hashes.
+要转换为版本化哈希的承诺列表。
 
 ```ts twoslash
 import { 
@@ -74,9 +74,9 @@ const versionedHashes = commitmentsToVersionedHashes({
 
 ### to
 
-- **Type:** `"bytes" | "hex"`
+- **类型:** `"bytes" | "hex"`
 
-The output type.
+输出类型。
 
 ```ts twoslash
 import { 
@@ -100,10 +100,10 @@ versionedHashes // [!code focus]
 
 ### version
 
-- **Type:** `number`
-- **Default:** `1`
+- **类型:** `number`
+- **默认值:** `1`
 
-Version to tag onto the hashes. Defaults to `1`.
+要标记到哈希上的版本。默认为 `1`。
 
 ```ts twoslash
 import { 

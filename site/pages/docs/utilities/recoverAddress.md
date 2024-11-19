@@ -1,12 +1,12 @@
 ---
-description: Recovers the signing address from a hash & signature.
+description: 从哈希和签名中恢复签名地址。
 ---
 
 # recoverAddress
 
-Recovers the original signing address from a hash & signature.
+从哈希和签名中恢复原始签名地址。
 
-## Usage
+## 用法
 
 ```ts [example.ts]
 import { recoverAddress } from 'viem'
@@ -18,19 +18,19 @@ const address = await recoverAddress({
 // 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
 ```
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The signing address.
+签名地址。
 
-## Parameters
+## 参数
 
 ### hash
 
-- **Type:** `string`
+- **类型:** `string`
 
-The hash that was signed.
+被签名的哈希。
 
 ```ts
 const address = await recoverAddress({ 
@@ -41,9 +41,9 @@ const address = await recoverAddress({
 
 ### signature
 
-- **Type:** `Hex | ByteArray | Signature`
+- **类型:** `Hex | ByteArray | Signature`
 
-The signature of the hash.
+哈希的签名。
 
 ```ts
 const address = await recoverAddress({ 

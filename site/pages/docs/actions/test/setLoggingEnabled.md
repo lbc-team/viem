@@ -1,12 +1,12 @@
 ---
-description: Enable or disable logging on the test node network.
+description: 在测试节点网络上启用或禁用日志记录。
 ---
 
 # setLoggingEnabled
 
-Enable or disable logging on the test node network.
+在测试节点网络上启用或禁用日志记录。
 
-## Usage
+## 用法
 
 :::code-group
 

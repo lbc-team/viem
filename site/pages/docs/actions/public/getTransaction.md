@@ -1,12 +1,12 @@
 ---
-description: Returns information about a transaction given a hash or block identifier.
+description: 返回给定哈希或区块标识符的交易信息。
 ---
 
 # getTransaction
 
-Returns information about a [Transaction](/docs/glossary/terms#transaction) given a hash or block identifier.
+返回给定哈希或区块标识符的 [Transaction](/docs/glossary/terms#transaction) 信息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -36,19 +36,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Transaction`](/docs/glossary/types#transaction)
 
-The transaction information.
+交易信息。
 
-## Parameters
+## 参数
 
-### hash (optional)
+### hash (可选)
 
-- **Type:** `'0x${string}'`
+- **类型:** `'0x${string}'`
 
-Get information about a transaction given a transaction hash.
+根据交易哈希获取交易信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -58,11 +58,11 @@ const transaction = await publicClient.getTransaction({
 })
 ```
 
-### blockHash (optional)
+### blockHash (可选)
 
-- **Type:** `'0x${string}'`
+- **类型:** `'0x${string}'`
 
-Get information about a transaction given a block hash (and index).
+根据区块哈希（和索引）获取交易信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -73,11 +73,11 @@ const transaction = await publicClient.getTransaction({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `'0x${string}'`
+- **类型:** `'0x${string}'`
 
-Get information about a transaction given a block number (and index).
+根据区块编号（和索引）获取交易信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -88,11 +88,11 @@ const transaction = await publicClient.getTransaction({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
 
-Get information about a transaction given a block tag (and index).
+根据区块标签（和索引）获取交易信息。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -103,11 +103,11 @@ const transaction = await publicClient.getTransaction({
 })
 ```
 
-### index (optional)
+### index (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-An index to be used with a block identifier (number, hash or tag).
+与区块标识符（编号、哈希或标签）一起使用的索引。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -118,12 +118,12 @@ const transaction = await publicClient.getTransaction({
 })
 ```
 
-## Example
+## 示例
 
-Check out the usage of `getTransaction` in the live [Fetching Transactions Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_fetching-transactions) below.
+查看 `getTransaction` 在实时 [获取交易示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_fetching-transactions) 中的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_fetching-transactions?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getTransactionByHash`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getTransactionByHash)

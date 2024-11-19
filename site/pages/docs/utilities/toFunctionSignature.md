@@ -1,31 +1,31 @@
 ---
-description: Returns the signature for a given function definition.
+description: 返回给定函数定义的签名。
 ---
 
 # toFunctionSignature
 
-Returns the signature for a given function definition.
+返回给定函数定义的签名。
 
 :::tip
-This only returns the **function signature**. If you need the **full human-readable definition**, check out ABIType's [`formatAbiItem`](https://abitype.dev/api/human#formatabiitem-1).
+这仅返回**函数签名**。如果你需要**完整的人类可读定义**，请查看 ABIType 的 [`formatAbiItem`](https://abitype.dev/api/human#formatabiitem-1)。
 :::
 
-## Install
+## 安装
 
 ```ts
 import { toFunctionSignature } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toFunctionSignature } from 'viem'
 
-// from function definition
+// 从函数定义
 const signature_1 = toFunctionSignature('function ownerOf(uint256 tokenId)')
-// @log: Output: ownerOf(uint256)
+// @log: 输出: ownerOf(uint256)
 
-// from an `AbiFunction` on your contract ABI
+// 从合约 ABI 中的 `AbiFunction`
 const signature_2 = toFunctionSignature({
   name: 'ownerOf',
   type: 'function',
@@ -33,19 +33,19 @@ const signature_2 = toFunctionSignature({
   outputs: [],
   stateMutability: 'view',
 })
-// @log: Output: ownerOf(uint256)
+// @log: 输出: ownerOf(uint256)
 ```
 
-## Returns
+## 返回值
 
 `string`
 
-The signature as a string value.
+签名作为字符串值。
 
-## Parameters
+## 参数
 
 ### definition
 
-- **Type:** `string | AbiFunction`
+- **类型:** `string | AbiFunction`
 
-The function definition to generate a signature for.
+要生成签名的函数定义。

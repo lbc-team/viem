@@ -1,12 +1,12 @@
 ---
-description: Reads the EIP-712 domain from a contract.
+description: 从合约中读取 EIP-712 域。
 ---
 
 # getEip712Domain
 
-Reads the EIP-712 domain from a contract, based on the [ERC-5267 specification](https://eips.ethereum.org/EIPS/eip-5267).
+根据 [ERC-5267 规范](https://eips.ethereum.org/EIPS/eip-5267) 从合约中读取 EIP-712 域。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,9 +30,9 @@ export const publicClient = createPublicClient({
 
 :::
 
-### Counterfactual Call
+### 反事实调用
 
-It is possible to read the EIP-712 domain on a contract that **has not been deployed** by providing deployment factory (`factory` + `factoryData`) parameters:
+通过提供部署工厂（`factory` + `factoryData`）参数，可以读取尚未部署的合约的 EIP-712 域：
 
 :::code-group
 
@@ -67,19 +67,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `GetEip712DomainReturnType`
 
-The EIP-712 domain (`domain`) for the contract, with `fields` and `extensions`, as per [ERC-5267](https://eips.ethereum.org/EIPS/eip-5267).
+合约的 EIP-712 域（`domain`），包含 `fields` 和 `extensions`，符合 [ERC-5267](https://eips.ethereum.org/EIPS/eip-5267)。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `string`
+- **类型:** `string`
 
-The address of the contract to read the EIP-712 domain from.
+要读取 EIP-712 域的合约地址。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -89,11 +89,11 @@ const result = await publicClient.getEip712Domain({
 })
 ```
 
-### factory (optional)
+### factory（可选）
 
-- **Type:**
+- **类型:**
 
-Contract deployment factory address (ie. Create2 factory, Smart Account factory, etc).
+合约部署工厂地址（即 Create2 工厂、智能账户工厂等）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -105,11 +105,11 @@ const result = await publicClient.getEip712Domain({
 })
 ```
 
-### factoryData (optional)
+### factoryData（可选）
 
-- **Type:**
+- **类型:**
 
-Calldata to execute on the factory to deploy the contract.
+在工厂上执行的 calldata，以部署合约。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]

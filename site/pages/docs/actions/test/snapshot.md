@@ -1,12 +1,12 @@
 ---
-description: Snapshot the state of the blockchain at the current block.
+description: 在当前区块快照区块链的状态。
 ---
 
 # snapshot
 
-Snapshot the state of the blockchain at the current block.
+在当前区块快照区块链的状态。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,6 +29,6 @@ export const testClient = createTestClient({
 
 :::
 
-## Returns
+## 返回值
 
-ID of the snapshot that was created.
+创建的快照的 ID。

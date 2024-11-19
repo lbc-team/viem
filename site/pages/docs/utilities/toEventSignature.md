@@ -1,31 +1,31 @@
 ---
-description: Returns the signature for a given event or event definition.
+description: 返回给定事件或事件定义的签名。
 ---
 
 # toEventSignature
 
-Returns the signature for a given event definition.
+返回给定事件定义的签名。
 
 :::tip
-This only returns the **event signature**. If you need the **full human-readable definition**, check out ABIType's [`formatAbiItem`](https://abitype.dev/api/human#formatabiitem-1).
+这仅返回**事件签名**。如果你需要**完整的人类可读定义**，请查看 ABIType 的 [`formatAbiItem`](https://abitype.dev/api/human#formatabiitem-1)。
 :::
 
-## Install
+## 安装
 
 ```ts
 import { toEventSignature } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toEventSignature } from 'viem'
 
-// from event definition
+// 从事件定义
 const signature_1 = toEventSignature('event Transfer(address indexed from, address indexed to, uint256 amount)')
-// @log: Output: Transfer(address,address,uint256)
+// @log: 输出: Transfer(address,address,uint256)
 
-// from an `AbiEvent` on your contract ABI
+// 从你的合约 ABI 中的 `AbiEvent`
 const signature_2 = toEventSignature({
   name: 'Transfer',
   type: 'event',
@@ -35,19 +35,19 @@ const signature_2 = toEventSignature({
     { name: 'uint256', type: 'uint256', indexed: false },
   ],
 })
-// @log: Output: Transfer(address,address,uint256)
+// @log: 输出: Transfer(address,address,uint256)
 ```
 
-## Returns
+## 返回
 
 `string`
 
-The signature as a string value.
+签名作为字符串值。
 
-## Parameters
+## 参数
 
 ### definition
 
-- **Type:** `string | AbiEvent`
+- **类型:** `string | AbiEvent`
 
-The event definition to generate a signature for.
+生成签名的事件定义。

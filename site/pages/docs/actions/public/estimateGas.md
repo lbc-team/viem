@@ -1,8 +1,8 @@
-# estimateGas [An Action for estimating gas for a transaction.]
+# estimateGas [用于估算交易所需 gas 的操作。]
 
-Estimates the gas necessary to complete a transaction without submitting it to the network.
+估算完成交易所需的 gas，而无需将其提交到网络。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -21,10 +21,10 @@ import { createPublicClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet } from 'viem/chains'
 
-// @log: ↓ JSON-RPC Account
+// @log: ↓ JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
 
-// @log: ↓ Local Account
+// @log: ↓ 本地账户
 // export const account = privateKeyToAccount('0x...')
 
 export const publicClient = createPublicClient({
@@ -35,21 +35,21 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-The gas estimate (in gas).
+gas 估算值（以 gas 为单位）。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to estimate gas from.
+用于估算 gas 的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -63,11 +63,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### data (optional)
+### data（可选）
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-Contract code or a hashed method call with encoded args.
+合约代码或带有编码参数的哈希方法调用。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -82,11 +82,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -101,11 +101,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -120,11 +120,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -140,11 +140,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### to (optional)
+### to（可选）
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-Transaction recipient.
+交易接收者。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -158,11 +158,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value (in wei) sent with this transaction.
+与此交易一起发送的值（以 wei 为单位）。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -176,11 +176,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the gas estimate against.
+用于执行 gas 估算的区块号。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -195,12 +195,12 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### blockTag (optional)
+### blockTag（可选）
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认值:** `'latest'`
 
-The block tag to perform the gas estimate against.
+用于执行 gas 估算的区块标签。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -215,11 +215,11 @@ const gas = await publicClient.estimateGas({
 })
 ```
 
-### stateOverride (optional)
+### stateOverride（可选）
 
-- **Type:** [`StateOverride`](/docs/glossary/types#stateoverride)
+- **类型:** [`StateOverride`](/docs/glossary/types#stateoverride)
 
-The state override set is an optional address-to-state mapping, where each entry specifies some state to be ephemerally overridden prior to executing the call.
+状态覆盖集是一个可选的地址到状态的映射，其中每个条目指定在执行调用之前要临时覆盖的某些状态。
 
 ```ts
 const data = await publicClient.estimateGas({
@@ -241,6 +241,6 @@ const data = await publicClient.estimateGas({
 })
 ```
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
 [`eth_estimateGas`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas)

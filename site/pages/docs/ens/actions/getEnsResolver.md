@@ -1,14 +1,14 @@
 ---
-description: Gets resolver for ENS name.
+description: 获取 ENS 名称的解析器。
 ---
 
 # getEnsResolver
 
-Gets resolver for ENS name.
+获取 ENS 名称的解析器。
 
-Calls `findResolver(bytes)` on ENS Universal Resolver Contract to retrieve the resolver of an ENS name.
+在 ENS 通用解析器合约上调用 `findResolver(bytes)` 以检索 ENS 名称的解析器。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,22 +35,22 @@ export const publicClient = createPublicClient({
 :::
 
 :::warning
-Since ENS names prohibit certain forbidden characters (e.g. underscore) and have other validation rules, you likely want to [normalize ENS names](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) with [UTS-46 normalization](https://unicode.org/reports/tr46) before passing them to `getEnsResolver`. You can use the built-in [`normalize`](/docs/ens/utilities/normalize) function for this.
+由于 ENS 名称禁止某些禁止字符（例如下划线）并具有其他验证规则，因此你可能希望在将其传递给 `getEnsResolver` 之前使用 [UTS-46 规范化](https://unicode.org/reports/tr46) 来 [规范化 ENS 名称](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names)。你可以使用内置的 [`normalize`](/docs/ens/utilities/normalize) 函数来实现。
 :::
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The address of the resolver.
+解析器的地址。
 
-## Parameters
+## 参数
 
 ### name
 
-- **Type:** `string`
+- **类型:** `string`
 
-Name to get the address for.
+要获取地址的名称。
 
 ```ts
 const ensName = await publicClient.getEnsResolver({
@@ -58,11 +58,11 @@ const ensName = await publicClient.getEnsResolver({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-The block number to perform the read against.
+要执行读取的区块号。
 
 ```ts
 const ensName = await publicClient.getEnsResolver({
@@ -71,12 +71,12 @@ const ensName = await publicClient.getEnsResolver({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
 
-The block tag to perform the read against.
+要执行读取的区块标签。
 
 ```ts
 const ensName = await publicClient.getEnsResolver({
@@ -85,12 +85,12 @@ const ensName = await publicClient.getEnsResolver({
 })
 ```
 
-### universalResolverAddress (optional)
+### universalResolverAddress (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
-- **Default:** `client.chain.contracts.ensUniversalResolver.address`
+- **类型:** [`Address`](/docs/glossary/types#address)
+- **默认:** `client.chain.contracts.ensUniversalResolver.address`
 
-Address of ENS Universal Resolver Contract.
+ENS 通用解析器合约的地址。
 
 ```ts
 const ensName = await publicClient.getEnsResolver({

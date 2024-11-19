@@ -1,24 +1,24 @@
-# createNonceManager [Creates a Nonce Manager for automatic nonce generation]
+# createNonceManager [创建一个非重复值管理器以自动生成非重复值]
 
-Creates a new Nonce Manager instance to be used with a [Local Account](/docs/accounts/local). The Nonce Manager is used to automatically manage & generate nonces for transactions.
+创建一个新的非重复值管理器实例，用于与[本地账户](/docs/accounts/local)一起使用。非重复值管理器用于自动管理和生成交易的非重复值。
 
 :::warning
-A Nonce Manager can only be used with [Local Accounts](/docs/accounts/local) (ie. Private Key, Mnemonic, etc). 
+非重复值管理器只能与[本地账户](/docs/accounts/local)一起使用（即私钥、助记词等）。
 
-For [JSON-RPC Accounts](/docs/accounts/jsonRpc) (ie. Browser Extension, WalletConnect, Backend, etc), the Wallet or Backend will manage the nonces.
+对于 [JSON-RPC 账户](/docs/accounts/jsonRpc) （即浏览器扩展、WalletConnect、后端等），钱包或后端将管理非重复值。
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createNonceManager } from 'viem/nonce'
 ```
 
-## Usage
+## 用法
 
-A Nonce Manager can be instantiated with the `createNonceManager` function with a provided `source`. 
+可以使用提供的`source`通过`createNonceManager`函数实例化一个非重复值管理器。
 
-The example below demonstrates how to create a Nonce Manager with a JSON-RPC source (ie. uses `eth_getTransactionCount` as the source of truth).
+下面的示例演示了如何使用 JSON-RPC 源创建一个非重复值管理器（即使用`eth_getTransactionCount`作为真实来源）。
 
 ```ts twoslash
 import { createNonceManager, jsonRpc } from 'viem/nonce'
@@ -29,16 +29,16 @@ const nonceManager = createNonceManager({
 ```
 
 :::tip
-Viem also exports a default `nonceManager` instance that you can use directly.
+Viem 还导出了一个默认的`nonceManager`实例，你可以直接使用。
 
 ```ts twoslash
 import { nonceManager } from 'viem'
 ```
 :::
 
-### Integration with Local Accounts
+### 与本地账户的集成
 
-A `nonceManager` can be passed as an option to [Local Accounts](/docs/accounts/local) to automatically manage nonces for transactions.
+可以将`nonceManager`作为选项传递给[本地账户](/docs/accounts/local) ，以自动管理交易的非重复值。
 
 :::code-group
 
@@ -76,21 +76,21 @@ export const client = createWalletClient({
 
 :::
 
-## Return Type
+## 返回类型
 
 `NonceManager`
 
-The Nonce Manager.
+非重复值管理器。
 
-## Parameters
+## 参数
 
 ### source
 
-- **Type:** `NonceManagerSource`
+- **类型:** `NonceManagerSource`
 
-The source of truth for the Nonce Manager.
+非重复值管理器的真实来源。
 
-Available sources: 
+可用来源：
 
 - `jsonRpc`
 

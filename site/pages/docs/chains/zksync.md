@@ -1,10 +1,10 @@
-# ZKsync [Integrating with ZKsync in Viem]
+# ZKsync [在 Viem 中集成 ZKsync]
 
-Viem provides first-class support for chains implemented on [ZKsync](https://zksync.io/).
+Viem 提供对在 [ZKsync](https://zksync.io/) 上实现的链的优质支持。
 
-## Chains
+## 链
 
-The following Viem chains are implemented on ZKsync:
+以下 Viem 链是在 ZKsync 上实现的：
 
 ```ts
 import {
@@ -13,9 +13,9 @@ import {
 } from 'viem/chains'
 ```
 
-### Configuration
+### 配置
 
-Viem exports ZKsync's chain [formatters](/docs/chains/formatters) & [serializers](/docs/chains/serializers) via `chainConfig`. This is useful if you need to define another chain which is implemented on ZKsync.
+Viem 通过 `chainConfig` 导出 ZKsync 的链 [格式化器](/docs/chains/formatters) 和 [序列化器](/docs/chains/serializers)。如果你需要定义另一个在 ZKsync 上实现的链，这非常有用。
 
 ```ts
 import { defineChain } from 'viem'
@@ -23,23 +23,23 @@ import { chainConfig } from 'viem/zksync'
 
 export const zkSyncExample = defineChain({
   ...chainConfig,
-  name: 'ZKsync Example',
+  name: 'ZKsync 示例',
   // ...
 })
 ```
 
-## Utilities
+## 工具
 
 ### `serializeTransaction`
 
-Serializes a transaction object. Supports EIP-712, EIP-1559, EIP-2930, and Legacy transactions.
+序列化交易对象。支持 EIP-712、EIP-1559、EIP-2930 和传统交易。
 
-ZKsync-flavored version of [Viem's `serializeTransaction`](/docs/utilities/serializeTransaction).
+ZKsync 版本的 [Viem 的 `serializeTransaction`](/docs/utilities/serializeTransaction)。
 
-#### Parameters
+#### 参数
 
-- `transaction` (`TransactionSerializable`): The transaction object to serialize.
-- `signature` (`Signature`): Optional signature to include.
+- `transaction` (`TransactionSerializable`): 要序列化的交易对象。
+- `signature` (`Signature`): 可选的签名以包含。
 
 ```ts
 import { serializeTransaction } from 'viem/zksync'

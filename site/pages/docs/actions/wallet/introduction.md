@@ -1,7 +1,7 @@
-# Introduction to Wallet Actions [A brief introduction to Wallet Actions in viem.]
+# 钱包操作简介 [对 viem 中钱包操作的简要介绍]
 
-Wallet Actions are actions that map one-to-one with a "wallet" or "signable" Ethereum RPC method (`eth_requestAccounts`, `eth_sendTransaction`, etc). They are used with a [Wallet Client](/docs/clients/wallet).
+钱包操作是与“钱包”或“可签名”以太坊 RPC 方法（`eth_requestAccounts`、`eth_sendTransaction` 等）一一对应的操作。它们与 [钱包客户端](/docs/clients/wallet) 一起使用。
 
-Wallet Actions require special permissions and provide signing capabilities. Examples of Wallet Actions include [retrieving the user's account addresses](/docs/actions/wallet/getAddresses), [sending a transaction](/docs/actions/wallet/sendTransaction), and [signing a message](/docs/actions/wallet/signMessage).
+钱包操作需要特殊权限并提供签名功能。钱包操作的示例包括 [检索用户的账户地址](/docs/actions/wallet/getAddresses)、[发送交易](/docs/actions/wallet/sendTransaction) 和 [签名消息](/docs/actions/wallet/signMessage)。
 
-Wallet Actions provide a secure and flexible way to access the user's accounts and perform actions on the Ethereum network. They are commonly used by dapps and other applications that need to execute transactions, interact with smart contracts, or sign messages.
+钱包操作提供了一种安全灵活的方式来访问用户的账户并在以太坊网络上执行操作。它们通常被 dapp 和其他需要执行交易、与智能合约交互或签名消息的应用程序使用。

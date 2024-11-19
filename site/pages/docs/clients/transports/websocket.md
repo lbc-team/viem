@@ -1,14 +1,14 @@
-# WebSocket Transport [A function to create a WebSocket Transport for a Client]
+# WebSocket 传输 [为客户端创建 WebSocket 传输的函数]
 
-The `webSocket` Transport connects to a JSON-RPC API via a WebSocket.
+`webSocket` 传输通过 WebSocket 连接到 JSON-RPC API。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { webSocket } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash {4}
 import { createPublicClient, webSocket } from 'viem'
@@ -20,17 +20,17 @@ const client = createPublicClient({
 })
 ```
 
-:::warning[Warning]
-If no `url` is provided, then the transport will fall back to a public RPC URL on the chain. It is highly recommended to provide an authenticated RPC URL to prevent rate-limiting.
+:::warning[警告]
+如果未提供 `url`，则传输将回退到链上的公共 RPC URL。强烈建议提供经过身份验证的 RPC URL 以防止速率限制。
 :::
 
-## Parameters
+## 参数
 
 ### url
 
-- **Type:** `string`
+- **类型:** `string`
 
-URL of the JSON-RPC API.
+JSON-RPC API 的 URL。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -38,12 +38,12 @@ import { webSocket } from 'viem'
 const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...')
 ```
 
-### keepAlive (optional)
+### keepAlive (可选)
 
-- **Type:** `boolean | { interval?: number }`
-- **Default:** `true`
+- **类型:** `boolean | { interval?: number }`
+- **默认:** `true`
 
-Whether or not to send keep-alive ping messages.
+是否发送保持活动的 ping 消息。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -53,12 +53,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### key (optional)
+### key (可选)
 
-- **Type:** `string`
-- **Default:** `"webSocket"`
+- **类型:** `string`
+- **默认:** `"webSocket"`
 
-A key for the Transport.
+传输的键。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -68,12 +68,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### name (optional)
+### name (可选)
 
-- **Type:** `string`
-- **Default:** `"WebSocket JSON-RPC"`
+- **类型:** `string`
+- **默认:** `"WebSocket JSON-RPC"`
 
-A name for the Transport
+传输的名称。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -83,12 +83,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### reconnect (optional)
+### reconnect (可选)
 
-- **Type:** `boolean | { maxAttempts?: number, delay?: number }`
-- **Default:** `true`
+- **类型:** `boolean | { maxAttempts?: number, delay?: number }`
+- **默认:** `true`
 
-Whether or not to attempt to reconnect on socket failure.
+是否在 socket 失败时尝试重新连接。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -98,12 +98,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-#### reconnect.attempts (optional)
+#### reconnect.attempts (可选)
 
-- **Type:** `number`
-- **Default:** `5`
+- **类型:** `number`
+- **默认:** `5`
 
-The max number of times to attempt to reconnect.
+尝试重新连接的最大次数。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -115,12 +115,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-#### reconnect.delay (optional)
+#### reconnect.delay (可选)
 
-- **Type:** `number`
-- **Default:** `2_000`
+- **类型:** `number`
+- **默认:** `2_000`
 
-Retry delay (in ms) between reconnect attempts.
+重新连接尝试之间的重试延迟（以毫秒为单位）。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -132,12 +132,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### retryCount (optional)
+### retryCount (可选)
 
-- **Type:** `number`
-- **Default:** `3`
+- **类型:** `number`
+- **默认:** `3`
 
-The max number of times to retry when a request fails.
+请求失败时的最大重试次数。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -147,12 +147,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### retryDelay (optional)
+### retryDelay (可选)
 
-- **Type:** `number`
-- **Default:** `150`
+- **类型:** `number`
+- **默认:** `150`
 
-The base delay (in ms) between retries. By default, the Transport will use [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) (`~~(1 << count) * retryDelay`), which means the time between retries is not constant.
+重试之间的基本延迟（以毫秒为单位）。默认情况下，传输将使用 [指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)（`~~(1 << count) * retryDelay`），这意味着重试之间的时间不是恒定的。
 
 ```ts twoslash
 import { webSocket } from 'viem'
@@ -162,12 +162,12 @@ const transport = webSocket('wss://eth-mainnet.g.alchemy.com/v2/...', {
 })
 ```
 
-### timeout (optional)
+### timeout (可选)
 
-- **Type:** `number`
-- **Default:** `10_000`
+- **类型:** `number`
+- **默认:** `10_000`
 
-The timeout for async WebSocket requests.
+异步 WebSocket 请求的超时。
 
 ```ts twoslash
 import { webSocket } from 'viem'

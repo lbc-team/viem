@@ -1,12 +1,12 @@
 ---
-description: Recovers the signing address from a transaction & signature.
+description: 从交易和签名中恢复签名地址。
 ---
 
 # recoverTransactionAddress
 
-Recovers the original signing address from a transaction & signature.
+从交易和签名中恢复原始签名地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -26,10 +26,10 @@ const address = await recoverTransactionAddress({ // [!code focus:99]
 })
 ```
 
-```ts [client.ts (JSON-RPC Account)]
+```ts [client.ts (JSON-RPC 账户)]
 import { createWalletClient, custom } from 'viem'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -40,7 +40,7 @@ export const walletClient = createWalletClient({
 })
 ```
 
-```ts twoslash [config.ts (Local Account)] filename="client.ts"
+```ts twoslash [config.ts (本地账户)] filename="client.ts"
 import { createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 
@@ -52,23 +52,23 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Address`](/docs/glossary/types#address)
 
-The signing address.
+签名地址。
 
-## Parameters
+## 参数
 
 ### serializedTransaction
 
-- **Type:** `TransactionSerialized`
+- **类型:** `TransactionSerialized`
 
-The RLP serialized transaction.
+RLP 序列化的交易。
 
-### signature (optional)
+### signature（可选）
 
-- **Type:** `Signature | Hex | ByteArray`
-- **Default:** Signature inferred on `serializedTransaction` (if exists)
+- **类型:** `Signature | Hex | ByteArray`
+- **默认值:** 在 `serializedTransaction` 上推断的签名（如果存在）
 
-The signature.
+签名。

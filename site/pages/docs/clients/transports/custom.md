@@ -1,16 +1,16 @@
-# Custom Transport [A function to create a Custom Transport for a Client]
+# 自定义传输 [为客户端创建自定义传输的函数]
 
-The `custom` Transport accepts an [EIP-1193 `request` function](https://eips.ethereum.org/EIPS/eip-1193#request-1) as a parameter. This transport is useful for integrating with injected wallets, wallets that provide an EIP-1193 provider (eg. WalletConnect or Coinbase SDK), or even providing your own custom `request` function.
+`custom` 传输接受一个 [EIP-1193 `request` 函数](https://eips.ethereum.org/EIPS/eip-1193#request-1) 作为参数。此传输对于与注入钱包、提供 EIP-1193 提供者的钱包（例如 WalletConnect 或 Coinbase SDK）集成，或甚至提供你自己的自定义 `request` 函数非常有用。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { custom } from 'viem'
 ```
 
-## Usage
+## 用法
 
-You can use any [EIP-1193 compatible](https://eips.ethereum.org/EIPS/eip-1193) Ethereum Provider with the `custom` Transport:
+你可以使用任何 [EIP-1193 兼容](https://eips.ethereum.org/EIPS/eip-1193) 的以太坊提供者与 `custom` 传输：
 
 ```ts twoslash
 import 'viem/window'
@@ -24,7 +24,7 @@ const client = createWalletClient({
 })
 ```
 
-Or you can define your own:
+或者你可以定义自己的：
 
 ```ts twoslash
 // @noErrors
@@ -43,13 +43,13 @@ const client = createWalletClient({
 })
 ```
 
-## Parameters
+## 参数
 
 ### provider
 
-- **Type:** `custom`
+- **类型：** `custom`
 
-An [EIP-1193 `request` function](https://eips.ethereum.org/EIPS/eip-1193#request) function.
+一个 [EIP-1193 `request` 函数](https://eips.ethereum.org/EIPS/eip-1193#request) 函数。
 
 ```ts twoslash
 // @noErrors
@@ -65,12 +65,12 @@ const transport = custom({
 })
 ```
 
-### key (optional)
+### key（可选）
 
-- **Type:** `string`
-- **Default:** `"custom"`
+- **类型：** `string`
+- **默认值：** `"custom"`
 
-A key for the Transport.
+传输的键。
 
 ```ts twoslash
 import 'viem/window'
@@ -84,12 +84,12 @@ const transport = custom(
 )
 ```
 
-### name (optional)
+### name（可选）
 
-- **Type:** `string`
-- **Default:** `"Ethereum Provider"`
+- **类型：** `string`
+- **默认值：** `"Ethereum Provider"`
 
-A name for the Transport
+传输的名称。
 
 ```ts twoslash
 import 'viem/window'
@@ -103,12 +103,12 @@ const transport = custom(
 )
 ```
 
-### retryCount (optional)
+### retryCount（可选）
 
-- **Type:** `number`
-- **Default:** `3`
+- **类型：** `number`
+- **默认值：** `3`
 
-The max number of times to retry when a request fails.
+请求失败时的最大重试次数。
 
 ```ts twoslash
 import 'viem/window'
@@ -119,12 +119,12 @@ const transport = custom(window.ethereum!, {
 })
 ```
 
-### retryDelay (optional)
+### retryDelay（可选）
 
-- **Type:** `number`
-- **Default:** `150`
+- **类型：** `number`
+- **默认值：** `150`
 
-The base delay (in ms) between retries. By default, the Transport will use [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) (`~~(1 << count) * retryDelay`), which means the time between retries is not constant.
+重试之间的基本延迟（以毫秒为单位）。默认情况下，传输将使用 [指数退避](https://en.wikipedia.org/wiki/Exponential_backoff)（`~~(1 << count) * retryDelay`），这意味着重试之间的时间不是恒定的。
 
 ```ts twoslash
 import 'viem/window'
@@ -135,6 +135,6 @@ const transport = custom(window.ethereum!, {
 })
 ```
 
-## Gotchas
+## 注意事项
 
-- If you are pairing the `custom` Transport with a [Public Client](/docs/clients/public), ensure that your provider supports [Public Actions](/docs/actions/public/introduction).
+- 如果你将 `custom` 传输与 [公共客户端](/docs/clients/public) 配对，请确保你的提供者支持 [公共操作](/docs/actions/public/introduction)。

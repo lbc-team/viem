@@ -1,29 +1,29 @@
 ---
-description: Returns the event selector for a given event definition.
+description: 返回给定事件定义的事件选择器。
 ---
 
 # toEventSelector
 
-Returns the event selector for a given event definition.
+返回给定事件定义的事件选择器。
 
-## Install
+## 安装
 
 ```ts
 import { toEventSelector } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toEventSelector } from 'viem'
 
 const selector_1 = toEventSelector('Transfer(address,address,uint256)')
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 
 const selector_2 = toEventSelector('Transfer(address indexed from, address indexed to, uint256 amount)')
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 
-// or from an `AbiEvent` on your contract ABI
+// 或者从你的合约 ABI 中的 `AbiEvent`
 const selector_3 = toEventSelector({
   name: 'Transfer',
   type: 'event',
@@ -33,20 +33,19 @@ const selector_3 = toEventSelector({
     { name: 'amount', type: 'uint256', indexed: false },
   ],
 })
-// @log: Output: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+// @log: 输出: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The selector as a hex value.
+选择器作为十六进制值。
 
-## Parameters
+## 参数
 
 ### event
 
-- **Type:** `string |`[`AbiEvent`](https://abitype.dev/api/types#abievent)
+- **类型:** `string |`[`AbiEvent`](https://abitype.dev/api/types#abievent)
 
-The event to generate a selector for.
-
+要生成选择器的事件。

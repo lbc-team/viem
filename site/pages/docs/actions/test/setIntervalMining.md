@@ -1,12 +1,12 @@
 ---
-description: Sets the automatic mining interval (in seconds) of blocks.
+description: 设置区块的自动挖矿间隔（以秒为单位）。
 ---
 
 # setIntervalMining
 
-Sets the automatic mining interval (in seconds) of blocks. Setting the interval to `0` will disable automatic mining.
+设置区块的自动挖矿间隔（以秒为单位）。将间隔设置为 `0` 将禁用自动挖矿。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,13 +31,13 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### interval
 
-- **Type:** `number`
+- **类型:** `number`
 
-The mining interval (in seconds). Setting the interval to `0` will disable automatic mining.
+挖矿间隔（以秒为单位）。将间隔设置为 `0` 将禁用自动挖矿。
 
 ```ts
 await testClient.setIntervalMining({

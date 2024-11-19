@@ -1,14 +1,14 @@
-# hashTypedData [Hashes EIP-712 typed data.]
+# hashTypedData [哈希 EIP-712 类型数据]
 
-Calculates an Ethereum-specific hash in [EIP-712 format](https://eips.ethereum.org/EIPS/eip-712): `keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message))`.
+计算以太坊特定的哈希，格式为 [EIP-712](https://eips.ethereum.org/EIPS/eip-712)：`keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message))`。
 
-## Import
+## 导入
 
 ```ts
 import { hashTypedData } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { hashTypedData } from 'viem'
@@ -46,19 +46,19 @@ hashTypedData({
 })
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The hashed message.
+哈希后的消息。
 
-## Parameters
+## 参数
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型：** `TypedDataDomain`
 
-The typed data domain.
+类型数据域。
 
 ```ts
 const hash = hashTypedData({
@@ -86,7 +86,7 @@ const hash = hashTypedData({
 
 ### types
 
-The type definitions for the typed data.
+类型数据的类型定义。
 
 ```ts
 const hash = hashTypedData({
@@ -119,9 +119,9 @@ const hash = hashTypedData({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型：** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts
 const hash = hashTypedData({
@@ -154,7 +154,7 @@ const hash = hashTypedData({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型：** 从 `types` 和 `primaryType` 推断。
 
 ```ts
 const hash = hashTypedData({

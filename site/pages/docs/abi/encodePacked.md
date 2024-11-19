@@ -1,18 +1,18 @@
 ---
-description: Generates ABI encoded data.
+description: 生成 ABI 编码数据。
 ---
 
 # encodePacked
 
-Generates [ABI non-standard packed encoded data](https://docs.soliditylang.org/en/v0.8.18/abi-spec#non-standard-packed-mode) given a set of solidity types compatible with packed encoding.
+生成给定一组与打包编码兼容的 Solidity 类型的 [ABI 非标准打包编码数据](https://docs.soliditylang.org/en/v0.8.18/abi-spec#non-standard-packed-mode)。
 
-## Import
+## 导入
 
 ```ts
 import { encodePacked } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 encodePacked(
@@ -26,19 +26,19 @@ encodePacked(
 // 0xd8da6bf26964af9d7eed9e03e53415d37aa9604568656c6c6f20776f726c64deadbeefdeadbeefdeadbeefdeadbeef00000000000000000000000000000000cafebabecafebabecafebabecafebabe00000000000000000000000000000000
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The encoded packed data.
+编码的打包数据。
 
-## Parameters
+## 参数
 
 ### types
 
-- **Type**: `PackedAbiType[]`
+- **类型**: `PackedAbiType[]`
 
-Set of ABI types to pack encode.
+要打包编码的 ABI 类型集合。
 
 ```ts
 encodePacked(
@@ -53,9 +53,9 @@ encodePacked(
 
 ### values
 
-- **Type**: [`AbiParametersToPrimitiveTypes<PackedAbiType[]>`](/docs/glossary/terms#abiparameterstoprimitivetypes)
+- **类型**: [`AbiParametersToPrimitiveTypes<PackedAbiType[]>`](/docs/glossary/terms#abiparameterstoprimitivetypes)
 
-The set of primitive values that correspond to the ABI types defined in `types`.
+与 `types` 中定义的 ABI 类型对应的原始值集合。
 
 ```ts
 encodePacked(

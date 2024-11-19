@@ -1,14 +1,14 @@
 ---
-description: Watches and returns incoming block numbers.
+description: 监视并返回传入的区块号。
 ---
 
 # watchBlockNumber
 
-Watches and returns incoming block numbers.
+监视并返回传入的区块号。
 
-## Usage
+## 用法
 
-Pass through your Public Client, along with a listener.
+通过你的公共客户端传递一个监听器。
 
 :::code-group
 
@@ -35,28 +35,28 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Listener
+## 监听器
 
 `(blockNumber: bigint) => void`
 
-The block number.
+区块号。
 
-## Returns
+## 返回值
 
 `UnwatchFn`
 
-A function that can be invoked to stop watching for new block numbers.
+一个可以调用的函数，用于停止监视新的区块号。
 
-## Parameters
+## 参数
 
-### emitMissed (optional)
+### emitMissed (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认值:** `false`
 
-Whether or not to emit missed block numbers to the callback. 
+是否将错过的区块号发送到回调。
 
-Missed block numbers may occur in instances where internet connection is lost, or the block time is lesser than the [polling interval](/docs/clients/public#pollinginterval-optional) of the client.
+错过的区块号可能发生在互联网连接丢失或区块时间小于客户端的 [轮询间隔](/docs/clients/public#pollinginterval-optional) 的情况下。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -69,12 +69,12 @@ const unwatch = publicClient.watchBlockNumber(
 )
 ```
 
-### emitOnBegin (optional)
+### emitOnBegin (可选)
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型:** `boolean`
+- **默认值:** `false`
 
-Whether or not to emit the latest block number to the callback when the subscription opens.
+当订阅打开时，是否将最新的区块号发送到回调。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -87,14 +87,14 @@ const unwatch = publicClient.watchBlockNumber(
 )
 ```
 
-### poll (optional)
+### poll (可选)
 
-- **Type:** `boolean`
-- **Default:** `false` for WebSocket Transports, `true` for non-WebSocket Transports
+- **类型:** `boolean`
+- **默认值:** 对于 WebSocket 传输为 `false`，对于非 WebSocket 传输为 `true`
 
-Whether or not to use a polling mechanism to check for new block numbers instead of a WebSocket subscription.
+是否使用轮询机制检查新的区块号，而不是使用 WebSocket 订阅。
 
-This option is only configurable for Clients with a [WebSocket Transport](/docs/clients/transports/websocket).
+此选项仅适用于具有 [WebSocket 传输](/docs/clients/transports/websocket) 的客户端。
 
 ```ts twoslash
 import { createPublicClient, webSocket } from 'viem'
@@ -113,11 +113,11 @@ const unwatch = publicClient.watchBlockNumber(
 )
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms). Defaults to Client's `pollingInterval` config.
+轮询频率（以毫秒为单位）。默认为客户端的 `pollingInterval` 配置。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -130,13 +130,13 @@ const unwatch = publicClient.watchBlockNumber(
 )
 ```
 
-## Example
+## 示例
 
-Check out the usage of `watchBlockNumber` in the live [Watch Block Numbers Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_watching-blocks) below.
+查看 `watchBlockNumber` 在实时 [监视区块号示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_watching-blocks) 中的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_watching-blocks?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Methods
+## JSON-RPC 方法
 
-- When `poll: true`, calls [`eth_blockNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_blocknumber) on a polling interval.
-- When `poll: false` & WebSocket Transport, uses a WebSocket subscription via [`eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe-polygon) and the `"newHeads"` event. 
+- 当 `poll: true` 时，在轮询间隔上调用 [`eth_blockNumber`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_blocknumber)。
+- 当 `poll: false` 且使用 WebSocket 传输时，通过 [`eth_subscribe`](https://docs.alchemy.com/reference/eth-subscribe-polygon) 和 `"newHeads"` 事件使用 WebSocket 订阅。

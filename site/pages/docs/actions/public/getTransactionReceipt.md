@@ -1,12 +1,12 @@
 ---
-description: Returns the transaction receipt given a transaction hash.
+description: 返回给定交易哈希的交易收据。
 ---
 
 # getTransactionReceipt
 
-Returns the [Transaction Receipt](/docs/glossary/terms#transaction-receipt) given a [Transaction](/docs/glossary/terms#transaction) hash.
+返回给定的 [交易收据](/docs/glossary/terms#transaction-receipt) 的 [交易](/docs/glossary/terms#transaction) 哈希。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -37,19 +37,19 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`TransactionReceipt`](/docs/glossary/types#transactionreceipt)
 
-The transaction receipt.
+交易收据。
 
-## Parameters
+## 参数
 
 ### hash
 
-- **Type:** `'0x${string}'`
+- **类型:** `'0x${string}'`
 
-A transaction hash.
+一个交易哈希。
 
 ```ts twoslash
 // [!include ~/snippets/publicClient.ts]
@@ -59,12 +59,12 @@ const transaction = await publicClient.getTransactionReceipt({
 })
 ```
 
-## Example
+## 示例
 
-Check out the usage of `getTransactionReceipt` in the live [Fetching Transactions Example](https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_fetching-transactions) below.
+查看 `getTransactionReceipt` 在实时 [获取交易示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_fetching-transactions) 中的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/transactions_fetching-transactions?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 
-## JSON-RPC Method
+## JSON-RPC 方法
 
 [`eth_getTransactionReceipt`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getTransactionReceipt)

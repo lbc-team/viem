@@ -1,18 +1,18 @@
 ---
-description: Decodes reverted error from a contract function call.
+description: 解码合约函数调用中的回退错误。
 ---
 
 # decodeErrorResult
 
-Decodes reverted error from a contract function call.
+解码合约函数调用中的回退错误。
 
-## Install
+## 安装
 
 ```ts
 import { decodeErrorResult } from 'viem'
 ```
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -46,17 +46,17 @@ export const wagmiAbi = [
 
 :::
 
-## Return Value
+## 返回值
 
-The decoded error.
+解码后的错误。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const value = decodeErrorResult({
@@ -67,9 +67,9 @@ const value = decodeErrorResult({
 
 ### data
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The calldata.
+调用数据。
 
 ```ts
 const value = decodeErrorResult({

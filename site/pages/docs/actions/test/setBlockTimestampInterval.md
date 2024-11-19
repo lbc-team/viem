@@ -1,12 +1,12 @@
 ---
-description: Sets the block's timestamp interval.
+description: 设置区块的时间戳间隔。
 ---
 
 # setBlockTimestampInterval
 
-Similar to [`increaseTime`](/docs/actions/test/increaseTime), but sets a block timestamp `interval`. The timestamp of future blocks will be computed as `lastBlock_timestamp` + `interval`.
+类似于 [`increaseTime`](/docs/actions/test/increaseTime)，但设置一个区块时间戳 `interval`。未来区块的时间戳将计算为 `lastBlock_timestamp` + `interval`。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,11 +31,11 @@ export const testClient = createTestClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### interval
 
-- **Type:** `number`
+- **类型:** `number`
 
 ```ts
 await testClient.setBlockTimestampInterval({

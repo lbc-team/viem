@@ -1,18 +1,18 @@
 ---
-description: Generates random EIP-4361 nonce.
+description: 生成随机的 EIP-4361 随机数。
 ---
 
 # generateSiweNonce
 
-Generates random [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) nonce.
+生成随机的 [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) 随机数。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { generateSiweNonce } from 'viem/siwe'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { generateSiweNonce } from 'viem/siwe'
@@ -20,8 +20,8 @@ import { generateSiweNonce } from 'viem/siwe'
 const nonce = generateSiweNonce()
 ```
 
-## Returns
+## 返回
 
 `string`
 
-A randomly generated EIP-4361 nonce.
+一个随机生成的 EIP-4361 随机数。

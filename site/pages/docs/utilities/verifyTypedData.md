@@ -1,17 +1,17 @@
 ---
-description: Verifies a typed data signature
+description: 验证已签名的类型化数据
 ---
 
 # verifyTypedData
 
-Verify that typed data was signed by the provided address.
+验证类型化数据是否由提供的地址签名。
 
-:::warning[Warning]
-This utility can only verify typed data that was signed by an Externally Owned Account (EOA).
-To verify messages from Contract Accounts (& EOA), use the [`publicClient.verifyTypedData` Action](/docs/actions/public/verifyTypedData) instead.
+:::warning[警告]
+此工具只能验证由外部拥有账户（EOA）签名的类型化数据。
+要验证来自合约账户（& EOA）的消息，请使用 [`publicClient.verifyTypedData` 操作](/docs/actions/public/verifyTypedData)。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -51,7 +51,7 @@ const valid = await verifyTypedData({
 ```
 
 ```ts [data.ts]
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -59,7 +59,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
 
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -85,19 +85,19 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 `boolean`
 
-Whether the provided `address` generated the `signature`.
+提供的 `address` 是否生成了 `signature`。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The Ethereum address that signed the original message.
+签署原始消息的以太坊地址。
 
 ```ts
 const valid = await verifyTypedData({
@@ -127,9 +127,9 @@ const valid = await verifyTypedData({
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型:** `TypedDataDomain`
 
-The typed data domain.
+类型化数据域。
 
 ```ts
 const valid = await verifyTypedData({
@@ -159,7 +159,7 @@ const valid = await verifyTypedData({
 
 ### types
 
-The type definitions for the typed data.
+类型化数据的类型定义。
 
 ```ts
 const valid = await verifyTypedData({
@@ -194,9 +194,9 @@ const valid = await verifyTypedData({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型:** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts
 const valid = await verifyTypedData({
@@ -231,7 +231,7 @@ const valid = await verifyTypedData({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型:** 从 `types` & `primaryType` 推断。
 
 ```ts
 const valid = await verifyTypedData({
@@ -266,9 +266,9 @@ const valid = await verifyTypedData({
 
 ### signature
 
-- **Type:** `Hex | ByteArray | Signature`
+- **类型:** `Hex | ByteArray | Signature`
 
-The signature of the typed data.
+类型化数据的签名。
 
 ```ts
 const valid = await verifyTypedData({
@@ -301,45 +301,11 @@ const valid = await verifyTypedData({
 })
 ```
 
-### blockNumber (optional)
+### blockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Only used when verifying a typed data that was signed by a Smart Contract Account. The block number to check if the contract was already deployed.
-
-```ts
-const valid = await verifyTypedData({
-  blockNumber: 42069n, // [!code focus]
-  address: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
-  domain: {
-    name: 'Ether Mail',
-    version: '1',
-    chainId: 1,
-    verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
-  },
-  types,
-  primaryType: 'Mail',
-  message: {
-    from: {
-      name: 'Cow',
-      wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
-    },
-    to: {
-      name: 'Bob',
-      wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
-    },
-    contents: 'Hello, Bob!',
-  },
-  signature: '0x...',
-})
-```
-
-### blockTag (optional)
-
-- **Type:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
-- **Default:** `'latest'`
-
-Only used when verifying a typed data that was signed by a Smart Contract Account. The block tag to check if the contract was already deployed.
+仅在验证由智能合约账户签名的类型化数据时使用。检查合约是否已部署的区块号。
 
 ```ts
 const valid = await verifyTypedData({
@@ -368,6 +334,40 @@ const valid = await verifyTypedData({
 })
 ```
 
-## JSON-RPC Method
+### blockTag (可选)
 
-[`eth_call`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_call) to a deployless [universal signature validator contract](https://eips.ethereum.org/EIPS/eip-6492).
+- **类型:** `'latest' | 'earliest' | 'pending' | 'safe' | 'finalized'`
+- **默认:** `'latest'`
+
+仅在验证由智能合约账户签名的类型化数据时使用。检查合约是否已部署的区块标签。
+
+```ts
+const valid = await verifyTypedData({
+  blockNumber: 42069n, // [!code focus]
+  address: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
+  domain: {
+    name: 'Ether Mail',
+    version: '1',
+    chainId: 1,
+    verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
+  },
+  types,
+  primaryType: 'Mail',
+  message: {
+    from: {
+      name: 'Cow',
+      wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
+    },
+    to: {
+      name: 'Bob',
+      wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+    },
+    contents: 'Hello, Bob!',
+  },
+  signature: '0x...',
+})
+```
+
+## JSON-RPC 方法
+
+[`eth_call`](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_call) 到一个无部署的 [通用签名验证合约](https://eips.ethereum.org/EIPS/eip-6492)。
