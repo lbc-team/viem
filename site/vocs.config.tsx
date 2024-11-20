@@ -10,6 +10,8 @@ export default defineConfig({
   //   content:
   //     'Viem is participating in Gitcoin Grants round 21. Consider [supporting the project](https://explorer.gitcoin.co/#/round/42161/389/73). Thank you. 🙏',
   // },
+
+  basePath: '/docs/viem',
   baseUrl:
     process.env.VERCEL_ENV === 'production'
       ? 'https://viem.sh'
@@ -57,14 +59,14 @@ export default defineConfig({
       icon: 'github',
       link: 'https://github.com/wevm/viem',
     },
-    {
-      icon: 'discord',
-      link: 'https://discord.gg/xCUz9FRcXD',
-    },
-    {
-      icon: 'x',
-      link: 'https://x.com/wevm_dev',
-    },
+    // {
+    //   icon: 'discord',
+    //   link: 'https://discord.gg/xCUz9FRcXD',
+    // },
+    // {
+    //   icon: 'x',
+    //   link: 'https://x.com/wevm_dev',
+    // },
   ],
   sponsors: [
     {
