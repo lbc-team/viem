@@ -21,7 +21,7 @@ export default defineConfig({
   description:
     'Build reliable Ethereum apps & libraries with lightweight, composable, & type-safe modules from viem.',
   editLink: {
-    pattern: 'https://github.com/lbc-team/viem/edit/main/site/pages/:path',
+    pattern: 'https://github.com/lbc-team/viem/edit/translation/site/pages/:path',
     text: '对该页面进行更改建议。',
   },
   head() {
@@ -324,7 +324,7 @@ export default defineConfig({
     },
     {
       text: '示例',
-      link: 'https://github.com/lbc-team/viem/tree/main/examples',
+      link: 'https://github.com/lbc-team/viem/tree/translation/examples',
     },
     {
       text: pkg.version,
@@ -337,11 +337,11 @@ export default defineConfig({
         },
         {
           text: '变更日志',
-          link: 'https://github.com/lbc-team/viem/blob/main/src/CHANGELOG.md',
+          link: 'https://github.com/lbc-team/viem/blob/translation/src/CHANGELOG.md',
         },
         {
           text: '贡献',
-          link: 'https://github.com/lbc-team/viem/blob/main/.github/CONTRIBUTING.md',
+          link: 'https://github.com/lbc-team/viem/blob/translation/.github/CONTRIBUTING.md',
         },
       ],
     },
