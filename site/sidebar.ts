@@ -3,35 +3,35 @@ import type { Sidebar } from 'vocs'
 export const sidebar = {
   '/docs/': [
     {
-      text: 'Introduction',
+      text: '介绍',
       items: [
-        { text: 'Why Viem', link: '/docs/introduction' },
-        { text: 'Installation', link: '/docs/installation' },
-        { text: 'Getting Started', link: '/docs/getting-started' },
-        { text: 'Platform Compatibility', link: '/docs/compatibility' },
-        { text: 'FAQ', link: '/docs/faq' },
+        { text: '为什么选择 Viem', link: '/docs/introduction' },
+        { text: '安装', link: '/docs/installation' },
+        { text: '入门', link: '/docs/getting-started' },
+        { text: '平台兼容性', link: '/docs/compatibility' },
+        { text: '常见问题', link: '/docs/faq' },
       ],
     },
     {
-      text: 'Guides',
+      text: '指南',
       items: [
-        { text: 'Migration Guide', link: '/docs/migration-guide' },
+        { text: '迁移指南', link: '/docs/migration-guide' },
         { text: 'Ethers v5 → viem', link: '/docs/ethers-migration' },
         { text: 'TypeScript', link: '/docs/typescript' },
-        { text: 'Error Handling', link: '/docs/error-handling' },
-        { text: 'Blob Transactions', link: '/docs/guides/blob-transactions' },
+        { text: '错误处理', link: '/docs/error-handling' },
+        { text: 'Blob 交易', link: '/docs/guides/blob-transactions' },
       ],
     },
     {
-      text: 'Clients & Transports',
+      text: '客户端与传输',
       items: [
-        { text: 'Introduction', link: '/docs/clients/intro' },
-        { text: 'Public Client', link: '/docs/clients/public' },
-        { text: 'Wallet Client', link: '/docs/clients/wallet' },
-        { text: 'Test Client', link: '/docs/clients/test' },
-        { text: 'Build your own Client', link: '/docs/clients/custom' },
+        { text: '介绍', link: '/docs/clients/intro' },
+        { text: '公共客户端', link: '/docs/clients/public' },
+        { text: '钱包客户端', link: '/docs/clients/wallet' },
+        { text: '测试客户端', link: '/docs/clients/test' },
+        { text: '构建自己的客户端', link: '/docs/clients/custom' },
         {
-          text: 'Transports',
+          text: '传输',
           items: [
             {
               text: 'HTTP',
@@ -42,7 +42,7 @@ export const sidebar = {
               link: '/docs/clients/transports/websocket',
             },
             {
-              text: 'Custom (EIP-1193)',
+              text: '自定义 (EIP-1193)',
               link: '/docs/clients/transports/custom',
             },
             {
@@ -50,7 +50,7 @@ export const sidebar = {
               link: '/docs/clients/transports/ipc',
             },
             {
-              text: 'Fallback',
+              text: '回退',
               link: '/docs/clients/transports/fallback',
             },
           ],
@@ -58,12 +58,12 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Public Actions',
+      text: '公共操作',
       collapsed: true,
       items: [
-        { text: 'Introduction', link: '/docs/actions/public/introduction' },
+        { text: '介绍', link: '/docs/actions/public/introduction' },
         {
-          text: 'Account',
+          text: '账户',
           items: [
             {
               text: 'getBalance',
@@ -76,7 +76,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Block',
+          text: '区块',
           items: [
             { text: 'getBlock', link: '/docs/actions/public/getBlock' },
             {
@@ -98,11 +98,11 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Call',
-          items: [{ text: 'call', link: '/docs/actions/public/call' }],
+          text: '调用',
+          items: [{ text: 'call', link: '/docs/actions/public/call' },],
         },
         {
-          text: 'Chain',
+          text: '链',
           items: [
             { text: 'getChainId', link: '/docs/actions/public/getChainId' },
           ],
@@ -117,7 +117,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Fee',
+          text: '费用',
           items: [
             {
               text: 'estimateFeesPerGas',
@@ -146,7 +146,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Filters & Logs',
+          text: '过滤器与日志',
           items: [
             {
               text: 'createBlockFilter',
@@ -183,7 +183,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Proof',
+          text: '证明',
           items: [
             {
               text: 'getProof',
@@ -192,7 +192,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Signature',
+          text: '签名',
           items: [
             {
               text: 'verifyMessage',
@@ -205,7 +205,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Transaction',
+          text: '交易',
           items: [
             {
               text: 'prepareTransactionRequest',
@@ -240,12 +240,12 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Wallet Actions',
+      text: '钱包操作',
       collapsed: true,
       items: [
-        { text: 'Introduction', link: '/docs/actions/wallet/introduction' },
+        { text: '介绍', link: '/docs/actions/wallet/introduction' },
         {
-          text: 'Account',
+          text: '账户',
           items: [
             {
               text: 'getAddresses',
@@ -258,7 +258,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Assets',
+          text: '资产',
           items: [
             {
               text: 'watchAsset',
@@ -267,7 +267,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Chain',
+          text: '链',
           items: [
             {
               text: 'addChain',
@@ -280,7 +280,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Data',
+          text: '数据',
           items: [
             {
               text: 'signMessage',
@@ -293,7 +293,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Permissions',
+          text: '权限',
           items: [
             {
               text: 'getPermissions',
@@ -306,7 +306,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Transaction',
+          text: '交易',
           items: [
             {
               text: 'prepareTransactionRequest',
@@ -329,12 +329,12 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Test Actions',
+      text: '测试操作',
       collapsed: true,
       items: [
-        { text: 'Introduction', link: '/docs/actions/test/introduction' },
+        { text: '介绍', link: '/docs/actions/test/introduction' },
         {
-          text: 'Account',
+          text: '账户',
           items: [
             {
               text: 'impersonateAccount',
@@ -354,7 +354,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Block',
+          text: '区块',
           items: [
             { text: 'getAutomine', link: '/docs/actions/test/getAutomine' },
             {
@@ -390,7 +390,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Node',
+          text: '节点',
           items: [
             { text: 'setCoinbase', link: '/docs/actions/test/setCoinbase' },
             {
@@ -400,7 +400,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Settings',
+          text: '设置',
           items: [
             { text: 'reset', link: '/docs/actions/test/reset' },
             {
@@ -411,7 +411,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'State',
+          text: '状态',
           items: [
             { text: 'dumpState', link: '/docs/actions/test/dumpState' },
             { text: 'loadState', link: '/docs/actions/test/loadState' },
@@ -420,7 +420,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Transaction',
+          text: '交易',
           items: [
             {
               text: 'dropTransaction',
@@ -447,29 +447,29 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Accounts',
+      text: '账户',
       collapsed: true,
       items: [
-        { text: 'JSON-RPC Account', link: '/docs/accounts/jsonRpc' },
+        { text: 'JSON-RPC 账户', link: '/docs/accounts/jsonRpc' },
         {
-          text: 'Local Accounts',
+          text: '本地账户',
           link: '/docs/accounts/local',
           items: [
             {
-              text: 'Private Key',
+              text: '私钥',
               link: '/docs/accounts/local/privateKeyToAccount',
             },
             {
-              text: 'Mnemonic',
+              text: '助记词',
               link: '/docs/accounts/local/mnemonicToAccount',
             },
             {
-              text: 'Hierarchical Deterministic (HD)',
+              text: '分层确定性 (HD)',
               link: '/docs/accounts/local/hdKeyToAccount',
             },
-            { text: 'Custom', link: '/docs/accounts/local/toAccount' },
+            { text: '自定义', link: '/docs/accounts/local/toAccount' },
             {
-              text: 'Utilities',
+              text: '工具',
               items: [
                 {
                   text: 'createNonceManager',
@@ -494,29 +494,29 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Chains',
+      text: '链',
       collapsed: true,
       items: [
-        { text: 'Introduction', link: '/docs/chains/introduction' },
+        { text: '介绍', link: '/docs/chains/introduction' },
         {
-          text: 'Configuration',
+          text: '配置',
           items: [
             {
-              text: 'Fees',
+              text: '费用',
               link: '/docs/chains/fees',
             },
             {
-              text: 'Formatters',
+              text: '格式化器',
               link: '/docs/chains/formatters',
             },
             {
-              text: 'Serializers',
+              text: '序列化器',
               link: '/docs/chains/serializers',
             },
           ],
         },
         {
-          text: 'Implementations',
+          text: '实现',
           items: [
             {
               text: 'Celo',
@@ -535,15 +535,15 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Contract',
+      text: '合约',
       collapsed: true,
       items: [
         {
-          text: 'Contract Instances',
+          text: '合约实例',
           link: '/docs/contract/getContract',
         },
         {
-          text: 'Actions',
+          text: '操作',
           items: [
             {
               text: 'createContractEventFilter',
@@ -592,7 +592,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Utilities',
+          text: '工具',
           items: [
             {
               text: 'decodeDeployData',
@@ -647,7 +647,7 @@ export const sidebar = {
       collapsed: true,
       items: [
         {
-          text: 'Actions',
+          text: '操作',
           items: [
             {
               text: 'getEnsAddress',
@@ -669,11 +669,10 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Utilities',
+          text: '工具',
           items: [
             { text: 'labelhash', link: '/docs/ens/utilities/labelhash' },
             { text: 'namehash', link: '/docs/ens/utilities/namehash' },
-
             { text: 'normalize', link: '/docs/ens/utilities/normalize' },
           ],
         },
@@ -684,7 +683,7 @@ export const sidebar = {
       collapsed: true,
       items: [
         {
-          text: 'Actions',
+          text: '操作',
           items: [
             {
               text: 'verifySiweMessage',
@@ -693,7 +692,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Utilities',
+          text: '工具',
           items: [
             {
               text: 'createSiweMessage',
@@ -754,11 +753,11 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Utilities',
+      text: '工具',
       collapsed: true,
       items: [
         {
-          text: 'Addresses',
+          text: '地址',
           items: [
             {
               text: 'getAddress',
@@ -816,7 +815,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Chain',
+          text: '链',
           items: [
             {
               text: 'extractChain',
@@ -825,7 +824,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Data',
+          text: '数据',
           items: [
             {
               text: 'concat',
@@ -858,7 +857,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Encoding',
+          text: '编码',
           items: [
             {
               text: 'fromBytes',
@@ -887,7 +886,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Hash',
+          text: '哈希',
           items: [
             {
               text: 'keccak256',
@@ -937,7 +936,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Signature',
+          text: '签名',
           items: [
             {
               text: 'compactSignatureToSignature',
@@ -1014,7 +1013,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Transaction',
+          text: '交易',
           items: [
             {
               text: 'parseTransaction',
@@ -1027,7 +1026,7 @@ export const sidebar = {
           ],
         },
         {
-          text: 'Units',
+          text: '单位',
           items: [
             {
               text: 'formatEther',
@@ -1058,12 +1057,12 @@ export const sidebar = {
       ],
     },
     {
-      text: 'Glossary',
+      text: '术语表',
       collapsed: true,
       items: [
-        { text: 'Terms', link: '/docs/glossary/terms' },
-        { text: 'Types', link: '/docs/glossary/types' },
-        { text: 'Errors', link: '/docs/glossary/errors' },
+        { text: '术语', link: '/docs/glossary/terms' },
+        { text: '类型', link: '/docs/glossary/types' },
+        { text: '错误', link: '/docs/glossary/errors' },
       ],
     },
   ],
@@ -1071,41 +1070,41 @@ export const sidebar = {
     backLink: true,
     items: [
       {
-        text: 'Account Abstraction',
+        text: '账户抽象',
         items: [
           {
-            text: 'Getting Started',
+            text: '入门',
             link: '/account-abstraction',
           },
         ],
       },
       {
-        text: 'Guides',
+        text: '指南',
         items: [
           {
-            text: 'Sending User Operations',
+            text: '发送用户操作',
             link: '/account-abstraction/guides/sending-user-operations',
           },
         ],
       },
       {
-        text: 'Clients',
+        text: '客户端',
         items: [
           {
-            text: 'Bundler Client',
+            text: '捆绑器客户端',
             link: '/account-abstraction/clients/bundler',
           },
           {
-            text: 'Paymaster Client',
+            text: '支付者客户端',
             link: '/account-abstraction/clients/paymaster',
           },
         ],
       },
       {
-        text: 'Accounts',
+        text: '账户',
         items: [
           {
-            text: 'Smart Accounts',
+            text: '智能账户',
             link: '/account-abstraction/accounts/smart',
             items: [
               {
@@ -1145,11 +1144,11 @@ export const sidebar = {
                 link: '/account-abstraction/accounts/smart/toTrustSmartAccount',
               },
               {
-                text: 'Custom',
+                text: '自定义',
                 link: '/account-abstraction/accounts/smart/toSmartAccount',
               },
               {
-                text: 'Utilities',
+                text: '工具',
                 items: [
                   {
                     text: 'signMessage',
@@ -1168,7 +1167,7 @@ export const sidebar = {
             ],
           },
           {
-            text: 'WebAuthn Account',
+            text: 'WebAuthn 账户',
             link: '/account-abstraction/accounts/webauthn',
             items: [
               {
@@ -1184,7 +1183,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'Bundler Actions',
+        text: '捆绑器操作',
         items: [
           {
             text: 'estimateUserOperationGas',
@@ -1221,7 +1220,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'Paymaster Actions',
+        text: '支付者操作',
         items: [
           {
             text: 'getPaymasterData',
@@ -1239,10 +1238,10 @@ export const sidebar = {
     backLink: true,
     items: [
       {
-        text: 'Experimental',
+        text: '实验',
         items: [
           {
-            text: 'Getting Started',
+            text: '入门',
             link: '/experimental',
           },
         ],
@@ -1250,9 +1249,9 @@ export const sidebar = {
       {
         text: 'EIP-5792',
         items: [
-          { text: 'Client', link: '/experimental/eip5792/client' },
+          { text: '客户端', link: '/experimental/eip5792/client' },
           {
-            text: 'Actions',
+            text: '操作',
             items: [
               {
                 text: 'getCallsStatus',
@@ -1278,28 +1277,28 @@ export const sidebar = {
         text: 'EIP-7702',
         items: [
           {
-            text: 'Overview',
+            text: '概述',
             link: '/experimental/eip7702',
           },
           {
-            text: 'Guides',
+            text: '指南',
             items: [
               {
-                text: 'Extending Client',
+                text: '扩展客户端',
                 link: '/experimental/eip7702/client',
               },
               {
-                text: 'Contract Writes',
+                text: '合约写入',
                 link: '/experimental/eip7702/contract-writes',
               },
               {
-                text: 'Sending Transactions',
+                text: '发送交易',
                 link: '/experimental/eip7702/sending-transactions',
               },
             ],
           },
           {
-            text: 'Actions',
+            text: '操作',
             items: [
               {
                 text: 'signAuthorization',
@@ -1308,7 +1307,7 @@ export const sidebar = {
             ],
           },
           {
-            text: 'Utilities',
+            text: '工具',
             items: [
               {
                 text: 'hashAuthorization',
@@ -1330,11 +1329,11 @@ export const sidebar = {
         text: 'ERC-7715',
         items: [
           {
-            text: 'Client',
+            text: '客户端',
             link: '/experimental/erc7715/client',
           },
           {
-            text: 'Actions',
+            text: '操作',
             items: [
               {
                 text: 'grantPermissions',
@@ -1348,11 +1347,11 @@ export const sidebar = {
         text: 'ERC-7739',
         items: [
           {
-            text: 'Client',
+            text: '客户端',
             link: '/experimental/erc7739/client',
           },
           {
-            text: 'Actions',
+            text: '操作',
             items: [
               {
                 text: 'signMessage',
@@ -1365,7 +1364,7 @@ export const sidebar = {
             ],
           },
           {
-            text: 'Utilities',
+            text: '工具',
             items: [
               {
                 text: 'hashMessage',
@@ -1389,31 +1388,31 @@ export const sidebar = {
     backLink: true,
     items: [
       {
-        text: 'OP Stack',
+        text: 'OP 堆栈',
         items: [
           {
-            text: 'Getting Started',
+            text: '入门',
             link: '/op-stack',
           },
-          { text: 'Client', link: '/op-stack/client' },
-          { text: 'Chains', link: '/op-stack/chains' },
+          { text: '客户端', link: '/op-stack/client' },
+          { text: '链', link: '/op-stack/chains' },
         ],
       },
       {
-        text: 'Guides',
+        text: '指南',
         items: [
           {
-            text: 'Deposits',
+            text: '存款',
             link: '/op-stack/guides/deposits',
           },
           {
-            text: 'Withdrawals',
+            text: '取款',
             link: '/op-stack/guides/withdrawals',
           },
         ],
       },
       {
-        text: 'L2 Public Actions',
+        text: 'L2 公共操作',
         items: [
           {
             text: 'buildDepositTransaction',
@@ -1462,7 +1461,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'L2 Wallet Actions',
+        text: 'L2 钱包操作',
         items: [
           {
             text: 'initiateWithdrawal',
@@ -1471,7 +1470,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'L1 Public Actions',
+        text: 'L1 公共操作',
         items: [
           {
             text: 'buildInitiateWithdrawal',
@@ -1540,7 +1539,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'L1 Wallet Actions',
+        text: 'L1 钱包操作',
         items: [
           {
             text: 'depositTransaction',
@@ -1557,7 +1556,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'Utilities',
+        text: '工具',
         items: [
           {
             text: 'extractTransactionDepositedLogs',
@@ -1610,32 +1609,32 @@ export const sidebar = {
         text: 'ZKsync',
         items: [
           {
-            text: 'Getting Started',
+            text: '入门',
             link: '/zksync',
           },
-          { text: 'Client', link: '/zksync/client' },
-          { text: 'Chains', link: '/zksync/chains' },
+          { text: '客户端', link: '/zksync/client' },
+          { text: '链', link: '/zksync/chains' },
         ],
       },
       {
-        text: 'Smart Accounts',
+        text: '智能账户',
         items: [
           {
-            text: 'Singlesig',
+            text: '单签',
             link: '/zksync/accounts/toSinglesigSmartAccount',
           },
           {
-            text: 'Multisig',
+            text: '多签',
             link: '/zksync/accounts/toMultisigSmartAccount',
           },
           {
-            text: 'Custom',
+            text: '自定义',
             link: '/zksync/accounts/toSmartAccount',
           },
         ],
       },
       {
-        text: 'EIP-712 Actions',
+        text: 'EIP-712 操作',
         items: [
           {
             text: 'deployContract',
@@ -1656,7 +1655,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'L2 Public Actions',
+        text: 'L2 公共操作',
         items: [
           {
             text: 'estimateFee',
@@ -1725,7 +1724,7 @@ export const sidebar = {
         ],
       },
       {
-        text: 'L1 Public Actions',
+        text: 'L1 公共操作',
         items: [
           {
             text: 'getL1Allowance',
@@ -1742,10 +1741,10 @@ export const sidebar = {
         ],
       },
       {
-        text: 'Utilities',
+        text: '工具',
         items: [
           {
-            text: 'Paymaster',
+            text: '支付者',
             items: [
               {
                 text: 'getApprovalBasedPaymasterInput',
