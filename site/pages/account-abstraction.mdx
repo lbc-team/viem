@@ -1,44 +1,44 @@
 ---
-description: Getting Started with Account Abstraction in Viem
+description: 开始使用 Viem 的账户抽象
 ---
 
-# Getting Started with Account Abstraction
+# 开始使用账户抽象
 
-**[Account Abstraction (ERC-4337)](https://eips.ethereum.org/EIPS/eip-4337)** is a proposal within the Ethereum ecosystem which aims to standardize Smart Contract Accounts (SCA) and their operations without the need to modify or upgrade the protocol.
+** [账户抽象 (ERC-4337)](https://eips.ethereum.org/EIPS/eip-4337)** 是以太坊生态系统中的一个提案，旨在标准化智能合约账户 (SCA) 及其操作，而无需修改或升级协议。
 
-Smart Contract Accounts can send calls on the Network via a "meta-transaction" called a **User Operation.** Users can send User Operations to **Bundlers** which aggregate User Operations into single transactions and submit them to the Network via an **EntryPoint** contract.
+智能合约账户可以通过称为 **用户操作** 的“元交易”在网络上发送调用。用户可以将用户操作发送到 **打包者**，打包者将用户操作聚合成单个交易并通过 **入口点** 合约提交到网络。
 
-Key features that Account Abstraction enables are:
+账户抽象所启用的关键特性包括：
 
-- **Batching:** Group multiple calls into a single transaction.
-- **Fee Sponsorship:** Allow third parties to pay for gas fees, or pay for gas via ERC20 tokens.
-- **Arbitrary Signature Verification:** Smart Contract Accounts can contain arbitrary signature verification logic (e.g. WebAuthn, secp256r1, secp256k1, ed25519, etc).
-- **Multi-Owner Wallets:** Enable multiple owners to control a single account, and set rules for the owners.
-- **Recovery Mechanisms:** A Smart Contract Account can assign multiple entities or services as trusted recovery agents for the Account.
-- and many more...
+- **批处理：** 将多个调用组合成单个交易。
+- **费用赞助：** 允许第三方支付 gas 费用，或通过 ERC20 代币支付 gas。
+- **任意签名验证：** 智能合约账户可以包含任意签名验证逻辑（例如 WebAuthn、secp256r1、secp256k1、ed25519 等）。
+- **多所有者钱包：** 允许多个所有者控制单个账户，并为所有者设置规则。
+- **恢复机制：** 智能合约账户可以指定多个实体或服务作为账户的受信任恢复代理。
+- 还有更多...
 
 :::note
-**Compatibility Note**
+**兼容性说明**
 
-As ERC-4337 is not enshrined on the protocol, this means that Smart Accounts are incompatible with Viem's Transaction APIs such as `sendTransaction` and `writeContract`.
+由于 ERC-4337 并未在协议中确立，这意味着智能账户与 Viem 的交易 API（如 `sendTransaction` 和 `writeContract`）不兼容。
 
-Sending "transactions" can be achieved by broadcasting a **User Operation** to a **Bundler**, which will then broadcast it to the Network shortly after.
+发送“交易”可以通过将 **用户操作** 广播到 **打包者** 来实现，打包者随后会在短时间内将其广播到网络。
 
-The most common Actions for **User Operations** are:
+**用户操作** 的最常见操作包括：
 
-- [`sendUserOperation`](/account-abstraction/actions/bundler/sendUserOperation) (also supports [Contract Writes](/account-abstraction/actions/bundler/sendUserOperation#contract-calls))
+- [`sendUserOperation`](/account-abstraction/actions/bundler/sendUserOperation)（也支持 [合约写入](/account-abstraction/actions/bundler/sendUserOperation#contract-calls)）
 - [`estimateUserOperationGas`](/account-abstraction/actions/bundler/estimateUserOperationGas)
 - [`getUserOperation`](/account-abstraction/actions/bundler/getUserOperation)
 - [`getUserOperationReceipt`](/account-abstraction/actions/bundler/getUserOperationReceipt)
 
-Once Account Abstraction is enshrined on the protocol, we anticipate the above Actions will become redundant in favor of Viem's Transaction APIs.
+一旦账户抽象在协议中确立，我们预计上述操作将因 Viem 的交易 API 而变得多余。
 :::
 
-## Sending your first User Operation
+## 发送你的第一个用户操作
 
-### 1. Set up a Client
+### 1. 设置客户端
 
-A Smart Account needs access to the Network to query for information about its state (e.g. nonce, address, etc). Let's set up a Client that we can use for the Smart Account:
+智能账户需要访问网络以查询其状态信息（例如 nonce、地址等）。让我们设置一个可以用于智能账户的客户端：
 
 ```ts twoslash
 // @noErrors
@@ -51,11 +51,11 @@ const client = createPublicClient({
 })
 ```
 
-[See `createPublicClient` Docs](/docs/clients/public)
+[查看 `createPublicClient` 文档](/docs/clients/public)
 
-### 2. Set up a Bundler Client
+### 2. 设置打包者客户端
 
-Next, we need to set up a Bundler Client. A Bundler is required to submit User Operations to the Network for the Smart Account.
+接下来，我们需要设置一个打包者客户端。打包者是将用户操作提交到网络以供智能账户使用的必需组件。
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem'
@@ -74,14 +74,14 @@ const bundlerClient = createBundlerClient({ // [!code focus]
 ```
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的打包者 URL 是一个公共端点。请勿在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico 的打包者](https://www.pimlico.io)、[Biconomy 的打包者](https://www.biconomy.io) 或其他打包者服务。
 :::
 
-[See `createBundlerClient` Docs](/account-abstraction/clients/bundler)
+[查看 `createBundlerClient` 文档](/account-abstraction/clients/bundler)
 
-### 3. Set up an Owner
+### 3. 设置所有者
 
-We also need to set up an Owner for the Smart Account which will be used to sign User Operations (transactions) for the Smart Account.
+我们还需要为智能账户设置一个所有者，该所有者将用于为智能账户签署用户操作（交易）。
 
 ```ts twoslash
 // @noErrors
@@ -103,11 +103,11 @@ const bundlerClient = createBundlerClient({
 const owner = privateKeyToAccount('0x...') // [!code focus]
 ```
 
-[See `privateKeyToAccount` Docs](/docs/accounts/local/privateKeyToAccount)
+[查看 `privateKeyToAccount` 文档](/docs/accounts/local/privateKeyToAccount)
 
-### 4. Create a Smart Account
+### 4. 创建智能账户
 
-Next, we instantiate a Smart Account. For this example, we will use [`toCoinbaseSmartAccount`](/account-abstraction/accounts/smart/toCoinbaseSmartAccount) (Coinbase Smart Wallet).
+接下来，我们实例化一个智能账户。在此示例中，我们将使用 [`toCoinbaseSmartAccount`](/account-abstraction/accounts/smart/toCoinbaseSmartAccount)（Coinbase 智能钱包）。
 
 ```ts twoslash
 // @noErrors
@@ -138,14 +138,14 @@ const account = await toCoinbaseSmartAccount({ // [!code focus]
 ```
 
 :::tip
-**Tip:** `toCoinbaseSmartAccount` also accepts [Passkey (WebAuthn) Accounts](/account-abstraction/accounts/webauthn) as an `owner`.
+**提示：** `toCoinbaseSmartAccount` 还接受 [密码钥匙 (WebAuthn) 账户](/account-abstraction/accounts/webauthn) 作为 `owner`。
 :::
 
-[See `toCoinbaseSmartAccount` Docs](/account-abstraction/accounts/smart/toCoinbaseSmartAccount)
+[查看 `toCoinbaseSmartAccount` 文档](/account-abstraction/accounts/smart/toCoinbaseSmartAccount)
 
-### 5. Send User Operation
+### 5. 发送用户操作
 
-Next, we send a User Operation to the Bundler. For the example below, we will send 0.001 ETH to a random address.
+接下来，我们将用户操作发送到打包者。对于下面的示例，我们将向一个随机地址发送 0.001 ETH。
 
 ```ts twoslash
 import { createPublicClient, http, parseEther } from 'viem'
@@ -185,14 +185,14 @@ const receipt = await bundlerClient.waitForUserOperationReceipt({ hash }) // [!c
 ```
 
 :::tip
-**Tip:** The `calls` property also accepts [Contract Write calls](/account-abstraction/actions/bundler/sendUserOperation).
+**提示：** `calls` 属性还接受 [合约写入调用](/account-abstraction/actions/bundler/sendUserOperation)。
 :::
 
-[See `sendUserOperation` Docs](/account-abstraction/actions/bundler/sendUserOperation)
+[查看 `sendUserOperation` 文档](/account-abstraction/actions/bundler/sendUserOperation)
 
-### 6. Optional: Hoist the Account
+### 6. 可选：提升账户
 
-If you do not wish to pass an account around to every Action that requires an `account`, you can also hoist the account onto a Bundler Client.
+如果你不希望将账户传递给每个需要 `account` 的操作，你还可以将账户提升到打包者客户端。
 
 ```ts twoslash 
 import { createPublicClient, http, parseEther } from 'viem'
@@ -227,16 +227,16 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### 7. Optional: Sponsor User Operation 
+### 7. 可选：赞助用户操作
 
-By using a Paymaster, we can add sponsorship of User Operation fees.
+通过使用 Paymaster，我们可以添加用户操作费用的赞助。
 
-Viem exposes a `paymaster` property on both the **Bundler Client** ("on Client" tab) and **User Operation Action** ("on Action" tab) to add User Operation sponsorship capabilities.
+Viem 在 **Bundler Client**（“在客户端”选项卡）和 **用户操作动作**（“在动作”选项卡）上暴露了一个 `paymaster` 属性，以添加用户操作赞助功能。
 
-The `paymaster` property accepts a [Paymaster Client](/account-abstraction/clients/paymaster) ([among others](#TODO)), which is used to fetch the necessary data for User Operation sponsorship.
+`paymaster` 属性接受一个 [Paymaster Client](/account-abstraction/clients/paymaster)（ [以及其他](#TODO) ），用于获取用户操作赞助所需的数据。
 
 :::info
-The example below uses [Pimlico's Paymaster API](https://docs.pimlico.io/infra/paymaster) – allowing consumers to sponsor gas fees for users on over 30+ chains.
+下面的示例使用 [Pimlico 的 Paymaster API](https://docs.pimlico.io/infra/paymaster) – 允许消费者在超过 30 条链上为用户赞助 gas 费用。
 :::
 
 :::code-group
@@ -318,7 +318,7 @@ export const account = await toCoinbaseSmartAccount({
 :::
 
 ::::tip
-If your Bundler also accepts Paymaster sponsorship (like [Pimlico](https://www.pimlico.io)), you can set `paymaster: true` instead of declaring a separate Paymaster Client.
+如果你的 Bundler 也接受 Paymaster 赞助（如 [Pimlico](https://www.pimlico.io)），你可以设置 `paymaster: true`，而不是声明一个单独的 Paymaster Client。
 
 :::code-group
 

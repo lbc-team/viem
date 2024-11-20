@@ -1,6 +1,6 @@
-# Chains
+# 链
 
-The following ZKsync chains are supported in Viem:
+以下 ZKsync 链在 Viem 中受支持：
 
 ```ts twoslash
 import {
@@ -9,9 +9,9 @@ import {
 } from 'viem/chains'
 ```
 
-## Configuration
+## 配置
 
-Viem exports ZKsync's chain [formatters](/docs/chains/formatters) & [serializers](/docs/chains/serializers) via `chainConfig`. This is useful if you need to define another chain which is implemented on ZKsync.
+Viem 通过 `chainConfig` 导出 ZKsync 的链 [格式化器](/docs/chains/formatters) 和 [序列化器](/docs/chains/serializers)。这在你需要定义另一个在 ZKsync 上实现的链时非常有用。
 
 ```ts twoslash
 // @noErrors

@@ -1,12 +1,12 @@
 ---
-description: Creates a ZKsync Smart Account
+description: 创建一个 ZKsync 智能账户
 ---
 
 # toSmartAccount (ZKsync)
 
-Creates a [ZKsync Smart Account](https://docs.zksync.io/build/developer-reference/account-abstraction/building-smart-accounts) from a Contract Address and a custom sign function.
+从合约地址和自定义签名函数创建一个 [ZKsync 智能账户](https://docs.zksync.io/build/developer-reference/account-abstraction/building-smart-accounts)。
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toSmartAccount } from 'viem/zksync'
@@ -14,19 +14,19 @@ import { toSmartAccount } from 'viem/zksync'
 const account = toSmartAccount({
   address: '0xf39Fd6e51aad8F6F4ce6aB8827279cffFb92266', 
   async sign({ hash }) {
-    // ... signing logic
+    // ... 签名逻辑
     return '0x...'
   }
 })
 ```
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Address of the deployed Account's Contract implementation.
+已部署账户合约实现的地址。
 
 ```ts
 const account = toSmartAccount({
@@ -39,9 +39,9 @@ const account = toSmartAccount({
 
 ### sign
 
-- **Type:** `({ hash: Hex }) => Hex`
+- **类型:** `({ hash: Hex }) => Hex`
 
-Custom sign function for the Smart Account.
+智能账户的自定义签名函数。
 
 ```ts
 const account = toSmartAccount({

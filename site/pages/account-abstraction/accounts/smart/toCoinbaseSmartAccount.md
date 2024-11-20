@@ -1,8 +1,8 @@
-# Coinbase Smart Wallet
+# Coinbase 智能钱包
 
-The `toCoinbaseSmartAccount` implementation references the [Coinbase Smart Wallet](https://github.com/coinbase/smart-wallet) contract. 
+`toCoinbaseSmartAccount` 实现引用了 [Coinbase 智能钱包](https://github.com/coinbase/smart-wallet) 合约。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -27,39 +27,39 @@ export const client = createPublicClient({
 })
 ```
 
-```ts twoslash [owner.ts (Private Key)] filename="owner.ts"
+```ts twoslash [owner.ts (私钥)] filename="owner.ts"
 import { privateKeyToAccount } from 'viem/accounts'
  
 export const owner = privateKeyToAccount('0x...')
 ```
 
-```ts twoslash [owner.ts (Passkey)] filename="owner.ts"
+```ts twoslash [owner.ts (密码钥匙)] filename="owner.ts"
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'
 
-// Register a credential (ie. passkey).
+// 注册凭证（即密码钥匙）。
 const credential = await createWebAuthnCredential({ name: 'Wallet' })
  
-// Create a WebAuthn owner account from the credential.
+// 从凭证创建一个 WebAuthn 拥有者账户。
 export const owner = toWebAuthnAccount({ credential })
 ```
 
 :::
 
 :::tip
-**Tip:** You can use a Passkey (WebAuthn) to sign User Operations. Check the **owner.ts (Passkey)** tab.
+**提示：** 你可以使用密码钥匙（WebAuthn）来签署用户操作。请查看 **owner.ts (密码钥匙)** 标签。
 :::
 
-## Returns
+## 返回
 
 `SmartAccount<CoinbaseSmartAccountImplementation>`
 
-## Parameters
+## 参数
 
 ### client
 
-- **Type:** `Client`
+- **类型：** `Client`
 
-Client used to retrieve Smart Account data.
+用于检索智能账户数据的客户端。
 
 ```ts
 const client = createPublicClient({ // [!code focus]
@@ -75,9 +75,9 @@ const account = await toCoinbaseSmartAccount({
 
 ### owners
 
-- **Type:** `(LocalAccount | WebAuthnAccount)[]`
+- **类型：** `(LocalAccount | WebAuthnAccount)[]`
 
-Owners of the Smart Account. Can be a [Local Account](/docs/accounts/local) or a [WebAuthn Account (Passkey)](/account-abstraction/accounts/webauthn).
+智能账户的拥有者。可以是 [本地账户](/docs/accounts/local) 或 [WebAuthn 账户（密码钥匙）](/account-abstraction/accounts/webauthn)。
 
 ```ts
 const account = await toCoinbaseSmartAccount({
@@ -86,11 +86,11 @@ const account = await toCoinbaseSmartAccount({
 })
 ```
 
-### ownerIndex (optional)
+### ownerIndex（可选）
 
-- **Type:** `number`
+- **类型：** `number`
 
-Index of the owner to use for signing messages & User Operations.
+用于签署消息和用户操作的拥有者索引。
 
 ```ts
 const account = await toCoinbaseSmartAccount({
@@ -100,11 +100,11 @@ const account = await toCoinbaseSmartAccount({
 })
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Nonce to use for the Smart Account.
+用于智能账户的随机数。
 
 ```ts
 const account = await toCoinbaseSmartAccount({

@@ -1,13 +1,13 @@
 ---
 outline: deep
-description: Builds the transaction that proves a withdrawal was initiated on an L2. 
+description: 构建证明在 L2 上发起了提款的交易。
 ---
 
 # buildProveWithdrawal
 
-Builds the transaction that proves a withdrawal was initiated on an L2. Used in the Withdrawal flow.
+构建证明在 L2 上发起了提款的交易。用于提款流程。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -49,20 +49,20 @@ export const publicClientL2 = createPublicClient({
   transport: http()
 }).extend(publicActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `buildProveWithdrawal`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `buildProveWithdrawal` 中传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -77,13 +77,13 @@ const args = await publicClientL2.buildProveWithdrawal({
 const hash = await walletClientL1.proveWithdrawal(args)
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, base } from 'viem/chains'
 import { publicActionsL2, walletActionsL1 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. // [!code hl]
+// 从 EIP-1193 提供者检索账户。 // [!code hl]
 const [account] = await window.ethereum.request({ // [!code hl]
   method: 'eth_requestAccounts' // [!code hl]
 }) // [!code hl]
@@ -99,7 +99,7 @@ export const publicClientL2 = createPublicClient({
 }).extend(publicActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, base } from 'viem/chains'
@@ -118,21 +118,21 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `BuildProveWithdrawalReturnType`
 
-The parameters required to execute a [prove withdrawal transaction](/op-stack/actions/proveWithdrawal).
+执行 [证明提款交易](/op-stack/actions/proveWithdrawal) 所需的参数。
 
-## Parameters
+## 参数
 
-### account (optional)
+### account（可选）
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const args = await client.buildProveWithdrawal({
@@ -144,9 +144,9 @@ const args = await client.buildProveWithdrawal({
 
 ### output
 
-- **Type:** `GetL2OutputReturnType`
+- **类型：** `GetL2OutputReturnType`
 
-The L2 output. Typically provided by [`getL2Output` Action](/op-stack/actions/getL2Output).
+L2 输出。通常由 [`getL2Output` 操作](/op-stack/actions/getL2Output) 提供。
 
 ```ts
 const args = await client.buildProveWithdrawal({
@@ -158,10 +158,9 @@ const args = await client.buildProveWithdrawal({
 
 ### withdrawal
 
-- **Type:** `Withdrawal`
+- **类型：** `Withdrawal`
 
-The withdrawal message. Typically provided by [`getWithdrawals` Action](/op-stack/utilities/getWithdrawals).
-
+提款消息。通常由 [`getWithdrawals` 操作](/op-stack/utilities/getWithdrawals) 提供。
 
 ```ts
 const args = await client.buildProveWithdrawal({

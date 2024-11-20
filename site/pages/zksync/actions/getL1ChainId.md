@@ -1,12 +1,12 @@
 ---
-description: Returns the Chain Id of underlying L1 network.
+description: 返回底层 L1 网络的链 ID。
 ---
 
 # getL1ChainId
 
-Returns the Chain Id of underlying L1 network.
+返回底层 L1 网络的链 ID。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,8 +28,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `Hex`
 
-L1 Chain ID.
+L1 链 ID。

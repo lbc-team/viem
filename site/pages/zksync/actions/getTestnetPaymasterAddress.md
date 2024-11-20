@@ -1,12 +1,12 @@
 ---
-description: Returns the address of a Paymaster on a Testnet.
+description: 返回测试网中的 Paymaster 地址。
 ---
 
 # getTestnetPaymasterAddress
 
-Returns the address of a Paymaster on a Testnet.
+返回测试网中的 Paymaster 地址。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -27,8 +27,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回值 
 
 `Address | null`
 
-Testnet paymaster address if available, or `null`.
+如果可用，则返回测试网 Paymaster 地址，或者返回 `null`。

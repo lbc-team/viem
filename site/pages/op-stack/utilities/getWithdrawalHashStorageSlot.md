@@ -1,18 +1,18 @@
 ---
-description: Computes the withdrawal hash storage slot to be used when proving a withdrawal.
+description: 计算在证明提款时使用的提款哈希存储槽。
 ---
 
 # getWithdrawalHashStorageSlot
 
-Computes the withdrawal hash storage slot to be used when proving a withdrawal.
+计算在证明提款时使用的提款哈希存储槽。
 
-## Import
+## 导入
 
 ```ts
 import { getWithdrawalHashStorageSlot } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { getWithdrawalHashStorageSlot } from 'viem'
@@ -22,19 +22,19 @@ const slot = getWithdrawalHashStorageSlot({ // [!code hl]
 }) // [!code hl]
 ```
 
-## Returns
+## 返回
 
 `Hex`
 
-The storage slot.
+存储槽。
 
-## Parameters
+## 参数
 
 ### withdrawalHash
 
-- **Type:** `Hash`
+- **类型:** `Hash`
 
-Hash emitted from the L2 withdrawal `MessagePassed` event.
+从 L2 提款 `MessagePassed` 事件中发出的哈希。
 
 ```ts
 const slot = getWithdrawalHashStorageSlot({ 

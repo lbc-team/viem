@@ -1,12 +1,12 @@
 ---
-description: Retrieves information about a User Operation given a hash.
+description: 根据哈希值检索用户操作的信息。
 ---
 
 # getUserOperation
 
-Retrieves information about a User Operation given a hash.
+根据哈希值检索用户操作的信息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -32,10 +32,10 @@ export const bundlerClient = createBundlerClient({
 :::
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的 Bundler URL 是一个公共端点。请不要在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico's Bundler](https://www.pimlico.io)、[Biconomy's Bundler](https://www.biconomy.io) 或其他 Bundler 服务。
 :::
 
-## Returns
+## 返回
 
 ```ts
 {
@@ -47,15 +47,15 @@ The Bundler URL above is a public endpoint. Please do not use it in production a
 }
 ```
 
-User Operation information.
+用户操作信息。
 
-## Parameters
+## 参数
 
 ### hash
 
-- **Type:** `'0x${string}'`
+- **类型:** `'0x${string}'`
 
-A User Operation hash.
+用户操作哈希。
 
 ```ts twoslash
 import { bundlerClient } from './client'

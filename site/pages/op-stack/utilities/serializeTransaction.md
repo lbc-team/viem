@@ -1,18 +1,18 @@
 ---
-description: Serializes a transaction object, with support for OP Stack.
+description: 序列化交易对象，支持 OP Stack。
 ---
 
 # serializeTransaction (OP Stack)
 
-Serializes a transaction object, with support for OP Stack transactions. Supports Deposit, EIP-1559, EIP-2930, and Legacy transactions.
+序列化交易对象，支持 OP Stack 交易。支持存款、EIP-1559、EIP-2930 和传统交易。
 
-## Import
+## 导入
 
 ```ts
 import { serializeTransaction } from 'viem/op-stack'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { serializeTransaction } from 'viem/op-stack'
@@ -28,9 +28,9 @@ const serialized = serializeTransaction({
 })
 ```
 
-### Deposit Transactions
+### 存款交易
 
-The `serializeTransaction` module from `viem/op-stack` also supports serializing deposit transactions:
+`viem/op-stack` 模块的 `serializeTransaction` 也支持序列化存款交易：
 
 ```ts
 import { parseEther } from 'viem'
@@ -46,22 +46,22 @@ const serialized = serializeTransaction({
 })
 ```
 
-## Returns
+## 返回值
 
-Returns a template `Hex` value based on transaction type:
+根据交易类型返回一个模板 `Hex` 值：
 
 - `deposit`: [TransactionSerializedDeposit](/docs/glossary/types#TransactionSerializedDeposit)
 - `eip1559`: [TransactionSerializedEIP1559](/docs/glossary/types#TransactionSerializedEIP1559)
 - `eip2930`: [TransactionSerializedEIP2930](/docs/glossary/types#TransactionSerializedEIP2930)
 - `legacy`: [TransactionSerializedLegacy](/docs/glossary/types#TransactionSerializedLegacy) 
 
-## Parameters
+## 参数
 
 ### transaction
 
-- **Type:** `TransactionSerializable`
+- **类型:** `TransactionSerializable`
 
-The transaction object to serialize.
+要序列化的交易对象。
 
 ```ts
 const serialized = serializeTransaction({
@@ -77,9 +77,9 @@ const serialized = serializeTransaction({
 
 ### signature
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Optional signature to include. **Ignored for deposit transactions.**
+可选的签名以包含。**对于存款交易被忽略。**
 
 ```ts
 const serialized = serializeTransaction({

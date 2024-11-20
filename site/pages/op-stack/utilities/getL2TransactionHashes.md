@@ -1,19 +1,19 @@
 ---
-description: Computes the L2 transaction hashes from an array of L1 "TransactionDeposited" logs.
+description: 计算来自 L1 “TransactionDeposited” 日志数组的 L2 交易哈希。
 ---
 
 # getL2TransactionHashes
 
-Computes the L2 transaction hashes from an array of L1 `TransactionDeposited` logs.
+计算来自 L1 `TransactionDeposited` 日志数组的 L2 交易哈希。
 
-Useful for extracting L2 hashes from an **L1 Transaction Receipt**.
+用于从 **L1 交易收据** 中提取 L2 哈希。
 
-## Import
+## 导入
 ```ts
 import { getL2TransactionHashes } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { extractTransactionDepositedLogs, getL2TransactionHashes } from 'viem'
@@ -25,19 +25,19 @@ const receipt = await client.getTransactionReceipt({
 const l2Hashes = getL2TransactionHashes(receipt) // [!code hl]
 ```
 
-## Returns
+## 返回
 
 `Hex`
 
-The L2 transaction hash.
+L2 交易哈希。
 
-## Parameters
+## 参数
 
 ### logs
 
-- **Type:** `Log[]`
+- **类型:** `Log[]`
 
-An array of L1 logs.
+L1 日志数组。
 
 ```ts
 const l2Hashes = getL2TransactionHash({ 

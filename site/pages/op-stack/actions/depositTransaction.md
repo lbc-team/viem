@@ -1,15 +1,15 @@
 ---
 outline: deep
-description: Initiates a deposit transaction on an L1, which executes a transaction on an L2.
+description: 在 L1 上发起存款交易，该交易在 L2 上执行。
 ---
 
 # depositTransaction
 
-Initiates a [deposit transaction](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md) on an L1, which executes a transaction on an L2. 
+在 L1 上发起一个 [存款交易](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md)，该交易在 L2 上执行。
 
-Internally performs a contract write to the [`depositTransaction` function](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol#L378) on the [Optimism Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol).
+内部执行对 [Optimism Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol) 中 [`depositTransaction` 函数](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol#L378) 的合约写入。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -21,7 +21,7 @@ const hash = await walletClientL1.depositTransaction({
   account,
   request: {
     gas: 21_000n,
-    mint: parseEther('1')
+    mint: parseEther('1'),
     to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
   },
   targetChain: base,
@@ -39,9 +39,9 @@ export const walletClientL1 = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(walletActionsL1())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
@@ -50,29 +50,29 @@ export const account = privateKeyToAccount(...)
 
 :::warning
 
-You must [build the parameters](#building-parameters) on the L2 before calling this function. If the gas is too low, transaction execution will fail on the L2.
+在调用此函数之前，你必须在 L2 上 [构建参数](#building-parameters)。如果 gas 过低，交易执行将在 L2 上失败。
 
 :::
 
-### Building Parameters
+### 构建参数
 
-The [`buildDepositTransaction` Action](/op-stack/actions/buildDepositTransaction) builds & prepares the deposit transaction parameters (ie. `gas`, `targetChain`, etc). 
+[`buildDepositTransaction` 操作](/op-stack/actions/buildDepositTransaction) 构建并准备存款交易参数（即 `gas`、`targetChain` 等）。
 
-We can use the resulting `args` to initiate the deposit transaction on the L1.
+我们可以使用生成的 `args` 在 L1 上发起存款交易。
 
 :::code-group
 
 ```ts [example.ts]
 import { account, publicClientL2, walletClientL1 } from './config'
 
-// Build parameters for the transaction on the L2.
+// 为 L2 上的交易构建参数。
 const args = await publicClientL2.buildDepositTransaction({
   account,
-  mint: parseEther('1')
+  mint: parseEther('1'),
   to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
 })
  
-// Execute the deposit transaction on the L1.
+// 在 L1 上执行存款交易。
 const hash = await walletClientL1.depositTransaction(args)
 ```
 
@@ -92,45 +92,45 @@ export const publicClientL2 = createPublicClient({
   transport: http()
 }).extend(publicActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await clientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-[See more on the `buildDepositTransaction` Action.](/op-stack/actions/buildDepositTransaction)
+[查看更多关于 `buildDepositTransaction` 操作的信息。](/op-stack/actions/buildDepositTransaction)
 
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `depositTransaction`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `depositTransaction` 中传递 `account`，你也可以在钱包客户端上提升账户（参见 `config.ts`）。
 
-[Learn more.](/docs/clients/wallet#account)
+[了解更多。](/docs/clients/wallet#account)
 
 :::code-group
 
 ```ts [example.ts]
 import { publicClientL2, walletClientL1 } from './config'
 
-// Prepare parameters for the deposit transaction on the L2.
+// 为 L2 上的存款交易准备参数。
 const args = await publicClientL2.buildDepositTransaction({
-  mint: parseEther('1')
+  mint: parseEther('1'),
   to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
 })
  
-// Initiate the deposit transaction on the L1.
+// 在 L1 上发起存款交易。
 const hash = await walletClientL1.depositTransaction(args)
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, createPublicClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, base } from 'viem/chains'
 import { publicActionsL2, walletActionsL1 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. // [!code hl]
+// 从 EIP-1193 提供者检索账户。 // [!code hl]
 const [account] = await window.ethereum.request({ // [!code hl]
   method: 'eth_requestAccounts' // [!code hl]
 }) // [!code hl]
@@ -146,7 +146,7 @@ export const publicClientL2 = createPublicClient({
 }).extend(publicActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, base } from 'viem/chains'
@@ -165,21 +165,21 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 [`Hash`](/docs/glossary/types#hash)
 
-The [L1 Transaction](/docs/glossary/terms#transaction) hash.
+[L1 交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+要发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -193,11 +193,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### args.data (optional)
+### args.data (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Contract deployment bytecode or encoded contract method & arguments.
+合约部署字节码或编码的合约方法及参数。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -214,9 +214,9 @@ const hash = await client.depositTransaction({
 
 ### args.gas
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Gas limit for transaction execution on the L2.
+L2 上交易执行的 gas 限制。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -230,11 +230,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### args.isCreation (optional)
+### args.isCreation (可选)
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Whether or not this is a contract deployment transaction.
+这是否是合约部署交易。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -248,11 +248,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### args.mint (optional)
+### args.mint (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei to mint (deposit) on the L2. Debited from the caller's L1 balance.
+在 L2 上铸造（存款）的 wei 值。从调用者的 L1 余额中扣除。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -266,11 +266,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### args.to (optional)
+### args.to (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-L2 Transaction recipient.
+L2 交易接收者。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -284,11 +284,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### args.value (optional)
+### args.value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction on the L2. Debited from the caller's L2 balance.
+在 L2 上与此交易一起发送的 wei 值。从调用者的 L2 余额中扣除。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -304,9 +304,9 @@ const hash = await client.depositTransaction({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain to execute the transaction on.
+执行交易的 L2 链。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -323,12 +323,12 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `client.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认:** `client.chain`
 
-The L1 chain. If there is a mismatch between the wallet's current chain & this chain, an error will be thrown.
+L1 链。如果钱包的当前链与此链不匹配，将抛出错误。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -345,11 +345,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -364,11 +364,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const hash = await client.depositTransaction({
@@ -384,11 +384,11 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const hash = await client.depositTransaction({
@@ -403,14 +403,14 @@ const hash = await client.depositTransaction({
 })
 ```
 
-### portalAddress (optional)
+### portalAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.portal[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.portal[chainId].address`
 
-The address of the [Optimism Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol). Defaults to the Optimism Portal contract specified on the `targetChain`.
+[Optimism Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol) 的地址。默认为在 `targetChain` 上指定的 Optimism Portal 合约。
 
-If a `portalAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `portalAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const hash = await client.depositTransaction({

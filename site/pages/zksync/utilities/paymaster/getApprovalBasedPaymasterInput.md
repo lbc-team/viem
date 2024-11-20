@@ -1,18 +1,18 @@
 ---
-description: Returns encoded formatted approval-based paymaster params.
+description: 返回编码格式化的基于批准的支付主参数。
 ---
 
 # getApprovalBasedPaymasterInput
 
-Returns encoded formatted approval-based paymaster params.
+返回编码格式化的基于批准的支付主参数。
 
-## Import
+## 导入
 
 ```ts
 import { getApprovalBasedPaymasterInput } from 'viem/zksync'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { getApprovalBasedPaymasterInput } from 'viem/zksync'
@@ -24,19 +24,19 @@ const data = getApprovalBasedPaymasterInput({
 })
 ```
 
-## Returns
+## 返回
 
 `EncodeFunctionDataReturnType`
 
-The `Hex` value of the provided approval-based paymaster inputs.
+提供的基于批准的支付主输入的 `Hex` 值。
 
-## Parameters
+## 参数
 
 ### token
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The token address.
+代币地址。
 
 ```ts
 const data = getApprovalBasedPaymasterInput({
@@ -48,9 +48,9 @@ const data = getApprovalBasedPaymasterInput({
 
 ### minAllowance
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Minimum allowance (in wei) of token that can be sent towards the paymaster.
+可以发送到支付主的代币的最低允许额度（以 wei 为单位）。
 
 ```ts
 const data = getApprovalBasedPaymasterInput({
@@ -62,9 +62,9 @@ const data = getApprovalBasedPaymasterInput({
 
 ### innerInput
 
-- **Type:** `Hex | ByteArray`
+- **类型:** `Hex | ByteArray`
 
-Additional payload that can be sent to the paymaster to implement any logic .
+可以发送到支付主的附加有效负载，以实现任何逻辑。
 
 ```ts
 const data = getApprovalBasedPaymasterInput({

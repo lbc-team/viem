@@ -1,18 +1,18 @@
 ---
-description: Parse EIP712 transaction.
+description: 解析 EIP712 交易。
 ---
 
 # parseEip712Transaction
 
-Parses a serialized EIP712 transaction.
+解析序列化的 EIP712 交易。
 
-## Import
+## 导入
 
 ```ts
 import { parseEip712Transaction } from 'viem/zksync'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { parseEip712Transaction } from 'viem/zksync'
@@ -22,19 +22,19 @@ const serializedTransaction =
 const transaction = parseEip712Transaction(serializedTransaction)
 ```
 
-## Returns
+## 返回
 
 `ZksyncTransactionSerializableEIP712`
 
-The ZKsync EIP712 transaction.
+ZKsync EIP712 交易。
 
-## Parameters
+## 参数
 
 ### tx
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The serialized EIP712 transaction.
+序列化的 EIP712 交易。
 
 ```ts
 const serializedTransaction =

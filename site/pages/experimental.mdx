@@ -1,24 +1,24 @@
 ---
-description: Getting started with experimental features in Viem
+description: 开始使用 Viem 的实验性功能
 ---
 
-# Getting Started
+# 开始使用
 
-Viem provides a set of experimental features through the `viem/experimental` entrypoint. Such features could include: 
+Viem 通过 `viem/experimental` 入口点提供了一组实验性功能。这些功能可能包括：
 
-- implementation of non-finalized EIP proposals.
-- features that have not been adopted by the wider ecosystem.
-- features that are not considered stable.
+- 实现尚未最终确定的 EIP 提案。
+- 尚未被更广泛生态系统采纳的功能。
+- 被认为不稳定的功能。
 
-:::warning[Warning]
-It is recommended to not solely use experimental features in production. You should always have a fallback mechanism for unsupported features.
+:::warning[警告]
+建议在生产环境中不要仅使用实验性功能。你应该始终为不受支持的功能提供后备机制。
 :::
 
-## Quick Start
+## 快速开始
 
-### 1. Set up your Client & Transport
+### 1. 设置你的客户端和传输
 
-Firstly, set up your [Client](/docs/clients/intro) with a desired [Transport](/docs/clients/intro) & [Chain](/docs/chains/introduction).
+首先，使用所需的 [Transport](/docs/clients/intro) 和 [Chain](/docs/chains/introduction) 设置你的 [Client](/docs/clients/intro)。
 
 ```ts
 import { createWalletClient, custom } from 'viem'
@@ -31,12 +31,12 @@ const client = createWalletClient({ // [!code focus]
 ```
 
 :::info
-In a production app, it is highly recommended to pass through your authenticated RPC provider URL (Alchemy, Infura, Ankr, etc). If no URL is provided, viem will default to a public RPC provider. [Read more](/docs/clients/transports/http#usage).
+在生产应用中，强烈建议传入你的认证 RPC 提供者 URL（Alchemy、Infura、Ankr 等）。如果未提供 URL，viem 将默认使用公共 RPC 提供者。 [阅读更多](/docs/clients/transports/http#usage)。
 :::
 
-### 2. Extend Client with Experimental Actions
+### 2. 使用实验性操作扩展客户端
 
-Now that you have a Client set up, you can extend it with Experimental Actions! [Read more.](/experimental/client)
+现在你已经设置了客户端，可以使用实验性操作扩展它！ [阅读更多.](/experimental/client)
 
 ```ts
 import { createWalletClient, custom } from 'viem'
@@ -49,9 +49,9 @@ const client = createWalletClient({
 }).extend(walletActionsEip5792()) // [!code focus]
 ```
 
-### 3. Consume Experimental Actions
+### 3. 使用实验性操作
 
-Now that you have an Experimental Client set up, you can now and consume [Actions](/experimental/eip5792/sendCalls)!
+现在你已经设置了实验性客户端，可以使用 [Actions](/experimental/eip5792/sendCalls)！
 
 ```tsx
 import { createWalletClient, custom, parseEther } from 'viem'

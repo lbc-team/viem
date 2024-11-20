@@ -1,21 +1,21 @@
 ---
 outline: deep
-description: Waits for the next L2 output (after the provided block number) to be submitted. 
+description: 等待下一个 L2 输出（在提供的区块号之后）被提交。
 ---
 
 # waitForNextL2Output
 
-Waits for the next L2 output (after the provided block number) to be submitted. Used within the [waitToProve](/op-stack/actions/waitToProve) Action.
+等待下一个 L2 输出（在提供的区块号之后）被提交。用于 [waitToProve](/op-stack/actions/waitToProve) 动作中。
 
-Internally calls [`getTimeToNextL2Output`](/op-stack/actions/getTimeToNextL2Output) and waits the returned `seconds`.
+内部调用 [`getTimeToNextL2Output`](/op-stack/actions/getTimeToNextL2Output) 并等待返回的 `seconds`。
 
 :::warning
-**This Action will be deprecated in the future.**
+**此动作将在未来被弃用。**
 
-Use [`waitForNextGame`](/op-stack/actions/waitForNextGame) for OP Stack chains that have upgraded to [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) and have a deployed [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json).
+对于已升级到 [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) 并已部署 [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json) 的 OP Stack 链，请使用 [`waitForNextGame`](/op-stack/actions/waitForNextGame)。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -46,19 +46,19 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `WaitForNextL2OutputReturnType`
 
-The L2 output proposal.
+L2 输出提案。
 
-## Parameters
+## 参数
 
 ### l2BlockNumber
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The L2 block number.
+L2 区块号。
 
 ```ts
 const output = await publicClientL1.waitForNextL2Output({ 
@@ -69,9 +69,9 @@ const output = await publicClientL1.waitForNextL2Output({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const output = await publicClientL1.waitForNextL2Output({
@@ -80,12 +80,12 @@ const output = await publicClientL1.waitForNextL2Output({
 })
 ```
 
-### intervalBuffer (optional)
+### intervalBuffer (可选)
 
-- **Type:** `number`
-- **Default:** `1.1`
+- **类型:** `number`
+- **默认:** `1.1`
 
-The buffer to account for discrepancies between non-deterministic time intervals.
+用于考虑非确定性时间间隔之间差异的缓冲。
 
 ```ts
 const output = await publicClientL1.waitForNextL2Output({
@@ -95,14 +95,14 @@ const output = await publicClientL1.waitForNextL2Output({
 }) 
 ```
 
-### l2OutputOracleAddress (optional)
+### l2OutputOracleAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.l2OutputOracle[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-The address of the [L2 Output Oracle contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
-If a `l2OutputOracleAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `l2OutputOracleAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const output = await publicClientL1.waitForNextL2Output({

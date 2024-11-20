@@ -2,37 +2,37 @@
 head:
   - - meta
     - property: og:title
-      content: Withdrawals
+      content: 提现
   - - meta
     - name: description
-      content: How to withdraw from OP Stack chains to Mainnet.
+      content: 如何从 OP Stack 链提取到主网。
   - - meta
     - property: og:description
-      content: How to withdraw from OP Stack chains to Mainnet.
+      content: 如何从 OP Stack 链提取到主网。
 
 ---
 
-# Withdrawals
+# 提现
 
-This guide will demonstrate how to withdraw **1 Ether** from **[Optimism (OP Mainnet)](https://www.optimism.io/)** to **Mainnet**.
+本指南将演示如何从 **[Optimism (OP Mainnet)](https://www.optimism.io/)** 提取 **1 Ether** 到 **主网**。
 
-## Overview
+## 概述
 
-Withdrawals on the OP Stack are a [two-step (plus one) process](https://blog.oplabs.co/two-step-withdrawals/). The process involves:
+在 OP Stack 上的提现是一个 [两步（加一步）过程](https://blog.oplabs.co/two-step-withdrawals/)。该过程包括：
 
-0. **Initiating** the Withdrawal Transaction on the L2,
+0. **发起** L2 上的提现交易，
    
-> _Wait one hour (max) for the L2 Output containing the transaction to be proposed._
+> *等待一小时（最多）以便提议包含交易的 L2 输出。*
 
-1. **Proving** the Withdrawal Transaction on the L1,
+1. **证明** L1 上的提现交易，
 
-> _Wait the 7 day finalization period_
+> *等待 7 天的最终确认期*
 
-2. **Finalizing** the Withdrawal Transaction on the L1.
+2. **完成** L1 上的提现交易。
 
-> _Withdrawal complete!_
+> *提现完成！*
 
-Here is a complete end-to-end overview of how to execute a withdrawal. Don't worry, we will break it down into [Steps](#steps) below.
+以下是执行提现的完整端到端概述。别担心，我们将在下面的 [步骤](#steps) 中详细说明。
 
 :::code-group
 
@@ -46,62 +46,62 @@ import {
   walletClientL2 
 } from './config'
 
-// Build parameters to initiate the withdrawal transaction on the L1.
+// 构建参数以在 L1 上发起提现交易。
 const args = await publicClientL1.buildInitiateWithdrawal({
   to: account.address,
   value: parseEther('1')
 })
  
-// Execute the initiate withdrawal transaction on the L2.
+// 在 L2 上执行发起提现交易。
 const hash = await walletClientL2.initiateWithdrawal(args)
 
-// Wait for the initiate withdrawal transaction receipt.
+// 等待发起提现交易的收据。
 const receipt = await publicClientL2.waitForTransactionReceipt({ hash })
 
-// Wait until the withdrawal is ready to prove.
+// 等待直到提现准备好进行证明。
 const { output, withdrawal } = await publicClientL1.waitToProve({
   receipt,
   targetChain: walletClientL2.chain
 })
 
-// Build parameters to prove the withdrawal on the L2.
+// 构建参数以在 L2 上证明提现。
 const proveArgs = await publicClientL2.buildProveWithdrawal({
   output,
   withdrawal,
 })
 
-// Prove the withdrawal on the L1.
+// 在 L1 上证明提现。
 const proveHash = await walletClientL1.proveWithdrawal(proveArgs)
 
-// Wait until the prove withdrawal is processed.
+// 等待直到证明提现被处理。
 const proveReceipt = await publicClientL1.waitForTransactionReceipt({
   hash: proveHash
 })
 
-// Wait until the withdrawal is ready to finalize.
+// 等待直到提现准备好完成。
 await publicClientL1.waitToFinalize({
   targetChain: walletClientL2.chain,
   withdrawalHash: withdrawal.withdrawalHash,
 })
 
-// Finalize the withdrawal.
+// 完成提现。
 const finalizeHash = await walletClientL1.finalizeWithdrawal({
   targetChain: walletClientL2.chain,
   withdrawal,
 })
 
-// Wait until the withdrawal is finalized.
+// 等待直到提现完成。
 const finalizeReceipt = await publicClientL1.waitForTransactionReceipt({
   hash: finalizeHash
 })
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. 
+// 从 EIP-1193 提供者检索账户。 
 export const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 }) 
@@ -129,7 +129,7 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
@@ -161,34 +161,34 @@ export const walletClientL2 = createWalletClient({
 
 :::
 
-## Steps
+## 步骤
 
-### 1. Set up Viem Clients
+### 1. 设置 Viem 客户端
 
-First, we will set up our Viem Clients for the Mainnet and Optimism chains, including the necessary extensions for the OP Stack.
+首先，我们将为主网和 Optimism 链设置我们的 Viem 客户端，包括 OP Stack 所需的扩展。
 
-We will need the following clients:
+我们将需要以下客户端：
 
-- `publicClientL1`/`walletClientL1`: Public & Wallet Client for **Mainnet**
-- `publicClientL2`/`walletClientL2`: Public & Wallet Client for **OP Mainnet**
+- `publicClientL1`/`walletClientL1`：主网的公共和钱包客户端
+- `publicClientL2`/`walletClientL2`：OP 主网的公共和钱包客户端
 
-We will place these in a `config.ts` file.
+我们将把这些放在 `config.ts` 文件中。
 
 :::info
 
-The example belows how to set up a Client for either a **JSON-RPC Account (Browser Extension, WalletConnect,  etc)** or **Local Account (Private Key)**
+以下示例展示了如何为 **JSON-RPC 账户（浏览器扩展、WalletConnect 等）** 或 **本地账户（私钥）** 设置客户端
 
 :::
 
 :::code-group
 
-```ts [config.ts (JSON-RPC Account)]
-// Import Viem modules.
+```ts [config.ts (JSON-RPC 账户)]
+// 导入 Viem 模块。
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. 
+// 从 EIP-1193 提供者检索账户。 
 export const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 }) 
@@ -216,8 +216,8 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
-// Import Viem modules.
+```ts [config.ts (本地账户)]
+// 导入 Viem 模块。
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
@@ -249,11 +249,11 @@ export const walletClientL2 = createWalletClient({
 
 :::
 
-### 2. Initiate Withdrawal
+### 2. 发起提现
 
-Next, we will initiate the withdrawal transaction on the L2 by building the parameters on the L1 (1), and then executing the transaction on the L2 (2). We also want to wait for the L2 transaction to be processed on a block (3) before we continue.
+接下来，我们将通过在 L1 上构建参数（1）来发起 L2 上的提现交易，然后在 L2 上执行交易（2）。我们还希望在继续之前等待 L2 交易在区块上被处理（3）。
 
-In the example below, we are initiating a withdrawal for **1 Ether** from the L2 (OP Mainnet) to the L1 (Mainnet).
+在下面的示例中，我们正在从 L2（OP 主网）发起 **1 Ether** 的提现到 L1（主网）。
 
 :::code-group
 
@@ -265,25 +265,25 @@ import {
   walletClientL2 
 } from './config'
 
-// 1. Build parameters to initiate the withdrawal transaction on the L1.
+// 1. 构建参数以在 L1 上发起提现交易。
 const args = await publicClientL1.buildInitiateWithdrawal({
   to: account.address,
   value: parseEther('1')
 })
  
-// 2. Execute the initiate withdrawal transaction on the L2.
+// 2. 在 L2 上执行发起提现交易。
 const hash = await walletClientL2.initiateWithdrawal(args)
 
-// 3. Wait for the initiate withdrawal transaction receipt.
+// 3. 等待发起提现交易的收据。
 const receipt = await publicClientL2.waitForTransactionReceipt({ hash })
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. 
+// 从 EIP-1193 提供者获取账户。 
 export const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 }) 
@@ -311,7 +311,7 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
@@ -343,13 +343,13 @@ export const walletClientL2 = createWalletClient({
 
 :::
 
-### 3. Prove Withdrawal
+### 3. 证明提款
 
-After the initiate withdrawal transaction has been processed on a block on the L2, we will then need to prove that withdrawal on the L1. 
+在 L2 上的提款交易被处理到一个区块后，我们需要在 L1 上证明该提款。
 
-Before a withdrawal transaction can be proved, the transaction needs to be included in an L2 Output proposal. Until then, we will need to wait for the withdrawal transaction to be ready to be proved (1). This usually takes a maximum of **one hour**. 
+在提款交易可以被证明之前，该交易需要包含在 L2 输出提案中。在此之前，我们需要等待提款交易准备好被证明 (1)。这通常最多需要 **一个小时**。
 
-Once the L2 output has been proposed, we will need to build the parameters for the prove withdrawal transaction on the L2 (2), and then execute the transaction on the L1 (3). We also want to wait for the L1 transaction to be processed on a block (4) before we continue.
+一旦 L2 输出被提案，我们需要构建在 L2 上证明提款交易的参数 (2)，然后在 L1 上执行该交易 (3)。我们还希望在继续之前等待 L1 交易在一个区块上被处理 (4)。
 
 :::code-group
 
@@ -362,37 +362,37 @@ import {
   walletClientL2 
 } from './config'
 
-// (Shortcut) Get receipt from transaction created in Step 1.
+// （快捷方式）从步骤 1 中创建的交易获取收据。
 const receipt = 
   await publicClientL2.getTransactionReceipt({ hash: '0x...' })
 
-// 1. Wait until the withdrawal is ready to prove. // [!code hl]
+// 1. 等待提款准备好被证明。 // [!code hl]
 const { output, withdrawal } = await publicClientL1.waitToProve({ // [!code hl] 
   receipt, // [!code hl]
   targetChain: walletClientL2.chain // [!code hl]
 }) // [!code hl]
 
-// 2. Build parameters to prove the withdrawal on the L2. // [!code hl]
+// 2. 构建在 L2 上证明提款的参数。 // [!code hl]
 const args = await publicClientL2.buildProveWithdrawal({ // [!code hl]
   output, // [!code hl]
   withdrawal, // [!code hl]
 }) // [!code hl]
 
-// 3. Prove the withdrawal on the L1. // [!code hl]
+// 3. 在 L1 上证明提款。 // [!code hl]
 const hash = await walletClientL1.proveWithdrawal(args) // [!code hl]
 
-// 4. Wait until the prove withdrawal is processed. // [!code hl]
+// 4. 等待证明提款被处理。 // [!code hl]
 const receipt = await publicClientL1.waitForTransactionReceipt({ // [!code hl]
   hash // [!code hl]
 }) // [!code hl]
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. 
+// 从 EIP-1193 提供者获取账户。 
 export const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 }) 
@@ -420,7 +420,7 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
@@ -453,7 +453,7 @@ export const walletClientL2 = createWalletClient({
 :::
 
 :::tip
-You can utilize the [`getTimeToProve`](/op-stack/actions/getTimeToProve) Action if you want to extract the estimated time left to prove the withdrawal from the `waitToProve` method and display it to the user or store in a database.
+如果你想从 `waitToProve` 方法中提取证明提款的预计剩余时间并将其显示给用户或存储在数据库中，可以利用 [`getTimeToProve`](/op-stack/actions/getTimeToProve) 操作。
 
 ```ts
 const { seconds, timestamp } = await publicClientL1.getTimeToProve({
@@ -464,7 +464,7 @@ const { seconds, timestamp } = await publicClientL1.getTimeToProve({
 :::
 
 :::warning
-If you aren't using the `waitToProve` Action, it is highly recommended to check if the withdrawal is ready to be proved by using the [`getWithdrawalStatus`](/op-stack/actions/getWithdrawalStatus) Action. This will prevent you from proving a withdrawal that isn't ready yet.
+如果你不使用 `waitToProve` 操作，强烈建议使用 [`getWithdrawalStatus`](/op-stack/actions/getWithdrawalStatus) 操作检查提款是否准备好被证明。这将防止你证明尚未准备好的提款。
 
 ```ts
 const status = await publicClientL1.getWithdrawalStatus({
@@ -478,15 +478,15 @@ if (status === 'ready-to-prove') {
 ```
 :::
 
-### 4. Finalize Withdrawal
+### 4. 完成提款
 
-When the withdrawal transaction has been proved, we will then need to finalize that withdrawal on the L1.
+当提款交易被证明后，我们需要在 L1 上完成该提款。
 
-Before a withdrawal transaction can be finalized, we will need to wait the **finalization period** of **7 days** (1).
+在提款交易可以被完成之前，我们需要等待 **7 天** 的 **最终确认期** (1)。
 
-After the finalization period has elapsed, we can finalize the withdrawal (2).
+在最终确认期结束后，我们可以完成提款 (2)。
 
-Once the withdrawal has been successfully finalized (3), then the withdrawal is complete! 🥳
+一旦提款成功完成 (3)，那么提款就完成了！ 🥳
 
 :::code-group
 
@@ -500,37 +500,37 @@ import {
   walletClientL2 
 } from './config'
 
-// (Shortcut) Get receipt from transaction created in Step 1.
+// （快捷方式）从步骤 1 中创建的交易获取收据。
 const receipt = 
   await publicClientL2.getTransactionReceipt({ hash: '0x...' })
 
-// (Shortcut) Get withdrawals from receipt in Step 3.
+// （快捷方式）从步骤 3 中的收据获取提款。
 const [withdrawal] = getWithdrawals(receipt)
 
-// 1. Wait until the withdrawal is ready to finalize.  // [!code hl]
+// 1. 等待提款准备好完成。  // [!code hl]
 await publicClientL1.waitToFinalize({ // [!code hl]
   targetChain: walletClientL2.chain, // [!code hl]
   withdrawalHash: withdrawal.withdrawalHash, // [!code hl]
 }) // [!code hl]
 
-// 2. Finalize the withdrawal. // [!code hl]
+// 2. 完成提款。 // [!code hl]
 const hash = await walletClientL1.finalizeWithdrawal({ // [!code hl]
   targetChain: walletClientL2.chain, // [!code hl]
   withdrawal, // [!code hl]
 }) // [!code hl]
 
-// 3. Wait until the withdrawal is finalized. // [!code hl]
+// 3. 等待提款完成。 // [!code hl]
 const receipt = await publicClientL1.waitForTransactionReceipt({ // [!code hl]
   hash // [!code hl]
 }) // [!code hl]
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. 
+// 从 EIP-1193 提供者获取账户。 
 export const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 }) 
@@ -558,7 +558,7 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL1, walletActionsL2 } from 'viem/op-stack'
@@ -591,7 +591,7 @@ export const walletClientL2 = createWalletClient({
 :::
 
 :::tip
-You can utilize the [`getTimeToFinalize`](/op-stack/actions/getTimeToFinalize) Action if you want to extract the estimated time left to finalize the withdrawal from the `waitToFinalize` method and display it to the user or store in a database.
+如果你想提取从 `waitToFinalize` 方法中估计的最终化提取所需的时间并将其显示给用户或存储在数据库中，可以利用 [`getTimeToFinalize`](/op-stack/actions/getTimeToFinalize) 操作。
 
 ```ts
 const { seconds, timestamp } = await publicClientL1.getTimeToFinalize({
@@ -602,7 +602,7 @@ const { seconds, timestamp } = await publicClientL1.getTimeToFinalize({
 :::
 
 :::warning
-If you aren't using the `waitToFinalize` Action, it is highly recommended to check if the withdrawal is ready to be finalized by using the [`getWithdrawalStatus`](/op-stack/actions/getWithdrawalStatus) Action. This will prevent you from finalizing a withdrawal that isn't ready yet.
+如果你没有使用 `waitToFinalize` 操作，强烈建议通过使用 [`getWithdrawalStatus`](/op-stack/actions/getWithdrawalStatus) 操作来检查提取是否准备好最终化。这将防止你最终化尚未准备好的提取。
 
 ```ts
 const status = await publicClientL1.getWithdrawalStatus({

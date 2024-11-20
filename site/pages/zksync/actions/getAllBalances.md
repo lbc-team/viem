@@ -1,12 +1,12 @@
 ---
-description: Returns all known balances for a given account.
+description: 返回给定账户的所有已知余额。
 ---
 
 # getAllBalances
 
-Returns all known balances for a given account.
+返回给定账户的所有已知余额。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,29 +28,29 @@ export const client = createPublicClient({
   transport: http(),
 }).extend(publicActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 ```
 :::
 
-## Returns
+## 返回
 
 `GetAllBalancesReturnType`
 
-Array of all known balances for an address.
+地址的所有已知余额的数组。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account used for check.
+用于检查的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const balances = await client.getAllBalances({

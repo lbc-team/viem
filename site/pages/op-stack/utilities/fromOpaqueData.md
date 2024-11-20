@@ -1,17 +1,17 @@
 ---
-description: Decodes opaque deposit data found in the "TransactionDeposited" event log.
+description: 解码在 "TransactionDeposited" 事件日志中找到的不透明存款数据。
 ---
 
 # opaqueDataToDepositData
 
-Decodes opaque deposit data found in the `TransactionDeposited` event log data.
+解码在 `TransactionDeposited` 事件日志数据中找到的不透明存款数据。
 
-## Import
+## 导入
 ```ts
 import { opaqueDataToDepositData } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { opaqueDataToDepositData } from 'viem'
@@ -19,7 +19,7 @@ import { opaqueDataToDepositData } from 'viem'
 const data = opaqueDataToDepositData('0x00000000000000000000000000000000000000000000000000000000000001a40000000000000000000000000000000000000000000000000000000000000045000000000000526c01deadbeef')
 ```
 
-## Returns
+## 返回
 
 ```
 {
@@ -31,12 +31,12 @@ const data = opaqueDataToDepositData('0x0000000000000000000000000000000000000000
 }
 ```
 
-The decoded opaque data.
+解码后的不透明数据。
 
-## Parameters
+## 参数
 
 ### opaqueData
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The ABI (packed) encoded opaque data.
+ABI（打包）编码的不透明数据。

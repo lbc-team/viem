@@ -1,16 +1,16 @@
 ---
-description: Signs a personal sign message via Solady's ERC-1271 format.
+description: 通过 Solady 的 ERC-1271 格式签署个人签名消息。
 ---
 
 # signMessage
 
-Signs an [EIP-191](https://eips.ethereum.org/EIPS/eip-191) personal sign message via [ERC-7739 `PersonalSign` format](https://eips.ethereum.org/EIPS/eip-7739).
+通过 [ERC-7739 `PersonalSign` 格式](https://eips.ethereum.org/EIPS/eip-7739) 签署 [EIP-191](https://eips.ethereum.org/EIPS/eip-191) 个人签名消息。
 
-This Action is suitable to sign messages for contracts (e.g. ERC-4337 Smart Accounts) that implement (or conform to) [ERC-7739](https://eips.ethereum.org/EIPS/eip-7739) (e.g. Solady's [ERC1271.sol](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC1271.sol)).
+此操作适用于为实现（或符合）[ERC-7739](https://eips.ethereum.org/EIPS/eip-7739) 的合约（例如 ERC-4337 智能账户）签署消息（例如 Solady 的 [ERC1271.sol](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC1271.sol)）。
 
-With the calculated signature, you can use [`verifyMessage`](/docs/actions/public/verifyMessage) to verify the signature
+使用计算出的签名，你可以使用 [`verifyMessage`](/docs/actions/public/verifyMessage) 来验证签名。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -18,19 +18,19 @@ With the calculated signature, you can use [`verifyMessage`](/docs/actions/publi
 import { account, walletClient } from './config'
  
 const signature_1 = await walletClient.signMessage({ // [!code focus:99]
-  // Account used for signing.
+  // 用于签名的账户。
   account,
   message: 'hello world',
-  // Verifying contract address (e.g. ERC-4337 Smart Account).
+  // 验证合约地址（例如 ERC-4337 智能账户）。
   verifier: '0xCB9fA1eA9b8A3bf422a8639f23Df77ea66020eC2'
 })
 
 const signature_2 = await walletClient.signMessage({
-  // Account used for signing.
+  // 用于签名的账户。
   account,
-  // Hex data representation of message.
+  // 消息的十六进制数据表示。
   message: { raw: '0x68656c6c6f20776f726c64' },
-  // Verifying contract address (e.g. ERC-4337 Smart Account)
+  // 验证合约地址（例如 ERC-4337 智能账户）
   verifier: '0xCB9fA1eA9b8A3bf422a8639f23Df77ea66020eC2'
 })
 ```
@@ -46,19 +46,19 @@ export const walletClient = createWalletClient({
 }).extend(erc7739Actions())
 
 export const [account] = await walletClient.getAddresses()
-// @log: ↑ JSON-RPC Account
+// @log: ↑ JSON-RPC 账户
 
 // export const account = privateKeyToAccount(...)
-// @log: ↑ Local Account
+// @log: ↑ 本地账户
 ```
 
 :::
 
-## Account and/or Verifier Hoisting
+## 账户和/或验证器提升
 
-If you do not wish to pass an `account` and/or `verifier` to every `signMessage`, you can also hoist the Account and/or Verifier on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `signMessage` 中传递 `account` 和/或 `verifier`，你还可以在钱包客户端上提升账户和/或验证器（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#withaccount).
+[了解更多](/docs/clients/wallet#withaccount)。
 
 :::code-group
 
@@ -70,11 +70,11 @@ const signature = await walletClient.signMessage({ // [!code focus:99]
 })
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, custom } from 'viem'
 import { erc7739Actions } from 'viem/experimental'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -87,7 +87,7 @@ export const walletClient = createWalletClient({
 }))
 ```
 
-```ts twoslash [config.ts (Local Account)] filename="config.ts"
+```ts twoslash [config.ts (本地账户)] filename="config.ts"
 import { createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { erc7739Actions } from 'viem/experimental'
@@ -102,21 +102,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The signed message.
+签名的消息。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-Account to used to sign the message.
+用于签署消息的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -130,11 +130,11 @@ const signature = await walletClient.signMessage({
 
 ### message
 
-- **Type:** `string | { raw: Hex | ByteArray }`
+- **类型:** `string | { raw: Hex | ByteArray }`
 
-Message to sign.
+要签署的消息。
 
-By default, viem signs the UTF-8 representation of the message.
+默认情况下，viem 签署消息的 UTF-8 表示。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -146,7 +146,7 @@ const signature = await walletClient.signMessage({
 })
 ```
 
-To sign the data representation of the message, you can use the `raw` attribute.
+要签署消息的数据表示，你可以使用 `raw` 属性。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -160,9 +160,9 @@ const signature = await walletClient.signMessage({
 
 ### verifier
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The address of the verifying contract (e.g. a ERC-4337 Smart Account). Required if `verifierDomain` is not passed.
+验证合约的地址（例如 ERC-4337 智能账户）。如果未传递 `verifierDomain`，则为必需。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -176,9 +176,9 @@ const signature = await walletClient.signMessage({
 
 ### verifierDomain
 
-- **Type:** `TypedDataDomain`
+- **类型:** `TypedDataDomain`
 
-Account domain separator. Required if `verifier` is not passed.
+账户域分隔符。如果未传递 `verifier`，则为必需。
 
 ```ts twoslash
 import { walletClient } from './config'

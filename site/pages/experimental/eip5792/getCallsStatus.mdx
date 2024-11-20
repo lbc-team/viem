@@ -1,18 +1,18 @@
 ---
-description: Returns the status and receipts of a call batch.
+description: 返回调用批次的状态和收据。
 ---
 
 # getCallsStatus
 
-Returns the status and receipts of a call batch that was sent via `sendCalls`.
+返回通过 `sendCalls` 发送的调用批次的状态和收据。
 
-[Read more.](https://github.com/ethereum/EIPs/blob/1663ea2e7a683285f977eda51c32cec86553f585/EIPS/eip-5792.md#wallet_getcallsstatus)
+[了解更多。](https://github.com/ethereum/EIPs/blob/1663ea2e7a683285f977eda51c32cec86553f585/EIPS/eip-5792.md#wallet_getcallsstatus)
 
-:::warning[Warning]
-This is an experimental action that is not supported in most wallets. It is recommended to have a fallback mechanism if using this in production.
+:::warning[警告]
+这是一个实验性操作，在大多数钱包中不被支持。如果在生产环境中使用，建议有一个后备机制。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -41,17 +41,16 @@ export const [account] = await walletClient.getAddresses()
 
 :::
 
-## Returns
+## 返回
 
 `WalletGetCallsStatusReturnType`
 
-Status and receipts of the calls.
+调用的状态和收据。
 
-## Parameters
+## 参数
 
 ### id
 
-- **Type:** `string`
+- **类型:** `string`
 
-Identifier of the call batch.
-
+调用批次的标识符。

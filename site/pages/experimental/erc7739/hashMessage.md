@@ -1,23 +1,23 @@
 ---
-description: Hashes an EIP-191 message via ERC-7739 format.
+description: 通过 ERC-7739 格式对 EIP-191 消息进行哈希处理。
 ---
 
 # hashMessage
 
-Calculates a [EIP-191](https://eips.ethereum.org/EIPS/eip-191) personal sign hash via [ERC-7739 `PersonalSign` format](https://eips.ethereum.org/EIPS/eip-7739).
+通过 [ERC-7739 `PersonalSign` 格式](https://eips.ethereum.org/EIPS/eip-7739) 计算 [EIP-191](https://eips.ethereum.org/EIPS/eip-191) 个人签名哈希。
 
-## Import
+## 导入
 
 ```ts
 import { hashMessage } from 'viem/experimental/erc7739'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { hashMessage } from 'viem/experimental/erc7739'
 
-// Hash a UTF-8 value.
+// 哈希一个 UTF-8 值。
 hashMessage({ 
   message: 'hello world', 
   verifierDomain: { 
@@ -28,7 +28,7 @@ hashMessage({
   }, 
 }) 
 
-// Hash a hex data value.
+// 哈希一个十六进制数据值。
 hashMessage({ 
   message: { raw: '0x68656c6c6f20776f726c64' }, 
   verifierDomain: { 
@@ -39,7 +39,7 @@ hashMessage({
   }, 
 }) 
 
-// Hash a bytes data value.
+// 哈希一个字节数据值。
 hashMessage({ 
   message: {
     raw: Uint8Array.from([
@@ -55,24 +55,22 @@ hashMessage({
 }) 
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-A signable message hash.
+可签名的消息哈希。
 
-## Parameters
+## 参数
 
 ### message
 
-- **Type:** `string | { raw: Hex | ByteArray }`
+- **类型:** `string | { raw: Hex | ByteArray }`
 
-Message to hash.
+要哈希的消息。
 
 ### verifierDomain
 
-- **Type:** `TypedDataDomain`
+- **类型:** `TypedDataDomain`
 
-The EIP-712 domain of the verifying contract.
-
- 
+验证合约的 EIP-712 域。

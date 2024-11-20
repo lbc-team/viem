@@ -1,18 +1,18 @@
 ---
-description: Converts opaque data into a structured deposit data format.
+description: 将不透明数据转换为结构化的存款数据格式。
 ---
 
 # opaqueDataToDepositData
 
-Converts an opaque data into a structured deposit data object. This includes extracting and converting the `mint`, `value`, `gas`, `isCreation` flag, and `data` from a hex string.
+将不透明数据转换为结构化的存款数据对象。这包括从十六进制字符串中提取和转换 `mint`、`value`、`gas`、`isCreation` 标志和 `data`。
 
-## Import
+## 导入
 
 ```ts
 import { opaqueDataToDepositData } from "viem";
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { opaqueDataToDepositData } from "viem";
@@ -30,22 +30,22 @@ const depositData = opaqueDataToDepositData(opaqueData);
 // }
 ```
 
-## Returns
+## 返回
 
 `OpaqueDataToDepositDataReturnType`
 
-An object containing the parsed deposit data.
+一个包含解析后的存款数据的对象。
 
-## Parameters
+## 参数
 
 ### opaqueData
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The opaque hex-encoded data.
+不透明的十六进制编码数据。
 
-## Errors
+## 错误
 
 `OpaqueDataToDepositDataErrorType`
 
-An error type that includes potential slice, size, and generic errors encountered during the parsing process.
+一个错误类型，包括在解析过程中遇到的潜在切片、大小和通用错误。

@@ -1,12 +1,12 @@
 ---
-description: Determines the amount of approved tokens for a specific L1 bridge.
+description: 确定特定 L1 桥的批准代币数量。
 ---
 
 # getL1Allowance
 
-Determines the amount of approved tokens for a specific L1 bridge.
+确定特定 L1 桥的批准代币数量。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -14,7 +14,7 @@ Determines the amount of approved tokens for a specific L1 bridge.
 import { account, publicClient } from './config'
 
 const allowance = await publicClient.getL1Allowance({
-  account
+  account,
   token: '0x5C221E77624690fff6dd741493D735a17716c26B',
   bridgeAddress: '0x84DbCC0B82124bee38e3Ce9a92CdE2f943bab60D',
 })
@@ -31,48 +31,48 @@ export const publicClient = createPublicClient({
   transport: custom(window.ethereum)
 }).extend(publicActionsL1())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-Returns the amount of approved tokens.
+返回批准的代币数量。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account used for check.
+用于检查的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const allowance = await publicClient.getL1Allowance({
-  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266' // [!code focus]
+  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', // [!code focus]
   blockTag: 'latest',
   bridgeAddress: '0x84DbCC0B82124bee38e3Ce9a92CdE2f943bab60D',
   token: '0x5C221E77624690fff6dd741493D735a17716c26B',
 })
 ```
 
-### blockTag (optional)
+### blockTag（可选）
 
-- **Type:** `BlockTag | undefined`
+- **类型:** `BlockTag | undefined`
 
-In which block an allowance should be checked on. The latest processed one is the default option.
+应在哪个区块上检查批准。默认选项是最新处理的区块。
 
 ```ts
 const allowance = await publicClient.getL1Allowance({
-  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
+  account: '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266',
   blockTag: 'latest', // [!code focus]
   bridgeAddress: '0x84DbCC0B82124bee38e3Ce9a92CdE2f943bab60D',
   token: '0x5C221E77624690fff6dd741493D735a17716c26B',
@@ -81,9 +81,9 @@ const allowance = await publicClient.getL1Allowance({
 
 ### bridgeAddress
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The address of the bridge contract to be used.
+要使用的桥合约地址。
 
 ```ts
 const allowance = await publicClient.getL1Allowance({
@@ -96,9 +96,9 @@ const allowance = await publicClient.getL1Allowance({
 
 ### token
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The Ethereum address of the token.
+代币的以太坊地址。
 
 ```ts
 const allowance = await publicClient.getL1Allowance({

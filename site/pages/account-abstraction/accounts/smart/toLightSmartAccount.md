@@ -1,12 +1,12 @@
-# Light Smart Account
+# 轻量智能账户
 
 :::warning
-**Note:** This implementation is maintained & distributed by [permissionless.js](https://docs.pimlico.io/permissionless).
+**注意：** 此实现由 [permissionless.js](https://docs.pimlico.io/permissionless) 维护和分发。
 :::
 
-To implement Alchemy's [Light Account](https://github.com/alchemyplatform/light-account), you can use the [`toLightSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toLightSmartAccount) module from [permissionless.js](https://docs.pimlico.io/permissionless/)
+要实现 Alchemy 的 [轻量账户](https://github.com/alchemyplatform/light-account)，你可以使用 [permissionless.js](https://docs.pimlico.io/permissionless/) 中的 [`toLightSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toLightSmartAccount) 模块。
 
-## Install
+## 安装
 
 :::code-group
 ```bash [pnpm]
@@ -26,7 +26,7 @@ bun add permissionless
 ```
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -52,17 +52,17 @@ export const client = createPublicClient({
 })
 ```
 
-```ts twoslash [owner.ts (Private Key)] filename="owner.ts"
+```ts twoslash [owner.ts (私钥)] filename="owner.ts"
 import { privateKeyToAccount } from 'viem/accounts'
  
 export const owner = privateKeyToAccount('0x...')
 ```
 :::
 
-## Returns
+## 返回值
 
 `SmartAccount<LightSmartAccountImplementation>`
 
-## Parameters
+## 参数
 
-[See Parameters](https://docs.pimlico.io/permissionless/reference/accounts/toLightSmartAccount#parameters)
+[查看参数](https://docs.pimlico.io/permissionless/reference/accounts/toLightSmartAccount#parameters)

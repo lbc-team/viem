@@ -1,16 +1,16 @@
 ---
-description: Signs typed data via Solady's ERC-1271 format.
+description: 使用 Solady 的 ERC-1271 格式签名类型化数据。
 ---
 
 # signTypedData
 
-Signs [EIP-712](https://eips.ethereum.org/EIPS/eip-712) typed data via [ERC-7739 `TypedDataSign` format](https://eips.ethereum.org/EIPS/eip-7739).
+通过 [ERC-7739 `TypedDataSign` 格式](https://eips.ethereum.org/EIPS/eip-7739) 签名 [EIP-712](https://eips.ethereum.org/EIPS/eip-712) 类型化数据。
 
-This Action is suitable to sign messages for contracts (e.g. ERC-4337 Smart Accounts) that implement (or conform to) [ERC-7739](https://eips.ethereum.org/EIPS/eip-7739) (e.g. Solady's [ERC1271.sol](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC1271.sol)).
+此操作适用于为实现（或符合）[ERC-7739](https://eips.ethereum.org/EIPS/eip-7739) 的合约（例如 ERC-4337 智能账户）签名消息（例如 Solady 的 [ERC1271.sol](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC1271.sol)）。
 
-With the calculated signature, you can use [`verifyTypedData`](/docs/actions/public/verifyTypedData) to verify the signature
+使用计算出的签名，你可以使用 [`verifyTypedData`](/docs/actions/public/verifyTypedData) 来验证签名。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -19,7 +19,7 @@ import { account, walletClient } from './config'
 import { domain, types } from './data'
  
 const signature = await walletClient.signTypedData({ // [!code focus:99]
-  // Account used for signing.
+  // 用于签名的账户。
   account,
   domain,
   types,
@@ -35,13 +35,13 @@ const signature = await walletClient.signTypedData({ // [!code focus:99]
     },
     contents: 'Hello, Bob!',
   },
-  // Verifying contract address (e.g. ERC-4337 Smart Account).
+  // 验证合约地址（例如 ERC-4337 智能账户）。
   verifier: '0xCB9fA1eA9b8A3bf422a8639f23Df77ea66020eC2'
 })
 ```
 
 ```ts twoslash [data.ts]
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -49,7 +49,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
  
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -74,19 +74,19 @@ export const walletClient = createWalletClient({
 }).extend(erc7739())
 
 export const [account] = await walletClient.getAddresses()
-// @log: ↑ JSON-RPC Account
+// @log: ↑ JSON-RPC 账户
 
 // export const account = privateKeyToAccount(...)
-// @log: ↑ Local Account
+// @log: ↑ 本地账户
 ```
 
 :::
 
-## Account and/or Verifier Hoisting
+## 账户和/或验证者提升
 
-If you do not wish to pass an `account` and/or `verifier` to every `signTypedData`, you can also hoist the Account and/or Verifier on the Wallet Client (see `config.ts`).
+如果你不希望将 `account` 和/或 `verifier` 传递给每个 `signTypedData`，你还可以在钱包客户端上提升账户和/或验证者（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#withaccount).
+[了解更多](/docs/clients/wallet#withaccount)。
 
 :::code-group
 
@@ -113,7 +113,7 @@ const signature = await walletClient.signTypedData({ // [!code focus:99]
 ```
 
 ```ts twoslash [data.ts]
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -121,7 +121,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
  
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -135,11 +135,11 @@ export const types = {
 } as const
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, custom } from 'viem'
 import { erc7739 } from 'viem/experimental'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -152,7 +152,7 @@ export const walletClient = createWalletClient({
 }))
 ```
 
-```ts twoslash [config.ts (Local Account)] filename="config.ts"
+```ts twoslash [config.ts (本地账户)] filename="config.ts"
 import { createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { erc7739 } from 'viem/experimental'
@@ -167,21 +167,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The signed data.
+签名数据。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-Account to used to sign the typed data.
+用于签名类型化数据的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -223,9 +223,9 @@ const signature = await walletClient.signTypedData({
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型:** `TypedDataDomain`
 
-The typed data domain.
+类型化数据域。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -267,7 +267,7 @@ const signature = await walletClient.signTypedData({
 
 ### types
 
-The type definitions for the typed data.
+类型化数据的类型定义。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -308,9 +308,9 @@ const signature = await walletClient.signTypedData({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型:** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -351,7 +351,7 @@ const signature = await walletClient.signTypedData({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型:** 从 `types` 和 `primaryType` 推断。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -393,9 +393,9 @@ const signature = await walletClient.signTypedData({
 
 ### verifier
 
-- **Type:** `Address`
+- **类型:** `地址`
 
-The address of the verifying contract (e.g. a ERC-4337 Smart Account). Required if `verifierDomain` is not passed.
+验证合约的地址（例如，ERC-4337 智能账户）。如果未传递 `verifierDomain`，则为必需。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -437,9 +437,9 @@ const signature = await walletClient.signTypedData({
 
 ### verifierDomain
 
-- **Type:** `TypedDataDomain`
+- **类型:** `TypedDataDomain`
 
-Account domain separator. Required if `verifier` is not passed.
+账户域分隔符。如果未传递 `verifier`，则为必需。
 
 ```ts twoslash
 import { walletClient } from './config'

@@ -1,12 +1,12 @@
 ---
-description: Creates, signs, and sends a new transaction to the network, with EIP712 transaction support.
+description: 创建、签名并发送一笔新的交易到网络，支持 EIP712 交易。
 ---
 
 # sendTransaction
 
-Creates, signs, and sends a new transaction to the network, with EIP712 transaction support.
+创建、签名并发送一笔新的交易到网络，支持 EIP712 交易。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -32,19 +32,19 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(eip712WalletActions())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `sendTransaction`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每次 `sendTransaction` 中传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -58,11 +58,11 @@ const hash = await walletClient.sendTransaction({ // [!code focus:99]
 // '0x...'
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, custom } from 'viem'
 import { eip712Actions } from 'viem/zksync'
 
-// Retrieve Account from an EIP-712 Provider. // [!code focus]
+// 从 EIP-712 提供者检索账户。 // [!code focus]
 const [account] = await window.ethereum.request({  // [!code focus]
   method: 'eth_requestAccounts' // [!code focus]
 }) // [!code focus]
@@ -73,7 +73,7 @@ export const walletClient = createWalletClient({
 }).extend(eip712WalletActions())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createWalletClient, custom } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { eip712Actions } from 'viem/zksync'
@@ -86,21 +86,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The [Transaction](/docs/glossary/terms#transaction) hash.
+[交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -112,9 +112,9 @@ const hash = await walletClient.sendTransaction({
 
 ### to
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-The transaction recipient or contract address.
+交易接收者或合约地址。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -125,11 +125,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### accessList (optional)
+### accessList（可选）
 
-- **Type:** [`AccessList`](/docs/glossary/types#accesslist)
+- **类型:** [`AccessList`](/docs/glossary/types#accesslist)
 
-The access list.
+访问列表。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -144,14 +144,14 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### chain (optional)
+### chain（可选）
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `walletClient.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认:** `walletClient.chain`
 
-The target chain. If there is a mismatch between the wallet's current chain & the target chain, an error will be thrown.
+目标链。如果钱包的当前链与目标链不匹配，将抛出错误。
 
-The chain is also used to infer its request type (e.g. the Celo chain has a `gatewayFee` that you can pass through to `sendTransaction`).
+该链也用于推断其请求类型（例如，Celo 链有一个 `gatewayFee`，你可以通过 `sendTransaction` 传递）。
 
 ```ts
 import { zksync } from 'viem/chains' // [!code focus]
@@ -164,11 +164,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### data (optional)
+### data（可选）
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-A contract hashed method call with encoded args.
+带有编码参数的合约哈希方法调用。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -179,11 +179,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -194,11 +194,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一数字，用于标识此交易。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -209,11 +209,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -224,11 +224,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### gasPerPubdata (optional)
+### gasPerPubdata（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas for publishing one byte of data on Ethereum.
+在以太坊上发布一个字节数据所需的 gas 量。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -240,11 +240,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### factoryDeps (optional)
+### factoryDeps（可选）
 
-- **Type:** `[0x${string}]`
+- **类型:** `[0x${string}]`
 
-Contains bytecode of the deployed contract.
+包含已部署合约的字节码。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -256,11 +256,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### paymaster (optional)
+### paymaster（可选）
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-Address of the paymaster account that will pay the fees. The `paymasterInput` field is required with this one.
+将支付费用的支付者账户地址。此字段需要与 `paymasterInput` 一起使用。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -273,11 +273,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### paymasterInput (optional)
+### paymasterInput（可选）
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-Input data to the paymaster. The `paymaster` field is required with this one.
+支付者的输入数据。此字段需要与 `paymaster` 一起使用。
 
 ```ts
 const hash = await walletClient.sendTransaction({

@@ -1,15 +1,15 @@
 ---
 outline: deep
-description: Finalizes a withdrawal that occurred on an L2.
+description: 完成在 L2 上发生的提款。
 ---
 
 # finalizeWithdrawal
 
-Finalizes a withdrawal that occurred on an L2. Used in the Withdrawal flow.
+完成在 L2 上发生的提款。用于提款流程。
 
-Internally performs a contract write to the [`finalizeWithdrawalTransaction` function](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol#L272) on the [Optimism Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol).
+内部执行对 [`finalizeWithdrawalTransaction` 函数](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol#L272) 的合约写入，位于 [Optimism Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol)。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -45,19 +45,19 @@ export const publicClientL2 = createPublicClient({
   transport: http()
 }).extend(publicActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `finalizeWithdrawal`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每次 `finalizeWithdrawal` 中传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more.](/docs/clients/wallet#account)
+[了解更多.](/docs/clients/wallet#account)
 
 :::code-group
 
@@ -77,13 +77,13 @@ const hash = await walletClientL1.finalizeWithdrawal({
 }) 
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, createPublicClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL2, walletActionsL1 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. // [!code ++]
+// 从 EIP-1193 提供者检索账户。 // [!code ++]
 const [account] = await window.ethereum.request({ // [!code ++]
   method: 'eth_requestAccounts' // [!code ++]
 }) // [!code ++]
@@ -99,7 +99,7 @@ export const publicClientL2 = createPublicClient({
 }).extend(publicActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, optimism } from 'viem/chains'
@@ -118,21 +118,21 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The finalize withdrawal [Transaction](/docs/glossary/terms#transaction) hash.
+完成提款的 [交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await client.finalizeWithdrawal({
@@ -142,12 +142,12 @@ const hash = await client.finalizeWithdrawal({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `client.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认:** `client.chain`
 
-The L1 chain. If there is a mismatch between the wallet's current chain & this chain, an error will be thrown.
+L1 链。如果钱包的当前链与此链不匹配，将抛出错误。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -160,13 +160,13 @@ const hash = await client.finalizeWithdrawal({
 })
 ```
 
-### gas (optional)
+### gas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Gas limit for transaction execution on the L1. 
+L1 上交易执行的 gas 限制。
 
-`null` to skip gas estimation & defer calculation to signer. 
+`null` 跳过 gas 估算并将计算推迟到签名者。
 
 ```ts
 const hash = await client.finalizeWithdrawal({
@@ -177,11 +177,11 @@ const hash = await client.finalizeWithdrawal({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。
 
 ```ts
 const hash = await client.finalizeWithdrawal({
@@ -192,11 +192,11 @@ const hash = await client.finalizeWithdrawal({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const hash = await client.finalizeWithdrawal({
@@ -208,11 +208,11 @@ const hash = await client.finalizeWithdrawal({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const hash = await client.finalizeWithdrawal({
@@ -223,14 +223,14 @@ const hash = await client.finalizeWithdrawal({
 })
 ```
 
-### portalAddress (optional)
+### portalAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.portal[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.portal[chainId].address`
 
-The address of the [Optimism Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol). Defaults to the Optimism Portal contract specified on the `targetChain`.
+[Optimism Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol) 的地址。默认为在 `targetChain` 上指定的 Optimism Portal 合约。
 
-If a `portalAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `portalAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const hash = await client.finalizeWithdrawal({
@@ -243,9 +243,9 @@ const hash = await client.finalizeWithdrawal({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain to execute the transaction on.
+执行交易的 L2 链。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -259,9 +259,9 @@ const hash = await client.finalizeWithdrawal({
 
 ### withdrawal
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The withdrawal.
+提款。
 
 ```ts
 const hash = await client.finalizeWithdrawal({

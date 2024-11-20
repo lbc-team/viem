@@ -1,13 +1,13 @@
 ---
 outline: deep
-description: Estimates gas to initiate a deposit transaction on an L1, which executes a transaction on an L2.
+description: 估算在 L1 上发起存款交易所需的 gas，该交易在 L2 上执行。
 ---
 
 # estimateDepositTransactionGas
 
-Estimates gas to initiate a [deposit transaction](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md) on an L1, which executes a transaction on an L2. 
+估算在 L1 上发起一个 [存款交易](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md)，该交易在 L2 上执行。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -19,7 +19,7 @@ const gas = await publicClientL1.estimateDepositTransactionGas({
   account,
   request: {
     gas: 21_000n,
-    mint: parseEther('1')
+    mint: parseEther('1'),
     to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
   },
   targetChain: base,
@@ -37,29 +37,29 @@ export const publicClientL1 = createPublicClient({
   transport: http()
 }).extend(publicActionsL1())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await publicClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-Gas required to execute the transaction on the L1.
+在 L1 上执行交易所需的 gas。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -73,11 +73,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### args.data (optional)
+### args.data (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Contract deployment bytecode or encoded contract method & arguments.
+合约部署字节码或编码的合约方法及参数。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -94,9 +94,9 @@ const gas = await client.estimateDepositTransactionGas({
 
 ### args.gas
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Gas limit for transaction execution on the L2.
+在 L2 上执行交易的 gas 限制。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -110,11 +110,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### args.isCreation (optional)
+### args.isCreation (可选)
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Whether or not this is a contract deployment transaction.
+这是否是一个合约部署交易。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -128,11 +128,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### args.mint (optional)
+### args.mint (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei to mint (deposit) on the L2. Debited from the caller's L1 balance.
+在 L2 上铸造（存款）的 wei 值。从调用者的 L1 余额中扣除。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -146,11 +146,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### args.to (optional)
+### args.to (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-L2 Transaction recipient.
+L2 交易接收者。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -164,11 +164,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### args.value (optional)
+### args.value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction on the L2. Debited from the caller's L2 balance.
+与此交易一起发送的 wei 值。在调用者的 L2 余额中扣除。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -184,9 +184,9 @@ const gas = await client.estimateDepositTransactionGas({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain to execute the transaction on.
+在其上执行交易的 L2 链。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -203,12 +203,12 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `client.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认值:** `client.chain`
 
-The L1 chain. If there is a mismatch between the wallet's current chain & this chain, an error will be thrown.
+L1 链。如果钱包的当前链与此链不匹配，将抛出错误。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -225,11 +225,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。 
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -244,11 +244,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -264,11 +264,11 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一编号，用于标识此交易。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({
@@ -283,14 +283,14 @@ const gas = await client.estimateDepositTransactionGas({
 })
 ```
 
-### portalAddress (optional)
+### portalAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.portal[chainId].address`
+- **类型:** `Address`
+- **默认值:** `targetChain.contracts.portal[chainId].address`
 
-The address of the [Optimism Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol). Defaults to the Optimism Portal contract specified on the `targetChain`.
+[Optimism Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol) 的地址。默认为在 `targetChain` 上指定的 Optimism Portal 合约。
 
-If a `portalAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `portalAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const gas = await client.estimateDepositTransactionGas({

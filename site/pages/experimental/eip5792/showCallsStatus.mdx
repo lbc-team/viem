@@ -1,18 +1,18 @@
 ---
-description: Requests for the wallet to show information about a call batch.
+description: 请求钱包显示有关调用批次的信息。
 ---
 
 # showCallsStatus
 
-Requests for the wallet to show information about a call batch that was sent via `showCalls`.
+请求钱包显示通过 `showCalls` 发送的调用批次的信息。
 
-[Read more.](https://github.com/ethereum/EIPs/blob/1663ea2e7a683285f977eda51c32cec86553f585/EIPS/eip-5792.md#wallet_showcallsstatus)
+[了解更多。](https://github.com/ethereum/EIPs/blob/1663ea2e7a683285f977eda51c32cec86553f585/EIPS/eip-5792.md#wallet_showcallsstatus)
 
-:::warning[Warning]
-This is an experimental action that is not supported in most wallets. It is recommended to have a fallback mechanism if using this in production.
+:::warning[警告]
+这是一个实验性操作，大多数钱包不支持。建议在生产环境中使用时有一个后备机制。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -41,15 +41,14 @@ export const [account] = await walletClient.getAddresses()
 
 :::
 
-## Returns
+## 返回
 
 `void`
 
-## Parameters
+## 参数
 
 ### id
 
-- **Type:** `string`
+- **类型:** `string`
 
-Identifier of the call batch.
-
+调用批次的标识符。

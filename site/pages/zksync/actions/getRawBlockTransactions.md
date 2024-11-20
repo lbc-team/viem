@@ -1,12 +1,12 @@
 ---
-description: Returns data of transactions in a block.
+description: 返回区块中的交易数据。
 ---
 
 # getRawBlockTransaction
 
-Returns data of transactions in a block.
+返回区块中的交易数据。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,17 +31,17 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `RawBlockTransactions`
 
-Data of transactions in a block.
+区块中的交易数据。
 
-## Parameters
+## 参数
 
 ### number
 
-Block number.
+区块编号。
 
 ```ts
 const rawTx = await client.getRawBlockTransaction({

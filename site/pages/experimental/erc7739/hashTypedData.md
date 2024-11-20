@@ -1,18 +1,18 @@
 ---
-description: Hashes EIP-712 typed data via Solady's ERC-1271 format.
+description: 通过 Solady 的 ERC-1271 格式对 EIP-712 类型数据进行哈希处理。
 ---
 
 # hashTypedData
 
-Hashes [EIP-712](https://eips.ethereum.org/EIPS/eip-712) typed data via [ERC-7739 `TypedDataSign` format](https://eips.ethereum.org/EIPS/eip-7739).
+通过 [ERC-7739 `TypedDataSign` 格式](https://eips.ethereum.org/EIPS/eip-7739) 对 [EIP-712](https://eips.ethereum.org/EIPS/eip-712) 类型数据进行哈希处理。
 
-## Import
+## 导入
 
 ```ts
 import { hashTypedData } from 'viem/experimental/solady'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { hashTypedData } from 'viem/experimental/solady'
@@ -58,19 +58,19 @@ hashTypedData({
 })
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-A signable typed data hash.
+可签名的类型数据哈希。
 
-## Parameters
+## 参数
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型:** `TypedDataDomain`
 
-The typed data domain.
+类型数据域。
 
 ```ts
 const hash = hashTypedData({
@@ -106,7 +106,7 @@ const hash = hashTypedData({
 
 ### types
 
-The type definitions for the typed data.
+类型数据的类型定义。
 
 ```ts
 const hash = hashTypedData({
@@ -147,9 +147,9 @@ const hash = hashTypedData({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型:** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts
 const hash = hashTypedData({
@@ -190,7 +190,7 @@ const hash = hashTypedData({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型:** 从 `types` 和 `primaryType` 推断。
 
 ```ts
 const hash = hashTypedData({
@@ -231,9 +231,9 @@ const hash = hashTypedData({
 
 ### extensions
 
-**Type:** `readonly bigint[]`
+**类型:** `readonly bigint[]`
 
-Extensions for the typed data.
+类型数据的扩展。
 
 ```ts
 const hash = hashTypedData({
@@ -274,9 +274,9 @@ const hash = hashTypedData({
 
 ### fields
 
-**Type:** `Hex`
+**类型:** `Hex`
 
-Typed data fields.
+类型数据字段。
 
 ```ts
 const hash = hashTypedData({
@@ -317,9 +317,9 @@ const hash = hashTypedData({
 
 ### verifierDomain
 
-**Type:** `TypedDataDomain`
+**类型:** `TypedDataDomain`
 
-Domain of the verifying contract.
+验证合约的域。
 
 ```ts
 const hash = hashTypedData({

@@ -1,13 +1,13 @@
 ---
 outline: deep
-description: Builds & prepares parameters for a deposit transaction to be initiated on an L1 and executed on the L2.
+description: 构建并准备在 L1 上发起并在 L2 上执行的存款交易的参数。
 ---
 
 # buildDepositTransaction
 
-Builds & prepares parameters for a [deposit transaction](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md) to be initiated on an L1 and executed on the L2.
+构建并准备参数以发起在 L1 上的 [存款交易](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md) 并在 L2 上执行。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -39,20 +39,20 @@ export const publicClientL2 = createPublicClient({
   transport: http()
 }).extend(publicActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `buildDepositTransaction`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `buildDepositTransaction` 中传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -67,13 +67,13 @@ const args = await publicClientL2.buildDepositTransaction({
 const hash = await walletClientL1.depositTransaction(args)
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, base } from 'viem/chains'
 import { publicActionsL2, walletActionsL1 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. // [!code hl]
+// 从 EIP-1193 提供者检索账户。 // [!code hl]
 const [account] = await window.ethereum.request({ // [!code hl]
   method: 'eth_requestAccounts' // [!code hl]
 }) // [!code hl]
@@ -89,7 +89,7 @@ export const publicClientL2 = createPublicClient({
 }).extend(publicActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, base } from 'viem/chains'
@@ -108,21 +108,21 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `DepositTransactionParameters`
 
-The parameters required to execute a [deposit transaction](/op-stack/actions/depositTransaction).
+执行 [存款交易](/op-stack/actions/depositTransaction) 所需的参数。
 
-## Parameters
+## 参数
 
-### account (optional)
+### account (可选)
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const args = await client.buildDepositTransaction({
@@ -132,11 +132,11 @@ const args = await client.buildDepositTransaction({
 })
 ```
 
-### data (optional)
+### data (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Contract deployment bytecode or encoded contract method & arguments.
+合约部署字节码或编码的合约方法和参数。
 
 ```ts
 const args = await client.buildDepositTransaction({
@@ -145,11 +145,11 @@ const args = await client.buildDepositTransaction({
 })
 ```
 
-### gas (optional)
+### gas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Gas limit for transaction execution on the L2.
+在 L2 上执行交易的 gas 限制。
 
 ```ts
 const args = await client.buildDepositTransaction({
@@ -159,11 +159,11 @@ const args = await client.buildDepositTransaction({
 })
 ```
 
-### isCreation (optional)
+### isCreation (可选)
 
-- **Type:** `boolean`
+- **类型:** `boolean`
 
-Whether or not this is a contract deployment transaction.
+这是否是合约部署交易。
 
 ```ts
 const args = await client.buildDepositTransaction({
@@ -172,11 +172,11 @@ const args = await client.buildDepositTransaction({
 })
 ```
 
-### mint (optional)
+### mint (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei to mint (deposit) on the L2. Debited from the caller's L1 balance.
+在 L2 上铸造（存款）的 wei 值。从调用者的 L1 余额中扣除。
 
 ```ts
 const args = await client.buildDepositTransaction({
@@ -185,11 +185,11 @@ const args = await client.buildDepositTransaction({
 })
 ```
 
-### to (optional)
+### to (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-L2 Transaction recipient.
+L2 交易接收者。
 
 ```ts
 const args = await client.buildDepositTransaction({
@@ -198,11 +198,11 @@ const args = await client.buildDepositTransaction({
 })
 ```
 
-### value (optional)
+### value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction on the L2. Debited from the caller's L2 balance.
+与此交易一起发送的 wei 值。在调用者的 L2 余额中扣除。
 
 ```ts
 const args = await client.buildDepositTransaction({

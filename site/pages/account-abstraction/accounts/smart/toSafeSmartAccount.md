@@ -1,12 +1,12 @@
-# Safe Smart Account
+# 安全智能账户
 
 :::warning
-**Note:** This implementation is maintained & distributed by [permissionless.js](https://docs.pimlico.io/permissionless).
+**注意：** 此实现由 [permissionless.js](https://docs.pimlico.io/permissionless) 维护和分发。
 :::
 
-To implement [Safe Smart Account](https://github.com/safe-global/safe-smart-account), you can use the [`toSafeSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toSafeSmartAccount) module from [permissionless.js](https://docs.pimlico.io/permissionless/)
+要实现 [安全智能账户](https://github.com/safe-global/safe-smart-account)，你可以使用来自 [permissionless.js](https://docs.pimlico.io/permissionless/) 的 [`toSafeSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toSafeSmartAccount) 模块。
 
-## Install
+## 安装
 
 :::code-group
 ```bash [pnpm]
@@ -26,7 +26,7 @@ bun add permissionless
 ```
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -52,17 +52,17 @@ export const client = createPublicClient({
 })
 ```
 
-```ts twoslash [owner.ts (Private Key)] filename="owner.ts"
+```ts twoslash [owner.ts (私钥)] filename="owner.ts"
 import { privateKeyToAccount } from 'viem/accounts'
  
 export const owner = privateKeyToAccount('0x...')
 ```
 :::
 
-## Returns
+## 返回值
 
 `SmartAccount<SafeSmartAccountImplementation>`
 
-## Parameters
+## 参数
 
-[See Parameters](https://docs.pimlico.io/permissionless/reference/accounts/toSafeSmartAccount#parameters)
+[查看参数](https://docs.pimlico.io/permissionless/reference/accounts/toSafeSmartAccount#parameters)

@@ -1,10 +1,10 @@
-# Extending Client with EIP-7702 [Setting up your Viem Client]
+# 扩展客户端与 EIP-7702 [设置你的 Viem 客户端]
 
-To use the experimental functionality of EIP-7702, you must extend your existing (or new) Viem Client with experimental EIP-7702 Actions.
+要使用 EIP-7702 的实验性功能，你必须用实验性 EIP-7702 操作扩展现有的（或新的）Viem 客户端。
 
-## Overview
+## 概述
 
-Here is an end-to-end overview of how to extend a Viem Client with EIP-7702 Actions. We will break it down into Steps below.
+以下是如何用 EIP-7702 操作扩展 Viem 客户端的端到端概述。我们将其分解为以下步骤。
 
 ```ts twoslash
 // @noErrors
@@ -21,23 +21,23 @@ const authorization = await walletClient.signAuthorization({/* ... */})
 ```
 
 :::warning
-EIP-7702 is currently not supported on Ethereum Mainnet or Testnets. For this example, we are using the `anvil` chain which interfaces with an [Anvil node](https://book.getfoundry.sh/anvil/) (a local Ethereum network).
+EIP-7702 目前不支持以太坊主网或测试网。在此示例中，我们使用与 [Anvil 节点](https://book.getfoundry.sh/anvil/)（一个本地以太坊网络）接口的 `anvil` 链。
 :::
 
-## Steps
+## 步骤
 
-### 0. Install & Run Anvil
+### 0. 安装并运行 Anvil
 
-EIP-7702 is currently not supported on Ethereum Mainnet or Testnets, so let's set up an EIP-7702 compatible network. We will use an [Anvil node](https://book.getfoundry.sh/anvil/) for this example. If you are using an existing EIP-7702 compatible network, you can skip this step.
+EIP-7702 目前不支持以太坊主网或测试网，因此让我们设置一个兼容 EIP-7702 的网络。我们将使用 [Anvil 节点](https://book.getfoundry.sh/anvil/) 作为示例。如果你使用的是现有的 EIP-7702 兼容网络，可以跳过此步骤。
 
 ```bash
 curl -L https://foundry.paradigm.xyz | bash
 anvil --hardfork prague
 ```
 
-### 1. Set up a Client
+### 1. 设置客户端
 
-We will need to set up a Client to sign EIP-7702 Authorizations.
+我们需要设置一个客户端来签署 EIP-7702 授权。
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -49,11 +49,11 @@ const walletClient = createWalletClient({
 })
 ```
 
-[See `createWalletClient` Docs](/docs/clients/wallet)
+[查看 `createWalletClient` 文档](/docs/clients/wallet)
 
-### 2. Extend with EIP-7702 Actions
+### 2. 扩展 EIP-7702 操作
 
-Next, we will import the experimental EIP-7702 Actions and extend them on our Client.
+接下来，我们将导入实验性 EIP-7702 操作并在我们的客户端上扩展它们。
 
 ```ts twoslash
 import { createWalletClient, http } from 'viem'
@@ -66,9 +66,9 @@ const walletClient = createWalletClient({
 }).extend(eip7702Actions()) // [!code focus]
 ```
 
-### 3. Use EIP-7702 Actions
+### 3. 使用 EIP-7702 操作
 
-Now we can use EIP-7702 Actions like [`signAuthorization`](/experimental/eip7702/signAuthorization).
+现在我们可以使用 EIP-7702 操作，例如 [`signAuthorization`](/experimental/eip7702/signAuthorization)。
 
 ```ts twoslash
 // @noErrors

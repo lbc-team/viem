@@ -1,22 +1,22 @@
 ---
-description: Computes source hash of a deposit transaction.
+description: 计算存款交易的源哈希。
 ---
 
 # getSourceHash
 
-Computes the [source hash](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md#source-hash-computation) of a deposit transaction.
+计算存款交易的 [源哈希](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md#source-hash-computation)。
 
-## Import
+## 导入
 ```ts
 import { getSourceHash } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { getSourceHash } from 'viem'
 
-// User Deposit
+// 用户存款
 const sourceHash = getSourceHash({
   domain: 'userDeposit',
   l1BlockHash:
@@ -24,7 +24,7 @@ const sourceHash = getSourceHash({
   l1LogIndex: 196,
 })
 
-// L1 attributes deposited
+// L1 属性存款
 const sourceHash = getSourceHash({
   domain: 'l1InfoDeposit',
   l1BlockHash:
@@ -33,19 +33,19 @@ const sourceHash = getSourceHash({
 })
 ```
 
-## Returns
+## 返回
 
 `Hex`
 
-The source hash of the deposit transaction.
+存款交易的源哈希。
 
-## Parameters
+## 参数
 
 ### domain
 
-- **Type:** `"userDeposit" | "l1InfoDeposit"`
+- **类型:** `"userDeposit" | "l1InfoDeposit"`
 
-The domain of the deposit transaction.
+存款交易的域。
 
 ```ts
 const sourceHash = getSourceHash({
@@ -58,9 +58,9 @@ const sourceHash = getSourceHash({
 
 ### l1BlockHash
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The hash of the L1 block the deposit transaction was included in.
+存款交易包含的 L1 块的哈希。
 
 ```ts
 const sourceHash = getSourceHash({
@@ -73,9 +73,9 @@ const sourceHash = getSourceHash({
 
 ### l1LogIndex
 
-- **Type:** `number`
+- **类型:** `number`
 
-The index of the L1 log. **Only required for `"userDeposit"` domain.**
+L1 日志的索引。**仅在 `"userDeposit"` 域中需要。**
 
 ```ts
 const sourceHash = getSourceHash({
@@ -88,9 +88,9 @@ const sourceHash = getSourceHash({
 
 ### sequenceNumber
 
-- **Type:** `number`
+- **类型:** `number`
 
-The sequence number (difference between L2 block number and first L2 epoch block number). **Only required for `"l1InfoDeposit"` domain.**
+序列号（L2 块号与第一个 L2 纪元块号之间的差）。**仅在 `"l1InfoDeposit"` 域中需要。**
 
 ```ts
 const sourceHash = getSourceHash({

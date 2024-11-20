@@ -1,14 +1,14 @@
 ---
-description: Retrieves paymaster-related properties to be used for the User Operation.
+description: 检索与支付方相关的属性，以用于用户操作。
 ---
 
 # getPaymasterStubData
 
-Retrieves paymaster-related User Operation properties to be used for User Operation gas estimation.
+检索与支付方相关的用户操作属性，以用于用户操作的 gas 估算。
 
-Internally uses [ERC-7677's `pm_getPaymasterStubData` method](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7677.md#pm_getpaymasterstubdata).
+内部使用 [ERC-7677 的 `pm_getPaymasterStubData` 方法](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7677.md#pm_getpaymasterstubdata)。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -38,7 +38,7 @@ export const paymasterClient = createPaymasterClient({
 
 :::
 
-## Returns
+## 返回
 
 ```ts
 {
@@ -51,15 +51,15 @@ export const paymasterClient = createPaymasterClient({
 }
 ```
 
-Paymasted-related User Operation properties.
+与支付方相关的用户操作属性。
 
-## Parameters
+## 参数
 
 ### callData
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The data to pass to the `sender` during the main execution call.
+在主执行调用期间传递给 `sender` 的数据。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -76,11 +76,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### callGasLimit (optional)
+### callGasLimit (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate the main execution call.
+分配给主执行调用的 gas 数量。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -100,9 +100,9 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 
 ### chainId
 
-- **Type:** `number`
+- **类型:** `number`
 
-Chain ID to target.
+目标链 ID。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -121,11 +121,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### context (optional)
+### context (可选)
 
-- **Type:** `unknown`
+- **类型:** `unknown`
 
-Paymaster specific fields.
+支付方特定字段。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -148,9 +148,9 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 
 ### entryPointAddress
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-EntryPoint address to target.
+目标的 EntryPoint 地址。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -170,14 +170,14 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### factory (optional)
+### factory (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-Account Factory address. 
+账户工厂地址。 
 
 :::warning
-This property should only be populated when the Smart Account has not been deployed yet.
+此属性仅在智能账户尚未部署时填充。
 :::
 
 ```ts twoslash
@@ -196,14 +196,14 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### factoryData (optional)
+### factoryData (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Call data to execute on the Account Factory to deploy a Smart Account.
+在账户工厂上执行的调用数据，以部署智能账户。
 
 :::warning
-This property should only be populated when the Smart Account has not been deployed yet.
+此属性仅在智能账户尚未部署时填充。
 :::
 
 ```ts twoslash
@@ -222,11 +222,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Maximum fee per gas for User Operation execution.
+用户操作执行的每单位 gas 的最大费用。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -244,11 +244,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Maximum priority fee per gas for User Operation execution.
+用户操作执行的每单位 gas 的最大优先费用。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -268,9 +268,9 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 
 ### nonce 
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Nonce for the User Operation.
+用户操作的 nonce。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -288,11 +288,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### preVerificationGas (optional)
+### preVerificationGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Extra gas to pay the Bundler.
+支付给 Bundler 的额外 gas。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -313,9 +313,9 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 
 ### sender 
 
-- **Type:** `Address`
+- **类型:** `地址`
 
-Sender for the User Operation.
+用户操作的发送者。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -334,11 +334,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### signature 
+### 签名
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Signature for the User Operation.
+用户操作的签名。
 
 ```ts twoslash
 import { paymasterClient } from './config'
@@ -357,11 +357,11 @@ const paymasterArgs = await paymasterClient.getPaymasterStubData({
 })
 ```
 
-### verificationGasLimit (optional)
+### verificationGasLimit（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate for the verification step.
+为验证步骤分配的 gas 数量。
 
 ```ts twoslash
 import { paymasterClient } from './config'

@@ -1,15 +1,15 @@
 ---
 outline: deep
-description: Waits until the withdrawal transaction can be finalized.
+description: 等待直到提款交易可以被最终确认。
 ---
 
 # waitToFinalize
 
-Waits until the withdrawal transaction can be finalized. Used for the [Withdrawal](/op-stack/guides/withdrawals) flow.
+等待直到提款交易可以被最终确认。用于[提款](/op-stack/guides/withdrawals)流程。
 
-Internally calls [`getTimeToFinalize`](/op-stack/actions/getTimeToFinalize) and waits the returned `seconds`.
+内部调用 [`getTimeToFinalize`](/op-stack/actions/getTimeToFinalize) 并等待返回的`seconds`。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -47,13 +47,13 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Parameters
+## 参数
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const { seconds } = await publicClientL1.waitToFinalize({
@@ -64,9 +64,9 @@ const { seconds } = await publicClientL1.waitToFinalize({
 
 ### withdrawalHash
 
-- **Type:** `Hash`
+- **类型:** `Hash`
 
-The withdrawal hash.
+提款哈希。
 
 ```ts
 const { seconds, timestamp } = await publicClientL1.waitToFinalize({ 
@@ -75,14 +75,14 @@ const { seconds, timestamp } = await publicClientL1.waitToFinalize({
 }) 
 ```
 
-### l2OutputOracleAddress (optional)
+### l2OutputOracleAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.l2OutputOracle[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-The address of the [L2 Output Oracle contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol)的地址。默认为在`targetChain`上指定的 L2 输出预言机合约。
 
-If a `l2OutputOracleAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了`l2OutputOracleAddress`，则`targetChain`参数变为可选。
 
 ```ts
 const { seconds } = await publicClientL1.waitToFinalize({
@@ -92,14 +92,14 @@ const { seconds } = await publicClientL1.waitToFinalize({
 })
 ```
 
-### portalAddress (optional)
+### portalAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.portal[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.portal[chainId].address`
 
-The address of the [Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[门户合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol)的地址。默认为在`targetChain`上指定的 L2 输出预言机合约。
 
-If a `portalAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了`portalAddress`，则`targetChain`参数变为可选。
 
 ```ts
 const { seconds } = await publicClientL1.waitToFinalize({

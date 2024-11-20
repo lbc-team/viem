@@ -1,23 +1,23 @@
 ---
-description: Computes the L2 transaction hash from an L1 "TransactionDeposited" log.
+description: 从 L1 "TransactionDeposited" 日志计算 L2 交易哈希。
 ---
 
 # getL2TransactionHash
 
-Computes the L2 transaction hash from an L1 `TransactionDeposited` log.
+从 L1 `TransactionDeposited` 日志计算 L2 交易哈希。
 
 :::warning
 
-For the general case of retrieving an L2 transaction hash from an L1 transaction receipt, you probably want to use [getL2TransactionHashes](/op-stack/utilities/getL2TransactionHashes).
+对于从 L1 交易收据检索 L2 交易哈希的一般情况，你可能想使用 [getL2TransactionHashes](/op-stack/utilities/getL2TransactionHashes)。
 
 :::
 
-## Import
+## 导入
 ```ts
 import { getL2TransactionHash } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { extractTransactionDepositedLogs, getL2TransactionHash } from 'viem'
@@ -31,19 +31,19 @@ const [log] = extractTransactionDepositedLogs(receipt)
 const l2Hash = getL2TransactionHash({ log }) // [!code hl]
 ```
 
-## Returns
+## 返回
 
 `Hex`
 
-The L2 transaction hash.
+L2 交易哈希。
 
-## Parameters
+## 参数
 
 ### log
 
-- **Type:** `Log`
+- **类型:** `Log`
 
-An L1 `TransactionDeposited` log.
+一个 L1 `TransactionDeposited` 日志。
 
 ```ts
 const l2Hash = getL2TransactionHash({ 

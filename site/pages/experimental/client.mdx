@@ -1,12 +1,12 @@
-# Client [Setting up your Viem Client]
+# 客户端 [设置你的 Viem 客户端]
 
-To use the experimental functionality of Viem, you must extend your existing (or new) Viem Client with experimental Actions.
+要使用 Viem 的实验性功能，你必须使用实验性操作扩展现有的（或新的）Viem 客户端。
 
-## Extensions
+## 扩展
 
 ### `walletActionsEip5792`
 
-A suite of [EIP-5792 Wallet Actions](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md) for suited for development with wallet's that support batch transactions.
+一套适用于支持批量交易的钱包的 [EIP-5792 钱包操作](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md)，适合开发使用。
 
 ```ts
 import { createPublicClient, createWalletClient, http } from 'viem'

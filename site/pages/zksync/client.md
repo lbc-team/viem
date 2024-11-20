@@ -1,12 +1,12 @@
 ---
-description: Setting up your ZKsync Viem Client
+description: 设置你的 ZKsync Viem 客户端
 ---
 
-# Client
+# 客户端
 
-To use the ZKsync functionality of Viem, you must extend your existing (or new) Viem Client with ZKsync Actions.
+要使用 Viem 的 ZKsync 功能，你必须使用 ZKsync 操作扩展现有的（或新的）Viem 客户端。
 
-## Usage
+## 用法
 
 ```ts twoslash
 import 'viem/window'
@@ -26,19 +26,19 @@ const publicClient = createPublicClient({
 })
 ```
 
-## Extensions
+## 扩展
 
 ### `eip712WalletActions`
 
-A suite of [Wallet Actions](/zksync/actions/sendTransaction) for suited for development with ZKsync chains.
+一套适用于与 ZKsync 链开发的 [钱包操作](/zksync/actions/sendTransaction)。
 
 ```ts twoslash
 import { eip712WalletActions } from 'viem/zksync'
 ```
 
-#### Sending transactions using paymaster
+#### 使用支付主账户发送交易
 
-[Read more](./actions/sendTransaction.md)
+[阅读更多](./actions/sendTransaction.md)
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -50,9 +50,9 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-#### Calling contracts
+#### 调用合约
 
-[Read more](../docs/contract/writeContract.md)
+[阅读更多](../docs/contract/writeContract.md)
 
 ```ts
 import { simulateContract } from 'viem/contract'
@@ -68,7 +68,7 @@ const hash = await walletClient.writeContract(request)
 
 ### `publicActionsL1`
 
-A suite of [Public Actions](/zksync/actions/getL1Allowance) suited for development with **Layer 1** chains. These actions provide functionalities specific to public clients operating at the Layer 1 level, enabling them to interact seamlessly with Layer 2 protocols.
+一套适用于与 **Layer 1** 链开发的 [公共操作](/zksync/actions/getL1Allowance)。这些操作提供了特定于在 Layer 1 级别运行的公共客户端的功能，使其能够与 Layer 2 协议无缝交互。
 
 ```ts
 import { publicActionsL1 } from 'viem/zksync'

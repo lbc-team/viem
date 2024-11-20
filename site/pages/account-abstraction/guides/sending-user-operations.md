@@ -1,10 +1,10 @@
-# Sending User Operations
+# 发送用户操作
 
-The guide below demonstrates how to send User Operations with a [Smart Account](/account-abstraction/accounts/smart).
+下面的指南演示了如何使用 [智能账户](/account-abstraction/accounts/smart) 发送用户操作。
 
-## Overview
+## 概述
 
-Here is an end-to-end overview of how to broadcast a User Operation with a Smart Account. We will break it down into [Steps](#steps) below.
+这是如何使用智能账户广播用户操作的端到端概述。我们将其分解为下面的 [步骤](#steps)。
 
 :::code-group
 
@@ -53,11 +53,11 @@ export const bundlerClient = createBundlerClient({
 
 :::
 
-## Steps
+## 步骤
 
-### 1. Set up a Client
+### 1. 设置客户端
 
-A Smart Account needs access to the Network to query for information about its state (e.g. nonce, address, etc). Let's set up a Client that we can use for the Smart Account:
+智能账户需要访问网络以查询其状态的信息（例如 nonce、地址等）。让我们设置一个可以用于智能账户的客户端：
 
 ```ts twoslash
 // @noErrors
@@ -70,11 +70,11 @@ const client = createPublicClient({
 })
 ```
 
-[See `createPublicClient` Docs](/docs/clients/public)
+[查看 `createPublicClient` 文档](/docs/clients/public)
 
-### 2. Set up a Bundler Client
+### 2. 设置捆绑客户端
 
-Next, we will need to set up a Bundler Client. A Bundler is required to submit User Operations to the Blockchain for the Smart Account.
+接下来，我们需要设置一个捆绑客户端。捆绑器用于将用户操作提交到智能账户的区块链。
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem'
@@ -93,14 +93,14 @@ const bundlerClient = createBundlerClient({ // [!code ++] // [!code focus]
 ```
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的捆绑器 URL 是一个公共端点。请勿在生产中使用，因为你可能会受到速率限制。考虑使用 [Pimlico 的捆绑器](https://www.pimlico.io)、[Biconomy 的捆绑器](https://www.biconomy.io) 或其他捆绑服务。
 :::
 
-[See `createBundlerClient` Docs](/account-abstraction/clients/bundler)
+[查看 `createBundlerClient` 文档](/account-abstraction/clients/bundler)
 
-### 3. Set up an Owner
+### 3. 设置所有者
 
-We will also need to set up an Owner for the Smart Account which will be used to sign User Operations (transactions) for the Smart Account.
+我们还需要为智能账户设置一个所有者，该所有者将用于为智能账户签署用户操作（交易）。
 
 ```ts twoslash
 // @noErrors
@@ -122,11 +122,11 @@ const bundlerClient = createBundlerClient({
 const owner = privateKeyToAccount('0x...') // [!code ++] // [!code focus]
 ```
 
-[See `privateKeyToAccount` Docs](/docs/accounts/local/privateKeyToAccount)
+[查看 `privateKeyToAccount` 文档](/docs/accounts/local/privateKeyToAccount)
 
-### 4. Create a Smart Account
+### 4. 创建智能账户
 
-Next, we will instantiate a Smart Account. For this example, we will use [`toCoinbaseSmartAccount`](/account-abstraction/accounts/smart/toCoinbaseSmartAccount) (Coinbase Smart Wallet).
+接下来，我们将实例化一个智能账户。在此示例中，我们将使用 [`toCoinbaseSmartAccount`](/account-abstraction/accounts/smart/toCoinbaseSmartAccount)（Coinbase 智能钱包）。
 
 ```ts twoslash
 // @noErrors
@@ -157,14 +157,14 @@ const account = await toCoinbaseSmartAccount({ // [!code ++] // [!code focus]
 ```
 
 :::tip
-**Tip:** `toCoinbaseSmartAccount` also accepts [Passkey (WebAuthn) Accounts](/account-abstraction/accounts/webauthn) as an `owner`.
+**提示：** `toCoinbaseSmartAccount` 还接受 [Passkey (WebAuthn) 账户](/account-abstraction/accounts/webauthn) 作为 `owner`。
 :::
 
-[See `toCoinbaseSmartAccount` Docs](/account-abstraction/accounts/smart/toCoinbaseSmartAccount)
+[查看 `toCoinbaseSmartAccount` 文档](/account-abstraction/accounts/smart/toCoinbaseSmartAccount)
 
-### 5. Send User Operation
+### 5. 发送用户操作
 
-Next, we will send a User Operation to the Bundler. For the example below, we will send 0.001 ETH to a random address.
+接下来，我们将向捆绑器发送用户操作。在下面的示例中，我们将向一个随机地址发送 0.001 ETH。
 
 ```ts twoslash
 import { createPublicClient, http, parseEther } from 'viem'
@@ -204,14 +204,14 @@ const receipt = await bundlerClient.waitForUserOperationReceipt({ hash }) // [!c
 ```
 
 :::tip
-**Tip:** The `calls` property also accepts [Contract Write calls](/account-abstraction/actions/bundler/sendUserOperation#contract-calls).
+**提示：** `calls` 属性还接受 [合约写入调用](/account-abstraction/actions/bundler/sendUserOperation#contract-calls)。
 :::
 
-[See `sendUserOperation` Docs](/account-abstraction/actions/bundler/sendUserOperation)
+[查看 `sendUserOperation` 文档](/account-abstraction/actions/bundler/sendUserOperation)
 
-### 6. Optional: Hoist the Account
+### 6. 可选：提升账户
 
-If you do not wish to pass an account around to every Action that requires an `account`, you can also hoist the account onto a Wallet Client.
+如果你不希望将账户传递给每个需要 `account` 的操作，你还可以将账户提升到钱包客户端上。
 
 ```ts twoslash 
 import { createPublicClient, http, parseEther } from 'viem'
@@ -246,16 +246,16 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### 7. Optional: Sponsor User Operation 
+### 7. 可选：赞助用户操作
 
-By using a Paymaster, we can add sponsorship of User Operation fees.
+通过使用支付者，我们可以添加用户操作费用的赞助。
 
-Viem exposes a `paymaster` property on both the **Bundler Client** ("on Client" tab) and **User Operation Action** ("on Action" tab) to add User Operation sponsorship capabilities.
+Viem 在 **Bundler Client**（“在客户端”标签）和 **User Operation Action**（“在操作”标签）上暴露了一个 `paymaster` 属性，以添加用户操作赞助功能。
 
-The `paymaster` property accepts a [Paymaster Client](/account-abstraction/clients/paymaster) ([among others](/account-abstraction/actions/bundler/sendUserOperation#paymaster-optional)), which is used to fetch the necessary data for User Operation sponsorship.
+`paymaster` 属性接受一个 [Paymaster Client](/account-abstraction/clients/paymaster)（ [以及其他](/account-abstraction/actions/bundler/sendUserOperation#paymaster-optional) ），用于获取用户操作赞助所需的数据。
 
 :::info
-The example below uses [Pimlico's Paymaster API](https://docs.pimlico.io/infra/paymaster) – allowing consumers to sponsor gas fees for users on over 30+ chains.
+下面的示例使用 [Pimlico 的 Paymaster API](https://docs.pimlico.io/infra/paymaster) – 允许消费者在超过 30 条链上为用户赞助 gas 费用。
 :::
 
 :::code-group
@@ -337,7 +337,7 @@ export const account = await toCoinbaseSmartAccount({
 :::
 
 ::::tip
-If your Bundler also supports Paymaster sponsorshop (`pm_` JSON-RPC methods), you can set `paymaster: true` instead of declaring a separate Paymaster Client.
+如果你的 Bundler 也支持 Paymaster 赞助（`pm_` JSON-RPC 方法），你可以设置 `paymaster: true`，而不是声明一个单独的 Paymaster Client。
 
 :::code-group
 

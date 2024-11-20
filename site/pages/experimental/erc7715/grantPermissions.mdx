@@ -1,18 +1,18 @@
 ---
-description: Request permissions from a wallet to perform actions on behalf of a user.
+description: 请求钱包权限以代表用户执行操作。
 ---
 
 # grantPermissions
 
-Request permissions from a wallet to perform actions on behalf of a user.
+请求钱包权限以代表用户执行操作。
 
-[Read more.](https://eips.ethereum.org/EIPS/eip-7715)
+[了解更多。](https://eips.ethereum.org/EIPS/eip-7715)
 
-:::warning[Warning]
-This is an experimental action that is not supported in most wallets. It is recommended to have a fallback mechanism if using this in production.
+:::warning[警告]
+这是一个实验性操作，在大多数钱包中不受支持。如果在生产环境中使用，建议有一个后备机制。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -59,19 +59,19 @@ export const [account] = await walletClient.getAddresses()
 
 :::
 
-## Returns
+## 返回
 
 `GrantPermissionsReturnType`
 
-Response from the wallet after issuing permissions.
+发出权限后钱包的响应。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address | undefined`
+- **类型:** `Account | Address | undefined`
 
-The Account to scope the permissions to.
+要限制权限的账户。
 
 ```ts twoslash
 import { parseEther } from 'viem'
@@ -101,9 +101,9 @@ const result = await walletClient.grantPermissions({
 
 ### expiry
 
-- **Type:** `number`
+- **类型:** `number`
 
-The timestamp (in seconds) when the permissions will expire.
+权限到期的时间戳（以秒为单位）。
 
 ```ts twoslash
 import { parseEther } from 'viem'
@@ -133,9 +133,9 @@ const result = await walletClient.grantPermissions({
 
 ### permissions
 
-- **Type:** `Permission[]`
+- **类型:** `Permission[]`
 
-Set of Permissions & Policies to grant to the user.
+要授予用户的权限和策略集合。
 
 ```ts twoslash
 // @noErrors
@@ -169,8 +169,7 @@ const result = await walletClient.grantPermissions({
 ``` 
 
 :::tip
-The `type` property is constrained to the canonical set of [Permission & Policy types as 
-defined in ERC-7715](https://github.com/pedrouid/ERCs/blob/19c16341c57f6ac8770cb778d60845dcf30f6a40/ERCS/erc-7715.md#permissions), however, consumers can utilize a `custom` property on `type` as an escape hatch to use custom Permission or Policy types:
+`type` 属性受限于 [ERC-7715 中定义的权限和策略类型的标准集合](https://github.com/pedrouid/ERCs/blob/19c16341c57f6ac8770cb778d60845dcf30f6a40/ERCS/erc-7715.md#permissions)，但是，消费者可以利用 `type` 上的 `custom` 属性作为逃生阀来使用自定义权限或策略类型：
 
 ```ts twoslash
 // @noErrors
@@ -194,9 +193,9 @@ const result = await walletClient.grantPermissions({
 
 ### signer
 
-- **Type:** `Signer | undefined`
+- **类型:** `Signer | undefined`
 
-Custom signer type to scope the permissions to.
+自定义签名者类型以限制权限。
 
 ```ts twoslash
 import { parseEther } from 'viem'
@@ -220,4 +219,4 @@ const result = await walletClient.grantPermissions({
     } // [!code focus]
   } // [!code focus]
 })
-``` 
+```

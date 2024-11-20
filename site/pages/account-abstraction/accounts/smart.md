@@ -1,22 +1,22 @@
-# Smart Accounts
+# 智能账户
 
-A **Smart Account** is an account whose implementation resides in a **Smart Contract**, and implements the [ERC-4337 interface](https://eips.ethereum.org/EIPS/eip-4337#account-contract-interface). 
+**智能账户**是一个其实现位于**智能合约**中的账户，并实现了 [ERC-4337 接口](https://eips.ethereum.org/EIPS/eip-4337#account-contract-interface) 。
 
-A **Smart Account** can be controlled by one or more **Owners**, which can be a [Local](/docs/accounts/local) or [JSON-RPC Account](/docs/accounts/jsonRpc) (if supported). The **Owner Account** is responsible for signing User Operations (transactions) on behalf of the **Smart Account**, which are then broadcasted to the Network via a [Bundler](https://eips.ethereum.org/EIPS/eip-4337#bundling).
+**智能账户**可以由一个或多个**所有者**控制，这些所有者可以是[本地账户](/docs/accounts/local)或[JSON-RPC 账户](/docs/accounts/jsonRpc)（如果支持）。**所有者账户**负责代表**智能账户**签署用户操作（交易），然后通过[打包器](https://eips.ethereum.org/EIPS/eip-4337#bundling)将其广播到网络。
 
 :::note
-**Compatibility Note**
+**兼容性说明**
 
-As ERC-4337 is not enshrined on the protocol, this means that Smart Accounts are incompatible with Viem's Transaction APIs such as `sendTransaction` and `writeContract`.
+由于 ERC-4337 并未在协议中确立，这意味着智能账户与 Viem 的交易 API（如`sendTransaction`和`writeContract`）不兼容。
 
-Sending "transactions" can be achieved by broadcasting a **User Operation** to a **Bundler**, which will then broadcast it to the Network shortly after.
+发送“交易”可以通过将**用户操作**广播到**打包器**来实现，打包器随后会在短时间内将其广播到网络。
 
-The most common Actions for **User Operations** are:
+**用户操作**的最常见操作是：
 
-- [`sendUserOperation`](/account-abstraction/actions/bundler/sendUserOperation) (also supports [Contract Writes](/account-abstraction/actions/bundler/sendUserOperation#contract-calls))
+- [`sendUserOperation`](/account-abstraction/actions/bundler/sendUserOperation)（也支持[合约写入](/account-abstraction/actions/bundler/sendUserOperation#contract-calls) ）
 - [`estimateUserOperationGas`](/account-abstraction/actions/bundler/estimateUserOperationGas)
 - [`getUserOperation`](/account-abstraction/actions/bundler/getUserOperation)
 - [`getUserOperationReceipt`](/account-abstraction/actions/bundler/getUserOperationReceipt)
 
-Once Account Abstraction is enshrined on the protocol, we anticipate the above Actions will become redundant in favor of Viem's Transaction APIs.
+一旦账户抽象在协议中确立，我们预计上述操作将因 Viem 的交易 API 而变得多余。
 :::

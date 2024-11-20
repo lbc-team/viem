@@ -1,18 +1,18 @@
 ---
-description: Extract capabilities that a connected wallet supports.
+description: 提取连接的钱包支持的功能。
 ---
 
 # getCapabilities
 
-Extract capabilities (grouped by chain ID) that a connected wallet supports (e.g. paymasters, session keys, etc).
+提取连接的钱包支持的功能（按链 ID 分组）（例如，支付服务、会话密钥等）。
 
-[Read more.](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md#wallet_getcapabilities)
+[了解更多。](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md#wallet_getcapabilities)
 
-:::warning[Warning]
-This is an experimental action that is not supported in most wallets. It is recommended to have a fallback mechanism if using this in production.
+:::warning[警告]
+这是一个实验性操作，大多数钱包不支持。建议在生产环境中使用时有一个后备机制。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -56,11 +56,11 @@ export const [account] = await walletClient.getAddresses()
 
 :::
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `getCapabilities`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每次调用 `getCapabilities` 时传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -75,7 +75,7 @@ import 'viem/window'
 import { createWalletClient, custom } from 'viem'
 import { walletActionsEip5792 } from 'viem/experimental'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum!.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -88,19 +88,19 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 `WalletCapabilities`
 
-Capabilities of the wallet.
+钱包的功能。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The account to get capabilities for.
+要获取功能的账户。
 
 ```ts twoslash [example.ts]
 import { walletClient } from './config'

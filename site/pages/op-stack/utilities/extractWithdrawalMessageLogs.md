@@ -1,17 +1,17 @@
 ---
-description: Extracts "MessagePassed" logs from a withdrawal initialization from an opaque array of logs.
+description: 从不透明的日志数组中提取“MessagePassed”日志，以初始化提款。
 ---
 
 # extractWithdrawalMessageLogs
 
-Extracts [`MessagePassed` logs](https://github.com/ethereum-optimism/optimism/blob/9f73402cb4341f7cfa83bf79769c8dddd9b014c0/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol#L29-L45) from a withdrawal initialization from an opaque array of logs.
+从不透明的日志数组中提取 [`MessagePassed` 日志](https://github.com/ethereum-optimism/optimism/blob/9f73402cb4341f7cfa83bf79769c8dddd9b014c0/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol#L29-L45)，以初始化提款。
 
-## Import
+## 导入
 ```ts
 import { extractWithdrawalMessageLogs } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { extractWithdrawalMessageLogs } from 'viem'
@@ -28,19 +28,19 @@ const logs = extractWithdrawalMessageLogs(receipt)
 // ]
 ```
 
-## Returns
+## 返回
 
 `Log[]`
 
-The `MessagePassed` logs.
+`MessagePassed` 日志。
 
-## Parameters
+## 参数
 
 ### logs
 
-- **Type:** `Log[]`
+- **类型:** `Log[]`
 
-An array of opaque logs.
+一个不透明日志的数组。
 
 ```ts
 const logs = extractWithdrawalMessageLogs({ 

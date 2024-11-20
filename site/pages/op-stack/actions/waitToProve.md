@@ -1,15 +1,15 @@
 ---
 outline: deep
-description: Waits until the L2 withdrawal transaction is ready to be proved.
+description: 等待 L2 提现交易准备好进行证明。
 ---
 
 # waitToProve
 
-Waits until the L2 withdrawal transaction is ready to be proved. Used for the [Withdrawal](/op-stack/guides/withdrawals) flow.
+等待 L2 提现交易准备好进行证明。用于 [Withdrawal](/op-stack/guides/withdrawals) 流程。
 
-Internally calls [`getTimeToNextL2Output`](/op-stack/actions/getTimeToNextL2Output) and waits the returned `seconds`.
+内部调用 [`getTimeToNextL2Output`](/op-stack/actions/getTimeToNextL2Output) 并等待返回的 `seconds`。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -42,19 +42,19 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `WaitToProveReturnType`
 
-The L2 output and the withdrawal message.
+L2 输出和提现消息。
 
-## Parameters
+## 参数
 
 ### receipt
 
-- **Type:** `TransactionReceipt`
+- **类型:** `TransactionReceipt`
 
-The transaction receipt.
+交易收据。
 
 ```ts
 const output = await publicClientL1.waitToProve({ 
@@ -65,9 +65,9 @@ const output = await publicClientL1.waitToProve({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const output = await publicClientL1.waitToProve({
@@ -76,14 +76,14 @@ const output = await publicClientL1.waitToProve({
 })
 ```
 
-### l2OutputOracleAddress (optional)
+### l2OutputOracleAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.l2OutputOracle[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-The address of the [L2 Output Oracle contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
-If a `l2OutputOracleAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `l2OutputOracleAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const output = await publicClientL1.waitToProve({

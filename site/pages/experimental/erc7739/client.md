@@ -1,6 +1,6 @@
-# Extending Client with ERC-7739 Actions [Setting up your Viem Client]
+# 使用 ERC-7739 动作扩展客户端 [设置你的 Viem 客户端]
 
-To use the experimental functionality of ERC-7739, you can extend your existing (or new) Viem Client with experimental ERC-7739 Actions.
+要使用 ERC-7739 的实验性功能，你可以使用实验性 ERC-7739 动作扩展现有的（或新的）Viem 客户端。
 
 ```ts
 import { createPublicClient, createWalletClient, http } from 'viem'

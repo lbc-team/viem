@@ -1,12 +1,12 @@
 ---
-description: Returns the EntryPoints that the bundler supports.
+description: 返回捆绑器支持的入口点。
 ---
 
 # getSupportedEntryPoints
 
-Returns the EntryPoints that the bundler supports.
+返回捆绑器支持的入口点。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -29,11 +29,11 @@ export const bundlerClient = createBundlerClient({
 :::
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的捆绑器 URL 是一个公共端点。请不要在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico's Bundler](https://www.pimlico.io)、[Biconomy's Bundler](https://www.biconomy.io) 或其他捆绑器服务。
 :::
 
-## Returns
+## 返回
 
 `readonly Address[]`
 
-The EntryPoints that the bundler supports.
+捆绑器支持的入口点。

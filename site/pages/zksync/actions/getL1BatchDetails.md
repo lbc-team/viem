@@ -1,12 +1,12 @@
 ---
-description: Returns data pertaining to a given batch.
+description: 返回与给定批次相关的数据。
 ---
 
 # getL1BatchDetails
 
-Returns data pertaining to a given batch.
+返回与给定批次相关的数据。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,19 +30,19 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `GetL1BatchDetailsReturnType`
 
-Batch details.
+批次详情。
 
-## Parameters
+## 参数
 
 ### number
 
-L1 Batch Number
+L1 批次编号
 
-- **Type** `number`
+- **类型** `number`
 
 ```ts
 const batchDetails = await client.getL1BatchDetails({

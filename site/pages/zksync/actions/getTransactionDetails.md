@@ -1,12 +1,12 @@
 ---
-description: Returns data from a specific transaction given by the transaction hash.
+description: 根据交易哈希返回特定交易的数据。
 ---
 
 # getTransactionDetails
 
-Returns data from a specific transaction given by the transaction hash.
+根据交易哈希返回特定交易的数据。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,19 +30,19 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `TransactionDetails`
 
-Data from a specific transaction given by the transaction hash.
+根据交易哈希返回特定交易的数据。
 
-## Parameters
+## 参数
 
 `GetTransactionDetailsParameters`
 
 ### hash
 
-Transaction hash
+交易哈希
 
 ```ts
 const details = await client.getTransactionDetails({

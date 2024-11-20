@@ -1,20 +1,20 @@
 ---
-description: Creates a Smart Account with a provided Account Implementation.
+description: 创建一个带有提供的账户实现的智能账户。
 ---
 
 # toSmartAccount
 
-The `toSmartAccount` function allows you to create a Smart Account with a custom Account Implementation.
+`toSmartAccount` 函数允许你使用自定义账户实现创建一个智能账户。
 
-## Import
+## 导入
 
 ```ts
 import { toSmartAccount } from 'viem/account-abstraction'
 ```
 
-## Usage
+## 用法
 
-To instantiate a Smart Account, you will need to provide an Account Implementation. 
+要实例化一个智能账户，你需要提供一个账户实现。
 
 :::code-group
 
@@ -31,34 +31,34 @@ const account = await toSmartAccount({
   },
   
   async decodeCalls(data) {
-    // Decode calls from calldata as defined by the Smart Account contract.
+    // 根据智能账户合约的定义解码调用。
   },
   async encodeCalls(calls) {
-    // Encode calls as defined by the Smart Account contract.
+    // 根据智能账户合约的定义编码调用。
   },
   async getAddress() {
-    // Get the address of the Smart Account.
+    // 获取智能账户的地址。
   },
   async getFactoryArgs() {
-    // Build the Factory properties for the Smart Account.
+    // 构建智能账户的工厂属性。
   },
   async getNonce() {
-    // Get the nonce of the Smart Account.
+    // 获取智能账户的 nonce。
   },
   async getStubSignature() {
-    // Get the stub signature for User Operations from the Smart Account.
+    // 获取智能账户的用户操作的存根签名。
   },
   async signMessage(message) {
-    // Sign message to be verified by the Smart Account contract.
+    // 签署消息以供智能账户合约验证。
   },
   async signTypedData(typedData) {
-    // Sign typed data to be verified by the Smart Account contract.
+    // 签署类型数据以供智能账户合约验证。
   },
   async signUserOperation(userOperation) {
-    // Sign a User Operation to be broadcasted via the Bundler.
+    // 签署用户操作以通过捆绑器广播。
   },
 
-  // (Optional) Extend the Smart Account with custom properties.
+  // （可选）使用自定义属性扩展智能账户。
   extend: {
     abi: [/* ... */],
     factory: {
@@ -66,10 +66,10 @@ const account = await toSmartAccount({
       address: '0xda4b37208c41c4f6d1b101cac61e182fe1da0754',
     },
   },
-  // (Optional) User Operation configuration.
+  // （可选）用户操作配置。
   userOperation: {
     async estimateGas(userOperation) {
-      // Estimate gas properties for a User Operation.
+      // 估算用户操作的 gas 属性。
     },
   },
 })
@@ -90,8 +90,8 @@ export const client = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `SmartAccount`
 
-The Smart Account.
+智能账户。

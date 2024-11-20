@@ -1,14 +1,14 @@
 # wrapTypedDataSignature
 
-Wraps a EIP-712 typed data signature into via [ERC-7739](https://eips.ethereum.org/EIPS/eip-7739) format for verification.
+通过 [ERC-7739](https://eips.ethereum.org/EIPS/eip-7739) 格式将 EIP-712 类型数据签名包装以进行验证。
 
-## Import
+## 导入
 
 ```ts
 import { wrapTypedDataSignature } from 'viem/experimental/erc7739'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { wrapTypedDataSignature } from 'viem/experimental/erc7739'
@@ -47,19 +47,19 @@ wrapTypedDataSignature({
 })
 ```
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The wrapped signature.
+包装的签名。
 
-## Parameters
+## 参数
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型:** `TypedDataDomain`
 
-The typed data domain.
+类型数据域。
 
 ```ts
 const signature = wrapTypedDataSignature({
@@ -93,7 +93,7 @@ const signature = wrapTypedDataSignature({
 
 ### types
 
-The type definitions for the typed data.
+类型数据的类型定义。
 
 ```ts
 const signature = wrapTypedDataSignature({
@@ -132,9 +132,9 @@ const signature = wrapTypedDataSignature({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型:** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts
 const signature = wrapTypedDataSignature({
@@ -173,7 +173,7 @@ const signature = wrapTypedDataSignature({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型:** 从 `types` 和 `primaryType` 推断。
 
 ```ts
 const signature = wrapTypedDataSignature({
@@ -212,9 +212,9 @@ const signature = wrapTypedDataSignature({
 
 ### signature
 
-**Type:** `Hex`
+**类型:** `Hex`
 
-The signature of the signed typed data.
+签名的已签名类型数据。
 
 ```ts
 const signature = wrapTypedDataSignature({

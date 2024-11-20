@@ -1,12 +1,12 @@
 ---
-description: Given a transaction hash, and an index of the L2 to L1 log produced within the transaction, it returns the proof for the corresponding L2 to L1 log.
+description: 给定一个交易哈希和在交易中生成的 L2 到 L1 日志的索引，它返回相应 L2 到 L1 日志的证明。
 ---
 
 # getLogProof
 
-Returns the proof for the corresponding L2 to L1 log.
+返回相应 L2 到 L1 日志的证明。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -31,17 +31,17 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `GetLogProofReturnType`
 
-Proof of the corresponding L2 to L1 log
+相应 L2 到 L1 日志的证明
 
-## Parameters
+## 参数
 
 ### txHash
 
-Hash of the L2 transaction the L2 to L1 log was produced within.
+生成 L2 到 L1 日志的 L2 交易的哈希。
 
 ```ts
 const proof = await client.getLogProof({
@@ -50,9 +50,9 @@ const proof = await client.getLogProof({
 });
 ```
 
-### index (optional)
+### index（可选）
 
-The index of the L2 to L1 log in the transaction.
+交易中 L2 到 L1 日志的索引。
 
 ```ts
 const proof = await client.getLogProof({

@@ -1,13 +1,13 @@
 ---
 outline: deep
-description: Builds & prepares parameters for a withdrawal to be initiated on an L2.
+description: 构建并准备参数以在 L2 上发起提款。
 ---
 
 # buildInitiateWithdrawal
 
-Builds & prepares parameters for a [withdrawal](https://community.optimism.io/docs/protocol/withdrawal-flow/#withdrawal-initiating-transaction) to be initiated on an L2.
+构建并准备参数以在 L2 上发起 [提款](https://community.optimism.io/docs/protocol/withdrawal-flow/#withdrawal-initiating-transaction)。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -39,20 +39,20 @@ export const walletClientL1 = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(walletActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `buildInitiateWithdrawal`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `buildInitiateWithdrawal` 中传递 `account`，你也可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -67,13 +67,13 @@ const args = await publicClientL1.buildInitiateWithdrawal({
 const hash = await walletClientL2.initiateWithdrawal(args)
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. // [!code hl]
+// 从 EIP-1193 提供者检索账户。 // [!code hl]
 const [account] = await window.ethereum.request({ // [!code hl]
   method: 'eth_requestAccounts' // [!code hl]
 }) // [!code hl]
@@ -90,7 +90,7 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, optimism } from 'viem/chains'
@@ -110,21 +110,21 @@ export const walletClientL2 = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 `InitiateWithdrawalParameters`
 
-The parameters required to initiate a [withdrawal](/op-stack/actions/initiateWithdrawal).
+发起 [提款](/op-stack/actions/initiateWithdrawal) 所需的参数。
 
-## Parameters
+## 参数
 
-### account (optional)
+### account（可选）
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const args = await client.buildInitiateWithdrawal({
@@ -134,11 +134,11 @@ const args = await client.buildInitiateWithdrawal({
 })
 ```
 
-### data (optional)
+### data（可选）
 
-- **Type:** `Hex`
+- **类型：** `Hex`
 
-Encoded contract method & arguments.
+编码的合约方法和参数。
 
 ```ts
 const args = await client.buildInitiateWithdrawal({
@@ -147,11 +147,11 @@ const args = await client.buildInitiateWithdrawal({
 })
 ```
 
-### gas (optional)
+### gas（可选）
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Gas limit for transaction execution on the L1.
+L1 上交易执行的 gas 限制。
 
 ```ts
 const args = await client.buildInitiateWithdrawal({
@@ -161,11 +161,11 @@ const args = await client.buildInitiateWithdrawal({
 })
 ```
 
-### to (optional)
+### to（可选）
 
-- **Type:** `Address`
+- **类型：** `Address`
 
-L1 recipient.
+L1 收件人。
 
 ```ts
 const args = await client.buildInitiateWithdrawal({
@@ -174,11 +174,11 @@ const args = await client.buildInitiateWithdrawal({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `bigint`
+- **类型：** `bigint`
 
-Value in wei to withdrawal from the L2 to the L1. Debited from the caller's L2 balance.
+从 L2 提取到 L1 的 wei 值。将从调用者的 L2 余额中扣除。
 
 ```ts
 const args = await client.buildInitiateWithdrawal({

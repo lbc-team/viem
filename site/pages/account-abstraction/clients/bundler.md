@@ -1,14 +1,14 @@
-# Bundler Client [A function to create a Bundler Client.]
+# Bundler Client [创建 Bundler Client 的函数]
 
-A Bundler Client is an interface to interact with **ERC-4337 Bundlers** and provides the ability to send and retrieve **User Operations** through **Bundler Actions**.
+Bundler Client 是与 **ERC-4337 Bundlers** 交互的接口，并提供通过 **Bundler Actions** 发送和检索 **User Operations** 的能力。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem'
@@ -27,16 +27,16 @@ const bundlerClient = createBundlerClient({ // [!code focus]
 ```
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的 Bundler URL 是一个公共端点。请不要在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico's Bundler](https://www.pimlico.io)、[Biconomy's Bundler](https://www.biconomy.io) 或其他 Bundler 服务。
 :::
 
-## Parameters
+## 参数
 
-### account (optional)
+### account (可选)
 
-- **Type:** `SmartAccount`
+- **类型:** `SmartAccount`
 
-The [Smart Account](/account-abstraction/accounts/smart) to use for the Bundler Client. This will be used for Actions that require an `account` as an argument.
+用于 Bundler Client 的 [Smart Account](/account-abstraction/accounts/smart)。这将用于需要 `account` 作为参数的 Actions。
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem' 
@@ -65,11 +65,11 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [Chain](/docs/glossary/types#chain)
+- **类型:** [Chain](/docs/glossary/types#chain)
 
-The [Chain](/docs/chains/introduction) of the Bundler Client.
+Bundler Client 的 [Chain](/docs/chains/introduction)。
 
 ```ts twoslash
 import { createPublicClient, http } from 'viem' 
@@ -88,11 +88,11 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### client (optional)
+### client (可选)
 
-- **Type:** `Client`
+- **类型:** `Client`
 
-The [Client](/docs/clients/public) (pointing to execution RPC) of the Bundler Client.
+Bundler Client 的 [Client](/docs/clients/public)（指向执行 RPC）。
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
@@ -111,12 +111,12 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### key (optional)
+### key (可选)
 
-- **Type:** `string`
-- **Default:** `"bundler"`
+- **类型:** `string`
+- **默认值:** `"bundler"`
 
-A key for the Client.
+Client 的一个键。
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
@@ -128,12 +128,12 @@ const client = createBundlerClient({
 })
 ```
 
-### name (optional)
+### name (可选)
 
-- **Type:** `string`
-- **Default:** `"Bundler Client"`
+- **类型:** `string`
+- **默认值:** `"Bundler Client"`
 
-A name for the Client.
+Client 的一个名称。
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
@@ -145,17 +145,17 @@ const client = createBundlerClient({
 })
 ```
 
-### paymaster (optional)
+### paymaster (可选)
 
-- **Type:** `true | PaymasterClient | { getPaymasterData: typeof getPaymasterData, getPaymasterStubData: typeof getPaymasterStubData }`
+- **类型:** `true | PaymasterClient | { getPaymasterData: typeof getPaymasterData, getPaymasterStubData: typeof getPaymasterStubData }`
 
-Sets Paymaster configuration for the Bundler Client to be utilized on User Operations.
+为 Bundler Client 设置 Paymaster 配置，以便在 User Operations 中使用。
 
-- If `paymaster: PaymasterClient`, it will use the provided [Paymaster Client](/account-abstraction/clients/paymaster) for User Operation sponsorship.
-- If `paymaster: true`, it will be assumed that the Bundler Client also supports Paymaster RPC methods (e.g. `pm_getPaymasterData`), and use them for User Operation sponsorship.
-- If [custom functions](#paymastergetpaymasterdata-optional) are provided to `paymaster`, it will use them for User Operation sponsorship.
+- 如果 `paymaster: PaymasterClient`，则将使用提供的 [Paymaster Client](/account-abstraction/clients/paymaster) 进行 User Operation 赞助。
+- 如果 `paymaster: true`，则假定 Bundler Client 也支持 Paymaster RPC 方法（例如 `pm_getPaymasterData`），并使用它们进行 User Operation 赞助。
+- 如果提供了 [自定义函数](#paymastergetpaymasterdata-optional) 给 `paymaster`，则将使用它们进行 User Operation 赞助。
 
-#### Using a Paymaster Client
+#### 使用 Paymaster Client
 
 ```ts twoslash
 // @noErrors
@@ -175,7 +175,7 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-#### Using the Bundler Client as Paymaster
+#### 将 Bundler Client 作为 Paymaster 使用
 
 ```ts twoslash
 // @noErrors
@@ -190,17 +190,17 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-#### Using Custom Paymaster Functions
+#### 使用自定义 Paymaster 函数
 
-See the [properties below](#paymastergetpaymasterdata-optional) for more information on how to use custom Paymaster functions.
+有关如何使用自定义 Paymaster 函数的更多信息，请参见下面的 [属性](#paymastergetpaymasterdata-optional)。
 
-### paymaster.getPaymasterData (optional)
+### paymaster.getPaymasterData (可选)
 
-- **Type:** `(userOperation: UserOperation) => Promise<GetPaymasterDataReturnType>`
+- **类型:** `(userOperation: UserOperation) => Promise<GetPaymasterDataReturnType>`
 
-Retrieves paymaster-related User Operation properties to be used for sending the User Operation.
+检索与 Paymaster 相关的 User Operation 属性，以便用于发送 User Operation。
 
-[Read more](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7677.md#pm_getpaymasterdata)
+[阅读更多](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7677.md#pm_getpaymasterdata)
 
 ```ts twoslash
 // @noErrors
@@ -212,7 +212,7 @@ const bundlerClient = createBundlerClient({
   chain: mainnet,
   paymaster: { // [!code focus]
     async getPaymasterData(userOperation) { // [!code focus]
-      // Retrieve paymaster properties for the User Operation. // [!code focus]
+      // 检索 User Operation 的 Paymaster 属性。 // [!code focus]
       return { // [!code focus]
         paymaster: '0x...', // [!code focus]
         paymasterData: '0x...', // [!code focus]
@@ -225,13 +225,13 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### paymaster.getPaymasterStubData (optional)
+### paymaster.getPaymasterStubData (可选)
 
-- **Type:** `(userOperation: UserOperation) => Promise<GetPaymasterStubDataReturnType>`
+- **类型:** `(userOperation: UserOperation) => Promise<GetPaymasterStubDataReturnType>`
 
-Retrieves paymaster-related User Operation properties to be used for gas estimation.
+检索与 Paymaster 相关的 User Operation 属性，以便用于 gas 估算。
 
-[Read more](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7677.md#pm_getpaymasterstubdata)
+[阅读更多](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7677.md#pm_getpaymasterstubdata)
 
 ```ts twoslash
 // @noErrors
@@ -243,7 +243,7 @@ const bundlerClient = createBundlerClient({
   chain: mainnet,
   paymaster: { 
     async getPaymasterStubData(userOperation) { // [!code focus]
-      // Retrieve paymaster properties for the User Operation. // [!code focus]
+      // 检索 User Operation 的 Paymaster 属性。 // [!code focus]
       return { // [!code focus]
         paymaster: '0x...', // [!code focus]
         paymasterData: '0x...', // [!code focus]
@@ -257,11 +257,11 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### paymasterContext (optional)
+### paymasterContext (可选)
 
-- **Type:** `unknown`
+- **类型:** `unknown`
 
-Paymaster specific fields.
+Paymaster 特定字段。
 
 ```ts twoslash
 // @noErrors
@@ -284,12 +284,12 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
-- **Default:** `4_000`
+- **类型:** `number`
+- **默认值:** `4_000`
 
-Frequency (in ms) for polling enabled Actions.
+轮询启用的操作的频率（以毫秒为单位）。
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
@@ -301,12 +301,12 @@ const client = createBundlerClient({
 })
 ```
 
-### rpcSchema (optional)
+### rpcSchema (可选)
 
-- **Type:** `RpcSchema`
-- **Default:** `BundlerRpcSchema`
+- **类型:** `RpcSchema`
+- **默认值:** `BundlerRpcSchema`
 
-Typed JSON-RPC schema for the client.
+客户端的类型化 JSON-RPC 架构。
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
@@ -336,9 +336,9 @@ const result = await client.request({ // [!code focus]
 
 ### transport
 
-- **Type:** `Transport`
+- **类型:** `Transport`
 
-The Transport of the Bundler Client.
+Bundler 客户端的传输。
 
 ```ts twoslash
 import { createBundlerClient } from 'viem/account-abstraction'
@@ -351,15 +351,15 @@ const bundlerClient = createBundlerClient({
 })
 ```
 
-### userOperation (optional)
+### userOperation (可选)
 
-Configuration for User Operations.
+用户操作的配置。
 
 #### userOperation.estimateFeesPerGas
 
-- **Type:** `({ account: Account, bundlerClient: Client, userOperation: UserOperationRequest }) => Promise<{ maxFeePerGas: bigint, maxPriorityFeePerGas: bigint }>`
+- **类型:** `({ account: Account, bundlerClient: Client, userOperation: UserOperationRequest }) => Promise<{ maxFeePerGas: bigint, maxPriorityFeePerGas: bigint }>`
 
-Prepares fee properties for the User Operation request.
+为用户操作请求准备费用属性。
 
 ```ts twoslash
 // @noErrors
@@ -372,7 +372,7 @@ const bundlerClient = createBundlerClient({
   transport: http('https://public.pimlico.io/v2/1/rpc'),
   userOperation: { // [!code focus]
     async estimateFeesPerGas({ account, bundlerClient, userOperation }) { // [!code focus]
-      // Estimate fees per gas for the User Operation. // [!code focus]
+      // 估算用户操作的每单位 gas 费用。 // [!code focus]
       return { // [!code focus]
         maxFeePerGas: /* ... */, // [!code focus]
         maxPriorityFeePerGas: /* ... */, // [!code focus]

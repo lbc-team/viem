@@ -1,22 +1,22 @@
 ---
-description:  Getting tarted with the ZKsync in Viem
+description:  开始使用 Viem 中的 ZKsync
 ---
 
-# Getting Started with ZKsync
+# 开始使用 ZKsync
 
 :::warning
-**Note:** This extension is maintained by ZKsync collaborators.
+**注意：** 此扩展由 ZKsync 合作伙伴维护。
 :::
 
-Viem provides first-class support for the [ZKsync](https://zksync.io) chain.
+Viem 为 [ZKsync](https://zksync.io) 链提供一流的支持。
 
-ZKsync is a Layer-2 protocol that scales Ethereum with cutting-edge ZK tech.
+ZKsync 是一种 Layer-2 协议，利用尖端的 ZK 技术扩展以太坊。
 
-## Quick Start
+## 快速开始
 
-### 1. Set up your Client & Transport
+### 1. 设置你的客户端和传输
 
-Firstly, set up your [Client](/docs/clients/intro) with a desired [Transport](/docs/clients/intro) & [ZKsync Chain](./zksync/chains.md) and extend it with ZKsync EIP712 actions.
+首先，使用所需的 [Transport](/docs/clients/intro) 和 [ZKsync Chain](./zksync/chains.md) 设置你的 [Client](/docs/clients/intro)，并使用 ZKsync EIP712 操作进行扩展。
 
 ```ts twoslash
 import 'viem/window'
@@ -31,9 +31,9 @@ const walletClient = createWalletClient({ // [!code hl]
 }).extend(eip712WalletActions()) // [!code hl]
 ```
 
-### 2. Use Actions
+### 2. 使用操作
 
-Now that you have a Client set up, you can [send a transaction](./zksync/actions/sendTransaction.md) on ZKsync using a [paymaster](https://docs.zksync.io/build/developer-reference/account-abstraction.html#paymasters)!
+现在你已经设置了客户端，可以使用 [paymaster](https://docs.zksync.io/build/developer-reference/account-abstraction.html#paymasters) 在 ZKsync 上 [发送交易](./zksync/actions/sendTransaction.md)！
 
 ```ts twoslash
 import 'viem/window'
@@ -55,7 +55,7 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-...and even write to contracts:
+...甚至可以写入合约：
 
 ```ts twoslash
 import 'viem/window'

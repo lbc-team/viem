@@ -1,12 +1,12 @@
 ---
-description: Waits for the User Operation to be included on a Block, and then returns the User Operation receipt.
+description: 等待用户操作被包含在区块中，然后返回用户操作收据。
 ---
 
 # getUserOperationReceipt
 
-Waits for the User Operation to be included on a [Block](https://viem.sh/docs/glossary/terms#block) (one confirmation), and then returns the User Operation receipt.
+等待用户操作被包含在一个 [区块](https://viem.sh/docs/glossary/terms#block) 中（一个确认），然后返回用户操作收据。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -39,22 +39,22 @@ export const bundlerClient = createBundlerClient({
 :::
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的 Bundler URL 是一个公共端点。请不要在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico's Bundler](https://www.pimlico.io)、[Biconomy's Bundler](https://www.biconomy.io) 或其他 Bundler 服务。
 :::
 
-## Returns
+## 返回
 
 `UserOperationReceipt`
 
-The User Operation receipt.
+用户操作收据。
 
-## Parameters
+## 参数
 
 ### hash
 
-- **Type:** `'0x${string}'`
+- **类型:** `'0x${string}'`
 
-A User Operation hash.
+用户操作哈希。
 
 ```ts twoslash
 import { bundlerClient } from './client'
@@ -64,11 +64,11 @@ const receipt = await bundlerClient.waitForUserOperationReceipt({
 })
 ```
 
-### pollingInterval (optional)
+### pollingInterval (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Polling frequency (in ms).
+轮询频率（以毫秒为单位）。
 
 ```ts twoslash
 import { bundlerClient } from './client'
@@ -79,12 +79,12 @@ const receipt = await bundlerClient.waitForUserOperationReceipt({
 })
 ```
 
-### retryCount (optional)
+### retryCount (可选)
 
-- **Type:** `number`
-- **Default:** `6`
+- **类型:** `number`
+- **默认:** `6`
 
-The number of times to retry.
+重试次数。
 
 ```ts twoslash
 import { bundlerClient } from './client'
@@ -95,11 +95,11 @@ const receipt = await bundlerClient.waitForUserOperationReceipt({
 })
 ```
 
-### timeout (optional)
+### timeout (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Optional timeout (in ms) to wait before stopping polling.
+可选超时（以毫秒为单位），在停止轮询之前等待的时间。
 
 ```ts twoslash
 import { bundlerClient } from './client'

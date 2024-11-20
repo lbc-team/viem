@@ -1,12 +1,12 @@
 ---
-description: Deploys a contract to the network, given bytecode & constructor arguments by using EIP712 transaction.
+description: 使用 EIP712 交易将字节码和构造函数参数部署到网络上。
 ---
 
 # deployContract
 
-Deploys a contract to the network, given bytecode & constructor arguments by using EIP712 transaction.
+使用 EIP712 交易将字节码和构造函数参数部署到网络上。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -44,15 +44,15 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(eip712WalletActions())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-### Deploying with Constructor Args
+### 使用构造函数参数进行部署
 
 :::code-group
 
@@ -92,15 +92,15 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(eip712WalletActions())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-### Deploying with Factory Deps
+### 使用工厂依赖进行部署
 
 :::code-group
 
@@ -144,27 +144,27 @@ export const walletClient = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(eip712WalletActions())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClient.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The [Transaction](/docs/glossary/terms#transaction) hash.
+[交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -176,11 +176,11 @@ const hash = await walletClient.deployContract({
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to deploy the contract from.
+要从中部署合约的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -192,9 +192,9 @@ const hash = await walletClient.deployContract({
 
 ### bytecode
 
-- **Type:** [`Hex`](/docs/glossary/types#hex)
+- **类型:** [`Hex`](/docs/glossary/types#hex)
 
-The contract's bytecode.
+合约的字节码。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -206,9 +206,9 @@ const hash = await walletClient.deployContract({
 
 ### args
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Constructor arguments to call upon deployment.
+部署时调用的构造函数参数。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -219,11 +219,11 @@ const hash = await walletClient.deployContract({
 })
 ```
 
-### deploymentType (optional)
+### deploymentType（可选）
 
-- **Type:** `'create' | 'create2' | 'createAccount' | 'create2Account'`
+- **类型:** `'create' | 'create2' | 'createAccount' | 'create2Account'`
 
-Specifies the type of contract deployment. Defaults to 'create'.
+指定合约部署的类型。默认为 'create'。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -235,12 +235,11 @@ const hash = await walletClient.deployContract({
 })
 ```
 
-### salt (optional)
+### salt（可选）
 
-- **Type:** [`Hash`](/docs/glossary/types#hash)
+- **类型:** [`Hash`](/docs/glossary/types#hash)
 
-Specifies a unique identifier for the contract deployment.
-
+指定合约部署的唯一标识符。
 
 ```ts
 const hash = await walletClient.deployContract({
@@ -252,11 +251,11 @@ const hash = await walletClient.deployContract({
 })
 ```
 
-### gasPerPubdata (optional)
+### gasPerPubdata（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas for publishing one byte of data on Ethereum.
+在以太坊上发布一个字节数据所需的 gas 量。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -268,11 +267,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### paymaster (optional)
+### paymaster（可选）
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-Address of the paymaster account that will pay the fees. The `paymasterInput` field is required with this one.
+将支付费用的支付者账户地址。此字段需要与 `paymasterInput` 一起使用。
 
 ```ts
 const hash = await walletClient.sendTransaction({
@@ -285,11 +284,11 @@ const hash = await walletClient.sendTransaction({
 })
 ```
 
-### paymasterInput (optional)
+### paymasterInput（可选）
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-Input data to the paymaster. The `paymaster` field is required with this one.
+支付者的输入数据。此字段需要与 `paymaster` 一起使用。
 
 ```ts
 const hash = await walletClient.sendTransaction({

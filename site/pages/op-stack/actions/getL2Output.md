@@ -1,19 +1,19 @@
 ---
 outline: deep
-description: Retrieves the first L2 output proposal that occurred after a provided block number.
+description: 检索在提供的区块号之后发生的第一个 L2 输出提案。
 ---
 
 # getL2Output
 
-Retrieves the first L2 output proposal that occurred after a provided block number. Used for the [Withdrawal](/op-stack/guides/withdrawals) flow.
+检索在提供的区块号之后发生的第一个 L2 输出提案。用于 [Withdrawal](/op-stack/guides/withdrawals) 流程。
 
 :::warning
-**This Action will be deprecated in the future.**
+**此操作将在未来被弃用。**
 
-Use [`getGame`](/op-stack/actions/getGame) for OP Stack chains that have upgraded to [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) and have a deployed [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json).
+对于已升级到 [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) 并已部署 [DisputeGameFactoryProxy 合约](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json) 的 OP Stack 链，请使用 [`getGame`](/op-stack/actions/getGame)。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -40,19 +40,19 @@ export const publicClientL1 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `GetL2OutputReturnType`
 
-The L2 output proposal.
+L2 输出提案。
 
-## Parameters
+## 参数
 
 ### l2BlockNumber
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The L2 block number.
+L2 区块号。
 
 ```ts
 const output = await publicClientL1.getL2Output({ 
@@ -63,9 +63,9 @@ const output = await publicClientL1.getL2Output({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const output = await publicClientL1.getL2Output({
@@ -74,14 +74,14 @@ const output = await publicClientL1.getL2Output({
 })
 ```
 
-### l2OutputOracleAddress (optional)
+### l2OutputOracleAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.l2OutputOracle[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-The address of the [L2 Output Oracle contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
-If a `l2OutputOracleAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `l2OutputOracleAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const output = await publicClientL1.getL2Output({

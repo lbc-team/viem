@@ -1,15 +1,15 @@
 ---
 outline: deep
-description: Gets time until the L2 withdrawal transaction is ready to be proved.
+description: 获取 L2 提现交易准备好被证明的时间。
 ---
 
 # getTimeToProve
 
-Gets time until the L2 withdrawal transaction is ready to be proved. Used for the [Withdrawal](/op-stack/guides/withdrawals) flow.
+获取 L2 提现交易准备好被证明的时间。用于 [Withdrawal](/op-stack/guides/withdrawals) 流程。
 
-Internally calls [`getTimeToNextL2Output`](/op-stack/actions/getTimeToNextL2Output).
+内部调用 [`getTimeToNextL2Output`](/op-stack/actions/getTimeToNextL2Output)。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -47,21 +47,21 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `{ interval: number, seconds: number, timestamp: number }`
 
-- `interval` between L2 outputs – the max time to wait for transaction to be proved.
-- Estimated `seconds` until the transaction can be proved.
-- Estimated `timestamp` of when the transaction can be proved.
+- `interval` 是 L2 输出之间的时间间隔 - 等待交易被证明的最长时间。
+- 预计 `seconds` 直到交易可以被证明。
+- 预计 `timestamp` 交易可以被证明的时间戳。
 
-## Parameters
+## 参数
 
 ### receipt
 
-- **Type:** `TransactionReceipt`
+- **类型:** `TransactionReceipt`
 
-The transaction receipt.
+交易收据。
 
 ```ts
 const time = await publicClientL1.getTimeToProve({ 
@@ -72,9 +72,9 @@ const time = await publicClientL1.getTimeToProve({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const time = await publicClientL1.getTimeToProve({
@@ -83,12 +83,12 @@ const time = await publicClientL1.getTimeToProve({
 })
 ```
 
-### intervalBuffer (optional)
+### intervalBuffer (可选)
 
-- **Type:** `number`
-- **Default:** `1.1`
+- **类型:** `number`
+- **默认值:** `1.1`
 
-The buffer to account for discrepancies between non-deterministic time intervals.
+用于考虑非确定性时间间隔之间差异的缓冲。
 
 ```ts
 const time = await publicClientL1.getTimeToProve({ 
@@ -98,14 +98,14 @@ const time = await publicClientL1.getTimeToProve({
 }) 
 ```
 
-### l2OutputOracleAddress (optional)
+### l2OutputOracleAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.l2OutputOracle[chainId].address`
+- **类型:** `Address`
+- **默认值:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-The address of the [L2 Output Oracle contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
-If a `l2OutputOracleAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `l2OutputOracleAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const time = await publicClientL1.getTimeToProve({

@@ -1,14 +1,14 @@
 ---
-description: Signs an EIP-7702 Authorization object.
+description: 签署 EIP-7702 授权对象。
 ---
 
 # signAuthorization
 
-Signs an [EIP-7702 Authorization](https://eips.ethereum.org/EIPS/eip-7702). The signed Authorization can be used in Transaction APIs like [`sendTransaction`](/docs/actions/wallet/sendTransaction#authorizationlist-optional) and [`writeContract`](/docs/contract/writeContract#authorizationlist-optional) to inject the authorized Contract bytecode(s) into an Account at the time of execution.
+签署一个 [EIP-7702 授权](https://eips.ethereum.org/EIPS/eip-7702)。签署的授权可以在交易 API 中使用，如 [`sendTransaction`](/docs/actions/wallet/sendTransaction#authorizationlist-optional) 和 [`writeContract`](/docs/contract/writeContract#authorizationlist-optional)，以在执行时将授权的合约字节码注入到账户中。
 
-## Usage
+## 用法
 
-A Contract can be authorized by supplying a `contractAddress`. By default, it will be signed over the Account's next available Nonce and the current Chain ID. You can also [explicitly set the `nonce` and `chainId`](#scoping).
+通过提供 `contractAddress` 可以授权一个合约。默认情况下，它将基于账户的下一个可用 nonce 和当前链 ID 进行签署。你也可以 [显式设置 `nonce` 和 `chainId`](#scoping)。
 
 :::code-group
 
@@ -49,9 +49,9 @@ export const walletClient = createWalletClient({
 
 :::
 
-### Explicit Scoping
+### 显式作用域
 
-We can explicitly sign over a provided `nonce` and/or `chainId` by supplying them as parameters:
+我们可以通过将 `nonce` 和/或 `chainId` 作为参数提供来显式签署：
 
 :::code-group
 
@@ -94,21 +94,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 `SignedAuthorization`
 
-A signed Authorization object.
+一个签署的授权对象。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account`
+- **类型:** `Account`
 
-Account to use to authorize injection of the [Contract (`authorization`)](#authorization) onto the Account.
+用于授权将 [合约 (`authorization`)](#authorization) 注入到账户中的账户。
 
-Accepts a [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -120,12 +120,12 @@ const authorization = await walletClient.signAuthorization({
 }) 
 ```
 
-### chainId (optional)
+### chainId（可选）
 
-- **Type:** `Address`
-- **Default:** `client.chain.id` or Network chain ID
+- **类型:** `Address`
+- **默认:** `client.chain.id` 或网络链 ID
 
-The Chain ID to scope the Authorization to.
+要将授权作用域限制到的链 ID。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -140,9 +140,9 @@ const authorization = await walletClient.signAuthorization({
 
 ### contractAddress
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The target Contract to inject onto the Account.
+要注入到账户中的目标合约。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -154,13 +154,13 @@ const authorization = await walletClient.signAuthorization({
 }) 
 ```
 
-### delegate (optional)
+### delegate（可选）
 
-- **Type:** `true | Address | Account`
+- **类型:** `true | Address | Account`
 
-Whether the EIP-7702 Transaction will be executed by another Account.
+EIP-7702 交易是否将由另一个账户执行。
 
-If not specified, it will be assumed that the EIP-7702 Transaction will be executed by the Account that signed the Authorization.
+如果未指定，将假定 EIP-7702 交易将由签署授权的账户执行。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'
@@ -173,12 +173,12 @@ const authorization = await walletClient.signAuthorization({
 }) 
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `Address`
-- **Default:** Account's next available nonce.
+- **类型:** `Address`
+- **默认:** 账户的下一个可用 nonce。
 
-The nonce to scope the Authorization to.
+要将授权作用域限制到的 nonce。
 
 ```ts twoslash
 import { privateKeyToAccount } from 'viem/accounts'

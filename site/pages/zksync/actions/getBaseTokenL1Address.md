@@ -1,12 +1,12 @@
 ---
-description: Returns the base token L1 address.
+description: 返回基础代币 L1 地址。
 ---
 
 # getBaseTokenL1Address
 
-Returns the address of the base L1 token.
+返回基础 L1 代币的地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,8 +28,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
-`Address`
+`地址`
 
-Base Token L1 address.
+基础代币 L1 地址。

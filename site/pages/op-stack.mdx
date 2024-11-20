@@ -1,18 +1,18 @@
 ---
-description: Getting started with the OP Stack in Viem
+description: 使用 Viem 开始使用 OP Stack
 ---
 
-# Getting Started with OP Stack
+# 使用 OP Stack 开始
 
-Viem provides first-class support for chains implemented on the [OP Stack](https://docs.optimism.io/stack/getting-started).
+Viem 为在 [OP Stack](https://docs.optimism.io/stack/getting-started) 上实现的链提供一流支持。
 
-The OP Stack is a set of modular open-source software that enable developers to build fast, secure, and scalable Layer 2 Ethereum protocols & applications. [Read more.](https://docs.optimism.io/stack/getting-started)
+OP Stack 是一套模块化的开源软件，使开发者能够构建快速、安全和可扩展的以太坊 Layer 2 协议和应用程序。[了解更多。](https://docs.optimism.io/stack/getting-started)
 
-## Quick Start
+## 快速开始
 
-### 1. Set up your Client & Transport
+### 1. 设置你的客户端和传输
 
-Firstly, set up your [Client](/docs/clients/intro) with a desired [Transport](/docs/clients/intro) & [OP Stack Chain](/op-stack/chains).
+首先，使用所需的 [Transport](/docs/clients/intro) 和 [OP Stack Chain](/op-stack/chains) 设置你的 [Client](/docs/clients/intro)。
 
 ```ts
 import { createPublicClient, http } from 'viem'
@@ -25,12 +25,12 @@ const client = createPublicClient({ // [!code focus]
 ```
 
 :::info
-In a production app, it is highly recommended to pass through your authenticated RPC provider URL (Alchemy, Infura, Ankr, etc). If no URL is provided, viem will default to a public RPC provider. [Read more](/docs/clients/transports/http#usage).
+在生产应用中，强烈建议传入你的认证 RPC 提供者 URL（Alchemy、Infura、Ankr 等）。如果未提供 URL，viem 将默认使用公共 RPC 提供者。 [了解更多](/docs/clients/transports/http#usage) 。
 :::
 
-### 2. Extend Client with the OP Stack
+### 2. 使用 OP Stack 扩展客户端
 
-Now that you have a Client set up, you can extend it with OP Stack Actions! [Read more.](/op-stack/client)
+现在你已经设置了客户端，可以使用 OP Stack 操作扩展它！[了解更多。](/op-stack/client)
 
 ```ts
 import { createPublicClient, http } from 'viem'
@@ -43,9 +43,9 @@ const client = createPublicClient({
 }).extend(publicActionsL2()) // [!code hl]
 ```
 
-### 3. Consume OP Stack Actions
+### 3. 使用 OP Stack 操作
 
-Now that you have an OP Stack Client set up, you can now interact with the OP Stack and consume [Actions](/op-stack/actions/estimateL1Gas)!
+现在你已经设置了 OP Stack 客户端，可以与 OP Stack 交互并使用 [Actions](/op-stack/actions/estimateL1Gas)！
 
 ```tsx
 import { createPublicClient, http, parseEther } from 'viem'

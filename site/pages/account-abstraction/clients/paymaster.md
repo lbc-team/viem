@@ -1,20 +1,20 @@
-# Paymaster Client [A function to create a Paymaster Client.]
+# Paymaster Client [创建 Paymaster Client 的函数]
 
-A Paymaster Client is an interface to interact with **[ERC-7677 compliant Paymasters](https://eips.ethereum.org/EIPS/eip-7677)** and provides the ability to sponsor **User Operation** gas fees.
+Paymaster Client 是与 ** [符合 ERC-7677 的 Paymasters](https://eips.ethereum.org/EIPS/eip-7677)** 交互的接口，并提供赞助 **用户操作** gas 费用的能力。
 
 :::note
-Read more on **ERC-7677 Paymasters**:
-- [Website](https://erc7677.xyz/)
-- [Specification](https://eips.ethereum.org/EIPS/eip-7677)
+了解更多关于 **ERC-7677 Paymasters** 的信息：
+- [网站](https://erc7677.xyz/)
+- [规范](https://eips.ethereum.org/EIPS/eip-7677)
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createPaymasterClient } from 'viem/account-abstraction'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { http } from 'viem'
@@ -36,21 +36,21 @@ const bundlerClient = createBundlerClient({
 ```
 
 :::info
-The Paymaster URL above is a public endpoint **for testnets only**. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Paymaster](https://www.pimlico.io) or another Paymaster service.
+上面的 Paymaster URL 是一个公共端点 **仅用于测试网**。请勿在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico 的 Paymaster](https://www.pimlico.io) 或其他 Paymaster 服务。
 :::
 
 :::tip
-You can see an example of end-to-end Paymaster Client usage on the [Sending User Operations guide](/account-abstraction/guides/sending-user-operations#7-optional-sponsor-user-operation).
+你可以在 [发送用户操作指南](/account-abstraction/guides/sending-user-operations#7-optional-sponsor-user-operation) 中查看端到端 Paymaster Client 使用的示例。
 :::
 
-## Parameters
+## 参数
 
-### key (optional)
+### key（可选）
 
-- **Type:** `string`
-- **Default:** `"paymaster"`
+- **类型：** `string`
+- **默认：** `"paymaster"`
 
-A key for the Client.
+Client 的键。
 
 ```ts twoslash
 import { createPaymasterClient } from 'viem/account-abstraction'
@@ -62,12 +62,12 @@ const client = createPaymasterClient({
 })
 ```
 
-### name (optional)
+### name（可选）
 
-- **Type:** `string`
-- **Default:** `"Paymaster Client"`
+- **类型：** `string`
+- **默认：** `"Paymaster Client"`
 
-A name for the Client.
+Client 的名称。
 
 ```ts twoslash
 import { createPaymasterClient } from 'viem/account-abstraction'
@@ -79,12 +79,12 @@ const client = createPaymasterClient({
 })
 ```
 
-### pollingInterval (optional)
+### pollingInterval（可选）
 
-- **Type:** `number`
-- **Default:** `4_000`
+- **类型：** `number`
+- **默认：** `4_000`
 
-Frequency (in ms) for polling enabled Actions.
+启用操作的轮询频率（以毫秒为单位）。
 
 ```ts twoslash
 import { createPaymasterClient } from 'viem/account-abstraction'
@@ -96,12 +96,12 @@ const client = createPaymasterClient({
 })
 ```
 
-### rpcSchema (optional)
+### rpcSchema（可选）
 
-- **Type:** `RpcSchema`
-- **Default:** `PaymasterRpcSchema`
+- **类型：** `RpcSchema`
+- **默认：** `PaymasterRpcSchema`
 
-Typed JSON-RPC schema for the client.
+Client 的类型化 JSON-RPC 架构。
 
 ```ts twoslash
 import { createPaymasterClient } from 'viem/account-abstraction'
@@ -131,9 +131,9 @@ const result = await client.request({ // [!code focus]
 
 ### transport
 
-- **Type:** `Transport`
+- **类型：** `Transport`
 
-The Transport of the Paymaster Client.
+Paymaster Client 的传输方式。
 
 ```ts twoslash
 import { createPaymasterClient } from 'viem/account-abstraction'

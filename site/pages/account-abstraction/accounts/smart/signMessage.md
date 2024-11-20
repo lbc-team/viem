@@ -1,10 +1,10 @@
-# signMessage (Smart Account)
+# signMessage (智能账户)
 
-Calculates an Ethereum-specific signature in [EIP-191 format](https://eips.ethereum.org/EIPS/eip-191): `keccak256("\x19Ethereum Signed Message:\n" + len(message) + message))`.
+计算以太坊特定的签名，格式为 [EIP-191](https://eips.ethereum.org/EIPS/eip-191)：`keccak256("\x19Ethereum Signed Message:\n" + len(message) + message))`。
 
-Uses the Smart Account's **Owner** to sign the message.
+使用智能账户的 **Owner** 来签署消息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -37,21 +37,21 @@ export const client = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hex`](/docs/glossary/types#hex)
 
-The signed message.
+签名后的消息。
 
-## Parameters
+## 参数
 
 ### message
 
-- **Type:** `string | { raw: Hex | ByteArray }`
+- **类型：** `string | { raw: Hex | ByteArray }`
 
-Message to sign.
+要签名的消息。
 
-By default, viem signs the UTF-8 representation of the message.
+默认情况下，viem 签署消息的 UTF-8 表示。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -67,7 +67,7 @@ const signature = await account.signMessage({
 })
 ```
 
-To sign the data representation of the message, you can use the `raw` attribute.
+要签署消息的数据表示，可以使用 `raw` 属性。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'

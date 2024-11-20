@@ -1,12 +1,12 @@
 ---
-description: Creates a multi-signature ZKsync Smart Account
+description: 创建一个多签名 ZKsync 智能账户
 ---
 
 # toMultisigSmartAccount (ZKsync)
 
-Creates a multi-signature [ZKsync Smart Account](https://docs.zksync.io/build/developer-reference/account-abstraction/building-smart-accounts) from a Contract Address and the Private Key of the owner.
+从合约地址和所有者的私钥创建一个多签名 [ZKsync 智能账户](https://docs.zksync.io/build/developer-reference/account-abstraction/building-smart-accounts)。
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { toMultisigSmartAccount } from 'viem/zksync'
@@ -17,13 +17,13 @@ const account = toMultisigSmartAccount({
 })
 ```
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Address of the deployed Account's Contract implementation.
+已部署账户合约实现的地址。
 
 ```ts
 const account = toMultisigSmartAccount({
@@ -34,9 +34,9 @@ const account = toMultisigSmartAccount({
 
 ### privateKeys
 
-- **Type:** `Hex[]`
+- **类型:** `Hex[]`
 
-Private Keys of the owners.
+所有者的私钥。
 
 ```ts
 const account = toMultisigSmartAccount({

@@ -1,17 +1,17 @@
 ---
-description: Returns encoded formatted general-based paymaster params.
+description: 返回编码格式化的一般基础支付主参数。
 ---
 
 # getGeneralPaymasterInput
 
-Returns encoded formatted general-based paymaster params.
+返回编码格式化的一般基础支付主参数。
 
-## Import
+## 导入
 ```ts
 import { getGeneralPaymasterInput } from 'viem/zksync'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { getGeneralPaymasterInput } from 'viem/zksync'
@@ -21,19 +21,19 @@ const data = getGeneralPaymasterInput({
 })
 ```
 
-## Returns
+## 返回
 
 `EncodeFunctionDataReturnType`
 
-The `Hex` value of the provided general-based paymaster inputs.
+提供的一般基础支付主输入的 `Hex` 值。
 
-## Parameters
+## 参数
 
 ### innerInput
 
-Additional payload that can be sent to the paymaster to implement any logic 
+可以发送到支付主的附加有效负载，以实现任何逻辑 
 
-- **Type:** `Hex` or `ByteArray`
+- **类型:** `Hex` 或 `ByteArray`
 
 ```ts
 const data = getGeneralPaymasterInput({

@@ -1,15 +1,15 @@
 ---
 outline: deep
-description: Initiates a withdrawal on an L2 to the L1.
+description: 在 L2 上发起到 L1 的提款。
 ---
 
 # initiateWithdrawal
 
-Initiates a [withdrawal](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md) on an L2 to the L1. 
+在 L2 上发起一个 [提款](https://github.com/ethereum-optimism/optimism/blob/develop/specs/deposits.md) 到 L1。
 
-Internally performs a contract write to the [`initiateWithdrawal` function](https://github.com/ethereum-optimism/optimism/blob/283f0aa2e3358ced30ff7cbd4028c0c0c3faa140/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol#L73) on the [Optimism L2ToL1MessagePasser predeploy contract](https://github.com/ethereum-optimism/optimism/blob/283f0aa2e3358ced30ff7cbd4028c0c0c3faa140/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol).
+内部执行对 [`initiateWithdrawal` 函数](https://github.com/ethereum-optimism/optimism/blob/283f0aa2e3358ced30ff7cbd4028c0c0c3faa140/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol#L73) 的合约写入，位于 [Optimism L2ToL1MessagePasser 预部署合约](https://github.com/ethereum-optimism/optimism/blob/283f0aa2e3358ced30ff7cbd4028c0c0c3faa140/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol)。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -38,9 +38,9 @@ export const walletClientL2 = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(walletActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL2.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
@@ -49,15 +49,15 @@ export const account = privateKeyToAccount(...)
 
 :::warning
 
-You must [build the parameters](#building-parameters) on the L1 before calling this function. If the gas is too low, transaction execution will fail on the L1.
+在调用此函数之前，你必须在 L1 上 [构建参数](#building-parameters)。如果 gas 过低，交易执行将在 L1 上失败。
 
 :::
 
-### Building Parameters
+### 构建参数
 
-The [`buildInitiateWithdrawal` Action](/op-stack/actions/buildInitiateWithdrawal) builds & prepares the initiate withdrawal transaction parameters. 
+[`buildInitiateWithdrawal` 操作](/op-stack/actions/buildInitiateWithdrawal) 构建并准备发起提款交易的参数。
 
-We can use the resulting `args` to initiate the withdrawal transaction on the L2.
+我们可以使用生成的 `args` 在 L2 上发起提款交易。
 
 :::code-group
 
@@ -89,22 +89,22 @@ export const walletClientL2 = createWalletClient({
   transport: custom(window.ethereum)
 }).extend(walletActionsL2())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-[See more on the `buildInitiateWithdrawal` Action.](/op-stack/actions/buildInitiateWithdrawal)
+[查看更多关于 `buildInitiateWithdrawal` 操作的信息。](/op-stack/actions/buildInitiateWithdrawal)
 
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `proveWithdrawal`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每次 `proveWithdrawal` 中传递 `account`，你也可以在钱包客户端上提升账户（参见 `config.ts`）。
 
-[Learn more.](/docs/clients/wallet#account)
+[了解更多。](/docs/clients/wallet#account)
 
 :::code-group
 
@@ -120,13 +120,13 @@ const args = await publicClientL1.buildInitiateWithdrawal({
 const hash = await walletClientL2.initiateWithdrawal(args)
 ```
 
-```ts [config.ts (JSON-RPC Account)]
+```ts [config.ts (JSON-RPC 账户)]
 import { createWalletClient, createPublicClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, optimism } from 'viem/chains'
 import { publicActionsL1, walletActionsL2 } from 'viem/op-stack'
 
-// Retrieve Account from an EIP-1193 Provider. // [!code hl]
+// 从 EIP-1193 提供者检索账户。 // [!code hl]
 const [account] = await window.ethereum.request({ // [!code hl]
   method: 'eth_requestAccounts' // [!code hl]
 }) // [!code hl]
@@ -143,7 +143,7 @@ export const walletClientL2 = createWalletClient({
 }).extend(walletActionsL2())
 ```
 
-```ts [config.ts (Local Account)]
+```ts [config.ts (本地账户)]
 import { createPublicClient, createWalletClient, custom, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { mainnet, optimism } from 'viem/chains'
@@ -163,21 +163,21 @@ export const walletClientL2 = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The [L2 Transaction](/docs/glossary/terms#transaction) hash.
+[L2 交易](/docs/glossary/terms#transaction) 哈希。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -191,11 +191,11 @@ const hash = await client.initiateWithdrawal({
 })
 ```
 
-### args.data (optional)
+### args.data (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Encoded contract method & arguments.
+编码的合约方法和参数。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -211,9 +211,9 @@ const hash = await client.initiateWithdrawal({
 
 ### args.gas
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Gas limit for transaction execution on the L1.
+L1 上交易执行的 gas 限制。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -228,9 +228,9 @@ const hash = await client.initiateWithdrawal({
 
 ### args.to
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-L1 Transaction recipient.
+L1 交易接收者。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -243,11 +243,11 @@ const hash = await client.initiateWithdrawal({
 })
 ```
 
-### args.value (optional)
+### args.value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei to withdrawal from the L2 to the L1. Debited from the caller's L2 balance.
+从 L2 提取到 L1 的 wei 值。将从调用者的 L2 余额中扣除。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -260,12 +260,12 @@ const hash = await client.initiateWithdrawal({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `client.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认:** `client.chain`
 
-The L2 chain. If there is a mismatch between the wallet's current chain & this chain, an error will be thrown.
+L2 链。如果钱包的当前链与此链不匹配，将抛出错误。
 
 ```ts
 import { optimism } from 'viem/chains'
@@ -281,11 +281,11 @@ const hash = await client.initiateWithdrawal({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每单位 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -299,11 +299,11 @@ const hash = await client.initiateWithdrawal({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每单位 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -318,11 +318,11 @@ const hash = await client.initiateWithdrawal({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一编号，用于标识此交易。
 
 ```ts
 const hash = await client.initiateWithdrawal({
@@ -335,4 +335,3 @@ const hash = await client.initiateWithdrawal({
   nonce: 69, // [!code focus]
 })
 ```
-

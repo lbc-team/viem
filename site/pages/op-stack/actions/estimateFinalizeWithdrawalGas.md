@@ -1,13 +1,13 @@
 ---
 outline: deep
-description: Estimates gas required to finalize a withdrawal that occurred on an L2.
+description: 估算在 L2 上完成提款所需的 gas。
 ---
 
 # estimateFinalizeWithdrawalGas
 
-Estimates gas required to finalize a withdrawal that occurred on an L2. 
+估算在 L2 上完成提款所需的 gas。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -33,29 +33,29 @@ export const publicClientL1 = createPublicClient({
   transport: http()
 }).extend(publicActionsL1())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const [account] = await walletClientL1.getAddresses()
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-The estimated gas.
+估算的 gas。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({
@@ -65,12 +65,12 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 })
 ```
 
-### chain (optional)
+### chain (可选)
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `client.chain`
+- **类型:** [`Chain`](/docs/glossary/types#chain)
+- **默认值:** `client.chain`
 
-The L1 chain. If there is a mismatch between the wallet's current chain & this chain, an error will be thrown.
+L1 链。如果钱包的当前链与此链不匹配，将抛出错误。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -83,11 +83,11 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 })
 ```
 
-### gas (optional)
+### gas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Gas limit for transaction execution on the L1. 
+L1 上交易执行的 gas 限制。
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({
@@ -101,11 +101,11 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({
@@ -119,11 +119,11 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). Only applies to [EIP-1559 Transactions](/docs/glossary/terms#eip-1559-transaction)
+每个 gas 的最大优先费用（以 wei 为单位）。仅适用于 [EIP-1559 交易](/docs/glossary/terms#eip-1559-transaction)
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({
@@ -138,11 +138,11 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({
@@ -153,14 +153,14 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 })
 ```
 
-### portalAddress (optional)
+### portalAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.portal[chainId].address`
+- **类型:** `Address`
+- **默认值:** `targetChain.contracts.portal[chainId].address`
 
-The address of the [Optimism Portal contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol). Defaults to the Optimism Portal contract specified on the `targetChain`.
+[Optimism Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol) 的地址。默认为 `targetChain` 上指定的 Optimism Portal 合约。
 
-If a `portalAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `portalAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({
@@ -176,9 +176,9 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain to execute the transaction on.
+执行交易的 L2 链。
 
 ```ts
 import { mainnet } from 'viem/chains'
@@ -192,9 +192,9 @@ const hash = await client.estimateFinalizeWithdrawalGas({
 
 ### withdrawal
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The withdrawal.
+提款。
 
 ```ts
 const hash = await client.estimateFinalizeWithdrawalGas({

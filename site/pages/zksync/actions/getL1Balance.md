@@ -1,16 +1,16 @@
 ---
-description: Returns the amount of the token held by the account on the L1 network.
+description: 返回在 L1 网络上由账户持有的代币数量。
 ---
 
 # getL1Balance
 
-Returns the amount of the token held by the account on the L1 network.
+返回在 L1 网络上由账户持有的代币数量。
 
-## Usage
+## 用法
 
 :::code-group
 
-```ts [example.ts (token balance)]
+```ts [example.ts (代币余额)]
 import { account, publicClient } from './config'
 
 const balance = await publicClient.getL1Balance({
@@ -19,7 +19,7 @@ const balance = await publicClient.getL1Balance({
 })
 ```
 
-```ts [example.ts (ETH balance)]
+```ts [example.ts (ETH 余额)]
 import { account, publicClient } from './config'
 
 const balance = await publicClient.getL1Balance({
@@ -38,29 +38,29 @@ export const publicClient = createPublicClient({
   transport: custom(window.ethereum)
 }).extend(publicActionsL1())
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 ```
 
 :::
 
-## Returns
+## 返回
 
 `bigint`
 
-Returns the amount of the tokens.
+返回代币的数量。
 
-## Parameters
+## 参数
 
-### account (optional)
+### account (可选)
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account used for check.
+用于检查的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const balance = await publicClient.getL1Balance({
@@ -70,11 +70,11 @@ const balance = await publicClient.getL1Balance({
 })
 ```
 
-### blockTag (optional)
+### blockTag (可选)
 
-- **Type:** `BlockTag | undefined`
+- **类型:** `BlockTag | undefined`
 
-In which block an balance should be checked on. The latest processed one is the default option.
+应在哪个区块上检查余额。默认选项是最新处理的区块。
 
 ```ts
 const balance = await publicClient.getL1Balance({
@@ -84,11 +84,11 @@ const balance = await publicClient.getL1Balance({
 })
 ```
 
-### token (optional)
+### token (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-The address of the token. Defaults to ETH if not provided.
+代币的地址。如果未提供，则默认为 ETH。
 
 ```ts
 const balance = await publicClient.getL1Balance({

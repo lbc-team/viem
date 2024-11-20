@@ -1,12 +1,12 @@
 ---
-description: Broadcasts a User Operation to the Bundler.
+description: 将用户操作广播到 Bundler。
 ---
 
 # sendUserOperation
 
-Broadcasts a User Operation to the Bundler.
+将用户操作广播到 Bundler。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -48,14 +48,14 @@ export const bundlerClient = createBundlerClient({
 :::
 
 :::info
-The Bundler URL above is a public endpoint. Please do not use it in production as you will likely be rate-limited. Consider using [Pimlico's Bundler](https://www.pimlico.io), [Biconomy's Bundler](https://www.biconomy.io), or another Bundler service.
+上面的 Bundler URL 是一个公共端点。请不要在生产环境中使用，因为你可能会受到速率限制。考虑使用 [Pimlico's Bundler](https://www.pimlico.io)、[Biconomy's Bundler](https://www.biconomy.io) 或其他 Bundler 服务。
 :::
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `sendUserOperation`, you can also hoist the Account on the Bundler Client (see `config.ts`).
+如果你不希望在每个 `sendUserOperation` 中传递 `account`，你还可以在 Bundler 客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -96,9 +96,9 @@ export const bundlerClient = createBundlerClient({
 
 :::
 
-### Contract Calls
+### 合约调用
 
-The `calls` property also accepts **Contract Calls**, and can be used via the `abi`, `functionName`, and `args` properties.
+`calls` 属性还接受 **合约调用**，可以通过 `abi`、`functionName` 和 `args` 属性使用。
 
 :::code-group
 
@@ -155,19 +155,19 @@ export const bundlerClient = createBundlerClient({
 
 :::
 
-## Returns
+## 返回
 
 `Hash`
 
-The User Operation hash.
+用户操作的哈希。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `SmartAccount`
+- **类型:** `SmartAccount`
 
-The Account to use for User Operation execution.
+用于用户操作执行的账户。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -184,9 +184,9 @@ const hash = await bundlerClient.sendUserOperation({
 
 ### calls
 
-- **Type:** `({ data?: Hex | undefined, to: Address, value?: bigint | undefined } | { abi: Abi, functionName: string, args: unknown[], to: Address, value?: bigint | undefined })[]`
+- **类型:** `({ data?: Hex | undefined, to: Address, value?: bigint | undefined } | { abi: Abi, functionName: string, args: unknown[], to: Address, value?: bigint | undefined })[]`
 
-The calls to execute in the User Operation.
+要在用户操作中执行的调用。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -206,7 +206,7 @@ const hash = await bundlerClient.sendUserOperation({
 ```
 
 :::tip
-You can also pass raw call data via the `callData` property:
+你还可以通过 `callData` 属性传递原始调用数据：
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -219,11 +219,11 @@ const hash = await bundlerClient.sendUserOperation({
 ```
 :::
 
-### callGasLimit (optional)
+### callGasLimit (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate the main execution call.
+分配给主执行调用的 gas 数量。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -239,14 +239,14 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### factory (optional)
+### factory (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-Account Factory address. 
+账户工厂地址。 
 
 :::warning
-This property should only be populated when the Smart Account has not been deployed yet.
+此属性仅在智能账户尚未部署时填充。
 :::
 
 ```ts twoslash
@@ -264,14 +264,14 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### factoryData (optional)
+### factoryData (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Call data to execute on the Account Factory to deploy a Smart Account.
+在账户工厂上执行以部署智能账户的调用数据。
 
 :::warning
-This property should only be populated when the Smart Account has not been deployed yet.
+此属性仅在智能账户尚未部署时填充。
 :::
 
 ```ts twoslash
@@ -289,11 +289,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Maximum fee per gas for User Operation execution.
+用户操作执行的每个 gas 的最大费用。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -309,11 +309,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Maximum priority fee per gas for User Operation execution.
+用户操作执行的每个 gas 的最大优先费用。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -330,11 +330,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Nonce for the User Operation.
+用户操作的 nonce。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -350,18 +350,18 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### paymaster (optional)
+### paymaster (可选)
 
-- **Type:** `Address | true | PaymasterClient | PaymasterActions`
+- **类型:** `Address | true | PaymasterClient | PaymasterActions`
 
-Sets Paymaster configuration for the User Operation.
+为用户操作设置 Paymaster 配置。
 
-- If `paymaster: Address`, it will use the provided Paymaster contract address for sponsorship.
-- If `paymaster: PaymasterClient`, it will use the provided [Paymaster Client](/account-abstraction/clients/paymaster) for sponsorship.
-- If `paymaster: true`, it will be assumed that the Bundler Client also supports Paymaster RPC methods (e.g. `pm_getPaymasterData`), and use them for sponsorship.
-- If [custom functions](/account-abstraction/clients/bundler#paymastergetpaymasterdata-optional) are provided to `paymaster`, it will use them for sponsorship.
+- 如果 `paymaster: Address`，将使用提供的 Paymaster 合约地址进行赞助。
+- 如果 `paymaster: PaymasterClient`，将使用提供的 [Paymaster Client](/account-abstraction/clients/paymaster) 进行赞助。
+- 如果 `paymaster: true`，将假定 Bundler Client 也支持 Paymaster RPC 方法（例如 `pm_getPaymasterData`），并使用它们进行赞助。
+- 如果提供了 [自定义函数](/account-abstraction/clients/bundler#paymastergetpaymasterdata-optional) 给 `paymaster`，将使用它们进行赞助。
 
-#### Using a Paymaster Contract Address
+#### 使用 Paymaster 合约地址
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -378,7 +378,7 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-#### Using a Paymaster Client
+#### 使用 Paymaster Client
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -398,7 +398,7 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-#### Using the Bundler Client as Paymaster
+#### 使用 Bundler Client 作为 Paymaster
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -414,14 +414,14 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### paymasterContext (optional)
+### paymasterContext (可选)
 
-- **Type:** `unknown`
+- **类型:** `unknown`
 
-Paymaster specific fields.
+Paymaster 特定字段。
 
 :::warning
-This property is only available if **`paymaster` is a Paymaster Client**.
+此属性仅在 **`paymaster` 是 Paymaster Client** 时可用。
 :::
 
 ```ts twoslash
@@ -445,14 +445,14 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### paymasterData (optional)
+### paymasterData (可选)
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-Call data to execute on the Paymaster contract.
+在 Paymaster 合约上执行的调用数据。
 
 :::warning
-This property is only available if **`paymaster` is an address**.
+此属性仅在 **`paymaster` 是地址** 时可用。
 :::
 
 ```ts twoslash
@@ -470,11 +470,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### paymasterPostOpGasLimit (optional)
+### paymasterPostOpGasLimit (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate for the Paymaster post-operation code.
+为 Paymaster 后操作代码分配的 gas 量。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -492,11 +492,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### paymasterVerificationGasLimit (optional)
+### paymasterVerificationGasLimit (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate for the Paymaster validation code.
+为 Paymaster 验证代码分配的 gas 量。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -514,11 +514,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### preVerificationGas (optional)
+### preVerificationGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Extra gas to pay the Bundler.
+额外的 gas 用于支付给 Bundler。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -534,11 +534,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### signature (optional)
+### signature (可选)
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Signature for the User Operation.
+用户操作的签名。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'
@@ -554,11 +554,11 @@ const hash = await bundlerClient.sendUserOperation({
 })
 ```
 
-### verificationGasLimit (optional)
+### verificationGasLimit (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate for the verification step.
+为验证步骤分配的 gas 量。
 
 ```ts twoslash
 import { account, bundlerClient } from './config'

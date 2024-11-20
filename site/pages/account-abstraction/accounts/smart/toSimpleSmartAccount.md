@@ -1,12 +1,12 @@
-# Simple Smart Account
+# 简单智能账户
 
 :::warning
-**Note:** This implementation is maintained & distributed by [permissionless.js](https://docs.pimlico.io/permissionless).
+**注意：** 此实现由 [permissionless.js](https://docs.pimlico.io/permissionless) 维护和分发。
 :::
 
-To implement the [Simple Smart Account](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccount.sol), you can use the [`toSimpleSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toSimpleSmartAccount) module from [permissionless.js](https://docs.pimlico.io/permissionless/)
+要实现 [简单智能账户](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccount.sol)，你可以使用 [permissionless.js](https://docs.pimlico.io/permissionless/) 中的 [`toSimpleSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toSimpleSmartAccount) 模块。
 
-## Install
+## 安装
 
 :::code-group
 ```bash [pnpm]
@@ -26,7 +26,7 @@ bun add permissionless
 ```
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -51,17 +51,17 @@ export const client = createPublicClient({
 })
 ```
 
-```ts twoslash [owner.ts (Private Key)] filename="owner.ts"
+```ts twoslash [owner.ts (私钥)] filename="owner.ts"
 import { privateKeyToAccount } from 'viem/accounts'
  
 export const owner = privateKeyToAccount('0x...')
 ```
 :::
 
-## Returns
+## 返回值
 
 `SmartAccount<SimpleSmartAccountImplementation>`
 
-## Parameters
+## 参数
 
-[See Parameters](https://docs.pimlico.io/permissionless/reference/accounts/toSimpleSmartAccount#parameters)
+[查看参数](https://docs.pimlico.io/permissionless/reference/accounts/toSimpleSmartAccount#parameters)

@@ -1,12 +1,12 @@
 ---
-description: Returns additional ZKsync-specific information about the L2 block.
+description: 返回关于 L2 区块的额外 ZKsync 特定信息。
 ---
 
 # getBlockDetails
 
-Returns additional ZKsync-specific information about the L2 block.
+返回关于 L2 区块的额外 ZKsync 特定信息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,19 +30,19 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `BaseBlockDetails`
 
-Structure that represent ZKsync-specific information about L2 block.
+表示关于 L2 区块的 ZKsync 特定信息的结构。
 
-## Parameters
+## 参数
 
 ### number
 
-Block Number
+区块编号
 
-- **Type** `number`
+- **类型** `number`
 
 ```ts
 const blockDetails = await client.getBlockDetails({

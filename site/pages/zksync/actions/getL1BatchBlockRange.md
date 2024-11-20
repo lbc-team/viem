@@ -1,12 +1,12 @@
 ---
-description: Returns the range of blocks contained within a batch given by batch number.
+description: 返回由批次编号给定的批次中包含的区块范围。
 ---
 
 # getL1BatchBlockRange
 
-Returns the range of blocks contained within a batch given by batch number.
+返回由批次编号给定的批次中包含的区块范围。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -30,19 +30,19 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `GetL1BatchBlockRangeReturnType`
 
-Array of two elements representing the range of blocks within a batch.
+一个包含两个元素的数组，表示批次中区块的范围。
 
-## Parameters
+## 参数
 
 ### number
 
-L1 Batch Number
+L1 批次编号
 
-- **Type** `number`
+- **类型** `number`
 
 ```ts
 const batchBlockRange = await client.getL1BatchBlockRange({

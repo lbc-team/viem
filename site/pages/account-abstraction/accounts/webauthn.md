@@ -1,21 +1,21 @@
-# WebAuthn Account
+# WebAuthn 账户
 
-A WebAuthn Account is nearly identical to a [Local Account](/docs/accounts/local), but with the following differences:
+WebAuthn 账户与 [本地账户](/docs/accounts/local) 几乎相同，但有以下不同之处：
 
-- uses the **secp256r1** curve for signatures
-- returns a `signature` as well as `webauthn` data in its signing methods
-- cannot sign transactions (transactions do not support **secp256r1** signatures)
-- does not have an Ethereum `address`
+- 使用 **secp256r1** 曲线进行签名
+- 在其签名方法中返回 `signature` 和 `webauthn` 数据
+- 不能签署交易（交易不支持 **secp256r1** 签名）
+- 没有以太坊 `地址`
 
-WebAuthn Accounts are commonly used for **[Smart Account](/account-abstraction/accounts/smart) Owners** to sign User Operations and messages on behalf of the Smart Account.
+WebAuthn 账户通常用于 **[智能账户](/account-abstraction/accounts/smart) 所有者** 代表智能账户签署用户操作和消息。
 
 :::note
-WebAuthn Account owners are currently supported on the following Smart Account implementations:
+WebAuthn 账户所有者目前在以下智能账户实现中得到支持：
 
 - [`toCoinbaseSmartAccount`](/account-abstraction/accounts/smart/toCoinbaseSmartAccount#owners)
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -27,17 +27,17 @@ import {
 } from 'viem/account-abstraction'
 import { client } from './client'
 
-// 1. Register a credential (ie. passkey).
+// 1. 注册凭证（即密码钥匙）。
 const credential = await createWebAuthnCredential({
   name: 'Example',
 })
 
-// 2. Create a WebAuthn owner account from the credential.
+// 2. 从凭证创建 WebAuthn 所有者账户。
 const owner = toWebAuthnAccount({
   credential,
 })
 
-// 3. Hook up the owner to a WebAuthn-compatible Smart Account.
+// 3. 将所有者连接到兼容 WebAuthn 的智能账户。
 const account = toCoinbaseSmartAccount({
   client,
   owners: [owner],

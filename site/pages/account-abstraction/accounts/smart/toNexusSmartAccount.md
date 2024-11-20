@@ -1,12 +1,12 @@
-# Nexus Smart Account
+# Nexus 智能账户
 
 :::warning
-**Note:** This implementation is maintained & distributed by [permissionless.js](https://docs.pimlico.io/permissionless).
+**注意：** 此实现由 [permissionless.js](https://docs.pimlico.io/permissionless) 维护和分发。
 :::
 
-To implement Biconomy's [Nexus Smart Account](https://github.com/bcnmy/nexus), you can use the [`toNexusSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toNexusSmartAccount) module from [permissionless.js](https://docs.pimlico.io/permissionless/)
+要实现 Biconomy 的 [Nexus 智能账户](https://github.com/bcnmy/nexus)，你可以使用来自 [permissionless.js](https://docs.pimlico.io/permissionless/) 的 [`toNexusSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toNexusSmartAccount) 模块。
 
-## Install
+## 安装
 
 :::code-group
 ```bash [pnpm]
@@ -26,7 +26,7 @@ bun add permissionless
 ```
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -52,17 +52,17 @@ export const client = createPublicClient({
 })
 ```
 
-```ts twoslash [owner.ts (Private Key)] filename="owner.ts"
+```ts twoslash [owner.ts (私钥)] filename="owner.ts"
 import { privateKeyToAccount } from 'viem/accounts'
  
 export const owner = privateKeyToAccount('0x...')
 ```
 :::
 
-## Returns
+## 返回值
 
 `SmartAccount<NexusSmartAccountImplementation>`
 
-## Parameters
+## 参数
 
-[See Parameters](https://docs.pimlico.io/permissionless/reference/accounts/toNexusSmartAccount#parameters)
+[查看参数](https://docs.pimlico.io/permissionless/reference/accounts/toNexusSmartAccount#parameters)

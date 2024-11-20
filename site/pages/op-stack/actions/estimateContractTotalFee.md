@@ -1,14 +1,14 @@
 ---
-description: Estimates the total (L1 + L2) fee to execute an L2 contract write.
+description: 估算执行 L2 合约写入的总费用 (L1 + L2)。
 ---
 
 # estimateContractTotalFee
 
-Estimates the total ([L1 data](https://docs.optimism.io/stack/transactions/fees#l1-data-fee) + L2) fee to execute an L2 contract write.
+估算执行 L2 合约写入的总费用 ([L1 数据](https://docs.optimism.io/stack/transactions/fees#l1-data-fee) + L2)。
 
-Invokes the `getL1Fee` method on the [Gas Price Oracle](https://github.com/ethereum-optimism/optimism/blob/233ede59d16cb01bdd8e7ff662a153a4c3178bdd/packages/contracts/contracts/L2/predeploys/OVM_GasPriceOracle.sol) predeploy contract.
+调用 [Gas Price Oracle](https://github.com/ethereum-optimism/optimism/blob/233ede59d16cb01bdd8e7ff662a153a4c3178bdd/packages/contracts/contracts/L2/predeploys/OVM_GasPriceOracle.sol) 预部署合约上的 `getL1Fee` 方法。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -44,9 +44,9 @@ import { privateKeyToAccount } from 'viem/accounts'
 import { base } from 'viem/chains'
 import { publicActionsL2 } from 'viem/op-stack'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -57,21 +57,21 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-The total (L1 + L2) fee estimate (in wei).
+总费用 (L1 + L2) 估算值（以 wei 为单位）。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to estimate fee from.
+用于估算费用的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -84,9 +84,9 @@ const fee = await publicClient.estimateContractTotalFee({
 
 ### abi
 
-- **Type:** [`Abi`](/docs/glossary/types#abi)
+- **类型:** [`Abi`](/docs/glossary/types#abi)
 
-The contract's ABI.
+合约的 ABI。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -99,9 +99,9 @@ const fee = await publicClient.estimateContractTotalFee({
 
 ### address
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-The contract address.
+合约地址。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -114,9 +114,9 @@ const fee = await publicClient.estimateContractTotalFee({
 
 ### functionName
 
-- **Type:** `string`
+- **类型:** `string`
 
-A function to extract from the ABI.
+要从 ABI 中提取的函数。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -127,11 +127,11 @@ const fee = await publicClient.estimateContractTotalFee({
 })
 ```
 
-### args (optional)
+### args (可选)
 
-- **Type:** Inferred from ABI.
+- **类型:** 从 ABI 推断。
 
-Arguments to pass to function call.
+传递给函数调用的参数。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -143,11 +143,11 @@ const fee = await publicClient.estimateContractTotalFee({
 })
 ```
 
-### gasPriceOracleAddress (optional)
+### gasPriceOracleAddress (可选)
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-Address of the Gas Price Oracle predeploy contract.
+Gas Price Oracle 预部署合约的地址。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -159,11 +159,11 @@ const fee = await publicClient.estimateContractTotalFee({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。 
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -175,11 +175,11 @@ const fee = await publicClient.estimateContractTotalFee({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). 
+每个 gas 的最大优先费用（以 wei 为单位）。 
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -191,11 +191,11 @@ const fee = await publicClient.estimateContractTotalFee({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({
@@ -207,11 +207,11 @@ const fee = await publicClient.estimateContractTotalFee({
 })
 ```
 
-### value (optional)
+### value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value (in wei) sent with this transaction.
+与此交易一起发送的值（以 wei 为单位）。
 
 ```ts
 const fee = await publicClient.estimateContractTotalFee({

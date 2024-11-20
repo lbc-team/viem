@@ -1,18 +1,18 @@
 ---
-description: Sign and broadcast a batch of calls to the network. 
+description: 签名并广播一批调用到网络。
 ---
 
 # sendCalls
 
-Requests for the wallet to sign and broadcast a batch of calls (transactions) to the network. 
+请求钱包签名并广播一批调用（交易）到网络。
 
-[Read more.](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md#wallet_sendcalls)
+[了解更多。](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md#wallet_sendcalls)
 
-:::warning[Warning]
-This is an experimental action that is not supported in most wallets. It is recommended to have a fallback mechanism if using this in production.
+:::warning[警告]
+这是一个实验性操作，在大多数钱包中不支持。如果在生产中使用，建议有一个后备机制。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -52,17 +52,17 @@ export const [account] = await walletClient.getAddresses()
 
 :::
 
-Notes:
+注意：
 
-- `account` and `chain` are top level properties as all calls should be sent by the same account and chain.
-- Properties of `calls` items are only those shared by all transaction types (e.g. `data`, `to`, `value`). The Wallet should handle other required properties like gas & fees.
-- [Read `wallet_sendCalls` on EIP-5792.](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md#wallet_sendcalls)
+- `account` 和 `chain` 是顶层属性，因为所有调用都应该由同一账户和链发送。
+- `calls` 项目的属性仅为所有交易类型共享的属性（例如 `data`、`to`、`value`）。钱包应处理其他所需属性，如 gas 和费用。
+- [阅读 `wallet_sendCalls` 在 EIP-5792 上。](https://github.com/ethereum/EIPs/blob/815028dc634463e1716fc5ce44c019a6040f0bef/EIPS/eip-5792.md#wallet_sendcalls)
 
-### Account Hoisting
+### 账户提升
 
-If you do not wish to pass an `account` to every `sendCalls`, you can also hoist the Account on the Wallet Client (see `config.ts`).
+如果你不希望在每个 `sendCalls` 中传递 `account`，你还可以在钱包客户端上提升账户（请参见 `config.ts`）。
 
-[Learn more](/docs/clients/wallet#account).
+[了解更多](/docs/clients/wallet#account)。
 
 :::code-group
 
@@ -88,7 +88,7 @@ import 'viem/window'
 import { createWalletClient, custom } from 'viem'
 import { walletActionsEip5792 } from 'viem/experimental'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum!.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -101,9 +101,9 @@ export const walletClient = createWalletClient({
 
 :::
 
-### Contract Calls
+### 合约调用
 
-The `calls` property also accepts **Contract Calls**, and can be used via the `abi`, `functionName`, and `args` properties.
+`calls` 属性还接受 **合约调用**，可以通过 `abi`、`functionName` 和 `args` 属性使用。
 
 :::code-group
 
@@ -164,7 +164,7 @@ import 'viem/window'
 import { createWalletClient, custom } from 'viem'
 import { walletActionsEip5792 } from 'viem/experimental'
 
-// Retrieve Account from an EIP-1193 Provider.
+// 从 EIP-1193 提供者检索账户。
 const [account] = await window.ethereum!.request({ 
   method: 'eth_requestAccounts' 
 })
@@ -177,21 +177,21 @@ export const walletClient = createWalletClient({
 
 :::
 
-## Returns
+## 返回
 
 `string`
 
-The identifier can be any arbitrary string. The only requirement is that for a given session, consumers should be able to call `getCallsStatus` with this identifier to retrieve a batch call status and call receipts.
+标识符可以是任何任意字符串。唯一的要求是，对于给定的会话，消费者应该能够使用此标识符调用 `getCallsStatus` 来检索批量调用状态和调用收据。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型：** `Account | Address`
 
-The Account to sign & broadcast the call from.
+要签名和广播调用的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts)。
 
 ```ts twoslash
 import { walletClient } from './config'
@@ -213,10 +213,10 @@ const id = await walletClient.sendCalls({
 
 ### chain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
-- **Default:** `walletClient.chain`
+- **类型：** [`Chain`](/docs/glossary/types#chain)
+- **默认值：** `walletClient.chain`
 
-The target chain to broadcast the calls.
+要广播调用的目标链。
 
 ```ts twoslash
 import { mainnet } from 'viem/chains'
@@ -239,9 +239,9 @@ const id = await walletClient.sendCalls({
 
 ### calls
 
-- **Type:** `Call[]`
+- **类型：** `Call[]`
 
-An array of calls to be signed and broadcasted.
+要签名和广播的调用数组。
 
 ```ts twoslash
 import { mainnet } from 'viem/chains'
@@ -264,9 +264,9 @@ const id = await walletClient.sendCalls({
 
 #### calls.data
 
-- **Type:** `Hex`
+- **类型：** `Hex`
 
-Calldata to broadcast (typically a contract function selector with encoded arguments, or contract deployment bytecode).
+要广播的 calldata（通常是带有编码参数的合约函数选择器，或合约部署字节码）。
 
 ```ts twoslash
 import { mainnet } from 'viem/chains'
@@ -289,9 +289,9 @@ const id = await walletClient.sendCalls({
 
 #### calls.to
 
-- **Type:** `Address`
+- **类型：** `Address`
 
-Recipient address of the call.
+调用的接收地址。
 
 ```ts twoslash
 import { mainnet } from 'viem/chains'
@@ -314,9 +314,9 @@ const id = await walletClient.sendCalls({
 
 #### calls.value
 
-- **Type:** `Address`
+- **类型:** `地址`
 
-Value to send with the call.
+调用时发送的值。
 
 ```ts twoslash
 import { mainnet } from 'viem/chains'
@@ -339,9 +339,9 @@ const id = await walletClient.sendCalls({
 
 ### capabilities 
 
-- **Type:** `WalletCapabilities`
+- **类型:** `WalletCapabilities`
 
-Capability metadata for the calls (e.g. specifying a paymaster).
+调用的能力元数据（例如，指定支付服务）。
 
 ```ts twoslash
 import { walletClient } from './config'

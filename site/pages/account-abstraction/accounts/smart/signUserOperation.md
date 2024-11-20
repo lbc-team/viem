@@ -1,8 +1,8 @@
-# signUserOperation (Smart Account)
+# signUserOperation (智能账户)
 
-Signs a User Operation with the Smart Account's **Owner**.
+使用智能账户的 **Owner** 签署用户操作。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -46,19 +46,19 @@ export const owner = privateKeyToAccount('0x...')
 
 :::
 
-## Returns
+## 返回值
 
 `Hex`
 
-The User Operation signature.
+用户操作签名。
 
-## Parameters
+## 参数
 
 ### callData
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-The data to pass to the `sender` during the main execution call.
+在主执行调用期间传递给 `sender` 的数据。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -87,9 +87,9 @@ const signature = await account.signUserOperation({
 
 ### callGasLimit
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas to allocate the main execution call.
+分配给主执行调用的 gas 量。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -118,9 +118,9 @@ const signature = await account.signUserOperation({
 
 ### factory
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-Account factory. Only for new accounts.
+账户工厂。仅适用于新账户。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -149,9 +149,9 @@ const signature = await account.signUserOperation({
 
 ### factoryData
 
-- **Type:** `Hex`
+- **类型:** `Hex`
 
-Data for account factory.
+账户工厂的数据。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -180,9 +180,9 @@ const signature = await account.signUserOperation({
 
 ### maxFeePerGas
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Maximum fee per gas.
+每单位 gas 的最大费用。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -211,9 +211,9 @@ const signature = await account.signUserOperation({
 
 ### maxPriorityFeePerGas
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Maximum priority fee per gas.
+每单位 gas 的最大优先费用。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -243,9 +243,9 @@ const signature = await account.signUserOperation({
 
 ### nonce
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Anti-replay parameter.
+防重放参数。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -274,9 +274,9 @@ const signature = await account.signUserOperation({
 
 ### paymaster
 
-- **Type:** `Address`
+- **类型:** `地址`
 
-Address of paymaster contract.
+paymaster 合约的地址。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -307,9 +307,9 @@ const signature = await account.signUserOperation({
 
 ### paymasterData
 
-- **Type:** `Hex`
+- **类型:** `十六进制`
 
-Data for paymaster.
+paymaster 的数据。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -340,9 +340,9 @@ const signature = await account.signUserOperation({
 
 ### paymasterPostOpGasLimit
 
-- **Type:** `bigint`
+- **类型:** `大整数`
 
-The amount of gas to allocate for the paymaster post-operation code.
+为 paymaster 后操作代码分配的 gas 数量。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -373,9 +373,9 @@ const signature = await account.signUserOperation({
 
 ### paymasterVerificationGasLimit
 
-- **Type:** `bigint`
+- **类型:** `大整数`
 
-The amount of gas to allocate for the paymaster validation code.
+为 paymaster 验证代码分配的 gas 数量。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -406,9 +406,9 @@ const signature = await account.signUserOperation({
 
 ### preVerificationGas
 
-- **Type:** `bigint`
+- **类型:** `大整数`
 
-Extra gas to pay the Bundler.
+额外的 gas 用于支付 Bundler。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -439,9 +439,9 @@ const signature = await account.signUserOperation({
 
 ### sender
 
-- **Type:** `Address`
+- **类型:** `地址`
 
-The account making the operation.
+进行操作的账户。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'
@@ -472,9 +472,9 @@ const signature = await account.signUserOperation({
 
 ### verificationGasLimit
 
-- **Type:** `bigint`
+- **类型:** `大整数`
 
-The amount of gas to allocate for the verification step.
+为验证步骤分配的 gas 数量。
 
 ```ts twoslash
 import { toCoinbaseSmartAccount } from 'viem/account-abstraction'

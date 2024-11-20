@@ -1,19 +1,19 @@
 ---
 outline: deep
-description: Builds & prepares parameters for a withdrawal to be initiated on an L2.
+description: 构建并准备参数以在 L2 上发起提款。
 ---
 
 # getTimeToNextL2Output
 
-Returns the time until the next L2 output (after a provided block number) is submitted. Used for the [Withdrawal](/op-stack/guides/withdrawals) flow.
+返回在提供的区块号之后，下一次 L2 输出提交的时间。用于 [Withdrawal](/op-stack/guides/withdrawals) 流程。
 
 :::warning
-**This Action will be deprecated in the future.**
+**此操作将在未来被弃用。**
 
-Use [`getTimeToNextGame`](/op-stack/actions/getTimeToNextGame) for OP Stack chains that have upgraded to [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) and have a deployed [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json).
+对于已升级到 [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) 并已部署 [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json) 的 OP Stack 链，请使用 [`getTimeToNextGame`](/op-stack/actions/getTimeToNextGame)。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -51,21 +51,21 @@ export const publicClientL2 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `{ interval: number, seconds: number, timestamp: number }`
 
-- `interval` between L2 outputs – the max time to wait for transaction to be proved.
-- Estimated `seconds` until the next L2 Output is submitted.
-- Estimated `timestamp` of the next L2 Output.
+- `interval` 是 L2 输出之间的时间间隔 - 等待交易被证明的最长时间。
+- 估计 `seconds` 直到下一次 L2 输出提交。
+- 估计的 `timestamp` 为下一次 L2 输出的时间戳。
 
-## Parameters
+## 参数
 
 ### l2BlockNumber
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The latest L2 block number.
+最新的 L2 区块号。
 
 ```ts
 const l2BlockNumber = publicClientL2.getBlockNumber() // [!code focus]
@@ -77,9 +77,9 @@ const { seconds } = await publicClientL1.getTimeToNextL2Output({
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const { seconds } = await publicClientL1.getTimeToNextL2Output({
@@ -88,12 +88,12 @@ const { seconds } = await publicClientL1.getTimeToNextL2Output({
 })
 ```
 
-### intervalBuffer (optional)
+### intervalBuffer (可选)
 
-- **Type:** `number`
-- **Default:** `1.1`
+- **类型:** `number`
+- **默认值:** `1.1`
 
-The buffer to account for discrepancies between non-deterministic time intervals.
+用于考虑非确定性时间间隔之间差异的缓冲。
 
 ```ts
 const { seconds } = await publicClientL1.getTimeToNextL2Output({ 
@@ -103,14 +103,14 @@ const { seconds } = await publicClientL1.getTimeToNextL2Output({
 }) 
 ```
 
-### l2OutputOracleAddress (optional)
+### l2OutputOracleAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.l2OutputOracle[chainId].address`
+- **类型:** `Address`
+- **默认值:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-The address of the [L2 Output Oracle contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol). Defaults to the L2 Output Oracle contract specified on the `targetChain`.
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
-If a `l2OutputOracleAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `l2OutputOracleAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const { seconds } = await publicClientL1.getTimeToNextL2Output({

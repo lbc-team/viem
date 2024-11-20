@@ -1,18 +1,18 @@
 ---
-description: Gets the messages from a withdrawal initialization.
+description: 获取提款初始化中的消息。
 ---
 
 # getWithdrawals
 
-Gets withdrawal messages emitted from the [`MessagePassed` log](https://github.com/ethereum-optimism/optimism/blob/9f73402cb4341f7cfa83bf79769c8dddd9b014c0/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol#L29-L45) from a withdrawal initialization.
+获取从提款初始化中发出的 [`MessagePassed` 日志](https://github.com/ethereum-optimism/optimism/blob/9f73402cb4341f7cfa83bf79769c8dddd9b014c0/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol#L29-L45) 的提款消息。
 
-## Import
+## 导入
 
 ```ts
 import { getWithdrawals } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { extractTransactionDepositedLogs, getWithdrawals } from 'viem'
@@ -24,19 +24,19 @@ const receipt = await client.getTransactionReceipt({
 const withdrawals = getWithdrawals(receipt) // [!code hl]
 ```
 
-## Returns
+## 返回
 
 `Hex`
 
-The L2 transaction hash.
+L2 交易哈希。
 
-## Parameters
+## 参数
 
 ### logs
 
-- **Type:** `Log[]`
+- **类型:** `Log[]`
 
-An array of L2 logs.
+L2 日志的数组。
 
 ```ts
 const withdrawals = getWithdrawals({ 

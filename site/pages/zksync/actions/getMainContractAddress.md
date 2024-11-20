@@ -1,12 +1,12 @@
 ---
-description: Returns the address of a Main ZKsync Contract.
+description: 返回主 ZKsync 合约的地址。
 ---
 
 # getMainContractAddress
 
-Returns the address of a Main ZKsync Contract.
+返回主 ZKsync 合约的地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,8 +28,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
-`Address`
+`地址`
 
-Main ZKsync Era smart contract address.
+主 ZKsync Era 智能合约地址。

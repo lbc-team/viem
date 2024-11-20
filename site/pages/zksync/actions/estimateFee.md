@@ -1,12 +1,12 @@
 ---
-description: Returns an estimated Fee for requested transaction.
+description: 返回请求交易的估算费用。
 ---
 
 # estimateFee
 
-Returns an estimated Fee for requested transaction.
+返回请求交易的估算费用。
 
-## Usage
+## 使用方法
 
 :::code-group
 
@@ -32,21 +32,21 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `Fee`
 
-The fee values.
+费用值。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to send the transaction from.
+发送交易的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -58,9 +58,9 @@ const fee = await walletClient.estimateFee({
 
 ### to
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-The transaction recipient or contract address.
+交易接收者或合约地址。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -71,11 +71,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### data (optional)
+### data (可选)
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-A contract hashed method call with encoded args.
+带有编码参数的合约哈希方法调用。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -86,11 +86,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### gasPrice (optional)
+### gasPrice (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The price (in wei) to pay per gas. Only applies to [Legacy Transactions](/docs/glossary/terms#legacy-transaction).
+每个 gas 的价格（以 wei 为单位）。仅适用于 [传统交易](/docs/glossary/terms#legacy-transaction)。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -101,11 +101,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### nonce (optional)
+### nonce (可选)
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一编号，用于标识此交易。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -116,11 +116,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### value (optional)
+### value (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value in wei sent with this transaction.
+与此交易一起发送的 wei 值。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -131,11 +131,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### gasPerPubdata (optional)
+### gasPerPubdata (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The amount of gas for publishing one byte of data on Ethereum.
+在以太坊上发布一个字节数据所需的 gas 数量。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -147,11 +147,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### factoryDeps (optional)
+### factoryDeps (可选)
 
-- **Type:** `[0x${string}]`
+- **类型:** `[0x${string}]`
 
-Contains bytecode of the deployed contract.
+包含已部署合约的字节码。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -163,11 +163,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### paymaster (optional)
+### paymaster (可选)
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-Address of the paymaster account that will pay the fees. The `paymasterInput` field is required with this one.
+将支付费用的支付者账户地址。此字段需要与 `paymasterInput` 一起使用。
 
 ```ts
 const fee = await walletClient.estimateFee({
@@ -180,11 +180,11 @@ const fee = await walletClient.estimateFee({
 })
 ```
 
-### paymasterInput (optional)
+### paymasterInput (可选)
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-Input data to the paymaster. The `paymaster` field is required with this one.
+支付者的输入数据。此字段需要与 `paymaster` 一起使用。
 
 ```ts
 const fee = await walletClient.estimateFee({

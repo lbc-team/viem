@@ -1,10 +1,10 @@
-# signTypedData (Smart Account)
+# signTypedData (智能账户)
 
-Signs typed data and calculates an Ethereum-specific signature in [https://eips.ethereum.org/EIPS/eip-712](https://eips.ethereum.org/EIPS/eip-712): `sign(keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message)))`
+签名类型化数据并计算以 Ethereum 为特定的签名，参考 [https://eips.ethereum.org/EIPS/eip-712](https://eips.ethereum.org/EIPS/eip-712)：`sign(keccak256("\x19\x01" ‖ domainSeparator ‖ hashStruct(message)))`
 
-Uses the Smart Account's **Owner** to sign the message.
+使用智能账户的 **Owner** 来签名消息。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -37,7 +37,7 @@ const signature = await account.signTypedData({ // [!code focus]
 ```
 
 ```ts twoslash [data.ts] filename="data.ts"
-// All properties on a domain are optional
+// 域上的所有属性都是可选的
 export const domain = {
   name: 'Ether Mail',
   version: '1',
@@ -45,7 +45,7 @@ export const domain = {
   verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
 } as const
  
-// The named list of all type definitions
+// 所有类型定义的命名列表
 export const types = {
   Person: [
     { name: 'name', type: 'string' },
@@ -74,19 +74,19 @@ export const client = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `0x${string}`
 
-The signed data.
+签名的数据。
 
-## Parameters
+## 参数
 
 ### domain
 
-**Type:** `TypedDataDomain`
+**类型：** `TypedDataDomain`
 
-The typed data domain.
+类型化数据域。
 
 ```ts
 const signature = await account.signTypedData({
@@ -114,7 +114,7 @@ const signature = await account.signTypedData({
 
 ### types
 
-The type definitions for the typed data.
+类型化数据的类型定义。
 
 ```ts
 const signature = await account.signTypedData({
@@ -147,9 +147,9 @@ const signature = await account.signTypedData({
 
 ### primaryType
 
-**Type:** Inferred `string`.
+**类型：** 推断的 `string`。
 
-The primary type to extract from `types` and use in `value`.
+要从 `types` 中提取并在 `value` 中使用的主要类型。
 
 ```ts
 const signature = await account.signTypedData({
@@ -182,7 +182,7 @@ const signature = await account.signTypedData({
 
 ### message
 
-**Type:** Inferred from `types` & `primaryType`.
+**类型：** 从 `types` 和 `primaryType` 推断。
 
 ```ts
 const signature = await account.signTypedData({

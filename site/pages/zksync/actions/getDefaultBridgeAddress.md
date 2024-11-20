@@ -1,12 +1,12 @@
 ---
-description: Returns the addresses of the default ZKsync Era bridge contracts on both L1 and L2.
+description: 返回 L1 和 L2 上默认 ZKsync Era 桥接合约的地址。
 ---
 
 # getDefaultBridgeAddresses
 
-Returns the addresses of the default ZKsync Era bridge contracts on both L1 and L2.
+返回 L1 和 L2 上默认 ZKsync Era 桥接合约的地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,8 +28,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `GetDefaultBridgeAddressesReturnType`
 
-Addresses of the default ZKsync Era bridge contracts on both L1 and L2.
+默认 ZKsync Era 桥接合约在 L1 和 L2 上的地址。

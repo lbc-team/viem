@@ -1,10 +1,10 @@
-# Sending Transactions with EIP-7702
+# 使用 EIP-7702 发送交易
 
-The guide below demonstrates how to send EIP-7702 Transactions to invoke Contract functions on an Externally Owned Account.
+下面的指南演示了如何发送 EIP-7702 交易以调用外部拥有账户上的合约函数。
 
-## Overview
+## 概述
 
-Here is an end-to-end overview of how to broadcast an EIP-7702 Transaction to emit a simple event on the EOA's designated contract. We will break it down into [Steps](#steps) below.
+以下是如何广播 EIP-7702 交易以在 EOA 指定的合约上发出简单事件的端到端概述。我们将其分解为下面的 [步骤](#steps)。
 
 :::code-group
 
@@ -13,12 +13,12 @@ import { parseEther } from 'viem'
 import { walletClient } from './config'
 import { abi, contractAddress } from './contract'
 
-// 1. Authorize injection of the Contract's bytecode into our Account.
+// 1. 授权将合约的字节码注入到我们的账户中。
 const authorization = await walletClient.signAuthorization({
   contractAddress,
 })
 
-// 2. Invoke the Contract's `execute` function to perform batch calls.
+// 2. 调用合约的 `execute` 函数以执行批量调用。
 const hash = await walletClient.sendTransaction({
   authorizationList: [authorization],
   data: encodeFunctionData({
@@ -114,25 +114,25 @@ contract BatchCallDelegation {
 :::
 
 :::warning
-EIP-7702 is currently not supported on Ethereum anvil or Testnets. For this example, we are using the `anvil` chain which interfaces with an [Anvil node](https://book.getfoundry.sh/anvil/) (a local Ethereum network).
+EIP-7702 目前不支持以太坊 anvil 或测试网。对于这个示例，我们使用 `anvil` 链，它与 [Anvil 节点](https://book.getfoundry.sh/anvil/)（一个本地以太坊网络）接口。
 :::
 
-## Steps
+## 步骤
 
-### 0. Install & Run Anvil
+### 0. 安装并运行 Anvil
 
-EIP-7702 is currently not supported on Ethereum Mainnet or Testnets, so let's set up an EIP-7702 compatible network. We will use an [Anvil node](https://book.getfoundry.sh/anvil/) for this example. If you are using an existing EIP-7702 compatible network, you can skip this step.
+EIP-7702 目前不支持以太坊主网或测试网，因此让我们设置一个兼容 EIP-7702 的网络。我们将使用 [Anvil 节点](https://book.getfoundry.sh/anvil/) 作为示例。如果你使用的是现有的 EIP-7702 兼容网络，可以跳过此步骤。
 
 ```bash
 curl -L https://foundry.paradigm.xyz | bash
 anvil --hardfork prague
 ```
 
-### 1. Set up Smart Contract
+### 1. 设置智能合约
 
-We will need to set up a Smart Contract to interact with. For the purposes of this guide, we will [create](https://book.getfoundry.sh/reference/forge/forge-init) and [deploy](https://book.getfoundry.sh/forge/deploying) a `BatchCallDelegation.sol` contract, however, you can use any existing deployed contract.
+我们需要设置一个智能合约进行交互。为了本指南的目的，我们将 [创建](https://book.getfoundry.sh/reference/forge/forge-init) 和 [部署](https://book.getfoundry.sh/forge/deploying) 一个 `BatchCallDelegation.sol` 合约，但你可以使用任何现有的已部署合约。
 
-Firstly, [deploy a Contract](https://book.getfoundry.sh/forge/deploying) to the Network with the following source:
+首先， [将合约部署](https://book.getfoundry.sh/forge/deploying) 到网络，使用以下源代码：
 
 ```solidity [BatchCallDelegation.sol]
 pragma solidity ^0.8.20;
@@ -156,17 +156,17 @@ contract BatchCallDelegation {
 
 :::warning
 
-**DO NOT USE IN PRODUCTION**
+**请勿在生产环境中使用**
 
-This contract is for demonstration purposes only to show how EIP-7702 works. If a [delegate is executing calls](#5-optional-use-a-delegate) on behalf of the Account, it does not implement a nonce & signature verification mechanism to prevent replay attacks.
+此合约仅用于演示 EIP-7702 的工作原理。如果 [代理正在代表账户执行调用](#5-optional-use-a-delegate)，则未实现防止重放攻击的 nonce 和签名验证机制。
 
 :::
 
-### 2. Set up Client & Account
+### 2. 设置客户端和账户
 
-Next, we will need to set up a Client and Externally Owned Account to sign EIP-7702 Authorizations.
+接下来，我们需要设置一个客户端和外部拥有账户以签署 EIP-7702 授权。
 
-This code snippet uses the [Extending Client](/experimental/eip7702/client) guide.
+此代码片段使用 [扩展客户端](/experimental/eip7702/client) 指南。
 
 ```ts twoslash [config.ts]
 import { createWalletClient, http } from 'viem'
@@ -183,11 +183,11 @@ export const walletClient = createWalletClient({
 }).extend(eip7702Actions())
 ```
 
-### 3. Authorize Contract Designation
+### 3. 授权合约指定
 
-We will need to sign an Authorization to designate the Contract to the Account.
+我们需要签署一个授权以将合约指定给账户。
 
-In the example below, we are using the `account` attached to the `walletClient` to sign the Authorization – this will be the Account that the Contract's bytecode will be injected into.
+在下面的示例中，我们使用附加到 `walletClient` 的 `account` 来签署授权——这将是合约字节码将被注入的账户。
 
 :::code-group
 
@@ -250,9 +250,9 @@ export const walletClient = createWalletClient({
 
 :::
 
-### 4. Invoke Contract Function
+### 4. 调用合约函数
 
-We can now perform batch calls by sending a Transaction to the Account (`account`) with the Authorization (`authorizationList`).
+我们现在可以通过向账户（`account`）发送带有授权（`authorizationList`）的交易来执行批量调用。
 
 :::code-group
 
@@ -339,9 +339,9 @@ export const walletClient = createWalletClient({
 
 :::
 
-### 5. Optional: Use a Delegate
+### 5. 可选：使用代理
 
-We can also utilize an Delegate Account to execute a call on behalf of the authorizing Account. This is useful for cases where we want to "sponsor" the Transaction for the user (i.e. pay for their gas fees).
+我们还可以利用代理账户代表授权账户执行调用。这在我们想要为用户“赞助”交易（即支付他们的 gas 费用）时非常有用。
 
 :::code-group
 

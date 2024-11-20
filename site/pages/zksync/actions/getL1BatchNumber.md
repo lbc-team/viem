@@ -1,12 +1,12 @@
 ---
-description: Returns the latest L1 batch number.
+description: 返回最新的 L1 批次号。
 ---
 
 # getL1BatchNumber
 
-Returns the latest L1 batch number.
+返回最新的 L1 批次号。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -27,8 +27,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `Hex`
 
-Latest L1 batch number. 
+最新的 L1 批次号。

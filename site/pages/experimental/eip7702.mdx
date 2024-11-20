@@ -1,25 +1,25 @@
 ---
-description: An Overview of EIP-7702
+description: EIP-7702 概述
 ---
 
-# EIP-7702 Overview
+# EIP-7702 概述
 
-EIP-7702 is a proposal to add a new Transaction type to allow an EOA to designate a Smart Contract as its "implementation".
+EIP-7702 是一个提案，旨在添加一种新的交易类型，以允许外部拥有账户（EOA）指定一个智能合约作为其“实现”。
 
-The main difference between an EIP-7702 Transaction and other transactions is the inclusion of a **"authorization list"** property, a set of `(chain_id, contract_address, nonce, y_parity, r, s)` tuples that depict what Contract bytecode(s) should be injected onto the Externally Owned Account during execution. 
+EIP-7702 交易与其他交易的主要区别在于包含一个 **“授权列表”** 属性，这是一组 `(chain_id, contract_address, nonce, y_parity, r, s)` 元组，描述在执行期间应注入到外部拥有账户的合约字节码。
 
 :::note
-In Viem, you won't need to worry about constructing these Authorization Tuples manually as you can use [`signAuthorization`](/experimental/eip7702/signAuthorization) to generate them and use them in [Transaction APIs](/experimental/eip7702/contract-writes).
+在 Viem 中，你无需担心手动构造这些授权元组，因为你可以使用 [`signAuthorization`](/experimental/eip7702/signAuthorization) 来生成它们，并在 [交易 API](/experimental/eip7702/contract-writes) 中使用它们。
 :::
 
-Applications of EIP-7702 include:
+EIP-7702 的应用包括：
 
-- **Batching**: allowing multiple operations from the same user in one atomic transaction. One common example is an ERC-20 approval followed by spending that approval, a common workflow in DEXes that requires two transactions today. Advanced use cases of batching occasionally involve dependencies: the output of the first operation is part of the input to the second operation. [Example](/experimental/eip7702/contract-writes#5-invoke-contract-function)
-- **Sponsorship**: account X pays for a transaction on behalf of account Y. Account X could be paid in some other ERC-20 for this service, or it could be an application operator including the transactions of its users for free. [Example](/experimental/eip7702/contract-writes#6-optional-use-a-delegate)
-- **Privilege de-escalation**: users can sign sub-keys, and give them specific permissions that are much weaker than global access to the account. For example, you could imagine a permission to spend ERC-20 tokens but not ETH, or to spend up to 1% of total balance per day, or to interact only with a specific application.
+- **批处理**：允许同一用户在一个原子交易中进行多个操作。一个常见的例子是 ERC-20 授权后跟随使用该授权的支出，这是 DEX 中常见的工作流程，目前需要两个交易。批处理的高级用例有时涉及依赖关系：第一个操作的输出是第二个操作的输入的一部分。 [示例](/experimental/eip7702/contract-writes#5-invoke-contract-function)
+- **赞助**：账户 X 代表账户 Y 支付交易费用。账户 X 可以用其他 ERC-20 代币为此服务支付，或者它可以是一个应用程序运营商，免费包含其用户的交易。 [示例](/experimental/eip7702/contract-writes#6-optional-use-a-delegate)
+- **权限降级**：用户可以签署子密钥，并赋予它们比全局访问账户更弱的特定权限。例如，你可以想象一个权限，允许支出 ERC-20 代币但不允许支出 ETH，或者每天支出总余额的 1%，或者仅与特定应用程序交互。
 
-## Next Steps
+## 下一步
 
-- [Extending Client with EIP-7702](/experimental/eip7702/client)
-- [Contract Writes](/experimental/eip7702/contract-writes)
-- [Sending Transactions](/experimental/eip7702/sending-transactions)
+- [使用 EIP-7702 扩展客户端](/experimental/eip7702/client)
+- [合约写入](/experimental/eip7702/contract-writes)
+- [发送交易](/experimental/eip7702/sending-transactions)

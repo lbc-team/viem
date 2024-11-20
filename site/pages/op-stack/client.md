@@ -1,10 +1,10 @@
-# Client [Setting up your Viem Client with the OP Stack]
+# 客户端 [使用 OP Stack 设置你的 Viem 客户端]
 
-To use the OP Stack functionality of Viem, you must extend your existing (or new) Viem Client with OP Stack Actions.
+要使用 Viem 的 OP Stack 功能，你必须使用 OP Stack 操作扩展现有的（或新的）Viem 客户端。
 
-## Usage
+## 用法
 
-### Layer 1 Extensions
+### 第一层扩展
 
 ```ts
 import { createPublicClient, createWalletClient, http } from 'viem'
@@ -19,7 +19,7 @@ const walletClient = createWalletClient({
 const hash = await walletClient.depositTransaction({/* ... */})
 ```
 
-### Layer 2 Extensions
+### 第二层扩展
 
 ```ts
 import { createPublicClient, http } from 'viem'
@@ -34,11 +34,11 @@ const publicClient = createPublicClient({
 const l1Gas = await publicClient.estimateL1Gas({/* ... */})
 ```
 
-## Extensions
+## 扩展
 
 ### `walletActionsL1`
 
-A suite of [Wallet Actions](/op-stack/actions/estimateL1Gas) for suited for development with **Layer 1** chains that interact with **Layer 2 (OP Stack)** chains.
+一套适用于与 **第一层** 链交互的 **第二层 (OP Stack)** 链开发的 [钱包操作](/op-stack/actions/estimateL1Gas)。
 
 ```ts
 import { walletActionsL1 } from 'viem/op-stack'
@@ -46,7 +46,7 @@ import { walletActionsL1 } from 'viem/op-stack'
 
 ### `publicActionsL1`
 
-A suite of [Public Actions](/op-stack/actions/getTimeToProve) suited for development with **Layer 1** chains. These actions provide functionalities specific to public clients operating at the Layer 1 level, enabling them to interact seamlessly with Layer 2 protocols.
+一套适用于与 **第一层** 链开发的 [公共操作](/op-stack/actions/getTimeToProve)。这些操作提供了特定于在第一层级别操作的公共客户端的功能，使其能够与第二层协议无缝交互。
 
 ```ts
 import { publicActionsL1 } from 'viem/op-stack'
@@ -54,7 +54,7 @@ import { publicActionsL1 } from 'viem/op-stack'
 
 ### `walletActionsL2`
 
-A suite of [Wallet Actions](/op-stack/actions/estimateL1Fee) suited for development with **Layer 2 (OP Stack)** chains. These actions are tailored for wallets operating on Layer 2, providing advanced features and integrations necessary for Layer 2 financial operations.
+一套适用于与 **第二层 (OP Stack)** 链开发的 [钱包操作](/op-stack/actions/estimateL1Fee)。这些操作专为在第二层上运行的钱包量身定制，提供了进行第二层金融操作所需的高级功能和集成。
 
 ```ts
 import { walletActionsL2 } from 'viem/op-stack'
@@ -62,7 +62,7 @@ import { walletActionsL2 } from 'viem/op-stack'
 
 ### `publicActionsL2`
 
-A suite of [Public Actions](/op-stack/actions/estimateL1Gas) for suited for development with **Layer 2 (OP Stack)** chains.
+一套适用于与 **第二层 (OP Stack)** 链开发的 [公共操作](/op-stack/actions/estimateL1Gas)。
 
 ```ts
 import { publicActionsL2 } from 'viem/op-stack'

@@ -1,18 +1,18 @@
 # createWebAuthnCredential
 
-Registers a **WebAuthn Credential** designed to be used to create a [WebAuthn Account](/account-abstraction/accounts/webauthn/toWebAuthnAccount).
+注册一个 **WebAuthn Credential**，旨在用于创建一个 [WebAuthn Account](/account-abstraction/accounts/webauthn/toWebAuthnAccount)。
 
 :::note
-This function uses the [`webauthn-p256` library](https://github.com/wevm/webauthn-p256) under-the-hood.
+此函数在底层使用 [`webauthn-p256` 库](https://github.com/wevm/webauthn-p256)。
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { createWebAuthnCredential } from 'viem/account-abstraction'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { 
@@ -20,30 +20,30 @@ import {
   toWebAuthnAccount 
 } from 'viem/account-abstraction'
 
-// Register a credential (ie. passkey). // [!code focus]
+// 注册一个凭证（即通行证）。 // [!code focus]
 const credential = await createWebAuthnCredential({ // [!code focus]
   name: 'Example', // [!code focus]
 }) // [!code focus]
 
-// Create a WebAuthn account from the credential.
+// 从凭证创建一个 WebAuthn 账户。
 const account = toWebAuthnAccount({
   credential,
 })
 ```
 
-## Returns
+## 返回
 
 `P256Credential`
 
-A P-256 WebAuthn Credential.
+一个 P-256 WebAuthn Credential。
 
-## Parameters
+## 参数
 
 ### challenge
 
-- **Type:** `Uint8Array`
+- **类型:** `Uint8Array`
 
-An `ArrayBuffer`, `TypedArray`, or `DataView` used as a cryptographic challenge.
+一个用作加密挑战的 `ArrayBuffer`、`TypedArray` 或 `DataView`。
 
 ```ts twoslash
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'
@@ -56,10 +56,10 @@ const credential = await createWebAuthnCredential({
 
 ### createFn
 
-- **Type:** `(options: CredentialCreationOptions) => Promise<Credential | null>`
-- **Default:** `window.navigator.credentials.create`
+- **类型:** `(options: CredentialCreationOptions) => Promise<Credential | null>`
+- **默认值:** `window.navigator.credentials.create`
 
-Credential creation function. Useful for environments that do not support the WebAuthn API natively (i.e. React Native or testing environments).
+凭证创建函数。对于不原生支持 WebAuthn API 的环境（即 React Native 或测试环境）非常有用。
 
 ```ts twoslash
 // @noErrors
@@ -79,9 +79,9 @@ const account = toWebAuthnAccount({
 
 ### excludeCredentialIds
 
-- **Type:** `string[]`
+- **类型:** `string[]`
 
-List of credential IDs to exclude from the creation. This property can be used to prevent creation of a credential if it already exists.
+要排除在创建中的凭证 ID 列表。此属性可用于防止创建已存在的凭证。
 
 ```ts twoslash
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'
@@ -94,9 +94,9 @@ const credential = await createWebAuthnCredential({
 
 ### name
 
-- **Type:** `string`
+- **类型:** `string`
 
-Name to identify the credential.
+用于标识凭证的名称。
 
 ```ts twoslash
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'
@@ -112,9 +112,9 @@ const account = toWebAuthnAccount({
 
 ### rp
 
-- **Type:** `{ id: string; name: string }`
+- **类型:** `{ id: string; name: string }`
 
-An object describing the relying party that requested the credential creation
+描述请求凭证创建的依赖方的对象。
 
 ```ts twoslash
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'
@@ -134,9 +134,9 @@ const account = toWebAuthnAccount({
 
 ### timeout
 
-- **Type:** `number`
+- **类型:** `number`
 
-A numerical hint, in milliseconds, which indicates the time the calling web app is willing to wait for the creation operation to complete.
+一个数值提示，以毫秒为单位，指示调用的 Web 应用程序愿意等待创建操作完成的时间。
 
 ```ts twoslash
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'

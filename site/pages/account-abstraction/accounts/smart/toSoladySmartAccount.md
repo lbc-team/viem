@@ -1,12 +1,12 @@
-# Solady Smart Account
+# Solady 智能账户
 
-The `toSoladySmartAccount` simple Smart Account Implementation that references [Solady's `ERC4337.sol`](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC4337.sol) Smart Account contract.
+`toSoladySmartAccount` 是一个简单的智能账户实现，引用了 [Solady 的 `ERC4337.sol`](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC4337.sol) 智能账户合约。
 
 :::warning
-This implementation is unaudited. It is intended to be used for testing purposes or as a reference to implement a [Custom Account](/account-abstraction/accounts/smart/toSmartAccount).
+此实现未经审计。它旨在用于测试目的或作为实现 [自定义账户](/account-abstraction/accounts/smart/toSmartAccount) 的参考。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -35,23 +35,22 @@ export const client = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `SmartAccount<SoladySmartAccountImplementation>`
 
-## Parameters
+## 参数
 
-### entryPoint (optional)
+### entryPoint（可选）
 
-- **Type:** `{ abi: Abi, address: Address, version: EntryPointVersion }`
+- **类型：** `{ abi: Abi, address: Address, version: EntryPointVersion }`
 
-Compatible EntryPoint for the Smart Account to reference. The EntryPoint is used
-to:
+智能账户引用的兼容 EntryPoint。EntryPoint 用于：
 
-- Determine the target EntryPoint address for the User Operation
-- Compute User Operation hashes
-- Retrieve the Smart Account nonce
-- Distinguish which type of `UserOperation` structure to use
+- 确定用户操作的目标 EntryPoint 地址
+- 计算用户操作哈希
+- 检索智能账户的 nonce
+- 区分使用哪种类型的 `UserOperation` 结构
 
 ```ts
 const account = await toSoladySmartAccount({
@@ -67,9 +66,9 @@ const account = await toSoladySmartAccount({
 
 ### factoryAddress
 
-- **Type:** `Address`
+- **类型：** `Address`
 
-Factory address of the Smart Account.
+智能账户的工厂地址。
 
 ```ts
 const account = await toSoladySmartAccount({
@@ -81,9 +80,9 @@ const account = await toSoladySmartAccount({
 
 ### owner
 
-- **Type:** `Address | Account`
+- **类型：** `Address | Account`
 
-Owner of the Smart Account.
+智能账户的所有者。
 
 ```ts
 const account = await toSoladySmartAccount({
@@ -92,11 +91,11 @@ const account = await toSoladySmartAccount({
 })
 ```
 
-### salt (optional)
+### salt（可选）
 
-- **Type:** `Hex`
+- **类型：** `Hex`
 
-Salt to use for Smart Account deployment.
+用于智能账户部署的盐值。
 
 ```ts
 const account = await toSoladySmartAccount({

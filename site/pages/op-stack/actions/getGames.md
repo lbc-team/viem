@@ -1,17 +1,17 @@
 ---
 outline: deep
-description: Retrieves dispute games for an L2.
+description: 检索 L2 的争议游戏。
 ---
 
 # getGames
 
-Retrieves dispute games for an L2. Used for the [Withdrawal](/op-stack/guides/withdrawals) flow.
+检索 L2 的争议游戏。用于 [Withdrawal](/op-stack/guides/withdrawals) 流程。
 
 :::info
-This Action is only compatible with OP Stack chains that have upgraded to [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) and have a deployed [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json).
+此操作仅与已升级到 [Fault Proofs](https://docs.optimism.io/stack/protocol/fault-proofs/overview) 并已部署 [DisputeGameFactoryProxy contract](https://github.com/ethereum-optimism/superchain-registry/blob/main/superchain/extra/addresses/addresses.json) 的 OP Stack 链兼容。
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -37,19 +37,19 @@ export const publicClientL1 = createPublicClient({
 
 :::
 
-## Returns
+## 返回
 
 `GetGamesReturnType`
 
-Dispute games.
+争议游戏。
 
-## Parameters
+## 参数
 
 ### targetChain
 
-- **Type:** [`Chain`](/docs/glossary/types#chain)
+- **类型:** [`Chain`](/docs/glossary/types#chain)
 
-The L2 chain.
+L2 链。
 
 ```ts
 const games = await publicClientL1.getGames({
@@ -58,14 +58,14 @@ const games = await publicClientL1.getGames({
 })
 ```
 
-### disputeGameFactoryAddress (optional)
+### disputeGameFactoryAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.disputeGameFactory[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.disputeGameFactory[chainId].address`
 
-The address of the [`DisputeGameFactory` contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol). Defaults to the `DisputeGameFactory` contract specified on the `targetChain`.
+[`DisputeGameFactory` contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol) 的地址。默认为 `targetChain` 上指定的 `DisputeGameFactory` 合约。
 
-If a `disputeGameFactoryAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `disputeGameFactoryAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const games = await publicClientL1.getGames({
@@ -74,11 +74,11 @@ const games = await publicClientL1.getGames({
 })
 ```
 
-### l2BlockNumber (optional)
+### l2BlockNumber (可选)
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-The L2 block number.
+L2 区块号。
 
 ```ts
 const games = await publicClientL1.getGames({ 
@@ -87,12 +87,12 @@ const games = await publicClientL1.getGames({
 }) 
 ```
 
-### limit (optional)
+### limit (可选)
 
-- **Type:** `number`
-- **Default:** `100`
+- **类型:** `number`
+- **默认:** `100`
 
-Limit of games to extract.
+提取的游戏限制。
 
 ```ts
 const games = await publicClientL1.getGames({ 
@@ -101,14 +101,14 @@ const games = await publicClientL1.getGames({
 }) 
 ```
 
-### portalAddress (optional)
+### portalAddress (可选)
 
-- **Type:** `Address`
-- **Default:** `targetChain.contracts.portal[chainId].address`
+- **类型:** `Address`
+- **默认:** `targetChain.contracts.portal[chainId].address`
 
-The address of the [`Portal` contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal2.sol). Defaults to the `Portal` contract specified on the `targetChain`.
+[`Portal` contract](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal2.sol) 的地址。默认为 `targetChain` 上指定的 `Portal` 合约。
 
-If a `portalAddress` is provided, the `targetChain` parameter becomes optional.
+如果提供了 `portalAddress`，则 `targetChain` 参数变为可选。
 
 ```ts
 const games = await publicClientL1.getGames({

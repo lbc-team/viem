@@ -1,6 +1,6 @@
-# Chains
+# 链
 
-The following Viem chains are implemented on the OP Stack:
+以下 Viem 链在 OP Stack 上实现：
 
 ```ts
 import {
@@ -20,9 +20,9 @@ import {
 } from 'viem/chains'
 ```
 
-## Configuration
+## 配置
 
-Viem exports OP Stack's chain [formatters](/docs/chains/formatters) & [serializers](/docs/chains/serializers) via `chainConfig`. This is useful if you need to define another chain which is implemented on the OP Stack.
+Viem 通过 `chainConfig` 导出 OP Stack 的链 [格式化器](/docs/chains/formatters) 和 [序列化器](/docs/chains/serializers)。如果你需要定义另一个在 OP Stack 上实现的链，这非常有用。
 
 ```ts
 import { defineChain } from 'viem'
@@ -30,7 +30,7 @@ import { chainConfig } from 'viem/op-stack'
 
 export const opStackExample = defineChain({
   ...chainConfig,
-  name: 'OP Stack Example',
+  name: 'OP Stack 示例',
   // ...
 })
 ```

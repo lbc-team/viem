@@ -1,12 +1,12 @@
-# Trust Smart Account
+# 信任智能账户
 
 :::warning
-**Note:** This implementation is maintained & distributed by [permissionless.js](https://docs.pimlico.io/permissionless).
+**注意：** 此实现由 [permissionless.js](https://docs.pimlico.io/permissionless) 维护和分发。
 :::
 
-To implement the [Trust Smart Wallet](https://developer.trustwallet.com/developer/barz-smart-wallet/build-with-trust-wallet-and-barz-aa-sdk), you can use the [`toTrustSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toTrustSmartAccount) module from [permissionless.js](https://docs.pimlico.io/permissionless/)
+要实现 [信任智能钱包](https://developer.trustwallet.com/developer/barz-smart-wallet/build-with-trust-wallet-and-barz-aa-sdk)，你可以使用来自 [permissionless.js](https://docs.pimlico.io/permissionless/) 的 [`toTrustSmartAccount`](https://docs.pimlico.io/permissionless/reference/accounts/toTrustSmartAccount) 模块。
 
-## Install
+## 安装
 
 :::code-group
 ```bash [pnpm]
@@ -26,7 +26,7 @@ bun add permissionless
 ```
 :::
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -51,17 +51,17 @@ export const client = createPublicClient({
 })
 ```
 
-```ts twoslash [owner.ts (Private Key)] filename="owner.ts"
+```ts twoslash [owner.ts (私钥)] filename="owner.ts"
 import { privateKeyToAccount } from 'viem/accounts'
  
 export const owner = privateKeyToAccount('0x...')
 ```
 :::
 
-## Returns
+## 返回
 
 `SmartAccount<TrustSmartAccountImplementation>`
 
-## Parameters
+## 参数
 
-[See Parameters](https://docs.pimlico.io/permissionless/reference/accounts/toTrustSmartAccount#parameters)
+[查看参数](https://docs.pimlico.io/permissionless/reference/accounts/toTrustSmartAccount#parameters)

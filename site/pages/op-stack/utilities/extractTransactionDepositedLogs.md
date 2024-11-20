@@ -1,17 +1,17 @@
 ---
-description: Extracts "TransactionDeposited" logs from an opaque array of logs.
+description: 从不透明的日志数组中提取“TransactionDeposited”日志。
 ---
 
 # extractTransactionDepositedLogs
 
-Extracts `TransactionDeposited` logs from an opaque array of logs.
+从不透明的日志数组中提取 `TransactionDeposited` 日志。
 
-## Import
+## 导入
 ```ts
 import { extractTransactionDepositedLogs } from 'viem'
 ```
 
-## Usage
+## 用法
 
 ```ts
 import { extractTransactionDepositedLogs } from 'viem'
@@ -28,19 +28,19 @@ const logs = extractTransactionDepositedLogs(receipt)
 // ]
 ```
 
-## Returns
+## 返回
 
 `Log[]`
 
-The `TransactionDeposited` logs.
+`TransactionDeposited` 日志。
 
-## Parameters
+## 参数
 
 ### logs
 
-- **Type:** `Log[]`
+- **类型:** `Log[]`
 
-An array of opaque logs.
+一个不透明日志的数组。
 
 ```ts
 const logs = extractTransactionDepositedLogs({ 

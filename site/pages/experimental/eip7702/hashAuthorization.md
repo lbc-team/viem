@@ -1,18 +1,18 @@
 ---
-description: Calculates an Authorization object hash in EIP-7702 format.
+description: 计算 EIP-7702 格式的授权对象哈希。
 ---
 
 # hashAuthorization
 
-Calculates an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702): `keccak256('0x05' || rlp([chain_id, address, nonce]))`.
+计算 [EIP-7702 格式](https://eips.ethereum.org/EIPS/eip-7702) 的授权哈希：`keccak256('0x05' || rlp([chain_id, address, nonce]))`。
 
-## Import
+## 导入
 
 ```ts twoslash
 import { hashAuthorization } from 'viem/experimental'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { hashAuthorization } from 'viem/experimental'
@@ -25,19 +25,19 @@ hashAuthorization({
 // 0xd428ed36e6098e46b40a4cb99b83b930b0ca1f054f40b5996589eda33c295663
 ```
 
-## Returns
+## 返回
 
 [`Hash`](/docs/glossary/types#hash)
 
-The hashed Authorization.
+已哈希的授权。
 
-## Parameters
+## 参数
 
 ### address
 
-- **Type:** `Address`
+- **类型:** `Address`
 
-Address of the contract to set as code for the Authority.
+要设置为 Authority 代码的合约地址。
 
 ```ts twoslash
 import { hashAuthorization } from 'viem/experimental'
@@ -51,9 +51,9 @@ hashAuthorization({
 
 ### chainId
 
-- **Type:** `number`
+- **类型:** `number`
 
-Chain ID to authorize.
+要授权的链 ID。
 
 ```ts twoslash
 import { hashAuthorization } from 'viem/experimental'
@@ -67,9 +67,9 @@ hashAuthorization({
 
 ### nonce
 
-- **Type:** `number`
+- **类型:** `number`
 
-Nonce of the Authority to authorize.
+要授权的 Authority 的 nonce。
 
 ```ts twoslash
 import { hashAuthorization } from 'viem/experimental'
@@ -83,10 +83,10 @@ hashAuthorization({
 
 ### to
 
-- **Type:** `"hex" | "bytes"`
-- **Default:** `"hex"`
+- **类型:** `"hex" | "bytes"`
+- **默认:** `"hex"`
 
-Output format.
+输出格式。
 
 ```ts twoslash
 import { hashAuthorization } from 'viem/experimental'

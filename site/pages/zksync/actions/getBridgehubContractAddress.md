@@ -1,12 +1,12 @@
 ---
-description: Returns the Bridgehub smart contract address.
+description: 返回 Bridgehub 智能合约地址。
 ---
 
 # getBridgehubContractAddress
 
-Returns the Bridgehub smart contract address.
+返回 Bridgehub 智能合约地址。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,8 +28,8 @@ export const client = createPublicClient({
 ```
 :::
 
-## Returns 
+## 返回 
 
 `Address`
 
-Bridgehub smart contract address.
+Bridgehub 智能合约地址。

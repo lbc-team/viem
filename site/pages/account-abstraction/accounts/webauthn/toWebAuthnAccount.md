@@ -1,20 +1,20 @@
 # toWebAuthnAccount
 
-Creates a **WebAuthn Account** – commonly used for **[Smart Account](/account-abstraction/accounts/smart) Owners** to sign User Operations and messages on behalf of the Smart Account.
+创建一个 **WebAuthn 账户** – 通常用于 **[智能账户](/account-abstraction/accounts/smart) 所有者** 代表智能账户签署用户操作和消息。
 
 :::note
-WebAuthn Account owners are currently supported on the following Smart Account implementations:
+当前支持 WebAuthn 账户所有者的智能账户实现包括：
 
 - [`toCoinbaseSmartAccount`](/account-abstraction/accounts/smart/toCoinbaseSmartAccount#owners)
 :::
 
-## Import
+## 导入
 
 ```ts twoslash
 import { toWebAuthnAccount } from 'viem/account-abstraction'
 ```
 
-## Usage
+## 用法
 
 ```ts twoslash
 import { 
@@ -22,30 +22,30 @@ import {
   toWebAuthnAccount 
 } from 'viem/account-abstraction'
 
-// Register a credential (ie. passkey).
+// 注册凭证（即密码密钥）。
 const credential = await createWebAuthnCredential({
   name: 'Example',
 })
 
-// Create a WebAuthn account from the credential. // [!code focus]
+// 从凭证创建 WebAuthn 账户。 // [!code focus]
 const account = toWebAuthnAccount({ // [!code focus]
   credential, // [!code focus]
 }) // [!code focus]
 ```
 
-## Returns
+## 返回
 
 `WebAuthnAccount`
 
-A WebAuthn Account.
+一个 WebAuthn 账户。
 
-## Parameters
+## 参数
 
 ### credential
 
-- **Type:** `P256Credential`
+- **类型:** `P256Credential`
 
-A P256 WebAuthn Credential.
+一个 P256 WebAuthn 凭证。
 
 ```ts twoslash
 import { createWebAuthnCredential, toWebAuthnAccount } from 'viem/account-abstraction'
@@ -61,10 +61,10 @@ const account = toWebAuthnAccount({
 
 ### getFn
 
-- **Type:** `(options: CredentialRequestOptions) => Promise<Credential | null>`
-- **Default:** `window.navigator.credentials.get`
+- **类型:** `(options: CredentialRequestOptions) => Promise<Credential | null>`
+- **默认值:** `window.navigator.credentials.get`
 
-Credential request function. Useful for environments that do not support the WebAuthn API natively (i.e. React Native or testing environments).
+凭证请求函数。对于不原生支持 WebAuthn API 的环境（即 React Native 或测试环境）非常有用。
 
 ```ts twoslash
 // @noErrors
@@ -84,10 +84,10 @@ const account = toWebAuthnAccount({
 
 ### rpId
 
-- **Type:** `string`
-- **Default:** `window.location.hostname`
+- **类型:** `string`
+- **默认值:** `window.location.hostname`
 
-Relying Party ID.
+依赖方 ID。
 
 ```ts twoslash
 // @noErrors

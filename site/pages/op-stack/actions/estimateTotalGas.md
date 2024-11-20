@@ -1,14 +1,14 @@
 ---
-description: Estimates the amount of L1 + L2 gas required to execute an L2 transaction
+description: 估算执行 L2 交易所需的 L1 + L2 gas 量
 ---
 
 # estimateTotalGas
 
-Estimates the amount of [L1 data gas](https://docs.optimism.io/stack/transactions/fees#l1-data-fee) + L2 gas required to execute an L2 transaction.
+估算执行 L2 交易所需的 [L1 数据 gas](https://docs.optimism.io/stack/transactions/fees#l1-data-fee) + L2 gas 量。
 
-It is the sum of [`estimateL1Gas`](/op-stack/actions/estimateL1Gas) (L1 Gas) and [`estimateGas`](/docs/actions/public/estimateGas.md) (L2 Gas).
+它是 [`estimateL1Gas`](/op-stack/actions/estimateL1Gas)（L1 Gas）和 [`estimateGas`](/docs/actions/public/estimateGas.md)（L2 Gas）的总和。
 
-## Usage
+## 用法
 
 :::code-group
 
@@ -28,9 +28,9 @@ import { privateKeyToAccount } from 'viem/accounts'
 import { base } from 'viem/chains'
 import { publicActionsL2 } from 'viem/op-stack'
 
-// JSON-RPC Account
+// JSON-RPC 账户
 export const account = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266'
-// Local Account
+// 本地账户
 export const account = privateKeyToAccount(...)
 
 export const publicClient = createPublicClient({
@@ -41,21 +41,21 @@ export const publicClient = createPublicClient({
 
 :::
 
-## Returns
+## 返回值
 
 `bigint`
 
-The total (L1 + L2) gas estimate.
+总的 (L1 + L2) gas 估算。
 
-## Parameters
+## 参数
 
 ### account
 
-- **Type:** `Account | Address`
+- **类型:** `Account | Address`
 
-The Account to estimate gas from.
+用于估算 gas 的账户。
 
-Accepts a [JSON-RPC Account](/docs/clients/wallet#json-rpc-accounts) or [Local Account (Private Key, etc)](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc).
+接受 [JSON-RPC 账户](/docs/clients/wallet#json-rpc-accounts) 或 [本地账户（私钥等）](/docs/clients/wallet#local-accounts-private-key-mnemonic-etc)。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
@@ -65,11 +65,11 @@ const gas = await publicClient.estimateTotalGas({
 })
 ```
 
-### data (optional)
+### data（可选）
 
-- **Type:** `0x${string}`
+- **类型:** `0x${string}`
 
-Contract code or a hashed method call with encoded args.
+合约代码或带有编码参数的哈希方法调用。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
@@ -80,11 +80,11 @@ const gas = await publicClient.estimateTotalGas({
 })
 ```
 
-### gasPriceOracleAddress (optional)
+### gasPriceOracleAddress（可选）
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-Address of the Gas Price Oracle predeploy contract.
+Gas 价格预部署合约的地址。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
@@ -95,11 +95,11 @@ const gas = await publicClient.estimateTotalGas({
 })
 ```
 
-### maxFeePerGas (optional)
+### maxFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Total fee per gas (in wei), inclusive of `maxPriorityFeePerGas`. 
+每个 gas 的总费用（以 wei 为单位），包括 `maxPriorityFeePerGas`。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
@@ -110,11 +110,11 @@ const gas = await publicClient.estimateTotalGas({
 })
 ```
 
-### maxPriorityFeePerGas (optional)
+### maxPriorityFeePerGas（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Max priority fee per gas (in wei). 
+每个 gas 的最大优先费用（以 wei 为单位）。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
@@ -126,11 +126,11 @@ const gas = await publicClient.estimateTotalGas({
 })
 ```
 
-### nonce (optional)
+### nonce（可选）
 
-- **Type:** `number`
+- **类型:** `number`
 
-Unique number identifying this transaction.
+唯一标识此交易的数字。
 
 ```ts
 const fee = await publicClient.estimateTotalGas({
@@ -143,11 +143,11 @@ const fee = await publicClient.estimateTotalGas({
 })
 ```
 
-### to (optional)
+### to（可选）
 
-- **Type:** [`Address`](/docs/glossary/types#address)
+- **类型:** [`Address`](/docs/glossary/types#address)
 
-Transaction recipient.
+交易接收者。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
@@ -157,11 +157,11 @@ const gas = await publicClient.estimateTotalGas({
 })
 ```
 
-### value (optional)
+### value（可选）
 
-- **Type:** `bigint`
+- **类型:** `bigint`
 
-Value (in wei) sent with this transaction.
+与此交易一起发送的值（以 wei 为单位）。
 
 ```ts
 const gas = await publicClient.estimateTotalGas({
