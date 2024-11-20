@@ -21,8 +21,8 @@ export default defineConfig({
   description:
     'Build reliable Ethereum apps & libraries with lightweight, composable, & type-safe modules from viem.',
   editLink: {
-    pattern: 'https://github.com/wevm/viem/edit/main/site/pages/:path',
-    text: 'Suggest changes to this page',
+    pattern: 'https://github.com/lbc-team/viem/edit/main/site/pages/:path',
+    text: '对该页面进行更改建议。',
   },
   head() {
     return (
@@ -57,7 +57,7 @@ export default defineConfig({
   socials: [
     {
       icon: 'github',
-      link: 'https://github.com/wevm/viem',
+      link: 'https://github.com/lbc-team/viem',
     },
     // {
     //   icon: 'discord',
@@ -300,12 +300,12 @@ export default defineConfig({
     },
   },
   topNav: [
-    { text: 'Docs', link: '/docs/getting-started', match: '/docs' },
+    { text: '文档', link: '/docs/getting-started', match: '/docs' },
     {
-      text: 'Extensions',
+      text: '扩展',
       items: [
         {
-          text: 'Account Abstraction',
+          text: '账户抽象',
           link: '/account-abstraction',
         },
         {
@@ -317,31 +317,31 @@ export default defineConfig({
           link: '/zksync',
         },
         {
-          text: 'Experimental',
+          text: '实验性',
           link: '/experimental',
         },
       ],
     },
     {
-      text: 'Examples',
-      link: 'https://github.com/wevm/viem/tree/main/examples',
+      text: '示例',
+      link: 'https://github.com/lbc-team/viem/tree/main/examples',
     },
     {
       text: pkg.version,
       items: [
         {
-          text: `Migrating to ${toPatchVersionRange(pkg.version)}`,
+          text: `迁移至 ${toPatchVersionRange(pkg.version)}`,
           link: `/docs/migration-guide#_${toPatchVersionRange(
             pkg.version,
           ).replace(/\./g, '-')}-breaking-changes`,
         },
         {
-          text: 'Changelog',
-          link: 'https://github.com/wevm/viem/blob/main/src/CHANGELOG.md',
+          text: '变更日志',
+          link: 'https://github.com/lbc-team/viem/blob/main/src/CHANGELOG.md',
         },
         {
-          text: 'Contributing',
-          link: 'https://github.com/wevm/viem/blob/main/.github/CONTRIBUTING.md',
+          text: '贡献',
+          link: 'https://github.com/lbc-team/viem/blob/main/.github/CONTRIBUTING.md',
         },
       ],
     },
