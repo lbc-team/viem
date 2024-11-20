@@ -51,6 +51,8 @@
 
 <br>
 
+# [Viem 中文文档](./README_CN.md)
+
 ## Features
 
 - Abstractions over the [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc/) to make your life easier
