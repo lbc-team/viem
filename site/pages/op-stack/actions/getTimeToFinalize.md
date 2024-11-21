@@ -5,7 +5,7 @@ description: 返回可以完成提款交易的时间。
 
 # getTimeToFinalize
 
-返回可以完成提款交易的时间。用于[提款](/op-stack/guides/withdrawals)流程。
+返回可以完成提款交易的时间。用于 [提款](/op-stack/guides/withdrawals) 流程。
 
 ## 用法
 
@@ -90,7 +90,7 @@ const { seconds, timestamp } = await publicClientL1.getTimeToFinalize({
 - **类型:** `Address`
 - **默认:** `targetChain.contracts.l2OutputOracle[chainId].address`
 
-[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol)的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
+[L2 输出预言机合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/L2OutputOracle.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
 如果提供了 `l2OutputOracleAddress`，则 `targetChain` 参数变为可选。
 
@@ -107,7 +107,7 @@ const { seconds } = await publicClientL1.getTimeToFinalize({
 - **类型:** `Address`
 - **默认:** `targetChain.contracts.portal[chainId].address`
 
-[Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol)的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
+[Portal 合约](https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/OptimismPortal.sol) 的地址。默认为在 `targetChain` 上指定的 L2 输出预言机合约。
 
 如果提供了 `portalAddress`，则 `targetChain` 参数变为可选。
 

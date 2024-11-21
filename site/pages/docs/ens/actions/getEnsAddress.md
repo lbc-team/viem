@@ -35,7 +35,7 @@ export const publicClient = createPublicClient({
 :::
 
 :::warning
-由于 ENS 名称禁止某些禁止字符（例如下划线）并具有其他验证规则，因此你可能希望在将其传递给 `getEnsAddress` 之前使用 [UTS-46 规范化](https://unicode.org/reports/tr46) 来[规范化 ENS 名称](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) 。你可以使用内置的 [`normalize`](/docs/ens/utilities/normalize) 函数来实现。
+由于 ENS 名称禁止某些禁止字符（例如下划线）并具有其他验证规则，因此你可能希望在将其传递给 `getEnsAddress` 之前使用 [UTS-46 规范化](https://unicode.org/reports/tr46) 来 [规范化 ENS 名称](https://docs.ens.domains/contract-api-reference/name-processing#normalising-names) 。你可以使用内置的 [`normalize`](/docs/ens/utilities/normalize) 函数来实现。
 :::
 
 ## 返回

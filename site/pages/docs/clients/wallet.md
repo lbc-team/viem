@@ -310,7 +310,7 @@ const client = createWalletClient({
 
 - **类型:** `(parameters: CcipRequestParameters) => Promise<CcipRequestReturnType>`
 
-一个将被调用以进行[链外 CCIP 查找请求](https://eips.ethereum.org/EIPS/eip-3668#client-lookup-protocol)的函数。
+一个将被调用以进行 [链外 CCIP 查找请求](https://eips.ethereum.org/EIPS/eip-3668#client-lookup-protocol) 的函数。
 
 ```ts twoslash
 // @noErrors

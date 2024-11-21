@@ -4,7 +4,7 @@ description: 返回一个账户发送的交易数量。
 
 # getTransactionCount
 
-返回一个账户广播/发送的[交易](/docs/glossary/terms#transaction)数量。
+返回一个账户广播/发送的 [交易](/docs/glossary/terms#transaction) 数量。
 
 ## 用法
 

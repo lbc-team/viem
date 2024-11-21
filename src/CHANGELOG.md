@@ -2045,7 +2045,7 @@
 
 ### 修补更改
 
-- [#1462](https://github.com/wevm/viem/pull/1462) [`f1aaca8f`](https://github.com/wevm/viem/commit/f1aaca8f104d3595fd86018d28f0bf97cdd8dcc8) 感谢 [@0xarthurxyz](https://github.com/0xarthurxyz)! - 移除了已被[弃用](https://forum.celo.org/t/cannoli-testnet-deprecation-announcement/6796)的 Celo Cannoli 测试网。
+- [#1462](https://github.com/wevm/viem/pull/1462) [`f1aaca8f`](https://github.com/wevm/viem/commit/f1aaca8f104d3595fd86018d28f0bf97cdd8dcc8) 感谢 [@0xarthurxyz](https://github.com/0xarthurxyz)! - 移除了已被 [弃用](https://forum.celo.org/t/cannoli-testnet-deprecation-announcement/6796) 的 Celo Cannoli 测试网。
 
 ## 2.0.5
 

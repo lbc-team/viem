@@ -4,7 +4,7 @@ description: 将地址转换为校验和编码的地址。
 
 # getAddress
 
-将地址转换为[校验和编码](https://eips.ethereum.org/EIPS/eip-55)的地址。支持 [EIP-1191](https://eips.ethereum.org/EIPS/eip-1191)。
+将地址转换为 [校验和编码](https://eips.ethereum.org/EIPS/eip-55) 的地址。支持 [EIP-1191](https://eips.ethereum.org/EIPS/eip-1191)。
 
 ## 导入
 

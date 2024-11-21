@@ -63,7 +63,7 @@ const account = toAccount({
 
 ### signMessage
 
-用于签署 [EIP-191 格式](https://eips.ethereum.org/EIPS/eip-191)消息的函数。
+用于签署 [EIP-191 格式](https://eips.ethereum.org/EIPS/eip-191) 消息的函数。
 
 ```ts
 const account = toAccount({

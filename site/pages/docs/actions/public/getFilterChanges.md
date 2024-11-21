@@ -4,7 +4,7 @@ description: 返回基于过滤器的日志或哈希列表。
 
 # getFilterChanges
 
-返回自上次调用以来基于[过滤器](/docs/glossary/terms#filter)的日志或哈希列表。
+返回自上次调用以来基于 [过滤器](/docs/glossary/terms#filter) 的日志或哈希列表。
 
 可以通过以下操作创建过滤器：
 

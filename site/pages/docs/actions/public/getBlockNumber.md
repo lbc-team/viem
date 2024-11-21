@@ -46,14 +46,14 @@ const block = await publicClient.getBlockNumber({
 })
 ```
 
-默认情况下，区块编号会在[客户端的 `cacheTime`](/docs/clients/public#cacheTime-optional) 期间被缓存。
+默认情况下，区块编号会在 [客户端的 `cacheTime`](/docs/clients/public#cacheTime-optional) 期间被缓存。
 
 - 设置大于零的值将使区块编号在缓存中保持该时间。
 - 设置值为 `0` 将禁用缓存，并始终检索最新的区块编号。
 
 ## 示例
 
-查看在实时[获取区块示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks)中 `getBlockNumber` 的用法。
+查看在实时 [获取区块示例](https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks) 中 `getBlockNumber` 的用法。
 
 <iframe frameBorder="0" width="100%" height="500px" src="https://stackblitz.com/github/wevm/viem/tree/main/examples/blocks_fetching-blocks?embed=1&file=index.ts&hideNavigation=1&hideDevTools=true&terminalHeight=0&ctl=1"></iframe>
 

@@ -1,9 +1,9 @@
 # createNonceManager [创建一个非重复值管理器以自动生成非重复值]
 
-创建一个新的非重复值管理器实例，用于与[本地账户](/docs/accounts/local)一起使用。非重复值管理器用于自动管理和生成交易的非重复值。
+创建一个新的非重复值管理器实例，用于与 [本地账户](/docs/accounts/local) 一起使用。非重复值管理器用于自动管理和生成交易的非重复值。
 
 :::warning
-非重复值管理器只能与[本地账户](/docs/accounts/local)一起使用（即私钥、助记词等）。
+非重复值管理器只能与 [本地账户](/docs/accounts/local) 一起使用（即私钥、助记词等）。
 
 对于 [JSON-RPC 账户](/docs/accounts/jsonRpc) （即浏览器扩展、WalletConnect、后端等），钱包或后端将管理非重复值。
 :::
@@ -38,7 +38,7 @@ import { nonceManager } from 'viem'
 
 ### 与本地账户的集成
 
-可以将`nonceManager`作为选项传递给[本地账户](/docs/accounts/local) ，以自动管理交易的非重复值。
+可以将`nonceManager`作为选项传递给 [本地账户](/docs/accounts/local) ，以自动管理交易的非重复值。
 
 :::code-group
 
