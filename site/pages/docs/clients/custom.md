@@ -69,7 +69,7 @@ const response = await debugClient.traceCall({
 
 有关使用 `.extend` 的更简洁实现，请查看 viem 的 [公共客户端实现](https://github.com/wagmi-dev/viem/blob/29c053f5069a5b44e3791972c221368a2c71a254/src/clients/createPublicClient.ts#L48-L68)，它扩展了 [公共 Actions](https://github.com/wagmi-dev/viem/blob/29c053f5069a5b44e3791972c221368a2c71a254/src/clients/decorators/public.ts#L1377-L1425)。
 
-### 树摇
+### 树摇（Tree-shaking）
 
 你可以直接使用客户端，而不带装饰的 Actions，以最大化应用中的树摇。这在你对包大小非常讲究并且只想包含你使用的 Actions 时非常有用。
 
