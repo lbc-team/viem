@@ -117,7 +117,7 @@ client.writeContract({
 })
 ```
 
-尽管重载是一个边缘情况，但遇到这种行为会令人感到相当 [惊讶](https://en.wikipedia.org/wiki/Principle_of_least_astonishment) 。那么，表示 `args` 的最佳方式是什么呢？好吧，它们在合约级别是位置性的，因此在 viem 中以这种方式表示它们也是有意义的。
+尽管重载是一个边缘情况，但遇到这种行为会令人感到相当 [惊讶](https://en.wikipedia.org/wiki/Principle_of_least_astonishment) 。那么，表示 `args` 的最佳方式是什么呢？好吧，它们在合约层面上是按位置传递的参数，因此在 viem 中以这种方式表示它们也是合理的。
 
 不过，在开发者体验方面并非一无所获！TypeScript 中的元组类型可以附加 [名称](https://www.typescriptlang.org/play?ts=4.0.2#example/named-tuples) ：
 

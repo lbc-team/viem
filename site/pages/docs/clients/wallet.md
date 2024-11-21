@@ -53,7 +53,7 @@ const client = createWalletClient({
 })
 
 const [address] = await client.getAddresses() // [!code focus:10]
-// 或: const [address] = await client.requestAddresses() // [!code focus:10]
+// 或：const [address] = await client.requestAddresses() // [!code focus:10]
 ```
 
 > 注意：某些钱包（如 MetaMask）可能需要你首先通过 [`client.requestAddresses`](/docs/actions/wallet/requestAddresses) 请求访问账户地址。

@@ -349,7 +349,7 @@ client.sendTransaction({ ... })
 
 > viem 使用术语 ["Account"](https://ethereum.org/en/developers/docs/accounts/) 而不是 "Signer"。
 
-## 提供者方法
+## Provider 方法
 
 #### Ethers
 
@@ -785,7 +785,7 @@ decodeAbiParameters(
 注意：与 ethers 不同，viem 仅支持 [标准元组表达式](https://docs.soliditylang.org/en/latest/grammar#a4.SolidityParser.tupleExpression) 的可读格式。
 例如：`(uint a, string b)` 是有效的，但 `tuple(uint a, string b)` 不是。
 
-### 片段与接口
+### 片段（Fragments）与接口
 
 在 viem 中，没有“片段”和“接口”的概念。我们希望尽可能贴近底层，不引入中间件抽象和额外的 ABI 层。我们鼓励你直接使用 ABI 本身，而不是处理“片段”。
 我们提供了 `getAbiItem`、`parseAbi`、`parseAbiItem`、`parseAbiParameters` 和 `parseAbiParameter` 等工具，涵盖接口和片段的用例。

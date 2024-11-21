@@ -1,6 +1,6 @@
 # Blob 交易 [使用 Viem 发送你的第一个 Blob 交易]
 
-Blob 交易是以太坊中的一种新型交易（在 [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) 中引入），允许你将 BLObs（大二进制对象）广播到以太坊网络。Blob 交易与其他交易类似，但增加了携带 Blob 负载的能力。Blob 的大小远大于常规的 calldata（约 128kB），然而与常规的 calldata 不同，它们在 EVM 上不可访问。EVM 只能查看 Blob 的承诺。Blob 也是瞬态的，仅持续 4096 个纪元（约 18 天）。
+Blob 交易是以太坊中的一种新型交易（在 [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) 中引入），允许你将 BLObs（二进制大型对象）广播到以太坊网络。Blob 交易与其他交易类似，但增加了携带 Blob 负载的能力。Blob 的大小远大于常规的 calldata（约 128kB），然而与常规的 calldata 不同，它们在 EVM 上不可访问。EVM 只能查看 Blob 的承诺。Blob 也是瞬态的，仅持续 4096 个纪元（约 18 天）。
 
 要了解更多关于 Blob 交易和 EIP-4844 的信息，请查看以下资源：
 
@@ -44,19 +44,19 @@ export const client = createWalletClient({
 
 ```bash [npm]
 npm i c-kzg
-# or
+# 或
 npm i kzg-wasm
 ```
 
 ```bash [pnpm]
 pnpm i c-kzg
-# or
+# 或
 pnpm i kzg-wasm
 ```
 
 ```bash [bun]
 bun i c-kzg
-# or
+# 或
 bun i kzg-wasm
 ```
 
