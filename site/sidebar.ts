@@ -1388,7 +1388,7 @@ export const sidebar = {
     backLink: true,
     items: [
       {
-        text: 'OP 堆栈',
+        text: 'OP Stack',
         items: [
           {
             text: '入门',
