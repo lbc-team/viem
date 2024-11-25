@@ -16,8 +16,8 @@ export default defineConfig({
     process.env.VERCEL_ENV === 'production'
       ? 'https://viem.sh'
       : process.env.VERCEL_URL,
-  title: 'Viem',
-  titleTemplate: '%s · Viem',
+  title: 'Viem 中文文档 | 登链社区',
+  titleTemplate: '%s Viem 中文文档 | 登链社区',
   description:
     'Build reliable Ethereum apps & libraries with lightweight, composable, & type-safe modules from viem.',
   editLink: {
